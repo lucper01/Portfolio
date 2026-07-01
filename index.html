@@ -126,6 +126,10 @@
       backdrop-filter: blur(12px);
     }
 
+    .portrait-link {
+      display: block;
+    }
+
     .profile-photo {
       width: 100%;
       aspect-ratio: 4 / 5;
@@ -347,11 +351,18 @@
       </div>
 
       <aside class="portrait-card">
-        <img
-          src="/Portfolio/assets/photo-profil.jpg"
-          alt="Portrait de Luc Perroquin"
-          class="profile-photo"
-        />
+        <a
+          class="portrait-link"
+          href="https://lucper01.github.io/Portfolio/assets/photo-profil.jpg"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="https://lucper01.github.io/Portfolio/assets/photo-profil.jpg"
+            alt="Portrait de Luc Perroquin"
+            class="profile-photo"
+          />
+        </a>
         <p class="photo-note">Luc Perroquin</p>
       </aside>
     </div>
@@ -504,6 +515,13 @@
           <strong>LinkedIn :</strong>
           <a href="https://www.linkedin.com/in/luc-perroquin-288b54328" target="_blank" rel="noopener noreferrer">
             luc-perroquin-288b54328
+          </a>
+        </p>
+
+        <p>
+          <strong>Email :</strong>
+          <a href="mailto:luc.perroquin@gmail.com">
+            luc.perroquin@gmail.com
           </a>
         </p>
 
