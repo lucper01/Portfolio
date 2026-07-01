@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Portfolio académique de Luc Perroquin, doctorant en psychologie cognitive, consacré à l'intégration entre olfaction, vision et audition." />
+  <meta name="description" content="Portfolio académique de Luc Perroquin, doctorant en psychologie cognitive, consacré aux mécanismes d'intégration entre olfaction, vision et audition." />
   <title>Luc Perroquin | Portfolio académique</title>
 
   <style>
@@ -58,7 +58,7 @@
 
     .hero {
       width: 100%;
-      max-width: 1150px;
+      max-width: 1200px;
       display: grid;
       grid-template-columns: 1.15fr 0.85fr;
       gap: 48px;
@@ -79,20 +79,22 @@
     h1 {
       margin: 22px 0 14px;
       font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(2.5rem, 7vw, 5.2rem);
+      font-size: clamp(2.25rem, 5.7vw, 5.05rem);
       line-height: 1;
       letter-spacing: -0.04em;
+      white-space: nowrap;
     }
 
     .subtitle {
       margin: 0 0 18px;
       color: var(--green-soft);
-      font-size: 1.25rem;
+      font-size: clamp(1rem, 1.8vw, 1.25rem);
       font-weight: 650;
+      white-space: nowrap;
     }
 
     .hero p {
-      max-width: 720px;
+      max-width: 760px;
       font-size: 1.12rem;
       color: rgba(255, 255, 255, 0.86);
     }
@@ -138,9 +140,10 @@
 
     .photo-note {
       margin-top: 12px;
-      font-size: 0.9rem;
-      color: rgba(255, 255, 255, 0.75);
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.82);
       text-align: center;
+      font-weight: 650;
     }
 
     nav {
@@ -159,6 +162,7 @@
     nav a {
       color: var(--green-dark);
       font-size: 0.94rem;
+      white-space: nowrap;
     }
 
     main {
@@ -193,6 +197,7 @@
       color: var(--green-dark);
       font-size: clamp(1.8rem, 3vw, 3rem);
       line-height: 1.1;
+      white-space: nowrap;
     }
 
     h3 {
@@ -201,7 +206,7 @@
     }
 
     .lead {
-      max-width: 860px;
+      max-width: 880px;
       font-size: 1.08rem;
       color: var(--muted);
     }
@@ -217,15 +222,16 @@
     .highlight h3 {
       color: var(--white);
       font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-size: clamp(1.65rem, 2.6vw, 2.7rem);
       line-height: 1.1;
+      white-space: nowrap;
     }
 
     .highlight p {
       color: rgba(255, 255, 255, 0.86);
     }
 
-    .grid.two {
+    .grid-two {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 18px;
@@ -269,6 +275,17 @@
       border-radius: 0 18px 18px 0;
     }
 
+    .publication-subsection {
+      margin-top: 30px;
+    }
+
+    .publication-subsection h3 {
+      margin-bottom: 12px;
+      font-size: 1.3rem;
+      color: var(--green-dark);
+      white-space: nowrap;
+    }
+
     .publication-list {
       padding: 0;
       list-style: none;
@@ -298,9 +315,19 @@
       color: rgba(255, 255, 255, 0.78);
     }
 
+    @media (max-width: 950px) {
+      h1,
+      h2,
+      .subtitle,
+      .highlight h3,
+      .publication-subsection h3 {
+        white-space: normal;
+      }
+    }
+
     @media (max-width: 850px) {
       .hero,
-      .grid.two,
+      .grid-two,
       .section-title {
         grid-template-columns: 1fr;
       }
@@ -330,20 +357,18 @@
 
         <div class="buttons">
           <a class="button primary" href="#these">Découvrir la thèse</a>
-          <a class="button" href="#publications">Publications</a>
+          <a class="button" href="#publications">Communications</a>
           <a class="button" href="#contact">Contact</a>
         </div>
       </div>
 
       <aside class="portrait-card">
         <img
-          src="./assets/photo-profil.jpg"
+          src="/Portfolio/assets/photo-profil.jpg"
           alt="Portrait de Luc Perroquin"
           class="profile-photo"
         />
-        <p class="photo-note">
-          Si la photo ne s'affiche pas, ouvrir directement : assets/photo-profil.jpg
-        </p>
+        <p class="photo-note">Luc Perroquin</p>
       </aside>
     </div>
   </header>
@@ -398,7 +423,7 @@
         <h2>Axes de thèse</h2>
       </div>
 
-      <div class="grid two">
+      <div class="grid-two">
         <article class="card">
           <h3>Axe 1</h3>
           <p>
@@ -445,24 +470,36 @@
         <h2>Publications et communications scientifiques</h2>
       </div>
 
-      <ul class="publication-list">
-        <li>
-          <strong>Journée des Doctorants</strong><br />
-          Présentation des travaux de thèse et obtention du prix de l'originalité pour une approche scientifique audacieuse et créative qui a surpris et inspiré le jury.
-        </li>
-        <li>
-          <strong>Articles</strong><br />
-          À compléter.
-        </li>
-        <li>
-          <strong>Posters</strong><br />
-          À compléter.
-        </li>
-        <li>
-          <strong>Prépublications</strong><br />
-          À compléter.
-        </li>
-      </ul>
+      <div class="publication-subsection">
+        <h3>Communications scientifiques</h3>
+        <ul class="publication-list">
+          <li>
+            <strong>Journée des Doctorants 2026</strong><br />
+            Présentation des travaux de thèse et obtention du prix de l'originalité pour une approche scientifique audacieuse et créative qui a surpris et inspiré le jury.
+          </li>
+        </ul>
+      </div>
+
+      <div class="publication-subsection">
+        <h3>Articles</h3>
+        <ul class="publication-list">
+          <li>À compléter.</li>
+        </ul>
+      </div>
+
+      <div class="publication-subsection">
+        <h3>Posters</h3>
+        <ul class="publication-list">
+          <li>À compléter.</li>
+        </ul>
+      </div>
+
+      <div class="publication-subsection">
+        <h3>Prépublications</h3>
+        <ul class="publication-list">
+          <li>À compléter.</li>
+        </ul>
+      </div>
     </section>
 
     <section id="contact">
