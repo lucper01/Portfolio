@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Portfolio académique de Luc Perroquin, doctorant en psychologie cognitive, consacré aux mécanismes d'intégration entre olfaction, vision et audition." />
+  <meta name="description" content="Portfolio académique de Luc Perroquin, doctorant en psychologie cognitive, consacré à l'intégration entre olfaction, vision et audition." />
   <title>Luc Perroquin | Portfolio académique</title>
 
   <style>
@@ -33,7 +33,6 @@
       line-height: 1.7;
       color: var(--text);
       background: linear-gradient(180deg, var(--cream), var(--green-pale));
-      overflow-x: hidden;
     }
 
     a {
@@ -59,9 +58,9 @@
 
     .hero {
       width: 100%;
-      max-width: 1200px;
+      max-width: 1150px;
       display: grid;
-      grid-template-columns: minmax(0, 1.15fr) minmax(260px, 0.85fr);
+      grid-template-columns: 1.15fr 0.85fr;
       gap: 48px;
       align-items: center;
     }
@@ -80,7 +79,7 @@
     h1 {
       margin: 22px 0 14px;
       font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(2.2rem, 5.8vw, 5rem);
+      font-size: clamp(2.5rem, 7vw, 5.2rem);
       line-height: 1;
       letter-spacing: -0.04em;
     }
@@ -88,13 +87,12 @@
     .subtitle {
       margin: 0 0 18px;
       color: var(--green-soft);
-      font-size: clamp(1rem, 1.8vw, 1.25rem);
+      font-size: 1.25rem;
       font-weight: 650;
-      max-width: 760px;
     }
 
     .hero p {
-      max-width: 760px;
+      max-width: 720px;
       font-size: 1.12rem;
       color: rgba(255, 255, 255, 0.86);
     }
@@ -140,8 +138,8 @@
 
     .photo-note {
       margin-top: 12px;
-      font-size: 0.95rem;
-      color: rgba(255, 255, 255, 0.82);
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.75);
       text-align: center;
       font-weight: 650;
     }
@@ -152,8 +150,7 @@
       z-index: 10;
       display: flex;
       justify-content: center;
-      flex-wrap: wrap;
-      gap: 14px 24px;
+      gap: 24px;
       padding: 14px 6%;
       background: rgba(251, 247, 237, 0.94);
       border-bottom: 1px solid rgba(11, 47, 35, 0.12);
@@ -205,7 +202,7 @@
     }
 
     .lead {
-      max-width: 880px;
+      max-width: 860px;
       font-size: 1.08rem;
       color: var(--muted);
     }
@@ -221,7 +218,7 @@
     .highlight h3 {
       color: var(--white);
       font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(1.65rem, 2.6vw, 2.7rem);
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
       line-height: 1.1;
     }
 
@@ -229,9 +226,9 @@
       color: rgba(255, 255, 255, 0.86);
     }
 
-    .grid-two {
+    .grid.two {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(2, 1fr);
       gap: 18px;
     }
 
@@ -314,22 +311,18 @@
 
     @media (max-width: 850px) {
       .hero,
-      .grid-two,
+      .grid.two,
       .section-title {
         grid-template-columns: 1fr;
       }
 
       header {
         min-height: auto;
-        padding: 56px 7%;
       }
 
-      main {
-        padding: 54px 7% 76px;
-      }
-
-      .highlight {
-        padding: 26px;
+      nav {
+        justify-content: flex-start;
+        overflow-x: auto;
       }
     }
   </style>
@@ -414,7 +407,7 @@
         <h2>Axes de thèse</h2>
       </div>
 
-      <div class="grid-two">
+      <div class="grid two">
         <article class="card">
           <h3>Axe 1</h3>
           <p>
