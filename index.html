@@ -1,81 +1,350 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Luc — Portfolio académique</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Luc Perroquin — Portfolio académique</title>
+
   <style>
+    :root {
+      --green-dark: #0b2f23;
+      --green-main: #1f6f50;
+      --green-soft: #dceee3;
+      --green-pale: #f3faf5;
+      --cream: #fbf7ed;
+      --text: #1d261f;
+      --muted: #5f6f65;
+      --white: #ffffff;
+      --shadow: 0 18px 45px rgba(11, 47, 35, 0.18);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      font-family: Georgia, "Times New Roman", serif;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       line-height: 1.7;
-      color: #222;
-      background: #f7f5f0;
+      color: var(--text);
+      background: linear-gradient(180deg, var(--cream), var(--green-pale));
     }
+
+    a {
+      color: var(--green-main);
+      text-decoration: none;
+      font-weight: 650;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
     header {
-      background: #2f3e34;
-      color: white;
-      padding: 70px 12%;
+      min-height: 86vh;
+      display: grid;
+      place-items: center;
+      padding: 70px 8%;
+      color: var(--white);
+      background:
+        radial-gradient(circle at top right, rgba(220, 238, 227, 0.25), transparent 30%),
+        linear-gradient(135deg, #061f17, #0b2f23 45%, #1f6f50);
     }
-    header h1 {
-      font-size: 2.8em;
-      margin-bottom: 10px;
+
+    .hero {
+      width: 100%;
+      max-width: 1150px;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 48px;
+      align-items: center;
     }
-    header p {
-      font-size: 1.2em;
-      max-width: 800px;
+
+    .label {
+      display: inline-block;
+      padding: 8px 14px;
+      border: 1px solid rgba(255,255,255,0.35);
+      border-radius: 999px;
+      color: var(--green-soft);
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
+
+    h1 {
+      margin: 22px 0 18px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.5rem, 7vw, 5.3rem);
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+
+    .hero p {
+      max-width: 720px;
+      font-size: 1.13rem;
+      color: rgba(255,255,255,0.86);
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .button {
+      padding: 12px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.38);
+      color: var(--white);
+    }
+
+    .button.primary {
+      background: var(--green-soft);
+      color: var(--green-dark);
+      border-color: var(--green-soft);
+    }
+
+    .portrait-card {
+      padding: 18px;
+      border-radius: 32px;
+      background: rgba(255,255,255,0.13);
+      border: 1px solid rgba(255,255,255,0.24);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+    }
+
+    .profile-photo {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      display: block;
+      border-radius: 24px;
+      border: 6px solid var(--green-soft);
+      background: var(--green-soft);
+    }
+
+    .photo-note {
+      margin-top: 12px;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.75);
+      text-align: center;
+    }
+
     nav {
-      background: #e5dfd2;
-      padding: 15px 12%;
       position: sticky;
       top: 0;
+      z-index: 10;
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      padding: 14px 6%;
+      background: rgba(251,247,237,0.94);
+      border-bottom: 1px solid rgba(11,47,35,0.12);
+      backdrop-filter: blur(10px);
     }
+
     nav a {
-      margin-right: 25px;
-      color: #2f3e34;
-      text-decoration: none;
-      font-weight: bold;
+      color: var(--green-dark);
+      font-size: 0.94rem;
     }
+
     main {
-      max-width: 1000px;
+      max-width: 1120px;
       margin: auto;
-      padding: 40px 8%;
-      background: white;
+      padding: 70px 8% 90px;
     }
+
     section {
-      margin-bottom: 55px;
+      margin-bottom: 80px;
     }
+
+    .section-title {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 26px;
+      align-items: start;
+      margin-bottom: 24px;
+    }
+
+    .section-title span {
+      color: var(--green-main);
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.82rem;
+    }
+
     h2 {
-      color: #2f3e34;
-      border-bottom: 2px solid #d8c7a3;
-      padding-bottom: 8px;
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--green-dark);
+      font-size: clamp(1.8rem, 3vw, 3rem);
+      line-height: 1.1;
     }
+
+    h3 {
+      color: var(--green-dark);
+      margin-top: 0;
+    }
+
+    .lead {
+      max-width: 860px;
+      font-size: 1.08rem;
+      color: var(--muted);
+    }
+
+    .highlight {
+      padding: 34px;
+      border-radius: 30px;
+      color: var(--white);
+      background: linear-gradient(135deg, var(--green-dark), var(--green-main));
+      box-shadow: var(--shadow);
+    }
+
+    .highlight h3 {
+      color: var(--white);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      line-height: 1.1;
+    }
+
+    .highlight p {
+      color: rgba(255,255,255,0.86);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
     .card {
-      background: #f7f5f0;
-      padding: 20px;
-      border-left: 5px solid #8a7a52;
+      padding: 24px;
+      border-radius: 24px;
+      background: var(--white);
+      border: 1px solid rgba(11,47,35,0.1);
+      box-shadow: var(--shadow);
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 0;
+      list-style: none;
       margin-top: 20px;
     }
+
+    .tags li {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--green-soft);
+      color: var(--green-dark);
+      font-size: 0.9rem;
+      font-weight: 650;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 16px;
+    }
+
+    .timeline-item {
+      padding: 20px 22px;
+      border-left: 4px solid var(--green-main);
+      background: rgba(255,255,255,0.78);
+      border-radius: 0 18px 18px 0;
+    }
+
+    .publication-list {
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 14px;
+    }
+
+    .publication-list li {
+      padding: 18px 20px;
+      border-radius: 18px;
+      background: var(--white);
+      border: 1px solid rgba(11,47,35,0.1);
+    }
+
+    .contact-box {
+      padding: 28px;
+      border-radius: 28px;
+      background: var(--white);
+      border: 1px solid rgba(11,47,35,0.1);
+      box-shadow: var(--shadow);
+    }
+
     footer {
+      padding: 34px 8%;
       text-align: center;
-      padding: 30px;
-      background: #2f3e34;
-      color: white;
+      background: var(--green-dark);
+      color: rgba(255,255,255,0.78);
+    }
+
+    @media (max-width: 850px) {
+      .hero,
+      .grid,
+      .section-title {
+        grid-template-columns: 1fr;
+      }
+
+      header {
+        min-height: auto;
+      }
+
+      nav {
+        justify-content: flex-start;
+        overflow-x: auto;
+      }
     }
   </style>
 </head>
 
 <body>
-  <header>
-    <h1>Luc — Portfolio académique</h1>
-    <p>Doctorant en psychologie cognitive — perception olfactive, mémoire sensorielle et organisation spatio-temporelle des odeurs.</p>
+  <header id="top">
+    <div class="hero">
+      <div>
+        <span class="label">Portfolio académique</span>
+        <h1>Y a-t-il un espace-temps pour les odeurs&nbsp;?</h1>
+        <p>
+          Je suis doctorant en psychologie cognitive. Mes recherches portent sur la perception olfactive,
+          la mémoire sensorielle et la manière dont les odeurs participent à la structuration subjective
+          de l’espace, du temps et des contextes vécus.
+        </p>
+
+        <div class="buttons">
+          <a class="button primary" href="#these">Découvrir la thèse</a>
+          <a class="button" href="#publications">Publications</a>
+          <a class="button" href="#contact">Contact</a>
+        </div>
+      </div>
+
+      <aside class="portrait-card">
+        <img
+          src="assets/photo-profil.jpg"
+          alt="Portrait de Luc Perroquin"
+          class="profile-photo"
+        />
+        <p class="photo-note">
+          Photo attendue : <strong>assets/photo-profil.jpg</strong>
+        </p>
+      </aside>
+    </div>
   </header>
 
   <nav>
     <a href="#about">À propos</a>
     <a href="#these">Thèse</a>
-    <a href="#axes">Axes de recherche</a>
+    <a href="#axes">Axes</a>
     <a href="#methodes">Méthodes</a>
     <a href="#publications">Publications</a>
     <a href="#contact">Contact</a>
@@ -83,64 +352,151 @@
 
   <main>
     <section id="about">
-      <h2>À propos</h2>
-      <p>
-        Je suis doctorant en psychologie cognitive. Mes travaux portent sur la manière dont les odeurs,
-        bien qu’elles soient souvent considérées comme des stimuli diffus, instables et difficilement localisables,
-        participent à la structuration subjective de l’espace, du temps et de la mémoire.
+      <div class="section-title">
+        <span>01</span>
+        <h2>À propos</h2>
+      </div>
+
+      <p class="lead">
+        Mes travaux s’inscrivent dans le champ de la psychologie cognitive de l’olfaction.
+        Ils visent à comprendre comment une odeur, bien qu’elle soit souvent décrite comme
+        un stimulus diffus, instable et faiblement localisable, peut néanmoins organiser
+        l’expérience perceptive, affective et mnésique d’un environnement.
       </p>
+
+      <ul class="tags">
+        <li>Olfaction</li>
+        <li>Perception spatiale</li>
+        <li>Temporalité subjective</li>
+        <li>Mémoire sensorielle</li>
+        <li>Émotion</li>
+      </ul>
     </section>
 
     <section id="these">
-      <h2>Thèse</h2>
-      <div class="card">
-        <h3>Y a-t-il un espace-temps pour les odeurs ?</h3>
+      <div class="section-title">
+        <span>02</span>
+        <h2>Thèse</h2>
+      </div>
+
+      <div class="highlight">
+        <h3>Y a-t-il un espace-temps pour les odeurs&nbsp;?</h3>
         <p>
-          Cette thèse interroge la possibilité d’un espace-temps olfactif, c’est-à-dire la manière dont les odeurs
-          peuvent organiser l’expérience perceptive, évoquer des lieux, produire des effets de distance,
-          réactiver des temporalités passées et modifier la représentation subjective de l’environnement.
+          Cette thèse interroge la possibilité d’un espace-temps olfactif, entendu comme
+          l’ensemble des mécanismes par lesquels les odeurs peuvent produire des effets
+          de lieu, de distance, de durée, de rémanence et de réactivation autobiographique.
+          L’objectif est d’examiner dans quelle mesure l’expérience olfactive ne se limite
+          pas à l’identification d’un stimulus, mais contribue à la construction cognitive
+          d’un environnement situé.
         </p>
       </div>
     </section>
 
     <section id="axes">
-      <h2>Axes de recherche</h2>
-      <ul>
-        <li>Spatialisation des odeurs et perception de l’environnement.</li>
-        <li>Mémoire olfactive, autobiographie et réactivation temporelle.</li>
-        <li>Relations entre odeurs, émotions et contexte perceptif.</li>
-        <li>Construction cognitive des ambiances sensorielles.</li>
-      </ul>
+      <div class="section-title">
+        <span>03</span>
+        <h2>Axes de recherche</h2>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <h3>Spatialisation des odeurs</h3>
+          <p>
+            Étude des indices permettant d’attribuer une odeur à un lieu, une source,
+            une distance ou une ambiance environnementale.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>Temporalités olfactives</h3>
+          <p>
+            Analyse de la persistance, de la rémanence et de la capacité des odeurs
+            à réactiver des moments passés.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>Mémoire et contexte</h3>
+          <p>
+            Examen des liens entre odeurs, souvenirs autobiographiques, émotions
+            et construction subjective du contexte.
+          </p>
+        </article>
+      </div>
     </section>
 
     <section id="methodes">
-      <h2>Méthodes</h2>
-      <p>
-        Les recherches mobilisent des paradigmes expérimentaux en psychologie cognitive,
-        des tâches de jugement perceptif, des mesures comportementales, des évaluations subjectives
-        et des analyses qualitatives ou quantitatives visant à caractériser l’expérience olfactive.
-      </p>
+      <div class="section-title">
+        <span>04</span>
+        <h2>Méthodes</h2>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <strong>Paradigmes expérimentaux</strong><br />
+          Présentation contrôlée de stimuli odorants et recueil de jugements perceptifs,
+          affectifs ou mnésiques.
+        </div>
+
+        <div class="timeline-item">
+          <strong>Mesures comportementales</strong><br />
+          Analyse des réponses, temps de jugement, choix de localisation, évaluations
+          d’intensité, de familiarité ou de valence.
+        </div>
+
+        <div class="timeline-item">
+          <strong>Analyses quantitatives et qualitatives</strong><br />
+          Caractérisation des dimensions spatiales et temporelles de l’expérience
+          olfactive à partir de données subjectives et comportementales.
+        </div>
+      </div>
     </section>
 
     <section id="publications">
-      <h2>Publications et communications</h2>
-      <ul>
-        <li>Articles — à compléter.</li>
-        <li>Communications scientifiques — à compléter.</li>
-        <li>Posters — à compléter.</li>
-        <li>Prépublications — à compléter.</li>
+      <div class="section-title">
+        <span>05</span>
+        <h2>Publications et communications</h2>
+      </div>
+
+      <ul class="publication-list">
+        <li><strong>Articles</strong> — à compléter.</li>
+        <li><strong>Communications scientifiques</strong> — à compléter.</li>
+        <li><strong>Posters</strong> — à compléter.</li>
+        <li><strong>Prépublications</strong> — à compléter.</li>
       </ul>
     </section>
 
     <section id="contact">
-      <h2>Contact</h2>
-      <p>GitHub : <a href="https://github.com/lucper01">lucper01</a></p>
-      <p>Email, ORCID, HAL, Google Scholar ou Zotero — à ajouter.</p>
+      <div class="section-title">
+        <span>06</span>
+        <h2>Contact</h2>
+      </div>
+
+      <div class="contact-box">
+        <p>
+          <strong>GitHub :</strong>
+          <a href="https://github.com/lucper01" target="_blank" rel="noopener noreferrer">
+            lucper01
+          </a>
+        </p>
+
+        <p>
+          <strong>LinkedIn :</strong>
+          <a href="https://www.linkedin.com/in/luc-perroquin-288b54328" target="_blank" rel="noopener noreferrer">
+            luc-perroquin-288b54328
+          </a>
+        </p>
+
+        <p>
+          <strong>Autres liens :</strong>
+          ORCID, HAL, Google Scholar ou Zotero — à ajouter.
+        </p>
+      </div>
     </section>
   </main>
 
   <footer>
-    <p>© Luc — Portfolio académique</p>
+    <p>© Luc Perroquin — Portfolio académique · Psychologie cognitive de l’olfaction</p>
   </footer>
 </body>
 </html>
