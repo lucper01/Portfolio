@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Luc Perroquin — Portfolio académique</title>
+  <meta name="description" content="Portfolio académique de Luc Perroquin, doctorant en psychologie cognitive, consacré à l'intégration entre olfaction, vision et audition." />
+  <title>Luc Perroquin | Portfolio académique</title>
 
   <style>
     :root {
@@ -67,7 +68,7 @@
     .label {
       display: inline-block;
       padding: 8px 14px;
-      border: 1px solid rgba(255,255,255,0.35);
+      border: 1px solid rgba(255, 255, 255, 0.35);
       border-radius: 999px;
       color: var(--green-soft);
       font-size: 0.82rem;
@@ -76,17 +77,24 @@
     }
 
     h1 {
-      margin: 22px 0 18px;
+      margin: 22px 0 14px;
       font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(2.5rem, 7vw, 5.3rem);
+      font-size: clamp(2.5rem, 7vw, 5.2rem);
       line-height: 1;
       letter-spacing: -0.04em;
     }
 
+    .subtitle {
+      margin: 0 0 18px;
+      color: var(--green-soft);
+      font-size: 1.25rem;
+      font-weight: 650;
+    }
+
     .hero p {
       max-width: 720px;
-      font-size: 1.13rem;
-      color: rgba(255,255,255,0.86);
+      font-size: 1.12rem;
+      color: rgba(255, 255, 255, 0.86);
     }
 
     .buttons {
@@ -99,7 +107,7 @@
     .button {
       padding: 12px 18px;
       border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.38);
+      border: 1px solid rgba(255, 255, 255, 0.38);
       color: var(--white);
     }
 
@@ -112,8 +120,8 @@
     .portrait-card {
       padding: 18px;
       border-radius: 32px;
-      background: rgba(255,255,255,0.13);
-      border: 1px solid rgba(255,255,255,0.24);
+      background: rgba(255, 255, 255, 0.13);
+      border: 1px solid rgba(255, 255, 255, 0.24);
       box-shadow: var(--shadow);
       backdrop-filter: blur(12px);
     }
@@ -131,7 +139,7 @@
     .photo-note {
       margin-top: 12px;
       font-size: 0.9rem;
-      color: rgba(255,255,255,0.75);
+      color: rgba(255, 255, 255, 0.75);
       text-align: center;
     }
 
@@ -143,8 +151,8 @@
       justify-content: center;
       gap: 24px;
       padding: 14px 6%;
-      background: rgba(251,247,237,0.94);
-      border-bottom: 1px solid rgba(11,47,35,0.12);
+      background: rgba(251, 247, 237, 0.94);
+      border-bottom: 1px solid rgba(11, 47, 35, 0.12);
       backdrop-filter: blur(10px);
     }
 
@@ -214,12 +222,12 @@
     }
 
     .highlight p {
-      color: rgba(255,255,255,0.86);
+      color: rgba(255, 255, 255, 0.86);
     }
 
-    .grid {
+    .grid.two {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 18px;
     }
 
@@ -227,7 +235,7 @@
       padding: 24px;
       border-radius: 24px;
       background: var(--white);
-      border: 1px solid rgba(11,47,35,0.1);
+      border: 1px solid rgba(11, 47, 35, 0.1);
       box-shadow: var(--shadow);
     }
 
@@ -257,7 +265,7 @@
     .timeline-item {
       padding: 20px 22px;
       border-left: 4px solid var(--green-main);
-      background: rgba(255,255,255,0.78);
+      background: rgba(255, 255, 255, 0.78);
       border-radius: 0 18px 18px 0;
     }
 
@@ -272,14 +280,14 @@
       padding: 18px 20px;
       border-radius: 18px;
       background: var(--white);
-      border: 1px solid rgba(11,47,35,0.1);
+      border: 1px solid rgba(11, 47, 35, 0.1);
     }
 
     .contact-box {
       padding: 28px;
       border-radius: 28px;
       background: var(--white);
-      border: 1px solid rgba(11,47,35,0.1);
+      border: 1px solid rgba(11, 47, 35, 0.1);
       box-shadow: var(--shadow);
     }
 
@@ -287,12 +295,12 @@
       padding: 34px 8%;
       text-align: center;
       background: var(--green-dark);
-      color: rgba(255,255,255,0.78);
+      color: rgba(255, 255, 255, 0.78);
     }
 
     @media (max-width: 850px) {
       .hero,
-      .grid,
+      .grid.two,
       .section-title {
         grid-template-columns: 1fr;
       }
@@ -315,10 +323,9 @@
       <div>
         <span class="label">Portfolio académique</span>
         <h1>Y a-t-il un espace-temps pour les odeurs&nbsp;?</h1>
+        <p class="subtitle">Mécanismes d'intégration entre olfaction, vision et audition</p>
         <p>
-          Je suis doctorant en psychologie cognitive. Mes recherches portent sur la perception olfactive,
-          la mémoire sensorielle et la manière dont les odeurs participent à la structuration subjective
-          de l’espace, du temps et des contextes vécus.
+          Je suis Luc Perroquin, doctorant en psychologie cognitive. Mes recherches portent sur les relations spatio-temporelles entre olfaction, vision et audition, ainsi que sur l'influence des odeurs dans la construction perceptive de l'espace et du temps.
         </p>
 
         <div class="buttons">
@@ -330,23 +337,23 @@
 
       <aside class="portrait-card">
         <img
-          src="assets/photo-profil.jpg"
+          src="./assets/photo-profil.jpg"
           alt="Portrait de Luc Perroquin"
           class="profile-photo"
         />
         <p class="photo-note">
-          Photo attendue : <strong>assets/photo-profil.jpg</strong>
+          Si la photo ne s'affiche pas, ouvrir directement : assets/photo-profil.jpg
         </p>
       </aside>
     </div>
   </header>
 
-  <nav>
+  <nav aria-label="Navigation principale">
     <a href="#about">À propos</a>
     <a href="#these">Thèse</a>
     <a href="#axes">Axes</a>
     <a href="#methodes">Méthodes</a>
-    <a href="#publications">Publications</a>
+    <a href="#publications">Communications</a>
     <a href="#contact">Contact</a>
   </nav>
 
@@ -358,18 +365,16 @@
       </div>
 
       <p class="lead">
-        Mes travaux s’inscrivent dans le champ de la psychologie cognitive de l’olfaction.
-        Ils visent à comprendre comment une odeur, bien qu’elle soit souvent décrite comme
-        un stimulus diffus, instable et faiblement localisable, peut néanmoins organiser
-        l’expérience perceptive, affective et mnésique d’un environnement.
+        Mes travaux s'inscrivent dans le champ de la psychologie cognitive de l'olfaction et de la perception multisensorielle. Ils visent à comprendre comment les odeurs, bien qu'elles soient souvent décrites comme des stimuli diffus, instables et faiblement localisables, peuvent interagir avec la vision et l'audition pour modifier l'expérience subjective de l'espace et du temps.
       </p>
 
       <ul class="tags">
         <li>Olfaction</li>
-        <li>Perception spatiale</li>
-        <li>Temporalité subjective</li>
-        <li>Mémoire sensorielle</li>
-        <li>Émotion</li>
+        <li>Vision</li>
+        <li>Audition</li>
+        <li>Perception multisensorielle</li>
+        <li>Espace et temps</li>
+        <li>Psychologie cognitive</li>
       </ul>
     </section>
 
@@ -382,12 +387,7 @@
       <div class="highlight">
         <h3>Y a-t-il un espace-temps pour les odeurs&nbsp;?</h3>
         <p>
-          Cette thèse interroge la possibilité d’un espace-temps olfactif, entendu comme
-          l’ensemble des mécanismes par lesquels les odeurs peuvent produire des effets
-          de lieu, de distance, de durée, de rémanence et de réactivation autobiographique.
-          L’objectif est d’examiner dans quelle mesure l’expérience olfactive ne se limite
-          pas à l’identification d’un stimulus, mais contribue à la construction cognitive
-          d’un environnement situé.
+          Cette thèse étudie les mécanismes d'intégration entre olfaction, vision et audition. Elle interroge la manière dont les odeurs peuvent être associées à des configurations spatiales et temporelles, mais aussi la façon dont elles peuvent influencer la perception spatio-temporelle dans les modalités auditive et visuelle. L'objectif général est de déterminer si l'expérience olfactive participe à une construction multisensorielle de l'espace et du temps.
         </p>
       </div>
     </section>
@@ -395,31 +395,21 @@
     <section id="axes">
       <div class="section-title">
         <span>03</span>
-        <h2>Axes de recherche</h2>
+        <h2>Axes de thèse</h2>
       </div>
 
-      <div class="grid">
+      <div class="grid two">
         <article class="card">
-          <h3>Spatialisation des odeurs</h3>
+          <h3>Axe 1</h3>
           <p>
-            Étude des indices permettant d’attribuer une odeur à un lieu, une source,
-            une distance ou une ambiance environnementale.
+            Caractériser les relations spatio-temporelles entre olfaction, vision et audition.
           </p>
         </article>
 
         <article class="card">
-          <h3>Temporalités olfactives</h3>
+          <h3>Axe 2</h3>
           <p>
-            Analyse de la persistance, de la rémanence et de la capacité des odeurs
-            à réactiver des moments passés.
-          </p>
-        </article>
-
-        <article class="card">
-          <h3>Mémoire et contexte</h3>
-          <p>
-            Examen des liens entre odeurs, souvenirs autobiographiques, émotions
-            et construction subjective du contexte.
+            Caractériser l'influence des odeurs sur la perception spatio-temporelle en audition et vision.
           </p>
         </article>
       </div>
@@ -434,20 +424,17 @@
       <div class="timeline">
         <div class="timeline-item">
           <strong>Paradigmes expérimentaux</strong><br />
-          Présentation contrôlée de stimuli odorants et recueil de jugements perceptifs,
-          affectifs ou mnésiques.
+          Présentation contrôlée de stimuli olfactifs, visuels et auditifs afin d'examiner les relations entre modalités sensorielles.
         </div>
 
         <div class="timeline-item">
           <strong>Mesures comportementales</strong><br />
-          Analyse des réponses, temps de jugement, choix de localisation, évaluations
-          d’intensité, de familiarité ou de valence.
+          Analyse des réponses perceptives, des jugements spatio-temporels, des évaluations subjectives et des temps de réponse.
         </div>
 
         <div class="timeline-item">
-          <strong>Analyses quantitatives et qualitatives</strong><br />
-          Caractérisation des dimensions spatiales et temporelles de l’expérience
-          olfactive à partir de données subjectives et comportementales.
+          <strong>Analyses quantitatives</strong><br />
+          Caractérisation statistique des effets des odeurs sur la perception de l'espace, du temps et des relations intermodales.
         </div>
       </div>
     </section>
@@ -455,14 +442,26 @@
     <section id="publications">
       <div class="section-title">
         <span>05</span>
-        <h2>Publications et communications</h2>
+        <h2>Publications et communications scientifiques</h2>
       </div>
 
       <ul class="publication-list">
-        <li><strong>Articles</strong> — à compléter.</li>
-        <li><strong>Communications scientifiques</strong> — à compléter.</li>
-        <li><strong>Posters</strong> — à compléter.</li>
-        <li><strong>Prépublications</strong> — à compléter.</li>
+        <li>
+          <strong>Journée des Doctorants</strong><br />
+          Présentation des travaux de thèse et obtention du prix de l'originalité pour une approche scientifique audacieuse et créative qui a surpris et inspiré le jury.
+        </li>
+        <li>
+          <strong>Articles</strong><br />
+          À compléter.
+        </li>
+        <li>
+          <strong>Posters</strong><br />
+          À compléter.
+        </li>
+        <li>
+          <strong>Prépublications</strong><br />
+          À compléter.
+        </li>
       </ul>
     </section>
 
@@ -489,14 +488,14 @@
 
         <p>
           <strong>Autres liens :</strong>
-          ORCID, HAL, Google Scholar ou Zotero — à ajouter.
+          ORCID, HAL, Google Scholar ou Zotero à ajouter.
         </p>
       </div>
     </section>
   </main>
 
   <footer>
-    <p>© Luc Perroquin — Portfolio académique · Psychologie cognitive de l’olfaction</p>
+    <p>Luc Perroquin | Portfolio académique | Psychologie cognitive de l'olfaction</p>
   </footer>
 </body>
 </html>
