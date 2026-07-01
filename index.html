@@ -2,18 +2,145 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Portfolio — Luc</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luc — Portfolio académique</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.7;
+      color: #222;
+      background: #f7f5f0;
+    }
+    header {
+      background: #2f3e34;
+      color: white;
+      padding: 70px 12%;
+    }
+    header h1 {
+      font-size: 2.8em;
+      margin-bottom: 10px;
+    }
+    header p {
+      font-size: 1.2em;
+      max-width: 800px;
+    }
+    nav {
+      background: #e5dfd2;
+      padding: 15px 12%;
+      position: sticky;
+      top: 0;
+    }
+    nav a {
+      margin-right: 25px;
+      color: #2f3e34;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    main {
+      max-width: 1000px;
+      margin: auto;
+      padding: 40px 8%;
+      background: white;
+    }
+    section {
+      margin-bottom: 55px;
+    }
+    h2 {
+      color: #2f3e34;
+      border-bottom: 2px solid #d8c7a3;
+      padding-bottom: 8px;
+    }
+    .card {
+      background: #f7f5f0;
+      padding: 20px;
+      border-left: 5px solid #8a7a52;
+      margin-top: 20px;
+    }
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: #2f3e34;
+      color: white;
+    }
+  </style>
 </head>
+
 <body>
-  <h1>Luc — Portfolio scientifique</h1>
-  <p>Doctorant en psychologie cognitive.</p>
+  <header>
+    <h1>Luc — Portfolio académique</h1>
+    <p>Doctorant en psychologie cognitive — perception olfactive, mémoire sensorielle et organisation spatio-temporelle des odeurs.</p>
+  </header>
 
-  <h2>À propos</h2>
-  <p>Mes recherches portent sur .</p>
+  <nav>
+    <a href="#about">À propos</a>
+    <a href="#these">Thèse</a>
+    <a href="#axes">Axes de recherche</a>
+    <a href="#methodes">Méthodes</a>
+    <a href="#publications">Publications</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
-  <h2>Publications</h2>
-  <ul>
-    <li>Publication 1 — à compléter</li>
-  </ul>
+  <main>
+    <section id="about">
+      <h2>À propos</h2>
+      <p>
+        Je suis doctorant en psychologie cognitive. Mes travaux portent sur la manière dont les odeurs,
+        bien qu’elles soient souvent considérées comme des stimuli diffus, instables et difficilement localisables,
+        participent à la structuration subjective de l’espace, du temps et de la mémoire.
+      </p>
+    </section>
+
+    <section id="these">
+      <h2>Thèse</h2>
+      <div class="card">
+        <h3>Y a-t-il un espace-temps pour les odeurs ?</h3>
+        <p>
+          Cette thèse interroge la possibilité d’un espace-temps olfactif, c’est-à-dire la manière dont les odeurs
+          peuvent organiser l’expérience perceptive, évoquer des lieux, produire des effets de distance,
+          réactiver des temporalités passées et modifier la représentation subjective de l’environnement.
+        </p>
+      </div>
+    </section>
+
+    <section id="axes">
+      <h2>Axes de recherche</h2>
+      <ul>
+        <li>Spatialisation des odeurs et perception de l’environnement.</li>
+        <li>Mémoire olfactive, autobiographie et réactivation temporelle.</li>
+        <li>Relations entre odeurs, émotions et contexte perceptif.</li>
+        <li>Construction cognitive des ambiances sensorielles.</li>
+      </ul>
+    </section>
+
+    <section id="methodes">
+      <h2>Méthodes</h2>
+      <p>
+        Les recherches mobilisent des paradigmes expérimentaux en psychologie cognitive,
+        des tâches de jugement perceptif, des mesures comportementales, des évaluations subjectives
+        et des analyses qualitatives ou quantitatives visant à caractériser l’expérience olfactive.
+      </p>
+    </section>
+
+    <section id="publications">
+      <h2>Publications et communications</h2>
+      <ul>
+        <li>Articles — à compléter.</li>
+        <li>Communications scientifiques — à compléter.</li>
+        <li>Posters — à compléter.</li>
+        <li>Prépublications — à compléter.</li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>GitHub : <a href="https://github.com/lucper01">lucper01</a></p>
+      <p>Email, ORCID, HAL, Google Scholar ou Zotero — à ajouter.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© Luc — Portfolio académique</p>
+  </footer>
 </body>
 </html>
