@@ -274,6 +274,10 @@
       border-radius: 0 18px 18px 0;
     }
 
+    .timeline-item strong {
+      color: var(--green-dark);
+    }
+
     .publication-subsection {
       margin-top: 30px;
     }
@@ -298,12 +302,45 @@
       border: 1px solid rgba(11, 47, 35, 0.1);
     }
 
+    .cv-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .cv-card {
+      padding: 24px;
+      border-radius: 24px;
+      background: var(--white);
+      border: 1px solid rgba(11, 47, 35, 0.1);
+      box-shadow: var(--shadow);
+    }
+
+    .cv-card p {
+      color: var(--muted);
+    }
+
     .contact-box {
       padding: 28px;
       border-radius: 28px;
       background: var(--white);
       border: 1px solid rgba(11, 47, 35, 0.1);
       box-shadow: var(--shadow);
+      display: grid;
+      gap: 14px;
+    }
+
+    .contact-item {
+      margin: 0;
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: var(--green-pale);
+      border: 1px solid rgba(11, 47, 35, 0.08);
+    }
+
+    .contact-item strong {
+      color: var(--green-dark);
+      margin-right: 6px;
     }
 
     footer {
@@ -316,6 +353,7 @@
     @media (max-width: 850px) {
       .hero,
       .grid.two,
+      .cv-grid,
       .section-title {
         grid-template-columns: 1fr;
       }
@@ -345,7 +383,8 @@
 
         <div class="buttons">
           <a class="button primary" href="#these">Découvrir la thèse</a>
-          <a class="button" href="#publications">Communications</a>
+          <a class="button" href="#communications">Communications</a>
+          <a class="button" href="#cv">CV</a>
           <a class="button" href="#contact">Contact</a>
         </div>
       </div>
@@ -353,12 +392,12 @@
       <aside class="portrait-card">
         <a
           class="portrait-link"
-          href="https://lucper01.github.io/Portfolio/assets/photo-profil.jpg"
+          href="https://raw.githubusercontent.com/lucper01/Portfolio/main/assets/photo-profil.jpg"
           target="_blank"
           rel="noopener noreferrer"
         >
           <img
-            src="https://lucper01.github.io/Portfolio/assets/photo-profil.jpg"
+            src="https://raw.githubusercontent.com/lucper01/Portfolio/main/assets/photo-profil.jpg"
             alt="Portrait de Luc Perroquin"
             class="profile-photo"
           />
@@ -373,7 +412,9 @@
     <a href="#these">Thèse</a>
     <a href="#axes">Axes</a>
     <a href="#methodes">Méthodes</a>
-    <a href="#publications">Communications</a>
+    <a href="#publications">Publications</a>
+    <a href="#communications">Communications</a>
+    <a href="#cv">CV</a>
     <a href="#contact">Contact</a>
   </nav>
 
@@ -444,17 +485,17 @@
       <div class="timeline">
         <div class="timeline-item">
           <strong>Paradigmes expérimentaux</strong><br />
-          Présentation contrôlée de stimuli olfactifs, visuels et auditifs afin d'examiner les relations entre modalités sensorielles.
+          Présentation contrôlée de stimuli olfactifs, visuels et auditifs dans des protocoles visant à manipuler les relations entre modalités sensorielles. Les paradigmes permettent d'examiner les effets de congruence, de synchronisation, de contexte et de correspondance entre odeurs, sons et informations visuelles.
         </div>
 
         <div class="timeline-item">
           <strong>Mesures comportementales</strong><br />
-          Analyse des réponses perceptives, des jugements spatio-temporels, des évaluations subjectives et des temps de réponse.
+          Recueil de réponses perceptives et subjectives portant sur la localisation, la durée, l'ordre temporel, la distance perçue, l'intensité, la familiarité, la valence et la confiance. Ces mesures peuvent être associées à des temps de réponse afin de caractériser la dynamique du jugement spatio-temporel.
         </div>
 
         <div class="timeline-item">
           <strong>Analyses quantitatives</strong><br />
-          Caractérisation statistique des effets des odeurs sur la perception de l'espace, du temps et des relations intermodales.
+          Analyse statistique des effets des conditions olfactives sur la perception visuelle et auditive, ainsi que des interactions entre modalités. Les analyses visent à identifier les dimensions perceptives modulées par les odeurs et à préciser leur rôle dans la construction multisensorielle de l'espace et du temps.
         </div>
       </div>
     </section>
@@ -462,28 +503,11 @@
     <section id="publications">
       <div class="section-title">
         <span>05</span>
-        <h2>Publications et communications scientifiques</h2>
-      </div>
-
-      <div class="publication-subsection">
-        <h3>Communications scientifiques</h3>
-        <ul class="publication-list">
-          <li>
-            <strong>Journée des Doctorants 2026</strong><br />
-            Présentation des travaux de thèse et obtention du prix de l'originalité pour une approche scientifique audacieuse et créative qui a surpris et inspiré le jury.
-          </li>
-        </ul>
+        <h2>Publications</h2>
       </div>
 
       <div class="publication-subsection">
         <h3>Articles</h3>
-        <ul class="publication-list">
-          <li>À compléter.</li>
-        </ul>
-      </div>
-
-      <div class="publication-subsection">
-        <h3>Posters</h3>
         <ul class="publication-list">
           <li>À compléter.</li>
         </ul>
@@ -497,35 +521,88 @@
       </div>
     </section>
 
-    <section id="contact">
+    <section id="communications">
       <div class="section-title">
         <span>06</span>
+        <h2>Communications scientifiques</h2>
+      </div>
+
+      <div class="publication-subsection">
+        <h3>Communications</h3>
+        <ul class="publication-list">
+          <li>
+            <strong>Journée des Doctorants 2026</strong><br />
+            Présentation des travaux de thèse et obtention du prix de l'originalité pour une approche scientifique audacieuse et créative qui a surpris et inspiré le jury.
+          </li>
+        </ul>
+      </div>
+
+      <div class="publication-subsection">
+        <h3>Posters</h3>
+        <ul class="publication-list">
+          <li>À compléter.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="cv">
+      <div class="section-title">
+        <span>07</span>
+        <h2>CV</h2>
+      </div>
+
+      <div class="cv-grid">
+        <article class="cv-card">
+          <h3>CV français</h3>
+          <p>
+            Version française du CV académique.
+          </p>
+          <a href="https://lucper01.github.io/Portfolio/assets/CV_PerroquinLuc_fr.pdf" target="_blank" rel="noopener noreferrer">
+            Ouvrir le CV français
+          </a>
+        </article>
+
+        <article class="cv-card">
+          <h3>CV anglais</h3>
+          <p>
+            English version of the academic CV.
+          </p>
+          <a href="https://lucper01.github.io/Portfolio/assets/CV_PerroquinLuc_en.pdf" target="_blank" rel="noopener noreferrer">
+            Open English CV
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="section-title">
+        <span>08</span>
         <h2>Contact</h2>
       </div>
 
       <div class="contact-box">
-        <p>
-          <strong>GitHub :</strong>
-          <a href="https://github.com/lucper01" target="_blank" rel="noopener noreferrer">
-            lucper01
-          </a>
-        </p>
-
-        <p>
-          <strong>LinkedIn :</strong>
-          <a href="https://www.linkedin.com/in/luc-perroquin-288b54328" target="_blank" rel="noopener noreferrer">
-            luc-perroquin-288b54328
-          </a>
-        </p>
-
-        <p>
+        <p class="contact-item">
           <strong>Email :</strong>
           <a href="mailto:luc.perroquin@gmail.com">
             luc.perroquin@gmail.com
           </a>
         </p>
 
-        <p>
+        <p class="contact-item">
+          <strong>GitHub :</strong>
+          <a href="https://github.com/lucper01" target="_blank" rel="noopener noreferrer">
+            lucper01
+          </a>
+        </p>
+
+        <p class="contact-item">
+          <strong>LinkedIn :</strong>
+          <a href="https://www.linkedin.com/in/luc-perroquin-288b54328" target="_blank" rel="noopener noreferrer">
+            luc-perroquin-288b54328
+          </a>
+        </p>
+
+        <p class="contact-item">
           <strong>Autres liens :</strong>
           ORCID, HAL, Google Scholar ou Zotero à ajouter.
         </p>
