@@ -45,6 +45,40 @@
       text-decoration: underline;
     }
 
+    .language-switch {
+      position: fixed;
+      top: 18px;
+      right: 18px;
+      z-index: 100;
+      display: flex;
+      gap: 6px;
+      padding: 6px;
+      border-radius: 999px;
+      background: rgba(251, 247, 237, 0.94);
+      border: 1px solid rgba(11, 47, 35, 0.14);
+      box-shadow: 0 10px 30px rgba(11, 47, 35, 0.18);
+      backdrop-filter: blur(10px);
+    }
+
+    .language-switch button {
+      border: 0;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--green-dark);
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .language-switch button.active {
+      background: var(--green-main);
+      color: var(--white);
+    }
+
+    .site-content[hidden] {
+      display: none;
+    }
+
     header {
       min-height: 86vh;
       display: grid;
@@ -302,12 +336,6 @@
       border: 1px solid rgba(11, 47, 35, 0.1);
     }
 
-    .cv-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
-    }
-
     .cv-card {
       padding: 24px;
       border-radius: 24px;
@@ -353,7 +381,6 @@
     @media (max-width: 850px) {
       .hero,
       .grid.two,
-      .cv-grid,
       .section-title {
         grid-template-columns: 1fr;
       }
@@ -366,192 +393,202 @@
         justify-content: flex-start;
         overflow-x: auto;
       }
+
+      .language-switch {
+        top: 10px;
+        right: 10px;
+      }
     }
   </style>
 </head>
 
 <body>
-  <header id="top">
-    <div class="hero">
-      <div>
-        <span class="label">Portfolio académique</span>
-        <h1>Y a-t-il un espace-temps pour les odeurs&nbsp;?</h1>
-        <p class="subtitle">Mécanismes d'intégration entre olfaction, vision et audition</p>
-        <p>
-          Je suis Luc Perroquin, doctorant en psychologie cognitive. Mes recherches portent sur les relations spatio-temporelles entre olfaction, vision et audition, ainsi que sur l'influence des odeurs dans la construction perceptive de l'espace et du temps.
+  <div class="language-switch" aria-label="Language switcher">
+    <button type="button" data-switch-lang="fr" class="active">FR</button>
+    <button type="button" data-switch-lang="en">EN</button>
+  </div>
+
+  <div class="site-content" data-lang="fr">
+    <header id="fr-top">
+      <div class="hero">
+        <div>
+          <span class="label">Portfolio académique</span>
+          <h1>Y a-t-il un espace-temps pour les odeurs&nbsp;?</h1>
+          <p class="subtitle">Mécanismes d'intégration entre olfaction, vision et audition</p>
+          <p>
+            Je suis Luc Perroquin, doctorant en psychologie cognitive. Mes recherches portent sur les relations spatio-temporelles entre olfaction, vision et audition, ainsi que sur l'influence des odeurs dans la construction perceptive de l'espace et du temps.
+          </p>
+
+          <div class="buttons">
+            <a class="button primary" href="#fr-these">Découvrir la thèse</a>
+            <a class="button" href="#fr-communications">Communications</a>
+            <a class="button" href="#fr-cv">CV</a>
+            <a class="button" href="#fr-contact">Contact</a>
+          </div>
+        </div>
+
+        <aside class="portrait-card">
+          <a
+            class="portrait-link"
+            href="https://raw.githubusercontent.com/lucper01/Portfolio/main/assets/photo-profil.jpg"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src="https://raw.githubusercontent.com/lucper01/Portfolio/main/assets/photo-profil.jpg"
+              alt="Portrait de Luc Perroquin"
+              class="profile-photo"
+            />
+          </a>
+          <p class="photo-note">Luc Perroquin</p>
+        </aside>
+      </div>
+    </header>
+
+    <nav aria-label="Navigation principale">
+      <a href="#fr-about">À propos</a>
+      <a href="#fr-these">Thèse</a>
+      <a href="#fr-axes">Axes</a>
+      <a href="#fr-methodes">Méthodes</a>
+      <a href="#fr-publications">Publications</a>
+      <a href="#fr-communications">Communications</a>
+      <a href="#fr-cv">CV</a>
+      <a href="#fr-contact">Contact</a>
+    </nav>
+
+    <main>
+      <section id="fr-about">
+        <div class="section-title">
+          <span>01</span>
+          <h2>À propos</h2>
+        </div>
+
+        <p class="lead">
+          Mes travaux s'inscrivent dans le champ de la psychologie cognitive de l'olfaction et de la perception multisensorielle. Ils visent à comprendre comment les odeurs, bien qu'elles soient souvent décrites comme des stimuli diffus, instables et faiblement localisables, peuvent interagir avec la vision et l'audition pour modifier l'expérience subjective de l'espace et du temps.
         </p>
 
-        <div class="buttons">
-          <a class="button primary" href="#these">Découvrir la thèse</a>
-          <a class="button" href="#communications">Communications</a>
-          <a class="button" href="#cv">CV</a>
-          <a class="button" href="#contact">Contact</a>
+        <ul class="tags">
+          <li>Olfaction</li>
+          <li>Vision</li>
+          <li>Audition</li>
+          <li>Perception multisensorielle</li>
+          <li>Espace et temps</li>
+          <li>Psychologie cognitive</li>
+        </ul>
+      </section>
+
+      <section id="fr-these">
+        <div class="section-title">
+          <span>02</span>
+          <h2>Thèse</h2>
         </div>
-      </div>
 
-      <aside class="portrait-card">
-        <a
-          class="portrait-link"
-          href="https://raw.githubusercontent.com/lucper01/Portfolio/main/assets/photo-profil.jpg"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img
-            src="https://raw.githubusercontent.com/lucper01/Portfolio/main/assets/photo-profil.jpg"
-            alt="Portrait de Luc Perroquin"
-            class="profile-photo"
-          />
-        </a>
-        <p class="photo-note">Luc Perroquin</p>
-      </aside>
-    </div>
-  </header>
-
-  <nav aria-label="Navigation principale">
-    <a href="#about">À propos</a>
-    <a href="#these">Thèse</a>
-    <a href="#axes">Axes</a>
-    <a href="#methodes">Méthodes</a>
-    <a href="#publications">Publications</a>
-    <a href="#communications">Communications</a>
-    <a href="#cv">CV</a>
-    <a href="#contact">Contact</a>
-  </nav>
-
-  <main>
-    <section id="about">
-      <div class="section-title">
-        <span>01</span>
-        <h2>À propos</h2>
-      </div>
-
-      <p class="lead">
-        Mes travaux s'inscrivent dans le champ de la psychologie cognitive de l'olfaction et de la perception multisensorielle. Ils visent à comprendre comment les odeurs, bien qu'elles soient souvent décrites comme des stimuli diffus, instables et faiblement localisables, peuvent interagir avec la vision et l'audition pour modifier l'expérience subjective de l'espace et du temps.
-      </p>
-
-      <ul class="tags">
-        <li>Olfaction</li>
-        <li>Vision</li>
-        <li>Audition</li>
-        <li>Perception multisensorielle</li>
-        <li>Espace et temps</li>
-        <li>Psychologie cognitive</li>
-      </ul>
-    </section>
-
-    <section id="these">
-      <div class="section-title">
-        <span>02</span>
-        <h2>Thèse</h2>
-      </div>
-
-      <div class="highlight">
-        <h3>Y a-t-il un espace-temps pour les odeurs&nbsp;?</h3>
-        <p>
-          Cette thèse étudie les mécanismes d'intégration entre olfaction, vision et audition. Elle interroge la manière dont les odeurs peuvent être associées à des configurations spatiales et temporelles, mais aussi la façon dont elles peuvent influencer la perception spatio-temporelle dans les modalités auditive et visuelle. L'objectif général est de déterminer si l'expérience olfactive participe à une construction multisensorielle de l'espace et du temps.
-        </p>
-      </div>
-    </section>
-
-    <section id="axes">
-      <div class="section-title">
-        <span>03</span>
-        <h2>Axes de thèse</h2>
-      </div>
-
-      <div class="grid two">
-        <article class="card">
-          <h3>Axe 1</h3>
+        <div class="highlight">
+          <h3>Y a-t-il un espace-temps pour les odeurs&nbsp;?</h3>
           <p>
-            Caractériser les relations spatio-temporelles entre olfaction, vision et audition.
+            Cette thèse étudie les mécanismes d'intégration entre olfaction, vision et audition. Elle interroge la manière dont les odeurs peuvent être associées à des configurations spatiales et temporelles, mais aussi la façon dont elles peuvent influencer la perception spatio-temporelle dans les modalités auditive et visuelle. L'objectif général est de déterminer si l'expérience olfactive participe à une construction multisensorielle de l'espace et du temps.
           </p>
-        </article>
+        </div>
+      </section>
 
-        <article class="card">
-          <h3>Axe 2</h3>
-          <p>
-            Caractériser l'influence des odeurs sur la perception spatio-temporelle en audition et vision.
-          </p>
-        </article>
-      </div>
-    </section>
-
-    <section id="methodes">
-      <div class="section-title">
-        <span>04</span>
-        <h2>Méthodes</h2>
-      </div>
-
-      <div class="timeline">
-        <div class="timeline-item">
-          <strong>Paradigmes expérimentaux</strong><br />
-          Présentation contrôlée de stimuli olfactifs, visuels et auditifs dans des protocoles visant à manipuler les relations entre modalités sensorielles. Les paradigmes permettent d'examiner les effets de congruence, de synchronisation, de contexte et de correspondance entre odeurs, sons et informations visuelles.
+      <section id="fr-axes">
+        <div class="section-title">
+          <span>03</span>
+          <h2>Axes de thèse</h2>
         </div>
 
-        <div class="timeline-item">
-          <strong>Mesures comportementales</strong><br />
-          Recueil de réponses perceptives et subjectives portant sur la localisation, la durée, l'ordre temporel, la distance perçue, l'intensité, la familiarité, la valence et la confiance. Ces mesures peuvent être associées à des temps de réponse afin de caractériser la dynamique du jugement spatio-temporel.
+        <div class="grid two">
+          <article class="card">
+            <h3>Axe 1</h3>
+            <p>
+              Caractériser les relations spatio-temporelles entre olfaction, vision et audition.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Axe 2</h3>
+            <p>
+              Caractériser l'influence des odeurs sur la perception spatio-temporelle en audition et vision.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="fr-methodes">
+        <div class="section-title">
+          <span>04</span>
+          <h2>Méthodes</h2>
         </div>
 
-        <div class="timeline-item">
-          <strong>Analyses quantitatives</strong><br />
-          Analyse statistique des effets des conditions olfactives sur la perception visuelle et auditive, ainsi que des interactions entre modalités. Les analyses visent à identifier les dimensions perceptives modulées par les odeurs et à préciser leur rôle dans la construction multisensorielle de l'espace et du temps.
+        <div class="timeline">
+          <div class="timeline-item">
+            <strong>Paradigmes expérimentaux</strong><br />
+            Présentation contrôlée de stimuli olfactifs, visuels et auditifs dans des protocoles visant à manipuler les relations entre modalités sensorielles. Les paradigmes permettent d'examiner les effets de congruence, de synchronisation, de contexte et de correspondance entre odeurs, sons et informations visuelles.
+          </div>
+
+          <div class="timeline-item">
+            <strong>Mesures comportementales</strong><br />
+            Recueil de réponses perceptives et subjectives portant sur la localisation, la durée, l'ordre temporel, la distance perçue, l'intensité, la familiarité, la valence et la confiance. Ces mesures peuvent être associées à des temps de réponse afin de caractériser la dynamique du jugement spatio-temporel.
+          </div>
+
+          <div class="timeline-item">
+            <strong>Analyses quantitatives</strong><br />
+            Analyse statistique des effets des conditions olfactives sur la perception visuelle et auditive, ainsi que des interactions entre modalités. Les analyses visent à identifier les dimensions perceptives modulées par les odeurs et à préciser leur rôle dans la construction multisensorielle de l'espace et du temps.
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="publications">
-      <div class="section-title">
-        <span>05</span>
-        <h2>Publications</h2>
-      </div>
+      <section id="fr-publications">
+        <div class="section-title">
+          <span>05</span>
+          <h2>Publications</h2>
+        </div>
 
-      <div class="publication-subsection">
-        <h3>Articles</h3>
-        <ul class="publication-list">
-          <li>À compléter.</li>
-        </ul>
-      </div>
+        <div class="publication-subsection">
+          <h3>Articles</h3>
+          <ul class="publication-list">
+            <li>À compléter.</li>
+          </ul>
+        </div>
 
-      <div class="publication-subsection">
-        <h3>Prépublications</h3>
-        <ul class="publication-list">
-          <li>À compléter.</li>
-        </ul>
-      </div>
-    </section>
+        <div class="publication-subsection">
+          <h3>Prépublications</h3>
+          <ul class="publication-list">
+            <li>À compléter.</li>
+          </ul>
+        </div>
+      </section>
 
-    <section id="communications">
-      <div class="section-title">
-        <span>06</span>
-        <h2>Communications scientifiques</h2>
-      </div>
+      <section id="fr-communications">
+        <div class="section-title">
+          <span>06</span>
+          <h2>Communications scientifiques</h2>
+        </div>
 
-      <div class="publication-subsection">
-        <h3>Communications</h3>
-        <ul class="publication-list">
-          <li>
-            <strong>Journée des Doctorants 2026</strong><br />
-            Présentation des travaux de thèse et obtention du prix de l'originalité pour une approche scientifique audacieuse et créative qui a surpris et inspiré le jury.
-          </li>
-        </ul>
-      </div>
+        <div class="publication-subsection">
+          <h3>Communications</h3>
+          <ul class="publication-list">
+            <li>
+              <strong>Journée des Doctorants 2026</strong><br />
+              Présentation des travaux de thèse et obtention du prix de l'originalité pour une approche scientifique audacieuse et créative qui a surpris et inspiré le jury.
+            </li>
+          </ul>
+        </div>
 
-      <div class="publication-subsection">
-        <h3>Posters</h3>
-        <ul class="publication-list">
-          <li>À compléter.</li>
-        </ul>
-      </div>
-    </section>
+        <div class="publication-subsection">
+          <h3>Posters</h3>
+          <ul class="publication-list">
+            <li>À compléter.</li>
+          </ul>
+        </div>
+      </section>
 
-    <section id="cv">
-      <div class="section-title">
-        <span>07</span>
-        <h2>CV</h2>
-      </div>
+      <section id="fr-cv">
+        <div class="section-title">
+          <span>07</span>
+          <h2>CV</h2>
+        </div>
 
-      <div class="cv-grid">
         <article class="cv-card">
           <h3>CV français</h3>
           <p>
@@ -561,9 +598,232 @@
             Ouvrir le CV français
           </a>
         </article>
+      </section>
+
+      <section id="fr-contact">
+        <div class="section-title">
+          <span>08</span>
+          <h2>Contact</h2>
+        </div>
+
+        <div class="contact-box">
+          <p class="contact-item">
+            <strong>Email :</strong>
+            <a href="mailto:luc.perroquin@gmail.com">
+              luc.perroquin@gmail.com
+            </a>
+          </p>
+
+          <p class="contact-item">
+            <strong>GitHub :</strong>
+            <a href="https://github.com/lucper01" target="_blank" rel="noopener noreferrer">
+              lucper01
+            </a>
+          </p>
+
+          <p class="contact-item">
+            <strong>LinkedIn :</strong>
+            <a href="https://www.linkedin.com/in/luc-perroquin-288b54328" target="_blank" rel="noopener noreferrer">
+              luc-perroquin-288b54328
+            </a>
+          </p>
+
+          <p class="contact-item">
+            <strong>Autres liens :</strong>
+            ORCID, HAL, Google Scholar ou Zotero à ajouter.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Luc Perroquin | Portfolio académique | Psychologie cognitive de l'olfaction</p>
+    </footer>
+  </div>
+
+  <div class="site-content" data-lang="en" hidden>
+    <header id="en-top">
+      <div class="hero">
+        <div>
+          <span class="label">Academic portfolio</span>
+          <h1>Is there a space-time for odors?</h1>
+          <p class="subtitle">Mechanisms of integration between olfaction, vision, and audition</p>
+          <p>
+            I am Luc Perroquin, a PhD student in cognitive psychology. My research focuses on spatio-temporal relations between olfaction, vision, and audition, as well as on the influence of odors in the perceptual construction of space and time.
+          </p>
+
+          <div class="buttons">
+            <a class="button primary" href="#en-thesis">Explore the thesis</a>
+            <a class="button" href="#en-communications">Communications</a>
+            <a class="button" href="#en-cv">CV</a>
+            <a class="button" href="#en-contact">Contact</a>
+          </div>
+        </div>
+
+        <aside class="portrait-card">
+          <a
+            class="portrait-link"
+            href="https://raw.githubusercontent.com/lucper01/Portfolio/main/assets/photo-profil.jpg"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src="https://raw.githubusercontent.com/lucper01/Portfolio/main/assets/photo-profil.jpg"
+              alt="Portrait of Luc Perroquin"
+              class="profile-photo"
+            />
+          </a>
+          <p class="photo-note">Luc Perroquin</p>
+        </aside>
+      </div>
+    </header>
+
+    <nav aria-label="Main navigation">
+      <a href="#en-about">About</a>
+      <a href="#en-thesis">Thesis</a>
+      <a href="#en-axes">Axes</a>
+      <a href="#en-methods">Methods</a>
+      <a href="#en-publications">Publications</a>
+      <a href="#en-communications">Communications</a>
+      <a href="#en-cv">CV</a>
+      <a href="#en-contact">Contact</a>
+    </nav>
+
+    <main>
+      <section id="en-about">
+        <div class="section-title">
+          <span>01</span>
+          <h2>About</h2>
+        </div>
+
+        <p class="lead">
+          My work is situated within cognitive psychology of olfaction and multisensory perception. It aims to understand how odors, although often described as diffuse, unstable, and weakly localizable stimuli, can interact with vision and audition to modify the subjective experience of space and time.
+        </p>
+
+        <ul class="tags">
+          <li>Olfaction</li>
+          <li>Vision</li>
+          <li>Audition</li>
+          <li>Multisensory perception</li>
+          <li>Space and time</li>
+          <li>Cognitive psychology</li>
+        </ul>
+      </section>
+
+      <section id="en-thesis">
+        <div class="section-title">
+          <span>02</span>
+          <h2>Thesis</h2>
+        </div>
+
+        <div class="highlight">
+          <h3>Is there a space-time for odors?</h3>
+          <p>
+            This thesis investigates mechanisms of integration between olfaction, vision, and audition. It examines how odors may be associated with spatial and temporal configurations, as well as how they may influence spatio-temporal perception in auditory and visual modalities. The general objective is to determine whether olfactory experience contributes to a multisensory construction of space and time.
+          </p>
+        </div>
+      </section>
+
+      <section id="en-axes">
+        <div class="section-title">
+          <span>03</span>
+          <h2>Thesis axes</h2>
+        </div>
+
+        <div class="grid two">
+          <article class="card">
+            <h3>Axis 1</h3>
+            <p>
+              Characterize spatio-temporal relations between olfaction, vision, and audition.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Axis 2</h3>
+            <p>
+              Characterize the influence of odors on spatio-temporal perception in audition and vision.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="en-methods">
+        <div class="section-title">
+          <span>04</span>
+          <h2>Methods</h2>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <strong>Experimental paradigms</strong><br />
+            Controlled presentation of olfactory, visual, and auditory stimuli in protocols designed to manipulate relations between sensory modalities. These paradigms make it possible to examine effects of congruence, synchronization, context, and correspondence between odors, sounds, and visual information.
+          </div>
+
+          <div class="timeline-item">
+            <strong>Behavioral measures</strong><br />
+            Collection of perceptual and subjective responses related to localization, duration, temporal order, perceived distance, intensity, familiarity, valence, and confidence. These measures may be combined with response times in order to characterize the dynamics of spatio-temporal judgments.
+          </div>
+
+          <div class="timeline-item">
+            <strong>Quantitative analyses</strong><br />
+            Statistical analysis of the effects of olfactory conditions on visual and auditory perception, as well as interactions between modalities. The analyses aim to identify perceptual dimensions modulated by odors and to specify their role in the multisensory construction of space and time.
+          </div>
+        </div>
+      </section>
+
+      <section id="en-publications">
+        <div class="section-title">
+          <span>05</span>
+          <h2>Publications</h2>
+        </div>
+
+        <div class="publication-subsection">
+          <h3>Articles</h3>
+          <ul class="publication-list">
+            <li>To be added.</li>
+          </ul>
+        </div>
+
+        <div class="publication-subsection">
+          <h3>Preprints</h3>
+          <ul class="publication-list">
+            <li>To be added.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="en-communications">
+        <div class="section-title">
+          <span>06</span>
+          <h2>Scientific communications</h2>
+        </div>
+
+        <div class="publication-subsection">
+          <h3>Communications</h3>
+          <ul class="publication-list">
+            <li>
+              <strong>Doctoral Students' Day 2026</strong><br />
+              Presentation of thesis work and recipient of the Originality Award for a bold and creative scientific approach that surprised and inspired the jury.
+            </li>
+          </ul>
+        </div>
+
+        <div class="publication-subsection">
+          <h3>Posters</h3>
+          <ul class="publication-list">
+            <li>To be added.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="en-cv">
+        <div class="section-title">
+          <span>07</span>
+          <h2>CV</h2>
+        </div>
 
         <article class="cv-card">
-          <h3>CV anglais</h3>
+          <h3>English CV</h3>
           <p>
             English version of the academic CV.
           </p>
@@ -571,47 +831,83 @@
             Open English CV
           </a>
         </article>
-      </div>
-    </section>
+      </section>
 
-    <section id="contact">
-      <div class="section-title">
-        <span>08</span>
-        <h2>Contact</h2>
-      </div>
+      <section id="en-contact">
+        <div class="section-title">
+          <span>08</span>
+          <h2>Contact</h2>
+        </div>
 
-      <div class="contact-box">
-        <p class="contact-item">
-          <strong>Email :</strong>
-          <a href="mailto:luc.perroquin@gmail.com">
-            luc.perroquin@gmail.com
-          </a>
-        </p>
+        <div class="contact-box">
+          <p class="contact-item">
+            <strong>Email:</strong>
+            <a href="mailto:luc.perroquin@gmail.com">
+              luc.perroquin@gmail.com
+            </a>
+          </p>
 
-        <p class="contact-item">
-          <strong>GitHub :</strong>
-          <a href="https://github.com/lucper01" target="_blank" rel="noopener noreferrer">
-            lucper01
-          </a>
-        </p>
+          <p class="contact-item">
+            <strong>GitHub:</strong>
+            <a href="https://github.com/lucper01" target="_blank" rel="noopener noreferrer">
+              lucper01
+            </a>
+          </p>
 
-        <p class="contact-item">
-          <strong>LinkedIn :</strong>
-          <a href="https://www.linkedin.com/in/luc-perroquin-288b54328" target="_blank" rel="noopener noreferrer">
-            luc-perroquin-288b54328
-          </a>
-        </p>
+          <p class="contact-item">
+            <strong>LinkedIn:</strong>
+            <a href="https://www.linkedin.com/in/luc-perroquin-288b54328" target="_blank" rel="noopener noreferrer">
+              luc-perroquin-288b54328
+            </a>
+          </p>
 
-        <p class="contact-item">
-          <strong>Autres liens :</strong>
-          ORCID, HAL, Google Scholar ou Zotero à ajouter.
-        </p>
-      </div>
-    </section>
-  </main>
+          <p class="contact-item">
+            <strong>Other links:</strong>
+            ORCID, HAL, Google Scholar, or Zotero to be added.
+          </p>
+        </div>
+      </section>
+    </main>
 
-  <footer>
-    <p>Luc Perroquin | Portfolio académique | Psychologie cognitive de l'olfaction</p>
-  </footer>
+    <footer>
+      <p>Luc Perroquin | Academic portfolio | Cognitive psychology of olfaction</p>
+    </footer>
+  </div>
+
+  <script>
+    const languageButtons = document.querySelectorAll("[data-switch-lang]");
+    const languagePages = document.querySelectorAll(".site-content");
+
+    function setLanguage(language) {
+      languagePages.forEach((page) => {
+        const isActive = page.dataset.lang === language;
+        page.hidden = !isActive;
+        page.setAttribute("aria-hidden", String(!isActive));
+      });
+
+      languageButtons.forEach((button) => {
+        const isActive = button.dataset.switchLang === language;
+        button.classList.toggle("active", isActive);
+        button.setAttribute("aria-pressed", String(isActive));
+      });
+
+      document.documentElement.lang = language;
+      document.title = language === "fr"
+        ? "Luc Perroquin | Portfolio académique"
+        : "Luc Perroquin | Academic portfolio";
+
+      localStorage.setItem("portfolio-language", language);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    languageButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        setLanguage(button.dataset.switchLang);
+      });
+    });
+
+    const savedLanguage = localStorage.getItem("portfolio-language");
+    setLanguage(savedLanguage === "en" ? "en" : "fr");
+  </script>
 </body>
 </html>
