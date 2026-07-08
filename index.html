@@ -8,15 +8,20 @@
 
   <style>
     :root {
+      --green-deep: #061f17;
       --green-dark: #0b2f23;
       --green-main: #1f6f50;
+      --green-light: #77b892;
       --green-soft: #dceee3;
       --green-pale: #f3faf5;
       --cream: #fbf7ed;
       --text: #1d261f;
       --muted: #5f6f65;
       --white: #ffffff;
-      --shadow: 0 18px 45px rgba(11, 47, 35, 0.18);
+      --shadow: 0 18px 45px rgba(11, 47, 35, 0.16);
+      --shadow-soft: 0 12px 30px rgba(11, 47, 35, 0.10);
+      --radius-large: 32px;
+      --radius-medium: 22px;
     }
 
     * {
@@ -32,13 +37,17 @@
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       line-height: 1.7;
       color: var(--text);
-      background: linear-gradient(180deg, var(--cream), var(--green-pale));
+      background:
+        radial-gradient(circle at 10% 0%, rgba(119, 184, 146, 0.22), transparent 32%),
+        radial-gradient(circle at 90% 30%, rgba(220, 238, 227, 0.55), transparent 34%),
+        linear-gradient(180deg, var(--cream), var(--green-pale));
+      overflow-x: hidden;
     }
 
     a {
       color: var(--green-main);
       text-decoration: none;
-      font-weight: 650;
+      font-weight: 700;
     }
 
     a:hover {
@@ -54,7 +63,7 @@
       gap: 6px;
       padding: 6px;
       border-radius: 999px;
-      background: rgba(251, 247, 237, 0.94);
+      background: rgba(251, 247, 237, 0.96);
       border: 1px solid rgba(11, 47, 35, 0.14);
       box-shadow: 0 10px 30px rgba(11, 47, 35, 0.18);
       backdrop-filter: blur(10px);
@@ -66,7 +75,7 @@
       border-radius: 999px;
       background: transparent;
       color: var(--green-dark);
-      font-weight: 800;
+      font-weight: 850;
       cursor: pointer;
     }
 
@@ -80,23 +89,40 @@
     }
 
     header {
-      min-height: 86vh;
+      min-height: 88vh;
       display: grid;
       place-items: center;
-      padding: 70px 8%;
+      padding: 82px 8% 76px;
       color: var(--white);
       background:
-        radial-gradient(circle at top right, rgba(220, 238, 227, 0.25), transparent 30%),
-        linear-gradient(135deg, #061f17, #0b2f23 45%, #1f6f50);
+        radial-gradient(circle at top right, rgba(220, 238, 227, 0.28), transparent 30%),
+        radial-gradient(circle at bottom left, rgba(119, 184, 146, 0.22), transparent 34%),
+        linear-gradient(135deg, #061f17, #0b2f23 46%, #1f6f50);
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      right: -160px;
+      bottom: -160px;
+      border-radius: 50%;
+      background: rgba(220, 238, 227, 0.12);
+      filter: blur(8px);
     }
 
     .hero {
       width: 100%;
-      max-width: 1150px;
+      max-width: 1180px;
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 48px;
+      grid-template-columns: minmax(0, 1.18fr) minmax(280px, 0.82fr);
+      gap: 54px;
       align-items: center;
+      position: relative;
+      z-index: 1;
     }
 
     .label {
@@ -113,20 +139,22 @@
     h1 {
       margin: 22px 0 14px;
       font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(2.5rem, 7vw, 5.2rem);
-      line-height: 1;
-      letter-spacing: -0.04em;
+      font-size: clamp(2.5rem, 7vw, 5.3rem);
+      line-height: 0.98;
+      letter-spacing: -0.045em;
+      max-width: 850px;
     }
 
     .subtitle {
       margin: 0 0 18px;
       color: var(--green-soft);
-      font-size: 1.25rem;
-      font-weight: 650;
+      font-size: clamp(1.05rem, 2vw, 1.35rem);
+      font-weight: 700;
+      max-width: 760px;
     }
 
     .hero p {
-      max-width: 720px;
+      max-width: 760px;
       font-size: 1.12rem;
       color: rgba(255, 255, 255, 0.86);
     }
@@ -139,10 +167,20 @@
     }
 
     .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       padding: 12px 18px;
       border-radius: 999px;
       border: 1px solid rgba(255, 255, 255, 0.38);
       color: var(--white);
+      transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.10);
     }
 
     .button.primary {
@@ -151,13 +189,21 @@
       border-color: var(--green-soft);
     }
 
+    .button.cv-button {
+      background: var(--white);
+      color: var(--green-dark);
+      border-color: var(--white);
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.18);
+    }
+
     .portrait-card {
       padding: 18px;
-      border-radius: 32px;
+      border-radius: var(--radius-large);
       background: rgba(255, 255, 255, 0.13);
       border: 1px solid rgba(255, 255, 255, 0.24);
       box-shadow: var(--shadow);
       backdrop-filter: blur(12px);
+      transform: rotate(1.2deg);
     }
 
     .portrait-link {
@@ -176,20 +222,21 @@
 
     .photo-note {
       margin-top: 12px;
-      font-size: 0.9rem;
-      color: rgba(255, 255, 255, 0.75);
+      font-size: 0.92rem;
+      color: rgba(255, 255, 255, 0.82);
       text-align: center;
-      font-weight: 650;
+      font-weight: 750;
     }
 
     nav {
       position: sticky;
       top: 0;
-      z-index: 10;
+      z-index: 20;
       display: flex;
       justify-content: center;
-      gap: 24px;
-      padding: 14px 6%;
+      flex-wrap: wrap;
+      gap: 10px 22px;
+      padding: 13px 6%;
       background: rgba(251, 247, 237, 0.94);
       border-bottom: 1px solid rgba(11, 47, 35, 0.12);
       backdrop-filter: blur(10px);
@@ -197,17 +244,18 @@
 
     nav a {
       color: var(--green-dark);
-      font-size: 0.94rem;
+      font-size: 0.93rem;
+      padding: 4px 0;
     }
 
     main {
       max-width: 1120px;
       margin: auto;
-      padding: 70px 8% 90px;
+      padding: 76px 8% 92px;
     }
 
     section {
-      margin-bottom: 80px;
+      margin-bottom: 82px;
     }
 
     .section-title {
@@ -215,15 +263,16 @@
       grid-template-columns: 90px 1fr;
       gap: 26px;
       align-items: start;
-      margin-bottom: 24px;
+      margin-bottom: 26px;
     }
 
     .section-title span {
       color: var(--green-main);
-      font-weight: 800;
+      font-weight: 850;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       font-size: 0.82rem;
+      padding-top: 8px;
     }
 
     h2 {
@@ -231,7 +280,8 @@
       font-family: Georgia, "Times New Roman", serif;
       color: var(--green-dark);
       font-size: clamp(1.8rem, 3vw, 3rem);
-      line-height: 1.1;
+      line-height: 1.08;
+      letter-spacing: -0.025em;
     }
 
     h3 {
@@ -240,16 +290,18 @@
     }
 
     .lead {
-      max-width: 860px;
-      font-size: 1.08rem;
+      max-width: 900px;
+      font-size: 1.1rem;
       color: var(--muted);
     }
 
     .highlight {
-      padding: 34px;
+      padding: 36px;
       border-radius: 30px;
       color: var(--white);
-      background: linear-gradient(135deg, var(--green-dark), var(--green-main));
+      background:
+        radial-gradient(circle at top right, rgba(255, 255, 255, 0.14), transparent 28%),
+        linear-gradient(135deg, var(--green-dark), var(--green-main));
       box-shadow: var(--shadow);
     }
 
@@ -257,24 +309,39 @@
       color: var(--white);
       font-family: Georgia, "Times New Roman", serif;
       font-size: clamp(1.8rem, 3vw, 2.8rem);
-      line-height: 1.1;
+      line-height: 1.08;
     }
 
     .highlight p {
-      color: rgba(255, 255, 255, 0.86);
+      color: rgba(255, 255, 255, 0.88);
     }
 
     .grid.two {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 18px;
     }
 
+    .card,
+    .cv-card,
+    .publication-list li,
+    .timeline-item,
+    .contact-box {
+      box-shadow: var(--shadow-soft);
+    }
+
     .card {
-      padding: 24px;
+      padding: 25px;
       border-radius: 24px;
-      background: var(--white);
+      background: rgba(255, 255, 255, 0.88);
       border: 1px solid rgba(11, 47, 35, 0.1);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover,
+    .cv-card:hover,
+    .publication-list li:hover {
+      transform: translateY(-3px);
       box-shadow: var(--shadow);
     }
 
@@ -284,7 +351,7 @@
       gap: 10px;
       padding: 0;
       list-style: none;
-      margin-top: 20px;
+      margin-top: 22px;
     }
 
     .tags li {
@@ -293,7 +360,7 @@
       background: var(--green-soft);
       color: var(--green-dark);
       font-size: 0.9rem;
-      font-weight: 650;
+      font-weight: 700;
     }
 
     .timeline {
@@ -302,14 +369,15 @@
     }
 
     .timeline-item {
-      padding: 20px 22px;
+      padding: 22px 24px;
       border-left: 4px solid var(--green-main);
-      background: rgba(255, 255, 255, 0.78);
-      border-radius: 0 18px 18px 0;
+      background: rgba(255, 255, 255, 0.82);
+      border-radius: 0 20px 20px 0;
     }
 
     .timeline-item strong {
       color: var(--green-dark);
+      font-size: 1.05rem;
     }
 
     .publication-subsection {
@@ -330,30 +398,49 @@
     }
 
     .publication-list li {
-      padding: 18px 20px;
+      padding: 20px 22px;
       border-radius: 18px;
-      background: var(--white);
+      background: rgba(255, 255, 255, 0.90);
       border: 1px solid rgba(11, 47, 35, 0.1);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
     .cv-card {
-      padding: 24px;
-      border-radius: 24px;
-      background: var(--white);
+      padding: 28px;
+      border-radius: 26px;
+      background:
+        radial-gradient(circle at top right, rgba(119, 184, 146, 0.18), transparent 35%),
+        var(--white);
       border: 1px solid rgba(11, 47, 35, 0.1);
-      box-shadow: var(--shadow);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
     .cv-card p {
       color: var(--muted);
     }
 
+    .cv-download {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 10px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      color: var(--white);
+      background: var(--green-main);
+      border: 1px solid var(--green-main);
+    }
+
+    .cv-download:hover {
+      text-decoration: none;
+      background: var(--green-dark);
+    }
+
     .contact-box {
       padding: 28px;
       border-radius: 28px;
-      background: var(--white);
+      background: rgba(255, 255, 255, 0.90);
       border: 1px solid rgba(11, 47, 35, 0.1);
-      box-shadow: var(--shadow);
       display: grid;
       gap: 14px;
     }
@@ -378,25 +465,50 @@
       color: rgba(255, 255, 255, 0.78);
     }
 
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     @media (max-width: 850px) {
+      header {
+        min-height: auto;
+        padding: 76px 7% 58px;
+      }
+
       .hero,
       .grid.two,
       .section-title {
         grid-template-columns: 1fr;
       }
 
-      header {
-        min-height: auto;
+      .hero {
+        gap: 34px;
+      }
+
+      main {
+        padding: 58px 7% 76px;
       }
 
       nav {
         justify-content: flex-start;
         overflow-x: auto;
+        flex-wrap: nowrap;
       }
 
       .language-switch {
         top: 10px;
         right: 10px;
+      }
+
+      .portrait-card {
+        transform: none;
       }
     }
   </style>
@@ -422,7 +534,7 @@
           <div class="buttons">
             <a class="button primary" href="#fr-these">Découvrir la thèse</a>
             <a class="button" href="#fr-communications">Communications</a>
-            <a class="button" href="#fr-cv">CV</a>
+            <a class="button cv-button" href="https://lucper01.github.io/Portfolio/assets/CV_PerroquinLuc_fr.pdf" target="_blank" rel="noopener noreferrer">Télécharger le CV</a>
             <a class="button" href="#fr-contact">Contact</a>
           </div>
         </div>
@@ -457,7 +569,7 @@
     </nav>
 
     <main>
-      <section id="fr-about">
+      <section id="fr-about" class="reveal">
         <div class="section-title">
           <span>01</span>
           <h2>À propos</h2>
@@ -477,7 +589,7 @@
         </ul>
       </section>
 
-      <section id="fr-these">
+      <section id="fr-these" class="reveal">
         <div class="section-title">
           <span>02</span>
           <h2>Thèse</h2>
@@ -491,7 +603,7 @@
         </div>
       </section>
 
-      <section id="fr-axes">
+      <section id="fr-axes" class="reveal">
         <div class="section-title">
           <span>03</span>
           <h2>Axes de thèse</h2>
@@ -514,7 +626,7 @@
         </div>
       </section>
 
-      <section id="fr-methodes">
+      <section id="fr-methodes" class="reveal">
         <div class="section-title">
           <span>04</span>
           <h2>Méthodes</h2>
@@ -538,7 +650,7 @@
         </div>
       </section>
 
-      <section id="fr-publications">
+      <section id="fr-publications" class="reveal">
         <div class="section-title">
           <span>05</span>
           <h2>Publications</h2>
@@ -559,7 +671,7 @@
         </div>
       </section>
 
-      <section id="fr-communications">
+      <section id="fr-communications" class="reveal">
         <div class="section-title">
           <span>06</span>
           <h2>Communications scientifiques</h2>
@@ -583,7 +695,7 @@
         </div>
       </section>
 
-      <section id="fr-cv">
+      <section id="fr-cv" class="reveal">
         <div class="section-title">
           <span>07</span>
           <h2>CV</h2>
@@ -592,15 +704,15 @@
         <article class="cv-card">
           <h3>CV français</h3>
           <p>
-            Version française du CV académique.
+            Version française du CV académique. Le fichier doit être déposé dans le dossier assets sous le nom CV_PerroquinLuc_fr.pdf.
           </p>
-          <a href="https://lucper01.github.io/Portfolio/assets/CV_PerroquinLuc_fr.pdf" target="_blank" rel="noopener noreferrer">
+          <a class="cv-download" href="https://lucper01.github.io/Portfolio/assets/CV_PerroquinLuc_fr.pdf" target="_blank" rel="noopener noreferrer">
             Ouvrir le CV français
           </a>
         </article>
       </section>
 
-      <section id="fr-contact">
+      <section id="fr-contact" class="reveal">
         <div class="section-title">
           <span>08</span>
           <h2>Contact</h2>
@@ -655,7 +767,7 @@
           <div class="buttons">
             <a class="button primary" href="#en-thesis">Explore the thesis</a>
             <a class="button" href="#en-communications">Communications</a>
-            <a class="button" href="#en-cv">CV</a>
+            <a class="button cv-button" href="https://lucper01.github.io/Portfolio/assets/CV_PerroquinLuc_en.pdf" target="_blank" rel="noopener noreferrer">Download CV</a>
             <a class="button" href="#en-contact">Contact</a>
           </div>
         </div>
@@ -690,7 +802,7 @@
     </nav>
 
     <main>
-      <section id="en-about">
+      <section id="en-about" class="reveal">
         <div class="section-title">
           <span>01</span>
           <h2>About</h2>
@@ -710,7 +822,7 @@
         </ul>
       </section>
 
-      <section id="en-thesis">
+      <section id="en-thesis" class="reveal">
         <div class="section-title">
           <span>02</span>
           <h2>Thesis</h2>
@@ -724,7 +836,7 @@
         </div>
       </section>
 
-      <section id="en-axes">
+      <section id="en-axes" class="reveal">
         <div class="section-title">
           <span>03</span>
           <h2>Thesis axes</h2>
@@ -747,7 +859,7 @@
         </div>
       </section>
 
-      <section id="en-methods">
+      <section id="en-methods" class="reveal">
         <div class="section-title">
           <span>04</span>
           <h2>Methods</h2>
@@ -771,7 +883,7 @@
         </div>
       </section>
 
-      <section id="en-publications">
+      <section id="en-publications" class="reveal">
         <div class="section-title">
           <span>05</span>
           <h2>Publications</h2>
@@ -792,7 +904,7 @@
         </div>
       </section>
 
-      <section id="en-communications">
+      <section id="en-communications" class="reveal">
         <div class="section-title">
           <span>06</span>
           <h2>Scientific communications</h2>
@@ -816,7 +928,7 @@
         </div>
       </section>
 
-      <section id="en-cv">
+      <section id="en-cv" class="reveal">
         <div class="section-title">
           <span>07</span>
           <h2>CV</h2>
@@ -825,15 +937,15 @@
         <article class="cv-card">
           <h3>English CV</h3>
           <p>
-            English version of the academic CV.
+            English version of the academic CV. The file must be placed in the assets folder under the name CV_PerroquinLuc_en.pdf.
           </p>
-          <a href="https://lucper01.github.io/Portfolio/assets/CV_PerroquinLuc_en.pdf" target="_blank" rel="noopener noreferrer">
+          <a class="cv-download" href="https://lucper01.github.io/Portfolio/assets/CV_PerroquinLuc_en.pdf" target="_blank" rel="noopener noreferrer">
             Open English CV
           </a>
         </article>
       </section>
 
-      <section id="en-contact">
+      <section id="en-contact" class="reveal">
         <div class="section-title">
           <span>08</span>
           <h2>Contact</h2>
@@ -878,6 +990,18 @@
     const languageButtons = document.querySelectorAll("[data-switch-lang]");
     const languagePages = document.querySelectorAll(".site-content");
 
+    function revealVisibleElements() {
+      const revealElements = document.querySelectorAll(".site-content:not([hidden]) .reveal");
+
+      revealElements.forEach((element) => {
+        const rect = element.getBoundingClientRect();
+        const isVisible = rect.top < window.innerHeight - 80;
+        if (isVisible) {
+          element.classList.add("is-visible");
+        }
+      });
+    }
+
     function setLanguage(language) {
       languagePages.forEach((page) => {
         const isActive = page.dataset.lang === language;
@@ -898,6 +1022,7 @@
 
       localStorage.setItem("portfolio-language", language);
       window.scrollTo({ top: 0, behavior: "smooth" });
+      window.setTimeout(revealVisibleElements, 120);
     }
 
     languageButtons.forEach((button) => {
@@ -905,6 +1030,9 @@
         setLanguage(button.dataset.switchLang);
       });
     });
+
+    window.addEventListener("scroll", revealVisibleElements);
+    window.addEventListener("load", revealVisibleElements);
 
     const savedLanguage = localStorage.getItem("portfolio-language");
     setLanguage(savedLanguage === "en" ? "en" : "fr");
