@@ -415,6 +415,7 @@
     }
 
     .card,
+    .team-card,
     .cv-card,
     .publication-list li,
     .timeline-item,
@@ -436,10 +437,78 @@
     }
 
     .card:hover,
+    .team-card:hover,
     .cv-card:hover,
     .publication-list li:hover {
       transform: translateY(-3px);
       box-shadow: var(--shadow);
+    }
+
+    .team-card {
+      padding: 32px;
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at top right, rgba(119, 184, 146, 0.20), transparent 34%),
+        rgba(255, 255, 255, 0.92);
+      border: 1px solid rgba(11, 47, 35, 0.10);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    body.dark-mode .team-card {
+      background:
+        radial-gradient(circle at top right, rgba(119, 184, 146, 0.16), transparent 34%),
+        rgba(16, 37, 28, 0.88);
+      border-color: rgba(220, 238, 227, 0.12);
+    }
+
+    .team-card p {
+      color: var(--muted);
+      margin-bottom: 0;
+    }
+
+    .team-kicker {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: var(--green-soft);
+      color: var(--green-dark);
+      font-size: 0.82rem;
+      font-weight: 850;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 16px;
+    }
+
+    body.dark-mode .team-kicker {
+      background: rgba(119, 184, 146, 0.18);
+      color: #dceee3;
+    }
+
+    .team-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .team-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 18px;
+      border-radius: 999px;
+      color: #ffffff;
+      background: var(--green-main);
+      border: 1px solid var(--green-main);
+      font-weight: 850;
+    }
+
+    .team-link:hover {
+      text-decoration: none;
+      background: #0b2f23;
+      color: #ffffff;
     }
 
     .tags {
@@ -677,31 +746,6 @@
       color: #0b2f23;
     }
 
-    .contact-icon.csga-logo-icon {
-      background: #ffffff;
-      border: 1px solid rgba(31, 111, 80, 0.22);
-      padding: 6px;
-      overflow: hidden;
-    }
-
-    .contact-icon.csga-logo-icon:hover {
-      background: #ffffff;
-    }
-
-    .contact-icon.csga-logo-icon img {
-      width: 24px;
-      height: 24px;
-      object-fit: contain;
-      display: block;
-      filter: brightness(0) saturate(100%) invert(32%) sepia(32%) saturate(1138%) hue-rotate(106deg) brightness(91%) contrast(89%);
-      transition: transform 0.2s ease, opacity 0.2s ease;
-    }
-
-    .contact-icon.csga-logo-icon:hover img {
-      transform: scale(1.08);
-      opacity: 0.92;
-    }
-
     footer {
       padding: 34px 8%;
       text-align: center;
@@ -865,6 +909,7 @@
 
           <div class="buttons">
             <a class="button primary" href="#fr-these">Découvrir la thèse</a>
+            <a class="button" href="#fr-equipe">Équipe de recherche</a>
             <a class="button" href="#fr-communications">Communications</a>
             <a class="button cv-button" href="https://lucper01.github.io/Portfolio/assets/CV_PerroquinLuc_fr.pdf" target="_blank" rel="noopener noreferrer">Télécharger le CV</a>
             <a class="button" href="#fr-contact">Contact</a>
@@ -896,6 +941,7 @@
           <a href="#fr-about" data-section-key="about">À propos</a>
           <a href="#fr-these" data-section-key="these">Thèse</a>
           <a href="#fr-axes" data-section-key="axes">Axes</a>
+          <a href="#fr-equipe" data-section-key="equipe">Équipe</a>
           <a href="#fr-methodes" data-section-key="methodes">Méthodes</a>
           <a href="#fr-publications" data-section-key="publications">Publications</a>
           <a href="#fr-communications" data-section-key="communications">Communications</a>
@@ -961,9 +1007,30 @@
         </div>
       </section>
 
-      <section id="fr-methodes" class="reveal" data-section="methodes">
+      <section id="fr-equipe" class="reveal" data-section="equipe">
         <div class="section-title">
           <span>04</span>
+          <h2>Équipe de recherche</h2>
+        </div>
+
+        <article class="team-card">
+          <span class="team-kicker">DOCC | CSGA</span>
+          <h3>Déterminants des comportements et de la cognition olfactive</h3>
+          <p>
+            Ma thèse est menée au sein de l'équipe DOCC du Centre des Sciences du Goût et de l'Alimentation. Les travaux de l'équipe portent sur l'olfaction, la communication chimique, la cognition olfactive et les comportements associés. Cette inscription collective permet de situer mes recherches sur les interactions entre olfaction, vision et audition dans un environnement scientifique centré sur les mécanismes sensoriels, cognitifs et comportementaux liés aux odeurs.
+          </p>
+
+          <div class="team-actions">
+            <a class="team-link" href="https://csga.fr/home-fr/equipes/equipe-docc" target="_blank" rel="noopener noreferrer">
+              Voir les travaux de l'équipe
+            </a>
+          </div>
+        </article>
+      </section>
+
+      <section id="fr-methodes" class="reveal" data-section="methodes">
+        <div class="section-title">
+          <span>05</span>
           <h2>Méthodes</h2>
         </div>
 
@@ -993,7 +1060,7 @@
 
       <section id="fr-publications" class="reveal" data-section="publications">
         <div class="section-title">
-          <span>05</span>
+          <span>06</span>
           <h2>Publications</h2>
         </div>
 
@@ -1020,7 +1087,7 @@
 
       <section id="fr-communications" class="reveal" data-section="communications">
         <div class="section-title">
-          <span>06</span>
+          <span>07</span>
           <h2>Communications scientifiques</h2>
         </div>
 
@@ -1050,7 +1117,7 @@
 
       <section id="fr-cv" class="reveal" data-section="cv">
         <div class="section-title">
-          <span>07</span>
+          <span>08</span>
           <h2>CV</h2>
         </div>
 
@@ -1067,7 +1134,7 @@
 
       <section id="fr-contact" class="reveal" data-section="contact">
         <div class="section-title">
-          <span>08</span>
+          <span>09</span>
           <h2>Contact</h2>
         </div>
 
@@ -1093,16 +1160,6 @@
             <strong>ResearchGate :</strong>
             <a href="https://www.researchgate.net/profile/Luc-Perroquin?ev=hdr_xprf" target="_blank" rel="noopener noreferrer">
               Luc Perroquin
-            </a>
-          </p>
-
-          <p class="contact-item">
-            <a class="contact-icon csga-logo-icon" href="https://csga.fr/home-fr/equipes/equipe-docc" target="_blank" rel="noopener noreferrer" aria-label="Équipe DOCC, CSGA">
-              <img src="https://csga.fr/site-sitefront/assets/img/logo.png" alt="" aria-hidden="true" />
-            </a>
-            <strong>Équipe de recherche :</strong>
-            <a href="https://csga.fr/home-fr/equipes/equipe-docc" target="_blank" rel="noopener noreferrer">
-              Équipe DOCC, CSGA
             </a>
           </p>
 
@@ -1135,6 +1192,7 @@
 
           <div class="buttons">
             <a class="button primary" href="#en-thesis">Explore the thesis</a>
+            <a class="button" href="#en-team">Research team</a>
             <a class="button" href="#en-communications">Communications</a>
             <a class="button cv-button" href="https://lucper01.github.io/Portfolio/assets/CV_PerroquinLuc_en.pdf" target="_blank" rel="noopener noreferrer">Download CV</a>
             <a class="button" href="#en-contact">Contact</a>
@@ -1166,6 +1224,7 @@
           <a href="#en-about" data-section-key="about">About</a>
           <a href="#en-thesis" data-section-key="these">Thesis</a>
           <a href="#en-axes" data-section-key="axes">Axes</a>
+          <a href="#en-team" data-section-key="equipe">Team</a>
           <a href="#en-methods" data-section-key="methodes">Methods</a>
           <a href="#en-publications" data-section-key="publications">Publications</a>
           <a href="#en-communications" data-section-key="communications">Communications</a>
@@ -1231,9 +1290,30 @@
         </div>
       </section>
 
-      <section id="en-methods" class="reveal" data-section="methodes">
+      <section id="en-team" class="reveal" data-section="equipe">
         <div class="section-title">
           <span>04</span>
+          <h2>Research team</h2>
+        </div>
+
+        <article class="team-card">
+          <span class="team-kicker">DOCC | CSGA</span>
+          <h3>Determinants of olfactory cognition and behavior</h3>
+          <p>
+            My PhD work is conducted within the DOCC team at the Centre for Taste and Feeding Behavior. The team's research focuses on olfaction, chemical communication, olfactory cognition, and associated behaviors. This research environment situates my work on interactions between olfaction, vision, and audition within a broader scientific framework dedicated to sensory, cognitive, and behavioral mechanisms related to odors.
+          </p>
+
+          <div class="team-actions">
+            <a class="team-link" href="https://csga.fr/en_GB/home-en/teams/team-docc" target="_blank" rel="noopener noreferrer">
+              View the team's work
+            </a>
+          </div>
+        </article>
+      </section>
+
+      <section id="en-methods" class="reveal" data-section="methodes">
+        <div class="section-title">
+          <span>05</span>
           <h2>Methods</h2>
         </div>
 
@@ -1263,7 +1343,7 @@
 
       <section id="en-publications" class="reveal" data-section="publications">
         <div class="section-title">
-          <span>05</span>
+          <span>06</span>
           <h2>Publications</h2>
         </div>
 
@@ -1290,7 +1370,7 @@
 
       <section id="en-communications" class="reveal" data-section="communications">
         <div class="section-title">
-          <span>06</span>
+          <span>07</span>
           <h2>Scientific communications</h2>
         </div>
 
@@ -1320,7 +1400,7 @@
 
       <section id="en-cv" class="reveal" data-section="cv">
         <div class="section-title">
-          <span>07</span>
+          <span>08</span>
           <h2>CV</h2>
         </div>
 
@@ -1337,7 +1417,7 @@
 
       <section id="en-contact" class="reveal" data-section="contact">
         <div class="section-title">
-          <span>08</span>
+          <span>09</span>
           <h2>Contact</h2>
         </div>
 
@@ -1363,16 +1443,6 @@
             <strong>ResearchGate:</strong>
             <a href="https://www.researchgate.net/profile/Luc-Perroquin?ev=hdr_xprf" target="_blank" rel="noopener noreferrer">
               Luc Perroquin
-            </a>
-          </p>
-
-          <p class="contact-item">
-            <a class="contact-icon csga-logo-icon" href="https://csga.fr/en_GB/home-en/teams/team-docc" target="_blank" rel="noopener noreferrer" aria-label="DOCC team, CSGA">
-              <img src="https://csga.fr/site-sitefront/assets/img/logo.png" alt="" aria-hidden="true" />
-            </a>
-            <strong>Research team:</strong>
-            <a href="https://csga.fr/en_GB/home-en/teams/team-docc" target="_blank" rel="noopener noreferrer">
-              DOCC team, CSGA
             </a>
           </p>
 
@@ -1419,6 +1489,7 @@
         about: "fr-about",
         these: "fr-these",
         axes: "fr-axes",
+        equipe: "fr-equipe",
         methodes: "fr-methodes",
         publications: "fr-publications",
         communications: "fr-communications",
@@ -1430,6 +1501,7 @@
         about: "en-about",
         these: "en-thesis",
         axes: "en-axes",
+        equipe: "en-team",
         methodes: "en-methods",
         publications: "en-publications",
         communications: "en-communications",
