@@ -41,6 +41,26 @@
         radial-gradient(circle at 90% 30%, rgba(220, 238, 227, 0.55), transparent 34%),
         linear-gradient(180deg, var(--cream), var(--green-pale));
       overflow-x: hidden;
+      transition: background 0.25s ease, color 0.25s ease;
+    }
+
+    body.dark-mode {
+      --green-deep: #03100c;
+      --green-dark: #dceee3;
+      --green-main: #77b892;
+      --green-light: #9fd3b1;
+      --green-soft: #193f2e;
+      --green-pale: #0b1f17;
+      --cream: #07130f;
+      --text: #edf8f0;
+      --muted: #b8cabc;
+      --white: #10251c;
+      --shadow: 0 18px 45px rgba(0, 0, 0, 0.38);
+      --shadow-soft: 0 12px 30px rgba(0, 0, 0, 0.22);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(119, 184, 146, 0.16), transparent 32%),
+        radial-gradient(circle at 90% 30%, rgba(31, 111, 80, 0.18), transparent 34%),
+        linear-gradient(180deg, #07130f, #0b1f17);
     }
 
     a {
@@ -53,11 +73,18 @@
       text-decoration: underline;
     }
 
-    .language-switch {
+    .top-controls {
       position: fixed;
       top: 18px;
       right: 18px;
       z-index: 100;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .language-switch,
+    .theme-switch {
       display: flex;
       gap: 6px;
       padding: 6px;
@@ -68,19 +95,32 @@
       backdrop-filter: blur(10px);
     }
 
-    .language-switch button {
+    body.dark-mode .language-switch,
+    body.dark-mode .theme-switch {
+      background: rgba(7, 19, 15, 0.92);
+      border-color: rgba(220, 238, 227, 0.18);
+    }
+
+    .language-switch button,
+    .theme-switch button {
       border: 0;
       padding: 8px 12px;
       border-radius: 999px;
       background: transparent;
-      color: var(--green-dark);
+      color: #0b2f23;
       font-weight: 850;
       cursor: pointer;
     }
 
-    .language-switch button.active {
+    body.dark-mode .language-switch button,
+    body.dark-mode .theme-switch button {
+      color: #dceee3;
+    }
+
+    .language-switch button.active,
+    .theme-switch button.active {
       background: var(--green-main);
-      color: var(--white);
+      color: #ffffff;
     }
 
     .site-content[hidden] {
@@ -92,7 +132,7 @@
       display: grid;
       place-items: center;
       padding: 82px 8% 76px;
-      color: var(--white);
+      color: #ffffff;
       background:
         radial-gradient(circle at top right, rgba(220, 238, 227, 0.28), transparent 30%),
         radial-gradient(circle at bottom left, rgba(119, 184, 146, 0.22), transparent 34%),
@@ -129,7 +169,7 @@
       padding: 8px 14px;
       border: 1px solid rgba(255, 255, 255, 0.35);
       border-radius: 999px;
-      color: var(--green-soft);
+      color: #dceee3;
       font-size: 0.82rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -146,7 +186,7 @@
 
     .subtitle {
       margin: 0 0 18px;
-      color: var(--green-soft);
+      color: #dceee3;
       font-size: clamp(1.05rem, 2vw, 1.35rem);
       font-weight: 700;
       max-width: 760px;
@@ -172,7 +212,7 @@
       padding: 12px 18px;
       border-radius: 999px;
       border: 1px solid rgba(255, 255, 255, 0.38);
-      color: var(--white);
+      color: #ffffff;
       transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
     }
 
@@ -183,15 +223,15 @@
     }
 
     .button.primary {
-      background: var(--green-soft);
-      color: var(--green-dark);
-      border-color: var(--green-soft);
+      background: #dceee3;
+      color: #0b2f23;
+      border-color: #dceee3;
     }
 
     .button.cv-button {
-      background: var(--white);
-      color: var(--green-dark);
-      border-color: var(--white);
+      background: #ffffff;
+      color: #0b2f23;
+      border-color: #ffffff;
       box-shadow: 0 14px 28px rgba(0, 0, 0, 0.18);
     }
 
@@ -215,8 +255,8 @@
       object-fit: cover;
       display: block;
       border-radius: 24px;
-      border: 6px solid var(--green-soft);
-      background: var(--green-soft);
+      border: 6px solid #dceee3;
+      background: #dceee3;
     }
 
     .photo-note {
@@ -231,20 +271,60 @@
       position: sticky;
       top: 0;
       z-index: 20;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 10px 22px;
-      padding: 13px 6%;
+      padding: 10px 6%;
       background: rgba(251, 247, 237, 0.94);
       border-bottom: 1px solid rgba(11, 47, 35, 0.12);
       backdrop-filter: blur(10px);
     }
 
+    body.dark-mode nav {
+      background: rgba(7, 19, 15, 0.94);
+      border-bottom-color: rgba(220, 238, 227, 0.12);
+    }
+
+    .nav-inner {
+      max-width: 1120px;
+      margin: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .nav-toggle {
+      display: none;
+      border: 1px solid rgba(11, 47, 35, 0.18);
+      border-radius: 999px;
+      padding: 9px 14px;
+      background: var(--white);
+      color: var(--green-dark);
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px 18px;
+    }
+
     nav a {
       color: var(--green-dark);
       font-size: 0.93rem;
-      padding: 4px 0;
+      padding: 6px 10px;
+      border-radius: 999px;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    nav a.active {
+      background: var(--green-soft);
+      color: var(--green-dark);
+    }
+
+    body.dark-mode nav a.active {
+      background: rgba(119, 184, 146, 0.22);
+      color: #dceee3;
     }
 
     main {
@@ -255,6 +335,7 @@
 
     section {
       margin-bottom: 82px;
+      scroll-margin-top: 90px;
     }
 
     .section-title {
@@ -297,15 +378,15 @@
     .highlight {
       padding: 36px;
       border-radius: 30px;
-      color: var(--white);
+      color: #ffffff;
       background:
         radial-gradient(circle at top right, rgba(255, 255, 255, 0.14), transparent 28%),
-        linear-gradient(135deg, var(--green-dark), var(--green-main));
+        linear-gradient(135deg, #0b2f23, #1f6f50);
       box-shadow: var(--shadow);
     }
 
     .highlight h3 {
-      color: var(--white);
+      color: #ffffff;
       font-family: Georgia, "Times New Roman", serif;
       font-size: clamp(1.8rem, 3vw, 2.8rem);
       line-height: 1.08;
@@ -337,6 +418,11 @@
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
+    body.dark-mode .card {
+      background: rgba(16, 37, 28, 0.88);
+      border-color: rgba(220, 238, 227, 0.12);
+    }
+
     .card:hover,
     .cv-card:hover,
     .publication-list li:hover {
@@ -362,21 +448,85 @@
       font-weight: 700;
     }
 
+    body.dark-mode .tags li {
+      background: rgba(119, 184, 146, 0.18);
+      color: #dceee3;
+    }
+
     .timeline {
       display: grid;
       gap: 16px;
     }
 
     .timeline-item {
-      padding: 22px 24px;
+      padding: 0;
       border-left: 4px solid var(--green-main);
       background: rgba(255, 255, 255, 0.82);
       border-radius: 0 20px 20px 0;
+      overflow: hidden;
     }
 
-    .timeline-item strong {
+    body.dark-mode .timeline-item {
+      background: rgba(16, 37, 28, 0.88);
+      border-color: var(--green-main);
+    }
+
+    .timeline-item summary {
+      padding: 20px 24px;
       color: var(--green-dark);
+      font-weight: 850;
       font-size: 1.05rem;
+      cursor: pointer;
+      list-style: none;
+    }
+
+    .timeline-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .timeline-item summary::after {
+      content: "+";
+      float: right;
+      font-weight: 900;
+      color: var(--green-main);
+    }
+
+    .timeline-item[open] summary::after {
+      content: "−";
+    }
+
+    .timeline-item p {
+      margin: 0;
+      padding: 0 24px 22px;
+      color: var(--muted);
+    }
+
+    .filter-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 18px 0 24px;
+    }
+
+    .filter-button {
+      border: 1px solid rgba(11, 47, 35, 0.14);
+      border-radius: 999px;
+      padding: 9px 14px;
+      color: var(--green-dark);
+      background: var(--white);
+      font-weight: 800;
+      cursor: pointer;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    }
+
+    .filter-button:hover {
+      transform: translateY(-2px);
+    }
+
+    .filter-button.active {
+      background: var(--green-main);
+      color: #ffffff;
+      border-color: var(--green-main);
     }
 
     .publication-subsection {
@@ -401,7 +551,16 @@
       border-radius: 18px;
       background: rgba(255, 255, 255, 0.90);
       border: 1px solid rgba(11, 47, 35, 0.1);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+    }
+
+    body.dark-mode .publication-list li {
+      background: rgba(16, 37, 28, 0.88);
+      border-color: rgba(220, 238, 227, 0.12);
+    }
+
+    .hidden-by-filter {
+      display: none !important;
     }
 
     .cv-card {
@@ -412,6 +571,13 @@
         var(--white);
       border: 1px solid rgba(11, 47, 35, 0.1);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    body.dark-mode .cv-card {
+      background:
+        radial-gradient(circle at top right, rgba(119, 184, 146, 0.18), transparent 35%),
+        rgba(16, 37, 28, 0.88);
+      border-color: rgba(220, 238, 227, 0.12);
     }
 
     .cv-card p {
@@ -425,14 +591,15 @@
       margin-top: 10px;
       padding: 12px 18px;
       border-radius: 999px;
-      color: var(--white);
+      color: #ffffff;
       background: var(--green-main);
       border: 1px solid var(--green-main);
     }
 
     .cv-download:hover {
       text-decoration: none;
-      background: var(--green-dark);
+      background: #0b2f23;
+      color: #ffffff;
     }
 
     .contact-box {
@@ -444,12 +611,22 @@
       gap: 14px;
     }
 
+    body.dark-mode .contact-box {
+      background: rgba(16, 37, 28, 0.88);
+      border-color: rgba(220, 238, 227, 0.12);
+    }
+
     .contact-item {
       margin: 0;
       padding: 14px 16px;
       border-radius: 16px;
       background: var(--green-pale);
       border: 1px solid rgba(11, 47, 35, 0.08);
+    }
+
+    body.dark-mode .contact-item {
+      background: rgba(119, 184, 146, 0.10);
+      border-color: rgba(220, 238, 227, 0.12);
     }
 
     .contact-item strong {
@@ -460,14 +637,14 @@
     footer {
       padding: 34px 8%;
       text-align: center;
-      background: var(--green-dark);
+      background: #0b2f23;
       color: rgba(255, 255, 255, 0.78);
     }
 
     .reveal {
       opacity: 0;
-      transform: translateY(22px);
-      transition: opacity 0.65s ease, transform 0.65s ease;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
     }
 
     .reveal.is-visible {
@@ -475,10 +652,36 @@
       transform: translateY(0);
     }
 
+    .back-to-top {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 90;
+      width: 44px;
+      height: 44px;
+      border: 0;
+      border-radius: 999px;
+      background: var(--green-main);
+      color: #ffffff;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: var(--shadow-soft);
+      opacity: 0;
+      transform: translateY(12px);
+      pointer-events: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
     @media (max-width: 850px) {
       header {
         min-height: auto;
-        padding: 76px 7% 58px;
+        padding: 78px 7% 58px;
       }
 
       .hero,
@@ -488,39 +691,97 @@
       }
 
       .hero {
-        gap: 34px;
+        gap: 30px;
+      }
+
+      h1 {
+        font-size: clamp(2.25rem, 12vw, 4rem);
+      }
+
+      .portrait-card {
+        max-width: 340px;
+        margin: auto;
+        transform: none;
       }
 
       main {
-        padding: 58px 7% 76px;
+        padding: 56px 7% 76px;
       }
 
-      nav {
-        justify-content: flex-start;
-        overflow-x: auto;
-        flex-wrap: nowrap;
+      section {
+        margin-bottom: 64px;
       }
 
-      .language-switch {
+      .top-controls {
         top: 10px;
         right: 10px;
       }
 
-      .portrait-card {
-        transform: none;
+      .nav-inner {
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .nav-toggle {
+        display: inline-flex;
+        align-items: center;
+      }
+
+      .nav-links {
+        position: absolute;
+        left: 7%;
+        right: 7%;
+        top: 58px;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+        padding: 14px;
+        border-radius: 18px;
+        background: rgba(251, 247, 237, 0.98);
+        border: 1px solid rgba(11, 47, 35, 0.12);
+        box-shadow: var(--shadow-soft);
+      }
+
+      body.dark-mode .nav-links {
+        background: rgba(7, 19, 15, 0.98);
+      }
+
+      nav.open .nav-links {
+        display: flex;
+      }
+
+      nav a {
+        display: block;
+      }
+
+      .filter-controls {
+        gap: 8px;
+      }
+
+      .filter-button {
+        flex: 1 1 auto;
       }
     }
   </style>
 </head>
 
 <body>
-  <div class="language-switch" aria-label="Language switcher">
-    <button type="button" data-switch-lang="fr" class="active">FR</button>
-    <button type="button" data-switch-lang="en">EN</button>
+  <div class="top-controls">
+    <div class="language-switch" aria-label="Language switcher">
+      <button type="button" data-switch-lang="fr" class="active">FR</button>
+      <button type="button" data-switch-lang="en">EN</button>
+    </div>
+
+    <div class="theme-switch" aria-label="Theme switcher">
+      <button type="button" data-theme-toggle>Mode</button>
+    </div>
   </div>
 
+  <button class="back-to-top" type="button" aria-label="Retour en haut">↑</button>
+
   <div class="site-content" data-lang="fr">
-    <header id="fr-top">
+    <header id="fr-top" data-section="top">
       <div class="hero">
         <div>
           <span class="label">Portfolio académique</span>
@@ -556,19 +817,24 @@
       </div>
     </header>
 
-    <nav aria-label="Navigation principale">
-      <a href="#fr-about">À propos</a>
-      <a href="#fr-these">Thèse</a>
-      <a href="#fr-axes">Axes</a>
-      <a href="#fr-methodes">Méthodes</a>
-      <a href="#fr-publications">Publications</a>
-      <a href="#fr-communications">Communications</a>
-      <a href="#fr-cv">CV</a>
-      <a href="#fr-contact">Contact</a>
+    <nav aria-label="Navigation principale" data-nav="fr">
+      <div class="nav-inner">
+        <button class="nav-toggle" type="button" data-nav-toggle="fr">Menu</button>
+        <div class="nav-links">
+          <a href="#fr-about" data-section-key="about">À propos</a>
+          <a href="#fr-these" data-section-key="these">Thèse</a>
+          <a href="#fr-axes" data-section-key="axes">Axes</a>
+          <a href="#fr-methodes" data-section-key="methodes">Méthodes</a>
+          <a href="#fr-publications" data-section-key="publications">Publications</a>
+          <a href="#fr-communications" data-section-key="communications">Communications</a>
+          <a href="#fr-cv" data-section-key="cv">CV</a>
+          <a href="#fr-contact" data-section-key="contact">Contact</a>
+        </div>
+      </div>
     </nav>
 
     <main>
-      <section id="fr-about" class="reveal">
+      <section id="fr-about" class="reveal" data-section="about">
         <div class="section-title">
           <span>01</span>
           <h2>À propos</h2>
@@ -588,7 +854,7 @@
         </ul>
       </section>
 
-      <section id="fr-these" class="reveal">
+      <section id="fr-these" class="reveal" data-section="these">
         <div class="section-title">
           <span>02</span>
           <h2>Thèse</h2>
@@ -602,7 +868,7 @@
         </div>
       </section>
 
-      <section id="fr-axes" class="reveal">
+      <section id="fr-axes" class="reveal" data-section="axes">
         <div class="section-title">
           <span>03</span>
           <h2>Axes de thèse</h2>
@@ -625,61 +891,83 @@
         </div>
       </section>
 
-      <section id="fr-methodes" class="reveal">
+      <section id="fr-methodes" class="reveal" data-section="methodes">
         <div class="section-title">
           <span>04</span>
           <h2>Méthodes</h2>
         </div>
 
         <div class="timeline">
-          <div class="timeline-item">
-            <strong>Paradigmes expérimentaux</strong><br />
-            Présentation contrôlée de stimuli olfactifs, visuels et auditifs dans des protocoles visant à manipuler les relations entre modalités sensorielles. Les paradigmes permettent d'examiner les effets de congruence, de synchronisation, de contexte et de correspondance entre odeurs, sons et informations visuelles.
-          </div>
+          <details class="timeline-item" open>
+            <summary>Paradigmes expérimentaux</summary>
+            <p>
+              Présentation contrôlée de stimuli olfactifs, visuels et auditifs dans des protocoles visant à manipuler les relations entre modalités sensorielles. Les paradigmes permettent d'examiner les effets de congruence, de synchronisation, de contexte et de correspondance entre odeurs, sons et informations visuelles.
+            </p>
+          </details>
 
-          <div class="timeline-item">
-            <strong>Mesures comportementales</strong><br />
-            Recueil de réponses perceptives et subjectives portant sur la localisation, la durée, l'ordre temporel, la distance perçue, l'intensité, la familiarité, la valence et la confiance. Ces mesures peuvent être associées à des temps de réponse afin de caractériser la dynamique du jugement spatio-temporel.
-          </div>
+          <details class="timeline-item">
+            <summary>Mesures comportementales</summary>
+            <p>
+              Recueil de réponses perceptives et subjectives portant sur la localisation, la durée, l'ordre temporel, la distance perçue, l'intensité, la familiarité, la valence et la confiance. Ces mesures peuvent être associées à des temps de réponse afin de caractériser la dynamique du jugement spatio-temporel.
+            </p>
+          </details>
 
-          <div class="timeline-item">
-            <strong>Analyses quantitatives</strong><br />
-            Analyse statistique des effets des conditions olfactives sur la perception visuelle et auditive, ainsi que des interactions entre modalités. Les analyses visent à identifier les dimensions perceptives modulées par les odeurs et à préciser leur rôle dans la construction multisensorielle de l'espace et du temps.
-          </div>
+          <details class="timeline-item">
+            <summary>Analyses quantitatives</summary>
+            <p>
+              Analyse statistique des effets des conditions olfactives sur la perception visuelle et auditive, ainsi que des interactions entre modalités. Les analyses visent à identifier les dimensions perceptives modulées par les odeurs et à préciser leur rôle dans la construction multisensorielle de l'espace et du temps.
+            </p>
+          </details>
         </div>
       </section>
 
-      <section id="fr-publications" class="reveal">
+      <section id="fr-publications" class="reveal" data-section="publications">
         <div class="section-title">
           <span>05</span>
           <h2>Publications</h2>
         </div>
 
+        <div class="filter-controls" aria-label="Filtres des productions scientifiques">
+          <button class="filter-button active" type="button" data-filter-lang="fr" data-filter="all">Tous</button>
+          <button class="filter-button" type="button" data-filter-lang="fr" data-filter="article">Articles</button>
+          <button class="filter-button" type="button" data-filter-lang="fr" data-filter="preprint">Prépublications</button>
+          <button class="filter-button" type="button" data-filter-lang="fr" data-filter="communication">Communications</button>
+          <button class="filter-button" type="button" data-filter-lang="fr" data-filter="poster">Posters</button>
+        </div>
+
         <div class="publication-subsection">
           <h3>Articles</h3>
           <ul class="publication-list">
-            <li>À compléter.</li>
+            <li class="filter-item" data-category="article">À compléter.</li>
           </ul>
         </div>
 
         <div class="publication-subsection">
           <h3>Prépublications</h3>
           <ul class="publication-list">
-            <li>À compléter.</li>
+            <li class="filter-item" data-category="preprint">À compléter.</li>
           </ul>
         </div>
       </section>
 
-      <section id="fr-communications" class="reveal">
+      <section id="fr-communications" class="reveal" data-section="communications">
         <div class="section-title">
           <span>06</span>
           <h2>Communications scientifiques</h2>
         </div>
 
+        <div class="filter-controls" aria-label="Filtres des productions scientifiques">
+          <button class="filter-button active" type="button" data-filter-lang="fr" data-filter="all">Tous</button>
+          <button class="filter-button" type="button" data-filter-lang="fr" data-filter="article">Articles</button>
+          <button class="filter-button" type="button" data-filter-lang="fr" data-filter="preprint">Prépublications</button>
+          <button class="filter-button" type="button" data-filter-lang="fr" data-filter="communication">Communications</button>
+          <button class="filter-button" type="button" data-filter-lang="fr" data-filter="poster">Posters</button>
+        </div>
+
         <div class="publication-subsection">
           <h3>Communications</h3>
           <ul class="publication-list">
-            <li>
+            <li class="filter-item" data-category="communication">
               <strong>Journée des Doctorants 2026</strong><br />
               Présentation des travaux de thèse et obtention du prix de l'originalité pour une approche scientifique audacieuse et créative qui a surpris et inspiré le jury.
             </li>
@@ -689,12 +977,12 @@
         <div class="publication-subsection">
           <h3>Posters</h3>
           <ul class="publication-list">
-            <li>À compléter.</li>
+            <li class="filter-item" data-category="poster">À compléter.</li>
           </ul>
         </div>
       </section>
 
-      <section id="fr-cv" class="reveal">
+      <section id="fr-cv" class="reveal" data-section="cv">
         <div class="section-title">
           <span>07</span>
           <h2>CV</h2>
@@ -711,7 +999,7 @@
         </article>
       </section>
 
-      <section id="fr-contact" class="reveal">
+      <section id="fr-contact" class="reveal" data-section="contact">
         <div class="section-title">
           <span>08</span>
           <h2>Contact</h2>
@@ -748,7 +1036,7 @@
   </div>
 
   <div class="site-content" data-lang="en" hidden>
-    <header id="en-top">
+    <header id="en-top" data-section="top">
       <div class="hero">
         <div>
           <span class="label">Academic portfolio</span>
@@ -784,19 +1072,24 @@
       </div>
     </header>
 
-    <nav aria-label="Main navigation">
-      <a href="#en-about">About</a>
-      <a href="#en-thesis">Thesis</a>
-      <a href="#en-axes">Axes</a>
-      <a href="#en-methods">Methods</a>
-      <a href="#en-publications">Publications</a>
-      <a href="#en-communications">Communications</a>
-      <a href="#en-cv">CV</a>
-      <a href="#en-contact">Contact</a>
+    <nav aria-label="Main navigation" data-nav="en">
+      <div class="nav-inner">
+        <button class="nav-toggle" type="button" data-nav-toggle="en">Menu</button>
+        <div class="nav-links">
+          <a href="#en-about" data-section-key="about">About</a>
+          <a href="#en-thesis" data-section-key="these">Thesis</a>
+          <a href="#en-axes" data-section-key="axes">Axes</a>
+          <a href="#en-methods" data-section-key="methodes">Methods</a>
+          <a href="#en-publications" data-section-key="publications">Publications</a>
+          <a href="#en-communications" data-section-key="communications">Communications</a>
+          <a href="#en-cv" data-section-key="cv">CV</a>
+          <a href="#en-contact" data-section-key="contact">Contact</a>
+        </div>
+      </div>
     </nav>
 
     <main>
-      <section id="en-about" class="reveal">
+      <section id="en-about" class="reveal" data-section="about">
         <div class="section-title">
           <span>01</span>
           <h2>About</h2>
@@ -816,7 +1109,7 @@
         </ul>
       </section>
 
-      <section id="en-thesis" class="reveal">
+      <section id="en-thesis" class="reveal" data-section="these">
         <div class="section-title">
           <span>02</span>
           <h2>Thesis</h2>
@@ -830,7 +1123,7 @@
         </div>
       </section>
 
-      <section id="en-axes" class="reveal">
+      <section id="en-axes" class="reveal" data-section="axes">
         <div class="section-title">
           <span>03</span>
           <h2>Thesis axes</h2>
@@ -853,61 +1146,83 @@
         </div>
       </section>
 
-      <section id="en-methods" class="reveal">
+      <section id="en-methods" class="reveal" data-section="methodes">
         <div class="section-title">
           <span>04</span>
           <h2>Methods</h2>
         </div>
 
         <div class="timeline">
-          <div class="timeline-item">
-            <strong>Experimental paradigms</strong><br />
-            Controlled presentation of olfactory, visual, and auditory stimuli in protocols designed to manipulate relations between sensory modalities. These paradigms make it possible to examine effects of congruence, synchronization, context, and correspondence between odors, sounds, and visual information.
-          </div>
+          <details class="timeline-item" open>
+            <summary>Experimental paradigms</summary>
+            <p>
+              Controlled presentation of olfactory, visual, and auditory stimuli in protocols designed to manipulate relations between sensory modalities. These paradigms make it possible to examine effects of congruence, synchronization, context, and correspondence between odors, sounds, and visual information.
+            </p>
+          </details>
 
-          <div class="timeline-item">
-            <strong>Behavioral measures</strong><br />
-            Collection of perceptual and subjective responses related to localization, duration, temporal order, perceived distance, intensity, familiarity, valence, and confidence. These measures may be combined with response times in order to characterize the dynamics of spatio-temporal judgments.
-          </div>
+          <details class="timeline-item">
+            <summary>Behavioral measures</summary>
+            <p>
+              Collection of perceptual and subjective responses related to localization, duration, temporal order, perceived distance, intensity, familiarity, valence, and confidence. These measures may be combined with response times in order to characterize the dynamics of spatio-temporal judgments.
+            </p>
+          </details>
 
-          <div class="timeline-item">
-            <strong>Quantitative analyses</strong><br />
-            Statistical analysis of the effects of olfactory conditions on visual and auditory perception, as well as interactions between modalities. The analyses aim to identify perceptual dimensions modulated by odors and to specify their role in the multisensory construction of space and time.
-          </div>
+          <details class="timeline-item">
+            <summary>Quantitative analyses</summary>
+            <p>
+              Statistical analysis of the effects of olfactory conditions on visual and auditory perception, as well as interactions between modalities. The analyses aim to identify perceptual dimensions modulated by odors and to specify their role in the multisensory construction of space and time.
+            </p>
+          </details>
         </div>
       </section>
 
-      <section id="en-publications" class="reveal">
+      <section id="en-publications" class="reveal" data-section="publications">
         <div class="section-title">
           <span>05</span>
           <h2>Publications</h2>
         </div>
 
+        <div class="filter-controls" aria-label="Scientific output filters">
+          <button class="filter-button active" type="button" data-filter-lang="en" data-filter="all">All</button>
+          <button class="filter-button" type="button" data-filter-lang="en" data-filter="article">Articles</button>
+          <button class="filter-button" type="button" data-filter-lang="en" data-filter="preprint">Preprints</button>
+          <button class="filter-button" type="button" data-filter-lang="en" data-filter="communication">Communications</button>
+          <button class="filter-button" type="button" data-filter-lang="en" data-filter="poster">Posters</button>
+        </div>
+
         <div class="publication-subsection">
           <h3>Articles</h3>
           <ul class="publication-list">
-            <li>To be added.</li>
+            <li class="filter-item" data-category="article">To be added.</li>
           </ul>
         </div>
 
         <div class="publication-subsection">
           <h3>Preprints</h3>
           <ul class="publication-list">
-            <li>To be added.</li>
+            <li class="filter-item" data-category="preprint">To be added.</li>
           </ul>
         </div>
       </section>
 
-      <section id="en-communications" class="reveal">
+      <section id="en-communications" class="reveal" data-section="communications">
         <div class="section-title">
           <span>06</span>
           <h2>Scientific communications</h2>
         </div>
 
+        <div class="filter-controls" aria-label="Scientific output filters">
+          <button class="filter-button active" type="button" data-filter-lang="en" data-filter="all">All</button>
+          <button class="filter-button" type="button" data-filter-lang="en" data-filter="article">Articles</button>
+          <button class="filter-button" type="button" data-filter-lang="en" data-filter="preprint">Preprints</button>
+          <button class="filter-button" type="button" data-filter-lang="en" data-filter="communication">Communications</button>
+          <button class="filter-button" type="button" data-filter-lang="en" data-filter="poster">Posters</button>
+        </div>
+
         <div class="publication-subsection">
           <h3>Communications</h3>
           <ul class="publication-list">
-            <li>
+            <li class="filter-item" data-category="communication">
               <strong>Doctoral Students' Day 2026</strong><br />
               Presentation of thesis work and recipient of the Originality Award for a bold and creative scientific approach that surprised and inspired the jury.
             </li>
@@ -917,12 +1232,12 @@
         <div class="publication-subsection">
           <h3>Posters</h3>
           <ul class="publication-list">
-            <li>To be added.</li>
+            <li class="filter-item" data-category="poster">To be added.</li>
           </ul>
         </div>
       </section>
 
-      <section id="en-cv" class="reveal">
+      <section id="en-cv" class="reveal" data-section="cv">
         <div class="section-title">
           <span>07</span>
           <h2>CV</h2>
@@ -939,7 +1254,7 @@
         </article>
       </section>
 
-      <section id="en-contact" class="reveal">
+      <section id="en-contact" class="reveal" data-section="contact">
         <div class="section-title">
           <span>08</span>
           <h2>Contact</h2>
@@ -978,6 +1293,39 @@
   <script>
     const languageButtons = document.querySelectorAll("[data-switch-lang]");
     const languagePages = document.querySelectorAll(".site-content");
+    const backToTopButton = document.querySelector(".back-to-top");
+    const themeToggle = document.querySelector("[data-theme-toggle]");
+    const sectionIds = {
+      fr: {
+        top: "fr-top",
+        about: "fr-about",
+        these: "fr-these",
+        axes: "fr-axes",
+        methodes: "fr-methodes",
+        publications: "fr-publications",
+        communications: "fr-communications",
+        cv: "fr-cv",
+        contact: "fr-contact"
+      },
+      en: {
+        top: "en-top",
+        about: "en-about",
+        these: "en-thesis",
+        axes: "en-axes",
+        methodes: "en-methods",
+        publications: "en-publications",
+        communications: "en-communications",
+        cv: "en-cv",
+        contact: "en-contact"
+      }
+    };
+
+    let currentLanguage = "fr";
+    let currentSectionKey = "top";
+
+    function getVisiblePage() {
+      return document.querySelector(".site-content:not([hidden])");
+    }
 
     function revealVisibleElements() {
       const revealElements = document.querySelectorAll(".site-content:not([hidden]) .reveal");
@@ -992,7 +1340,50 @@
       });
     }
 
-    function setLanguage(language) {
+    function updateActiveNavigation(sectionKey) {
+      currentSectionKey = sectionKey || currentSectionKey;
+
+      document.querySelectorAll("nav a").forEach((link) => {
+        link.classList.toggle("active", link.dataset.sectionKey === currentSectionKey);
+      });
+    }
+
+    function detectCurrentSection() {
+      if (window.scrollY < 260) {
+        updateActiveNavigation("top");
+        return;
+      }
+
+      const visibleSections = document.querySelectorAll(".site-content:not([hidden]) [data-section]");
+      let bestSection = null;
+      let bestDistance = Infinity;
+
+      visibleSections.forEach((section) => {
+        const rect = section.getBoundingClientRect();
+        const distance = Math.abs(rect.top - 120);
+
+        if (rect.top < window.innerHeight * 0.65 && distance < bestDistance) {
+          bestSection = section;
+          bestDistance = distance;
+        }
+      });
+
+      if (bestSection) {
+        updateActiveNavigation(bestSection.dataset.section);
+      }
+    }
+
+    function closeMobileNavigation() {
+      document.querySelectorAll("nav.open").forEach((nav) => {
+        nav.classList.remove("open");
+      });
+    }
+
+    function setLanguage(language, preserveSection = true) {
+      const targetSectionKey = preserveSection ? currentSectionKey : "top";
+
+      currentLanguage = language;
+
       languagePages.forEach((page) => {
         const isActive = page.dataset.lang === language;
         page.hidden = !isActive;
@@ -1011,21 +1402,97 @@
         : "Luc Perroquin | Academic portfolio";
 
       localStorage.setItem("portfolio-language", language);
-      window.scrollTo({ top: 0, behavior: "smooth" });
-      window.setTimeout(revealVisibleElements, 120);
+      closeMobileNavigation();
+
+      const targetId = sectionIds[language][targetSectionKey] || sectionIds[language].top;
+      const targetElement = document.getElementById(targetId);
+
+      if (targetElement && preserveSection) {
+        window.setTimeout(() => {
+          targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 60);
+      }
+
+      window.setTimeout(() => {
+        revealVisibleElements();
+        detectCurrentSection();
+      }, 160);
+    }
+
+    function setTheme(theme) {
+      const isDark = theme === "dark";
+      document.body.classList.toggle("dark-mode", isDark);
+      themeToggle.classList.toggle("active", isDark);
+      themeToggle.textContent = isDark ? "Clair" : "Sombre";
+      localStorage.setItem("portfolio-theme", theme);
+    }
+
+    function applyFilter(language, filterValue) {
+      const page = document.querySelector(`.site-content[data-lang="${language}"]`);
+
+      page.querySelectorAll(".filter-button").forEach((button) => {
+        button.classList.toggle("active", button.dataset.filter === filterValue);
+      });
+
+      page.querySelectorAll(".filter-item").forEach((item) => {
+        const shouldShow = filterValue === "all" || item.dataset.category === filterValue;
+        item.classList.toggle("hidden-by-filter", !shouldShow);
+      });
     }
 
     languageButtons.forEach((button) => {
       button.addEventListener("click", () => {
-        setLanguage(button.dataset.switchLang);
+        setLanguage(button.dataset.switchLang, true);
       });
     });
 
-    window.addEventListener("scroll", revealVisibleElements);
-    window.addEventListener("load", revealVisibleElements);
+    document.querySelectorAll("[data-nav-toggle]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const nav = document.querySelector(`nav[data-nav="${button.dataset.navToggle}"]`);
+        nav.classList.toggle("open");
+      });
+    });
+
+    document.querySelectorAll("nav a").forEach((link) => {
+      link.addEventListener("click", () => {
+        currentSectionKey = link.dataset.sectionKey;
+        closeMobileNavigation();
+      });
+    });
+
+    document.querySelectorAll(".filter-button").forEach((button) => {
+      button.addEventListener("click", () => {
+        applyFilter(button.dataset.filterLang, button.dataset.filter);
+      });
+    });
+
+    themeToggle.addEventListener("click", () => {
+      const newTheme = document.body.classList.contains("dark-mode") ? "light" : "dark";
+      setTheme(newTheme);
+    });
+
+    backToTopButton.addEventListener("click", () => {
+      currentSectionKey = "top";
+      const targetId = sectionIds[currentLanguage].top;
+      document.getElementById(targetId).scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+
+    window.addEventListener("scroll", () => {
+      revealVisibleElements();
+      detectCurrentSection();
+      backToTopButton.classList.toggle("visible", window.scrollY > 500);
+    });
+
+    window.addEventListener("load", () => {
+      revealVisibleElements();
+      detectCurrentSection();
+    });
+
+    const savedTheme = localStorage.getItem("portfolio-theme");
+    setTheme(savedTheme === "dark" ? "dark" : "light");
 
     const savedLanguage = localStorage.getItem("portfolio-language");
-    setLanguage(savedLanguage === "en" ? "en" : "fr");
+    setLanguage(savedLanguage === "en" ? "en" : "fr", false);
   </script>
 </body>
 </html>
