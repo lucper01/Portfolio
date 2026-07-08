@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Portfolio académique de Luc Perroquin, doctorant en psychologie cognitive, consacré à l'intégration entre olfaction, vision et audition." />
+  <meta name="keywords" content="Olfaction, Vision, Audition, Multisensory" />
   <title>Luc Perroquin | Portfolio académique</title>
 
   <style>
@@ -622,6 +623,10 @@
       border-radius: 16px;
       background: var(--green-pale);
       border: 1px solid rgba(11, 47, 35, 0.08);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
     }
 
     body.dark-mode .contact-item {
@@ -631,7 +636,34 @@
 
     .contact-item strong {
       color: var(--green-dark);
-      margin-right: 6px;
+      margin-right: 2px;
+    }
+
+    .contact-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--green-main);
+      color: #ffffff;
+      font-weight: 900;
+      font-size: 0.82rem;
+      flex: 0 0 auto;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .contact-icon:hover {
+      text-decoration: none;
+      transform: translateY(-2px);
+      background: #0b2f23;
+      color: #ffffff;
+    }
+
+    body.dark-mode .contact-icon:hover {
+      background: #dceee3;
+      color: #0b2f23;
     }
 
     footer {
@@ -762,6 +794,10 @@
       .filter-button {
         flex: 1 1 auto;
       }
+
+      .contact-item {
+        align-items: flex-start;
+      }
     }
   </style>
 </head>
@@ -774,7 +810,7 @@
     </div>
 
     <div class="theme-switch" aria-label="Theme switcher">
-      <button type="button" data-theme-toggle>Mode</button>
+      <button type="button" data-theme-toggle>Sombre</button>
     </div>
   </div>
 
@@ -848,9 +884,7 @@
           <li>Olfaction</li>
           <li>Vision</li>
           <li>Audition</li>
-          <li>Perception multisensorielle</li>
-          <li>Espace et temps</li>
-          <li>Psychologie cognitive</li>
+          <li>Multisensory</li>
         </ul>
       </section>
 
@@ -927,12 +961,10 @@
           <h2>Publications</h2>
         </div>
 
-        <div class="filter-controls" aria-label="Filtres des productions scientifiques">
-          <button class="filter-button active" type="button" data-filter-lang="fr" data-filter="all">Tous</button>
-          <button class="filter-button" type="button" data-filter-lang="fr" data-filter="article">Articles</button>
-          <button class="filter-button" type="button" data-filter-lang="fr" data-filter="preprint">Prépublications</button>
-          <button class="filter-button" type="button" data-filter-lang="fr" data-filter="communication">Communications</button>
-          <button class="filter-button" type="button" data-filter-lang="fr" data-filter="poster">Posters</button>
+        <div class="filter-controls" aria-label="Filtres des publications">
+          <button class="filter-button active" type="button" data-filter="all">Tous</button>
+          <button class="filter-button" type="button" data-filter="article">Articles</button>
+          <button class="filter-button" type="button" data-filter="preprint">Prépublications</button>
         </div>
 
         <div class="publication-subsection">
@@ -956,12 +988,10 @@
           <h2>Communications scientifiques</h2>
         </div>
 
-        <div class="filter-controls" aria-label="Filtres des productions scientifiques">
-          <button class="filter-button active" type="button" data-filter-lang="fr" data-filter="all">Tous</button>
-          <button class="filter-button" type="button" data-filter-lang="fr" data-filter="article">Articles</button>
-          <button class="filter-button" type="button" data-filter-lang="fr" data-filter="preprint">Prépublications</button>
-          <button class="filter-button" type="button" data-filter-lang="fr" data-filter="communication">Communications</button>
-          <button class="filter-button" type="button" data-filter-lang="fr" data-filter="poster">Posters</button>
+        <div class="filter-controls" aria-label="Filtres des communications scientifiques">
+          <button class="filter-button active" type="button" data-filter="all">Tous</button>
+          <button class="filter-button" type="button" data-filter="communication">Communications</button>
+          <button class="filter-button" type="button" data-filter="poster">Posters</button>
         </div>
 
         <div class="publication-subsection">
@@ -1007,6 +1037,7 @@
 
         <div class="contact-box">
           <p class="contact-item">
+            <a class="contact-icon" href="mailto:luc.perroquin@gmail.com" aria-label="Email">✉</a>
             <strong>Email :</strong>
             <a href="mailto:luc.perroquin@gmail.com">
               luc.perroquin@gmail.com
@@ -1014,13 +1045,30 @@
           </p>
 
           <p class="contact-item">
-            <strong>GitHub :</strong>
-            <a href="https://github.com/lucper01" target="_blank" rel="noopener noreferrer">
-              lucper01
+            <a class="contact-icon" href="https://orcid.org/0009-0007-9278-0612" target="_blank" rel="noopener noreferrer" aria-label="ORCID">iD</a>
+            <strong>ORCID :</strong>
+            <a href="https://orcid.org/0009-0007-9278-0612" target="_blank" rel="noopener noreferrer">
+              0009-0007-9278-0612
             </a>
           </p>
 
           <p class="contact-item">
+            <a class="contact-icon" href="https://www.researchgate.net/profile/Luc-Perroquin?ev=hdr_xprf" target="_blank" rel="noopener noreferrer" aria-label="ResearchGate">RG</a>
+            <strong>ResearchGate :</strong>
+            <a href="https://www.researchgate.net/profile/Luc-Perroquin?ev=hdr_xprf" target="_blank" rel="noopener noreferrer">
+              Luc Perroquin
+            </a>
+          </p>
+
+          <p class="contact-item">
+            <strong>Équipe de recherche :</strong>
+            <a href="https://csga.fr/home-fr/equipes/equipe-docc" target="_blank" rel="noopener noreferrer">
+              Équipe DOCC, CSGA
+            </a>
+          </p>
+
+          <p class="contact-item">
+            <a class="contact-icon" href="https://www.linkedin.com/in/luc-perroquin-288b54328" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">in</a>
             <strong>LinkedIn :</strong>
             <a href="https://www.linkedin.com/in/luc-perroquin-288b54328" target="_blank" rel="noopener noreferrer">
               luc-perroquin-288b54328
@@ -1103,9 +1151,7 @@
           <li>Olfaction</li>
           <li>Vision</li>
           <li>Audition</li>
-          <li>Multisensory perception</li>
-          <li>Space and time</li>
-          <li>Cognitive psychology</li>
+          <li>Multisensory</li>
         </ul>
       </section>
 
@@ -1182,12 +1228,10 @@
           <h2>Publications</h2>
         </div>
 
-        <div class="filter-controls" aria-label="Scientific output filters">
-          <button class="filter-button active" type="button" data-filter-lang="en" data-filter="all">All</button>
-          <button class="filter-button" type="button" data-filter-lang="en" data-filter="article">Articles</button>
-          <button class="filter-button" type="button" data-filter-lang="en" data-filter="preprint">Preprints</button>
-          <button class="filter-button" type="button" data-filter-lang="en" data-filter="communication">Communications</button>
-          <button class="filter-button" type="button" data-filter-lang="en" data-filter="poster">Posters</button>
+        <div class="filter-controls" aria-label="Publication filters">
+          <button class="filter-button active" type="button" data-filter="all">All</button>
+          <button class="filter-button" type="button" data-filter="article">Articles</button>
+          <button class="filter-button" type="button" data-filter="preprint">Preprints</button>
         </div>
 
         <div class="publication-subsection">
@@ -1211,12 +1255,10 @@
           <h2>Scientific communications</h2>
         </div>
 
-        <div class="filter-controls" aria-label="Scientific output filters">
-          <button class="filter-button active" type="button" data-filter-lang="en" data-filter="all">All</button>
-          <button class="filter-button" type="button" data-filter-lang="en" data-filter="article">Articles</button>
-          <button class="filter-button" type="button" data-filter-lang="en" data-filter="preprint">Preprints</button>
-          <button class="filter-button" type="button" data-filter-lang="en" data-filter="communication">Communications</button>
-          <button class="filter-button" type="button" data-filter-lang="en" data-filter="poster">Posters</button>
+        <div class="filter-controls" aria-label="Scientific communication filters">
+          <button class="filter-button active" type="button" data-filter="all">All</button>
+          <button class="filter-button" type="button" data-filter="communication">Communications</button>
+          <button class="filter-button" type="button" data-filter="poster">Posters</button>
         </div>
 
         <div class="publication-subsection">
@@ -1262,6 +1304,7 @@
 
         <div class="contact-box">
           <p class="contact-item">
+            <a class="contact-icon" href="mailto:luc.perroquin@gmail.com" aria-label="Email">✉</a>
             <strong>Email:</strong>
             <a href="mailto:luc.perroquin@gmail.com">
               luc.perroquin@gmail.com
@@ -1269,13 +1312,30 @@
           </p>
 
           <p class="contact-item">
-            <strong>GitHub:</strong>
-            <a href="https://github.com/lucper01" target="_blank" rel="noopener noreferrer">
-              lucper01
+            <a class="contact-icon" href="https://orcid.org/0009-0007-9278-0612" target="_blank" rel="noopener noreferrer" aria-label="ORCID">iD</a>
+            <strong>ORCID:</strong>
+            <a href="https://orcid.org/0009-0007-9278-0612" target="_blank" rel="noopener noreferrer">
+              0009-0007-9278-0612
             </a>
           </p>
 
           <p class="contact-item">
+            <a class="contact-icon" href="https://www.researchgate.net/profile/Luc-Perroquin?ev=hdr_xprf" target="_blank" rel="noopener noreferrer" aria-label="ResearchGate">RG</a>
+            <strong>ResearchGate:</strong>
+            <a href="https://www.researchgate.net/profile/Luc-Perroquin?ev=hdr_xprf" target="_blank" rel="noopener noreferrer">
+              Luc Perroquin
+            </a>
+          </p>
+
+          <p class="contact-item">
+            <strong>Research team:</strong>
+            <a href="https://csga.fr/en_GB/home-en/teams/team-docc" target="_blank" rel="noopener noreferrer">
+              DOCC team, CSGA
+            </a>
+          </p>
+
+          <p class="contact-item">
+            <a class="contact-icon" href="https://www.linkedin.com/in/luc-perroquin-288b54328" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">in</a>
             <strong>LinkedIn:</strong>
             <a href="https://www.linkedin.com/in/luc-perroquin-288b54328" target="_blank" rel="noopener noreferrer">
               luc-perroquin-288b54328
@@ -1322,10 +1382,6 @@
 
     let currentLanguage = "fr";
     let currentSectionKey = "top";
-
-    function getVisiblePage() {
-      return document.querySelector(".site-content:not([hidden])");
-    }
 
     function revealVisibleElements() {
       const revealElements = document.querySelectorAll(".site-content:not([hidden]) .reveal");
@@ -1427,14 +1483,12 @@
       localStorage.setItem("portfolio-theme", theme);
     }
 
-    function applyFilter(language, filterValue) {
-      const page = document.querySelector(`.site-content[data-lang="${language}"]`);
-
-      page.querySelectorAll(".filter-button").forEach((button) => {
+    function applyFilter(sectionElement, filterValue) {
+      sectionElement.querySelectorAll(".filter-button").forEach((button) => {
         button.classList.toggle("active", button.dataset.filter === filterValue);
       });
 
-      page.querySelectorAll(".filter-item").forEach((item) => {
+      sectionElement.querySelectorAll(".filter-item").forEach((item) => {
         const shouldShow = filterValue === "all" || item.dataset.category === filterValue;
         item.classList.toggle("hidden-by-filter", !shouldShow);
       });
@@ -1462,7 +1516,8 @@
 
     document.querySelectorAll(".filter-button").forEach((button) => {
       button.addEventListener("click", () => {
-        applyFilter(button.dataset.filterLang, button.dataset.filter);
+        const sectionElement = button.closest("section");
+        applyFilter(sectionElement, button.dataset.filter);
       });
     });
 
