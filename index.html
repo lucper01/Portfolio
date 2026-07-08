@@ -3,8 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Portfolio académique de Luc Perroquin, doctorant en psychologie cognitive, consacré à l'intégration entre olfaction, vision et audition." />
-  <meta name="keywords" content="Olfaction, Vision, Audition, Multisensory" />
+
+  <meta
+    id="meta-description"
+    name="description"
+    content="Portfolio académique de Luc Perroquin, doctorant en psychologie cognitive, consacré à l'intégration entre olfaction, vision et audition."
+  />
+
+  <meta
+    id="meta-keywords"
+    name="keywords"
+    content="Olfaction, Vision, Audition, Perception multisensorielle"
+  />
+
   <title>Luc Perroquin | Portfolio académique</title>
 
   <style>
@@ -666,6 +677,31 @@
       color: #0b2f23;
     }
 
+    .contact-icon.csga-logo-icon {
+      background: #ffffff;
+      border: 1px solid rgba(31, 111, 80, 0.22);
+      padding: 6px;
+      overflow: hidden;
+    }
+
+    .contact-icon.csga-logo-icon:hover {
+      background: #ffffff;
+    }
+
+    .contact-icon.csga-logo-icon img {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+      display: block;
+      filter: brightness(0) saturate(100%) invert(32%) sepia(32%) saturate(1138%) hue-rotate(106deg) brightness(91%) contrast(89%);
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .contact-icon.csga-logo-icon:hover img {
+      transform: scale(1.08);
+      opacity: 0.92;
+    }
+
     footer {
       padding: 34px 8%;
       text-align: center;
@@ -880,11 +916,11 @@
           Mes travaux s'inscrivent dans le champ de la psychologie cognitive de l'olfaction et de la perception multisensorielle. Ils visent à comprendre comment les odeurs, bien qu'elles soient souvent décrites comme des stimuli diffus, instables et faiblement localisables, peuvent interagir avec la vision et l'audition pour modifier l'expérience subjective de l'espace et du temps.
         </p>
 
-        <ul class="tags">
+        <ul class="tags" aria-label="Mots-clés">
           <li>Olfaction</li>
           <li>Vision</li>
           <li>Audition</li>
-          <li>Multisensory</li>
+          <li>Perception multisensorielle</li>
         </ul>
       </section>
 
@@ -1061,6 +1097,9 @@
           </p>
 
           <p class="contact-item">
+            <a class="contact-icon csga-logo-icon" href="https://csga.fr/home-fr/equipes/equipe-docc" target="_blank" rel="noopener noreferrer" aria-label="Équipe DOCC, CSGA">
+              <img src="https://csga.fr/site-sitefront/assets/img/logo.png" alt="" aria-hidden="true" />
+            </a>
             <strong>Équipe de recherche :</strong>
             <a href="https://csga.fr/home-fr/equipes/equipe-docc" target="_blank" rel="noopener noreferrer">
               Équipe DOCC, CSGA
@@ -1147,11 +1186,11 @@
           My work is situated within cognitive psychology of olfaction and multisensory perception. It aims to understand how odors, although often described as diffuse, unstable, and weakly localizable stimuli, can interact with vision and audition to modify the subjective experience of space and time.
         </p>
 
-        <ul class="tags">
+        <ul class="tags" aria-label="Keywords">
           <li>Olfaction</li>
           <li>Vision</li>
           <li>Audition</li>
-          <li>Multisensory</li>
+          <li>Multisensory perception</li>
         </ul>
       </section>
 
@@ -1328,6 +1367,9 @@
           </p>
 
           <p class="contact-item">
+            <a class="contact-icon csga-logo-icon" href="https://csga.fr/en_GB/home-en/teams/team-docc" target="_blank" rel="noopener noreferrer" aria-label="DOCC team, CSGA">
+              <img src="https://csga.fr/site-sitefront/assets/img/logo.png" alt="" aria-hidden="true" />
+            </a>
             <strong>Research team:</strong>
             <a href="https://csga.fr/en_GB/home-en/teams/team-docc" target="_blank" rel="noopener noreferrer">
               DOCC team, CSGA
@@ -1355,6 +1397,21 @@
     const languagePages = document.querySelectorAll(".site-content");
     const backToTopButton = document.querySelector(".back-to-top");
     const themeToggle = document.querySelector("[data-theme-toggle]");
+    const metaDescription = document.getElementById("meta-description");
+    const metaKeywords = document.getElementById("meta-keywords");
+
+    const pageMetadata = {
+      fr: {
+        title: "Luc Perroquin | Portfolio académique",
+        description: "Portfolio académique de Luc Perroquin, doctorant en psychologie cognitive, consacré à l'intégration entre olfaction, vision et audition.",
+        keywords: "Olfaction, Vision, Audition, Perception multisensorielle"
+      },
+      en: {
+        title: "Luc Perroquin | Academic portfolio",
+        description: "Academic portfolio of Luc Perroquin, PhD student in cognitive psychology, dedicated to the integration between olfaction, vision, and audition.",
+        keywords: "Olfaction, Vision, Audition, Multisensory perception"
+      }
+    };
 
     const sectionIds = {
       fr: {
@@ -1446,6 +1503,14 @@
       }
     }
 
+    function updatePageMetadata(language) {
+      const metadata = pageMetadata[language];
+
+      document.title = metadata.title;
+      metaDescription.setAttribute("content", metadata.description);
+      metaKeywords.setAttribute("content", metadata.keywords);
+    }
+
     function setLanguage(language, preserveSection = true) {
       const targetSectionKey = preserveSection ? currentSectionKey : "top";
 
@@ -1464,10 +1529,7 @@
       });
 
       document.documentElement.lang = language;
-      document.title = language === "fr"
-        ? "Luc Perroquin | Portfolio académique"
-        : "Luc Perroquin | Academic portfolio";
-
+      updatePageMetadata(language);
       updateThemeToggleLabel();
       localStorage.setItem("portfolio-language", language);
       closeMobileNavigation();
