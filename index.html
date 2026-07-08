@@ -21,7 +21,6 @@
       --shadow: 0 18px 45px rgba(11, 47, 35, 0.16);
       --shadow-soft: 0 12px 30px rgba(11, 47, 35, 0.10);
       --radius-large: 32px;
-      --radius-medium: 22px;
     }
 
     * {
@@ -194,6 +193,13 @@
       color: var(--green-dark);
       border-color: var(--white);
       box-shadow: 0 14px 28px rgba(0, 0, 0, 0.18);
+    }
+
+    .print-button {
+      font-family: inherit;
+      font-size: inherit;
+      cursor: pointer;
+      background: transparent;
     }
 
     .portrait-card {
@@ -476,6 +482,93 @@
       transform: translateY(0);
     }
 
+    @media print {
+      body {
+        background: white;
+        color: black;
+      }
+
+      .language-switch,
+      nav,
+      .buttons,
+      .portrait-card,
+      footer,
+      .print-hidden {
+        display: none !important;
+      }
+
+      header {
+        min-height: auto;
+        padding: 30px 0;
+        color: black;
+        background: white;
+      }
+
+      header::after {
+        display: none;
+      }
+
+      .hero {
+        display: block;
+      }
+
+      .label,
+      .subtitle,
+      .hero p {
+        color: black;
+      }
+
+      main {
+        max-width: 100%;
+        padding: 0;
+      }
+
+      section {
+        margin-bottom: 34px;
+        break-inside: avoid;
+      }
+
+      .section-title {
+        grid-template-columns: 60px 1fr;
+        gap: 14px;
+      }
+
+      h1,
+      h2,
+      h3 {
+        color: black;
+      }
+
+      .highlight,
+      .card,
+      .timeline-item,
+      .publication-list li,
+      .cv-card,
+      .contact-box,
+      .contact-item {
+        background: white;
+        color: black;
+        box-shadow: none;
+        border: 1px solid #cccccc;
+      }
+
+      .highlight p,
+      .cv-card p,
+      .lead {
+        color: black;
+      }
+
+      a {
+        color: black;
+        text-decoration: none;
+      }
+
+      .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+
     @media (max-width: 850px) {
       header {
         min-height: auto;
@@ -535,6 +628,7 @@
             <a class="button primary" href="#fr-these">Découvrir la thèse</a>
             <a class="button" href="#fr-communications">Communications</a>
             <a class="button cv-button" href="https://lucper01.github.io/Portfolio/assets/CV_PerroquinLuc_fr.pdf" target="_blank" rel="noopener noreferrer">Télécharger le CV</a>
+            <button class="button print-button print-hidden" type="button" onclick="window.print()">Imprimer / PDF</button>
             <a class="button" href="#fr-contact">Contact</a>
           </div>
         </div>
@@ -739,11 +833,6 @@
               luc-perroquin-288b54328
             </a>
           </p>
-
-          <p class="contact-item">
-            <strong>Autres liens :</strong>
-            ORCID, HAL, Google Scholar ou Zotero à ajouter.
-          </p>
         </div>
       </section>
     </main>
@@ -768,6 +857,7 @@
             <a class="button primary" href="#en-thesis">Explore the thesis</a>
             <a class="button" href="#en-communications">Communications</a>
             <a class="button cv-button" href="https://lucper01.github.io/Portfolio/assets/CV_PerroquinLuc_en.pdf" target="_blank" rel="noopener noreferrer">Download CV</a>
+            <button class="button print-button print-hidden" type="button" onclick="window.print()">Print / PDF</button>
             <a class="button" href="#en-contact">Contact</a>
           </div>
         </div>
@@ -971,11 +1061,6 @@
             <a href="https://www.linkedin.com/in/luc-perroquin-288b54328" target="_blank" rel="noopener noreferrer">
               luc-perroquin-288b54328
             </a>
-          </p>
-
-          <p class="contact-item">
-            <strong>Other links:</strong>
-            ORCID, HAL, Google Scholar, or Zotero to be added.
           </p>
         </div>
       </section>
