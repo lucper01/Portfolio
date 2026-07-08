@@ -1019,12 +1019,12 @@
         </div>
 
         <article class="cv-card">
-          <h3>CV français</h3>
+          <h3>CV</h3>
           <p>
             Version française du CV académique.
           </p>
           <a class="cv-download" href="https://lucper01.github.io/Portfolio/assets/CV_PerroquinLuc_fr.pdf" target="_blank" rel="noopener noreferrer">
-            Ouvrir le CV français
+            Ouvrir CV
           </a>
         </article>
       </section>
@@ -1286,12 +1286,12 @@
         </div>
 
         <article class="cv-card">
-          <h3>English CV</h3>
+          <h3>CV</h3>
           <p>
             English version of the academic CV.
           </p>
           <a class="cv-download" href="https://lucper01.github.io/Portfolio/assets/CV_PerroquinLuc_en.pdf" target="_blank" rel="noopener noreferrer">
-            Open English CV
+            Open CV
           </a>
         </article>
       </section>
@@ -1355,6 +1355,7 @@
     const languagePages = document.querySelectorAll(".site-content");
     const backToTopButton = document.querySelector(".back-to-top");
     const themeToggle = document.querySelector("[data-theme-toggle]");
+
     const sectionIds = {
       fr: {
         top: "fr-top",
@@ -1435,6 +1436,16 @@
       });
     }
 
+    function updateThemeToggleLabel() {
+      const isDark = document.body.classList.contains("dark-mode");
+
+      if (currentLanguage === "fr") {
+        themeToggle.textContent = isDark ? "Clair" : "Sombre";
+      } else {
+        themeToggle.textContent = isDark ? "Light" : "Dark";
+      }
+    }
+
     function setLanguage(language, preserveSection = true) {
       const targetSectionKey = preserveSection ? currentSectionKey : "top";
 
@@ -1457,6 +1468,7 @@
         ? "Luc Perroquin | Portfolio académique"
         : "Luc Perroquin | Academic portfolio";
 
+      updateThemeToggleLabel();
       localStorage.setItem("portfolio-language", language);
       closeMobileNavigation();
 
@@ -1479,8 +1491,8 @@
       const isDark = theme === "dark";
       document.body.classList.toggle("dark-mode", isDark);
       themeToggle.classList.toggle("active", isDark);
-      themeToggle.textContent = isDark ? "Clair" : "Sombre";
       localStorage.setItem("portfolio-theme", theme);
+      updateThemeToggleLabel();
     }
 
     function applyFilter(sectionElement, filterValue) {
