@@ -497,44 +497,13 @@
       color: rgba(255, 255, 255, 0.88);
     }
 
-    .grid.two {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .card,
     .team-card,
     .axis-card,
     .project-card,
     .cv-card,
     .publication-list li,
-    .timeline-item,
     .contact-box {
       box-shadow: var(--shadow-soft);
-    }
-
-    .card {
-      padding: 25px;
-      border-radius: 24px;
-      background: rgba(255, 255, 255, 0.88);
-      border: 1px solid rgba(11, 47, 35, 0.1);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    body.dark-mode .card {
-      background: rgba(16, 37, 28, 0.88);
-      border-color: rgba(220, 238, 227, 0.12);
-    }
-
-    .card:hover,
-    .team-card:hover,
-    .axis-card:hover,
-    .project-card:hover,
-    .cv-card:hover,
-    .publication-list li:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow);
     }
 
     .team-card,
@@ -554,6 +523,15 @@
         radial-gradient(circle at top right, rgba(119, 184, 146, 0.16), transparent 34%),
         rgba(16, 37, 28, 0.88);
       border-color: rgba(220, 238, 227, 0.12);
+    }
+
+    .team-card:hover,
+    .axis-card:hover,
+    .project-card:hover,
+    .cv-card:hover,
+    .publication-list li:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
     }
 
     .team-card p,
@@ -725,54 +703,6 @@
     body.dark-mode .tags li {
       background: rgba(119, 184, 146, 0.18);
       color: #dceee3;
-    }
-
-    .timeline {
-      display: grid;
-      gap: 16px;
-    }
-
-    .timeline-item {
-      padding: 0;
-      border-left: 4px solid var(--green-main);
-      background: rgba(255, 255, 255, 0.82);
-      border-radius: 0 20px 20px 0;
-      overflow: hidden;
-    }
-
-    body.dark-mode .timeline-item {
-      background: rgba(16, 37, 28, 0.88);
-      border-color: var(--green-main);
-    }
-
-    .timeline-item summary {
-      padding: 20px 24px;
-      color: var(--green-dark);
-      font-weight: 850;
-      font-size: 1.05rem;
-      cursor: pointer;
-      list-style: none;
-    }
-
-    .timeline-item summary::-webkit-details-marker {
-      display: none;
-    }
-
-    .timeline-item summary::after {
-      content: "+";
-      float: right;
-      font-weight: 900;
-      color: var(--green-main);
-    }
-
-    .timeline-item[open] summary::after {
-      content: "−";
-    }
-
-    .timeline-item p {
-      margin: 0;
-      padding: 0 24px 22px;
-      color: var(--muted);
     }
 
     .filter-controls {
@@ -1027,7 +957,6 @@
       }
 
       .hero,
-      .grid.two,
       .section-title,
       .axis-projects {
         grid-template-columns: 1fr;
@@ -1185,11 +1114,10 @@
         <button class="nav-toggle" type="button" data-nav-toggle="fr">Menu</button>
         <div class="nav-links">
           <a href="#fr-about" data-section-key="about">À propos</a>
+          <a href="#fr-equipe" data-section-key="equipe">Équipe</a>
           <a href="#fr-these" data-section-key="these">Thèse</a>
           <a href="#fr-axes" data-section-key="axes">Axes</a>
-          <a href="#fr-equipe" data-section-key="equipe">Équipe</a>
           <a href="#fr-side" data-section-key="side">Projet parallèle</a>
-          <a href="#fr-methodes" data-section-key="methodes">Méthodes</a>
           <a href="#fr-publications" data-section-key="publications">Publications</a>
           <a href="#fr-communications" data-section-key="communications">Communications</a>
           <a href="#fr-cv" data-section-key="cv">CV</a>
@@ -1200,15 +1128,14 @@
 
     <aside class="side-progress" aria-label="Navigation latérale">
       <a href="#fr-about" data-section-key="about"><span>01</span> À propos</a>
-      <a href="#fr-these" data-section-key="these"><span>02</span> Thèse</a>
-      <a href="#fr-axes" data-section-key="axes"><span>03</span> Axes</a>
-      <a href="#fr-equipe" data-section-key="equipe"><span>04</span> Équipe</a>
+      <a href="#fr-equipe" data-section-key="equipe"><span>02</span> Équipe</a>
+      <a href="#fr-these" data-section-key="these"><span>03</span> Thèse</a>
+      <a href="#fr-axes" data-section-key="axes"><span>04</span> Axes</a>
       <a href="#fr-side" data-section-key="side"><span>05</span> Projet parallèle</a>
-      <a href="#fr-methodes" data-section-key="methodes"><span>06</span> Méthodes</a>
-      <a href="#fr-publications" data-section-key="publications"><span>07</span> Publications</a>
-      <a href="#fr-communications" data-section-key="communications"><span>08</span> Communications</a>
-      <a href="#fr-cv" data-section-key="cv"><span>09</span> CV</a>
-      <a href="#fr-contact" data-section-key="contact"><span>10</span> Contact</a>
+      <a href="#fr-publications" data-section-key="publications"><span>06</span> Publications</a>
+      <a href="#fr-communications" data-section-key="communications"><span>07</span> Communications</a>
+      <a href="#fr-cv" data-section-key="cv"><span>08</span> CV</a>
+      <a href="#fr-contact" data-section-key="contact"><span>09</span> Contact</a>
     </aside>
 
     <main>
@@ -1230,9 +1157,30 @@
         </ul>
       </section>
 
-      <section id="fr-these" class="reveal" data-section="these">
+      <section id="fr-equipe" class="reveal" data-section="equipe">
         <div class="section-title">
           <span>02</span>
+          <h2>Équipe de recherche</h2>
+        </div>
+
+        <article class="team-card">
+          <span class="team-kicker">DOCC | CSGA</span>
+          <h3>Déterminants des comportements et de la cognition olfactive</h3>
+          <p>
+            Ma thèse est menée au sein de l'équipe DOCC du Centre des Sciences du Goût et de l'Alimentation. Les travaux de l'équipe portent sur l'olfaction, la communication chimique, la cognition olfactive et les comportements associés. Cette inscription collective permet de situer mes recherches sur les interactions entre olfaction, vision et audition dans un environnement scientifique centré sur les mécanismes sensoriels, cognitifs et comportementaux liés aux odeurs.
+          </p>
+
+          <div class="team-actions">
+            <a class="team-link" href="https://csga.fr/home-fr/equipes/equipe-docc" target="_blank" rel="noopener noreferrer">
+              Voir les travaux de l'équipe
+            </a>
+          </div>
+        </article>
+      </section>
+
+      <section id="fr-these" class="reveal" data-section="these">
+        <div class="section-title">
+          <span>03</span>
           <h2>Thèse</h2>
         </div>
 
@@ -1246,7 +1194,7 @@
 
       <section id="fr-axes" class="reveal" data-section="axes">
         <div class="section-title">
-          <span>03</span>
+          <span>04</span>
           <h2>Axes de thèse</h2>
         </div>
 
@@ -1341,27 +1289,6 @@
         </div>
       </section>
 
-      <section id="fr-equipe" class="reveal" data-section="equipe">
-        <div class="section-title">
-          <span>04</span>
-          <h2>Équipe de recherche</h2>
-        </div>
-
-        <article class="team-card">
-          <span class="team-kicker">DOCC | CSGA</span>
-          <h3>Déterminants des comportements et de la cognition olfactive</h3>
-          <p>
-            Ma thèse est menée au sein de l'équipe DOCC du Centre des Sciences du Goût et de l'Alimentation. Les travaux de l'équipe portent sur l'olfaction, la communication chimique, la cognition olfactive et les comportements associés. Cette inscription collective permet de situer mes recherches sur les interactions entre olfaction, vision et audition dans un environnement scientifique centré sur les mécanismes sensoriels, cognitifs et comportementaux liés aux odeurs.
-          </p>
-
-          <div class="team-actions">
-            <a class="team-link" href="https://csga.fr/home-fr/equipes/equipe-docc" target="_blank" rel="noopener noreferrer">
-              Voir les travaux de l'équipe
-            </a>
-          </div>
-        </article>
-      </section>
-
       <section id="fr-side" class="reveal" data-section="side">
         <div class="section-title">
           <span>05</span>
@@ -1383,39 +1310,9 @@
         </article>
       </section>
 
-      <section id="fr-methodes" class="reveal" data-section="methodes">
-        <div class="section-title">
-          <span>06</span>
-          <h2>Méthodes</h2>
-        </div>
-
-        <div class="timeline">
-          <details class="timeline-item" open>
-            <summary>Paradigmes expérimentaux</summary>
-            <p>
-              Présentation contrôlée de stimuli olfactifs, visuels et auditifs dans des protocoles visant à manipuler les relations entre modalités sensorielles. Les paradigmes permettent d'examiner les effets de congruence, de synchronisation, de contexte et de correspondance entre odeurs, sons et informations visuelles.
-            </p>
-          </details>
-
-          <details class="timeline-item">
-            <summary>Mesures comportementales</summary>
-            <p>
-              Recueil de réponses perceptives et subjectives portant sur la localisation, la durée, l'ordre temporel, la distance perçue, l'intensité, la familiarité, la valence et la confiance. Ces mesures peuvent être associées à des temps de réponse afin de caractériser la dynamique du jugement spatio-temporel.
-            </p>
-          </details>
-
-          <details class="timeline-item">
-            <summary>Analyses quantitatives</summary>
-            <p>
-              Analyse statistique des effets des conditions olfactives sur la perception visuelle et auditive, ainsi que des interactions entre modalités. Les analyses visent à identifier les dimensions perceptives modulées par les odeurs et à préciser leur rôle dans la construction multisensorielle de l'espace et du temps.
-            </p>
-          </details>
-        </div>
-      </section>
-
       <section id="fr-publications" class="reveal" data-section="publications">
         <div class="section-title">
-          <span>07</span>
+          <span>06</span>
           <h2>Publications</h2>
         </div>
 
@@ -1454,7 +1351,7 @@
 
       <section id="fr-communications" class="reveal" data-section="communications">
         <div class="section-title">
-          <span>08</span>
+          <span>07</span>
           <h2>Communications scientifiques</h2>
         </div>
 
@@ -1493,7 +1390,7 @@
 
       <section id="fr-cv" class="reveal" data-section="cv">
         <div class="section-title">
-          <span>09</span>
+          <span>08</span>
           <h2>CV</h2>
         </div>
 
@@ -1510,7 +1407,7 @@
 
       <section id="fr-contact" class="reveal" data-section="contact">
         <div class="section-title">
-          <span>10</span>
+          <span>09</span>
           <h2>Contact</h2>
         </div>
 
@@ -1599,11 +1496,10 @@
         <button class="nav-toggle" type="button" data-nav-toggle="en">Menu</button>
         <div class="nav-links">
           <a href="#en-about" data-section-key="about">About</a>
+          <a href="#en-team" data-section-key="equipe">Team</a>
           <a href="#en-thesis" data-section-key="these">Thesis</a>
           <a href="#en-axes" data-section-key="axes">Axes</a>
-          <a href="#en-team" data-section-key="equipe">Team</a>
           <a href="#en-side" data-section-key="side">Side project</a>
-          <a href="#en-methods" data-section-key="methodes">Methods</a>
           <a href="#en-publications" data-section-key="publications">Publications</a>
           <a href="#en-communications" data-section-key="communications">Communications</a>
           <a href="#en-cv" data-section-key="cv">CV</a>
@@ -1614,15 +1510,14 @@
 
     <aside class="side-progress" aria-label="Side navigation">
       <a href="#en-about" data-section-key="about"><span>01</span> About</a>
-      <a href="#en-thesis" data-section-key="these"><span>02</span> Thesis</a>
-      <a href="#en-axes" data-section-key="axes"><span>03</span> Axes</a>
-      <a href="#en-team" data-section-key="equipe"><span>04</span> Team</a>
+      <a href="#en-team" data-section-key="equipe"><span>02</span> Team</a>
+      <a href="#en-thesis" data-section-key="these"><span>03</span> Thesis</a>
+      <a href="#en-axes" data-section-key="axes"><span>04</span> Axes</a>
       <a href="#en-side" data-section-key="side"><span>05</span> Side project</a>
-      <a href="#en-methods" data-section-key="methodes"><span>06</span> Methods</a>
-      <a href="#en-publications" data-section-key="publications"><span>07</span> Publications</a>
-      <a href="#en-communications" data-section-key="communications"><span>08</span> Communications</a>
-      <a href="#en-cv" data-section-key="cv"><span>09</span> CV</a>
-      <a href="#en-contact" data-section-key="contact"><span>10</span> Contact</a>
+      <a href="#en-publications" data-section-key="publications"><span>06</span> Publications</a>
+      <a href="#en-communications" data-section-key="communications"><span>07</span> Communications</a>
+      <a href="#en-cv" data-section-key="cv"><span>08</span> CV</a>
+      <a href="#en-contact" data-section-key="contact"><span>09</span> Contact</a>
     </aside>
 
     <main>
@@ -1644,9 +1539,30 @@
         </ul>
       </section>
 
-      <section id="en-thesis" class="reveal" data-section="these">
+      <section id="en-team" class="reveal" data-section="equipe">
         <div class="section-title">
           <span>02</span>
+          <h2>Research team</h2>
+        </div>
+
+        <article class="team-card">
+          <span class="team-kicker">DOCC | CSGA</span>
+          <h3>Determinants of olfactory cognition and behavior</h3>
+          <p>
+            My PhD work is conducted within the DOCC team at the Centre for Taste and Feeding Behavior. The team's research focuses on olfaction, chemical communication, olfactory cognition, and associated behaviors. This research environment situates my work on interactions between olfaction, vision, and audition within a broader scientific framework dedicated to sensory, cognitive, and behavioral mechanisms related to odors.
+          </p>
+
+          <div class="team-actions">
+            <a class="team-link" href="https://csga.fr/en_GB/home-en/teams/team-docc" target="_blank" rel="noopener noreferrer">
+              View the team's work
+            </a>
+          </div>
+        </article>
+      </section>
+
+      <section id="en-thesis" class="reveal" data-section="these">
+        <div class="section-title">
+          <span>03</span>
           <h2>Thesis</h2>
         </div>
 
@@ -1660,7 +1576,7 @@
 
       <section id="en-axes" class="reveal" data-section="axes">
         <div class="section-title">
-          <span>03</span>
+          <span>04</span>
           <h2>Thesis axes</h2>
         </div>
 
@@ -1755,27 +1671,6 @@
         </div>
       </section>
 
-      <section id="en-team" class="reveal" data-section="equipe">
-        <div class="section-title">
-          <span>04</span>
-          <h2>Research team</h2>
-        </div>
-
-        <article class="team-card">
-          <span class="team-kicker">DOCC | CSGA</span>
-          <h3>Determinants of olfactory cognition and behavior</h3>
-          <p>
-            My PhD work is conducted within the DOCC team at the Centre for Taste and Feeding Behavior. The team's research focuses on olfaction, chemical communication, olfactory cognition, and associated behaviors. This research environment situates my work on interactions between olfaction, vision, and audition within a broader scientific framework dedicated to sensory, cognitive, and behavioral mechanisms related to odors.
-          </p>
-
-          <div class="team-actions">
-            <a class="team-link" href="https://csga.fr/en_GB/home-en/teams/team-docc" target="_blank" rel="noopener noreferrer">
-              View the team's work
-            </a>
-          </div>
-        </article>
-      </section>
-
       <section id="en-side" class="reveal" data-section="side">
         <div class="section-title">
           <span>05</span>
@@ -1797,39 +1692,9 @@
         </article>
       </section>
 
-      <section id="en-methods" class="reveal" data-section="methodes">
-        <div class="section-title">
-          <span>06</span>
-          <h2>Methods</h2>
-        </div>
-
-        <div class="timeline">
-          <details class="timeline-item" open>
-            <summary>Experimental paradigms</summary>
-            <p>
-              Controlled presentation of olfactory, visual, and auditory stimuli in protocols designed to manipulate relations between sensory modalities. These paradigms make it possible to examine effects of congruence, synchronization, context, and correspondence between odors, sounds, and visual information.
-            </p>
-          </details>
-
-          <details class="timeline-item">
-            <summary>Behavioral measures</summary>
-            <p>
-              Collection of perceptual and subjective responses related to localization, duration, temporal order, perceived distance, intensity, familiarity, valence, and confidence. These measures may be combined with response times in order to characterize the dynamics of spatio-temporal judgments.
-            </p>
-          </details>
-
-          <details class="timeline-item">
-            <summary>Quantitative analyses</summary>
-            <p>
-              Statistical analysis of the effects of olfactory conditions on visual and auditory perception, as well as interactions between modalities. The analyses aim to identify perceptual dimensions modulated by odors and to specify their role in the multisensory construction of space and time.
-            </p>
-          </details>
-        </div>
-      </section>
-
       <section id="en-publications" class="reveal" data-section="publications">
         <div class="section-title">
-          <span>07</span>
+          <span>06</span>
           <h2>Publications</h2>
         </div>
 
@@ -1868,7 +1733,7 @@
 
       <section id="en-communications" class="reveal" data-section="communications">
         <div class="section-title">
-          <span>08</span>
+          <span>07</span>
           <h2>Scientific communications</h2>
         </div>
 
@@ -1907,7 +1772,7 @@
 
       <section id="en-cv" class="reveal" data-section="cv">
         <div class="section-title">
-          <span>09</span>
+          <span>08</span>
           <h2>CV</h2>
         </div>
 
@@ -1924,7 +1789,7 @@
 
       <section id="en-contact" class="reveal" data-section="contact">
         <div class="section-title">
-          <span>10</span>
+          <span>09</span>
           <h2>Contact</h2>
         </div>
 
@@ -2015,11 +1880,10 @@
       fr: {
         top: "fr-top",
         about: "fr-about",
+        equipe: "fr-equipe",
         these: "fr-these",
         axes: "fr-axes",
-        equipe: "fr-equipe",
         side: "fr-side",
-        methodes: "fr-methodes",
         publications: "fr-publications",
         communications: "fr-communications",
         cv: "fr-cv",
@@ -2028,11 +1892,10 @@
       en: {
         top: "en-top",
         about: "en-about",
+        equipe: "en-team",
         these: "en-thesis",
         axes: "en-axes",
-        equipe: "en-team",
         side: "en-side",
-        methodes: "en-methods",
         publications: "en-publications",
         communications: "en-communications",
         cv: "en-cv",
