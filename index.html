@@ -8,6 +8,7 @@
   <link rel="apple-touch-icon" href="assets/favicon.png" />
 
   <meta name="robots" content="noindex, nofollow, noarchive" />
+  <meta name="theme-color" content="#0b2f23" />
 
   <meta
     id="meta-description"
@@ -20,6 +21,28 @@
     name="keywords"
     content="Olfaction, Vision, Audition, Perception multisensorielle"
   />
+
+  <meta property="og:type" content="website" />
+  <meta id="og-title" property="og:title" content="Luc Perroquin | Portfolio académique" />
+  <meta
+    id="og-description"
+    property="og:description"
+    content="Portfolio académique de Luc Perroquin, doctorant en psychologie cognitive, consacré à l'intégration entre olfaction, vision et audition."
+  />
+  <meta property="og:url" content="https://lucper01.github.io/Portfolio/" />
+  <meta property="og:site_name" content="Luc Perroquin | Portfolio" />
+  <meta id="og-locale" property="og:locale" content="fr_FR" />
+  <meta property="og:image" content="https://lucper01.github.io/Portfolio/assets/photo-profil.jpg" />
+  <meta property="og:image:alt" content="Portrait de Luc Perroquin" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta id="twitter-title" name="twitter:title" content="Luc Perroquin | Portfolio académique" />
+  <meta
+    id="twitter-description"
+    name="twitter:description"
+    content="Portfolio académique de Luc Perroquin, doctorant en psychologie cognitive, consacré à l'intégration entre olfaction, vision et audition."
+  />
+  <meta name="twitter:image" content="https://lucper01.github.io/Portfolio/assets/photo-profil.jpg" />
 
   <title>Luc Perroquin | Portfolio académique</title>
 
@@ -150,6 +173,22 @@
 
     .site-content[hidden] {
       display: none;
+    }
+
+    .language-fade {
+      animation: languageFadeIn 0.34s ease both;
+    }
+
+    @keyframes languageFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     header {
@@ -344,7 +383,7 @@
       grid-template-columns: 30px 1fr;
       align-items: center;
       gap: 8px;
-      min-width: 142px;
+      min-width: 152px;
       padding: 7px 10px;
       border-radius: 999px;
       color: var(--muted);
@@ -466,6 +505,7 @@
 
     .card,
     .team-card,
+    .axis-card,
     .project-card,
     .cv-card,
     .publication-list li,
@@ -489,6 +529,7 @@
 
     .card:hover,
     .team-card:hover,
+    .axis-card:hover,
     .project-card:hover,
     .cv-card:hover,
     .publication-list li:hover {
@@ -496,7 +537,8 @@
       box-shadow: var(--shadow);
     }
 
-    .team-card {
+    .team-card,
+    .axis-card {
       padding: 32px;
       border-radius: 28px;
       background:
@@ -506,19 +548,23 @@
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
-    body.dark-mode .team-card {
+    body.dark-mode .team-card,
+    body.dark-mode .axis-card {
       background:
         radial-gradient(circle at top right, rgba(119, 184, 146, 0.16), transparent 34%),
         rgba(16, 37, 28, 0.88);
       border-color: rgba(220, 238, 227, 0.12);
     }
 
-    .team-card p {
+    .team-card p,
+    .axis-card p {
       color: var(--muted);
       margin-bottom: 0;
     }
 
-    .team-kicker {
+    .team-kicker,
+    .axis-kicker,
+    .publication-type {
       display: inline-flex;
       align-items: center;
       width: fit-content;
@@ -533,7 +579,9 @@
       margin-bottom: 16px;
     }
 
-    body.dark-mode .team-kicker {
+    body.dark-mode .team-kicker,
+    body.dark-mode .axis-kicker,
+    body.dark-mode .publication-type {
       background: rgba(119, 184, 146, 0.18);
       color: #dceee3;
     }
@@ -563,11 +611,18 @@
       color: #ffffff;
     }
 
-    .project-grid {
+    .axis-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 22px;
+      margin-top: 22px;
+    }
+
+    .axis-projects {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-      margin-top: 20px;
+      gap: 16px;
+      margin-top: 22px;
     }
 
     .project-card {
@@ -778,6 +833,15 @@
       border-color: rgba(220, 238, 227, 0.12);
     }
 
+    .publication-list p {
+      color: var(--muted);
+      margin: 8px 0 0;
+    }
+
+    .placeholder-item {
+      border-style: dashed !important;
+    }
+
     .hidden-by-filter {
       display: none !important;
     }
@@ -884,6 +948,28 @@
       color: #0b2f23;
     }
 
+    .copy-email-button {
+      margin-left: auto;
+      border: 1px solid rgba(11, 47, 35, 0.14);
+      border-radius: 999px;
+      padding: 8px 12px;
+      background: var(--white);
+      color: var(--green-dark);
+      font-weight: 850;
+      cursor: pointer;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    }
+
+    .copy-email-button:hover {
+      transform: translateY(-2px);
+    }
+
+    .copy-email-button.active {
+      background: var(--green-main);
+      color: #ffffff;
+      border-color: var(--green-main);
+    }
+
     footer {
       padding: 34px 8%;
       text-align: center;
@@ -943,7 +1029,7 @@
       .hero,
       .grid.two,
       .section-title,
-      .project-grid {
+      .axis-projects {
         grid-template-columns: 1fr;
       }
 
@@ -1024,6 +1110,24 @@
       .contact-item {
         align-items: flex-start;
       }
+
+      .copy-email-button {
+        margin-left: 0;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+      }
     }
   </style>
 </head>
@@ -1084,7 +1188,7 @@
           <a href="#fr-these" data-section-key="these">Thèse</a>
           <a href="#fr-axes" data-section-key="axes">Axes</a>
           <a href="#fr-equipe" data-section-key="equipe">Équipe</a>
-          <a href="#fr-projets" data-section-key="projets">Projets</a>
+          <a href="#fr-side" data-section-key="side">Projet parallèle</a>
           <a href="#fr-methodes" data-section-key="methodes">Méthodes</a>
           <a href="#fr-publications" data-section-key="publications">Publications</a>
           <a href="#fr-communications" data-section-key="communications">Communications</a>
@@ -1099,7 +1203,7 @@
       <a href="#fr-these" data-section-key="these"><span>02</span> Thèse</a>
       <a href="#fr-axes" data-section-key="axes"><span>03</span> Axes</a>
       <a href="#fr-equipe" data-section-key="equipe"><span>04</span> Équipe</a>
-      <a href="#fr-projets" data-section-key="projets"><span>05</span> Projets</a>
+      <a href="#fr-side" data-section-key="side"><span>05</span> Projet parallèle</a>
       <a href="#fr-methodes" data-section-key="methodes"><span>06</span> Méthodes</a>
       <a href="#fr-publications" data-section-key="publications"><span>07</span> Publications</a>
       <a href="#fr-communications" data-section-key="communications"><span>08</span> Communications</a>
@@ -1146,19 +1250,93 @@
           <h2>Axes de thèse</h2>
         </div>
 
-        <div class="grid two">
-          <article class="card">
-            <h3>Axe 1</h3>
+        <p class="lead">
+          Les projets principaux sont organisés selon les deux axes structurants de la thèse.
+        </p>
+
+        <div class="filter-controls" aria-label="Filtres des axes et projets">
+          <button class="filter-button active" type="button" data-filter="all" data-label="Tous">Tous</button>
+          <button class="filter-button" type="button" data-filter="axe-1" data-label="Axe 1">Axe 1</button>
+          <button class="filter-button" type="button" data-filter="axe-2" data-label="Axe 2">Axe 2</button>
+          <button class="filter-button" type="button" data-filter="termine" data-label="Terminés">Terminés</button>
+          <button class="filter-button" type="button" data-filter="a-debuter" data-label="À débuter">À débuter</button>
+        </div>
+
+        <div class="axis-grid">
+          <article class="axis-card" data-filter-group>
+            <span class="axis-kicker">Axe 1</span>
+            <h3>Relations spatio-temporelles entre olfaction, vision et audition</h3>
             <p>
-              Caractériser les relations spatio-temporelles entre olfaction, vision et audition.
+              Cet axe vise à caractériser les relations temporelles entre modalités sensorielles et à préparer l'intégration de l'olfaction dans des paradigmes de perception temporelle.
             </p>
+
+            <div class="axis-projects">
+              <article class="project-card filter-item" data-category="axe-1 termine">
+                <div class="project-meta">
+                  <span class="project-badge">Travail principal</span>
+                  <span class="project-status">Terminé</span>
+                </div>
+                <h3>TWIXOLF</h3>
+                <p>
+                  Pré-test expérimental ayant testé l'effet des durées de stimuli visuels et auditifs sur la temporal binding window, avant le lancement d'une future version intégrant l'olfaction.
+                </p>
+                <p class="project-role">
+                  <strong>Rôle dans le projet :</strong> portage principal du pré-test, avec préparation du protocole, passation pilote et analyses exploratoires.
+                </p>
+              </article>
+
+              <article class="project-card filter-item" data-category="axe-1 a-debuter">
+                <div class="project-meta">
+                  <span class="project-badge">Travail principal</span>
+                  <span class="project-status">À débuter</span>
+                </div>
+                <h3>SOFT</h3>
+                <p>
+                  Manipulation à débuter portant sur la détection de durées de stimuli, dans le cadre de l'étude des dimensions temporelles de la perception.
+                </p>
+                <p class="project-role">
+                  <strong>Rôle dans le projet :</strong> portage principal de la manipulation, avec conception du paradigme, programmation expérimentale, passation et analyses à venir.
+                </p>
+              </article>
+            </div>
           </article>
 
-          <article class="card">
-            <h3>Axe 2</h3>
+          <article class="axis-card" data-filter-group>
+            <span class="axis-kicker">Axe 2</span>
+            <h3>Influence des odeurs sur la perception spatio-temporelle</h3>
             <p>
-              Caractériser l'influence des odeurs sur la perception spatio-temporelle en audition et vision.
+              Cet axe vise à caractériser la manière dont les odeurs peuvent moduler la perception visuelle de l'espace et contribuer à la construction perceptive de scènes.
             </p>
+
+            <div class="axis-projects">
+              <article class="project-card filter-item" data-category="axe-2 termine">
+                <div class="project-meta">
+                  <span class="project-badge">Travail principal</span>
+                  <span class="project-status">Terminé</span>
+                </div>
+                <h3>BREXOLF</h3>
+                <p>
+                  Pré-test expérimental portant sur le boundary extension, conçu pour tester la logique du paradigme avant son adaptation avec des contextes olfactifs.
+                </p>
+                <p class="project-role">
+                  <strong>Rôle dans le projet :</strong> portage principal du pré-test, avec préparation du protocole, passation pilote et analyses exploratoires.
+                </p>
+              </article>
+
+              <article class="project-card filter-item" data-category="axe-2 a-debuter">
+                <div class="project-meta">
+                  <span class="project-badge">Travail principal</span>
+                  <span class="project-status">À débuter</span>
+                </div>
+                <h3>BREXOLF_Odorised</h3>
+                <p>
+                  Manipulation à venir portant sur le boundary extension dans un contexte odorisé, afin d'étudier l'influence des odeurs sur la perception visuelle de l'espace.
+                </p>
+                <p class="project-role">
+                  <strong>Rôle dans le projet :</strong> portage principal de la manipulation, avec préparation du protocole, intégration des odeurs, passation et analyses à venir.
+                </p>
+              </article>
+            </div>
           </article>
         </div>
       </section>
@@ -1184,94 +1362,25 @@
         </article>
       </section>
 
-      <section id="fr-projets" class="reveal" data-section="projets">
+      <section id="fr-side" class="reveal" data-section="side">
         <div class="section-title">
           <span>05</span>
-          <h2>Travaux et projets</h2>
+          <h2>Projet parallèle</h2>
         </div>
 
-        <p class="lead">
-          Cette section présente les travaux terminés, les manipulations à venir et les projets collaboratifs associés à mes recherches sur les relations entre olfaction, vision et audition.
-        </p>
-
-        <div class="filter-controls" aria-label="Filtres des travaux et projets">
-          <button class="filter-button active" type="button" data-filter="all">Tous</button>
-          <button class="filter-button" type="button" data-filter="termine">Terminés</button>
-          <button class="filter-button" type="button" data-filter="en-cours">En cours</button>
-          <button class="filter-button" type="button" data-filter="a-debuter">À débuter</button>
-        </div>
-
-        <div class="project-grid">
-          <article class="project-card filter-item" data-category="termine">
-            <div class="project-meta">
-              <span class="project-badge">Travail principal</span>
-              <span class="project-status">Terminé</span>
-            </div>
-            <h3>TWIXOLF</h3>
-            <p>
-              Pré-test expérimental ayant testé l'effet des durées de stimuli visuels et auditifs sur la temporal binding window, avant le lancement d'une future version intégrant l'olfaction.
-            </p>
-            <p class="project-role">
-              <strong>Rôle dans le projet :</strong> portage principal du pré-test, avec préparation du protocole, passation pilote et analyses exploratoires.
-            </p>
-          </article>
-
-          <article class="project-card filter-item" data-category="termine">
-            <div class="project-meta">
-              <span class="project-badge">Travail principal</span>
-              <span class="project-status">Terminé</span>
-            </div>
-            <h3>BREXOLF</h3>
-            <p>
-              Pré-test expérimental portant sur le boundary extension, conçu pour tester la logique du paradigme avant son adaptation avec des contextes olfactifs.
-            </p>
-            <p class="project-role">
-              <strong>Rôle dans le projet :</strong> portage principal du pré-test, avec préparation du protocole, passation pilote et analyses exploratoires.
-            </p>
-          </article>
-
-          <article class="project-card filter-item" data-category="a-debuter">
-            <div class="project-meta">
-              <span class="project-badge">Travail principal</span>
-              <span class="project-status">À débuter</span>
-            </div>
-            <h3>BREXOLF_Odorised</h3>
-            <p>
-              Manipulation à venir portant sur le boundary extension dans un contexte odorisé, afin d'étudier l'influence des odeurs sur la perception visuelle de l'espace.
-            </p>
-            <p class="project-role">
-              <strong>Rôle dans le projet :</strong> portage principal de la manipulation, avec préparation du protocole, intégration des odeurs, passation et analyses à venir.
-            </p>
-          </article>
-
-          <article class="project-card filter-item" data-category="a-debuter">
-            <div class="project-meta">
-              <span class="project-badge">Travail principal</span>
-              <span class="project-status">À débuter</span>
-            </div>
-            <h3>SOFT</h3>
-            <p>
-              Manipulation à débuter portant sur la détection de durées de stimuli, dans le cadre de l'étude des dimensions temporelles de la perception.
-            </p>
-            <p class="project-role">
-              <strong>Rôle dans le projet :</strong> portage principal de la manipulation, avec conception du paradigme, programmation expérimentale, passation et analyses à venir.
-            </p>
-          </article>
-
-          <article class="project-card filter-item" data-category="en-cours">
-            <div class="project-meta">
-              <span class="project-badge secondary">Collaboration</span>
-              <span class="project-status">En cours</span>
-            </div>
-            <h3>FLUXOLF</h3>
-            <p>
-              Projet collaboratif portant sur le paradoxe intermodal musique-odeur, avec un intérêt pour les réponses neurophysiologiques mesurées par EEG.
-            </p>
-            <p class="project-role">
-              <strong>Rôle dans le projet :</strong> contribution scientifique et méthodologique à un projet mené en collaboration, en lien avec la problématique multisensorielle.
-            </p>
-          </article>
-        </div>
+        <article class="project-card">
+          <div class="project-meta">
+            <span class="project-badge secondary">Side project</span>
+            <span class="project-status">En cours</span>
+          </div>
+          <h3>FLUXOLF</h3>
+          <p>
+            Projet collaboratif portant sur le paradoxe intermodal musique-odeur, avec un intérêt pour les réponses neurophysiologiques mesurées par EEG.
+          </p>
+          <p class="project-role">
+            <strong>Rôle dans le projet :</strong> contribution scientifique et méthodologique à un projet mené en collaboration, en lien avec la problématique multisensorielle.
+          </p>
+        </article>
       </section>
 
       <section id="fr-methodes" class="reveal" data-section="methodes">
@@ -1311,22 +1420,34 @@
         </div>
 
         <div class="filter-controls" aria-label="Filtres des publications">
-          <button class="filter-button active" type="button" data-filter="all">Tous</button>
-          <button class="filter-button" type="button" data-filter="article">Articles</button>
-          <button class="filter-button" type="button" data-filter="preprint">Prépublications</button>
+          <button class="filter-button active" type="button" data-filter="all" data-label="Tous">Tous</button>
+          <button class="filter-button" type="button" data-filter="article" data-label="Articles">Articles</button>
+          <button class="filter-button" type="button" data-filter="preprint" data-label="Prépublications">Prépublications</button>
         </div>
 
         <div class="publication-subsection">
           <h3>Articles</h3>
           <ul class="publication-list">
-            <li class="filter-item" data-category="article">À compléter.</li>
+            <li class="filter-item placeholder-item" data-category="article" data-countable="false">
+              <span class="publication-type">Article</span>
+              <strong>En attente d'ajout</strong>
+              <p>
+                Les articles seront ajoutés ici après soumission, acceptation ou publication.
+              </p>
+            </li>
           </ul>
         </div>
 
         <div class="publication-subsection">
           <h3>Prépublications</h3>
           <ul class="publication-list">
-            <li class="filter-item" data-category="preprint">À compléter.</li>
+            <li class="filter-item placeholder-item" data-category="preprint" data-countable="false">
+              <span class="publication-type">Prépublication</span>
+              <strong>En attente d'ajout</strong>
+              <p>
+                Les prépublications seront ajoutées ici lorsqu'une version diffusable sera disponible.
+              </p>
+            </li>
           </ul>
         </div>
       </section>
@@ -1338,17 +1459,20 @@
         </div>
 
         <div class="filter-controls" aria-label="Filtres des communications scientifiques">
-          <button class="filter-button active" type="button" data-filter="all">Tous</button>
-          <button class="filter-button" type="button" data-filter="communication">Communications</button>
-          <button class="filter-button" type="button" data-filter="poster">Posters</button>
+          <button class="filter-button active" type="button" data-filter="all" data-label="Tous">Tous</button>
+          <button class="filter-button" type="button" data-filter="communication" data-label="Communications">Communications</button>
+          <button class="filter-button" type="button" data-filter="poster" data-label="Posters">Posters</button>
         </div>
 
         <div class="publication-subsection">
           <h3>Communications</h3>
           <ul class="publication-list">
             <li class="filter-item" data-category="communication">
-              <strong>Journée des Doctorants 2026</strong><br />
-              Présentation des travaux de thèse et obtention du prix de l'originalité pour une approche scientifique audacieuse et créative qui a surpris et inspiré le jury.
+              <span class="publication-type">Communication</span>
+              <strong>Journée des Doctorants 2026</strong>
+              <p>
+                Présentation des travaux de thèse et obtention du prix de l'originalité pour une approche scientifique audacieuse et créative qui a surpris et inspiré le jury.
+              </p>
             </li>
           </ul>
         </div>
@@ -1356,7 +1480,13 @@
         <div class="publication-subsection">
           <h3>Posters</h3>
           <ul class="publication-list">
-            <li class="filter-item" data-category="poster">À compléter.</li>
+            <li class="filter-item placeholder-item" data-category="poster" data-countable="false">
+              <span class="publication-type">Poster</span>
+              <strong>En attente d'ajout</strong>
+              <p>
+                Les posters seront ajoutés ici après présentation ou diffusion.
+              </p>
+            </li>
           </ul>
         </div>
       </section>
@@ -1391,6 +1521,15 @@
             <a href="mailto:luc.perroquin@gmail.com">
               luc.perroquin@gmail.com
             </a>
+            <button
+              class="copy-email-button"
+              type="button"
+              data-copy-email="luc.perroquin@gmail.com"
+              data-default-label="Copier"
+              data-copied-label="Copié"
+            >
+              Copier
+            </button>
           </p>
 
           <p class="contact-item">
@@ -1463,7 +1602,7 @@
           <a href="#en-thesis" data-section-key="these">Thesis</a>
           <a href="#en-axes" data-section-key="axes">Axes</a>
           <a href="#en-team" data-section-key="equipe">Team</a>
-          <a href="#en-projects" data-section-key="projets">Projects</a>
+          <a href="#en-side" data-section-key="side">Side project</a>
           <a href="#en-methods" data-section-key="methodes">Methods</a>
           <a href="#en-publications" data-section-key="publications">Publications</a>
           <a href="#en-communications" data-section-key="communications">Communications</a>
@@ -1478,7 +1617,7 @@
       <a href="#en-thesis" data-section-key="these"><span>02</span> Thesis</a>
       <a href="#en-axes" data-section-key="axes"><span>03</span> Axes</a>
       <a href="#en-team" data-section-key="equipe"><span>04</span> Team</a>
-      <a href="#en-projects" data-section-key="projets"><span>05</span> Projects</a>
+      <a href="#en-side" data-section-key="side"><span>05</span> Side project</a>
       <a href="#en-methods" data-section-key="methodes"><span>06</span> Methods</a>
       <a href="#en-publications" data-section-key="publications"><span>07</span> Publications</a>
       <a href="#en-communications" data-section-key="communications"><span>08</span> Communications</a>
@@ -1525,19 +1664,93 @@
           <h2>Thesis axes</h2>
         </div>
 
-        <div class="grid two">
-          <article class="card">
-            <h3>Axis 1</h3>
+        <p class="lead">
+          The main projects are organized according to the two structuring axes of the thesis.
+        </p>
+
+        <div class="filter-controls" aria-label="Thesis axis and project filters">
+          <button class="filter-button active" type="button" data-filter="all" data-label="All">All</button>
+          <button class="filter-button" type="button" data-filter="axe-1" data-label="Axis 1">Axis 1</button>
+          <button class="filter-button" type="button" data-filter="axe-2" data-label="Axis 2">Axis 2</button>
+          <button class="filter-button" type="button" data-filter="termine" data-label="Completed">Completed</button>
+          <button class="filter-button" type="button" data-filter="a-debuter" data-label="To begin">To begin</button>
+        </div>
+
+        <div class="axis-grid">
+          <article class="axis-card" data-filter-group>
+            <span class="axis-kicker">Axis 1</span>
+            <h3>Spatio-temporal relations between olfaction, vision, and audition</h3>
             <p>
-              Characterize spatio-temporal relations between olfaction, vision, and audition.
+              This axis aims to characterize temporal relations between sensory modalities and to prepare the integration of olfaction into temporal perception paradigms.
             </p>
+
+            <div class="axis-projects">
+              <article class="project-card filter-item" data-category="axe-1 termine">
+                <div class="project-meta">
+                  <span class="project-badge">Main work</span>
+                  <span class="project-status">Completed</span>
+                </div>
+                <h3>TWIXOLF</h3>
+                <p>
+                  Experimental pre-test examining the effect of visual and auditory stimulus durations on the temporal binding window, before launching a future olfactory version.
+                </p>
+                <p class="project-role">
+                  <strong>Project role:</strong> main lead of the pre-test, including protocol preparation, pilot testing, and exploratory analyses.
+                </p>
+              </article>
+
+              <article class="project-card filter-item" data-category="axe-1 a-debuter">
+                <div class="project-meta">
+                  <span class="project-badge">Main work</span>
+                  <span class="project-status">To begin</span>
+                </div>
+                <h3>SOFT</h3>
+                <p>
+                  Upcoming experiment focused on the detection of stimulus durations, as part of the study of temporal dimensions of perception.
+                </p>
+                <p class="project-role">
+                  <strong>Project role:</strong> main lead of the experiment, including paradigm design, task programming, data collection, and upcoming analyses.
+                </p>
+              </article>
+            </div>
           </article>
 
-          <article class="card">
-            <h3>Axis 2</h3>
+          <article class="axis-card" data-filter-group>
+            <span class="axis-kicker">Axis 2</span>
+            <h3>Influence of odors on spatio-temporal perception</h3>
             <p>
-              Characterize the influence of odors on spatio-temporal perception in audition and vision.
+              This axis aims to characterize how odors may modulate visual perception of space and contribute to the perceptual construction of scenes.
             </p>
+
+            <div class="axis-projects">
+              <article class="project-card filter-item" data-category="axe-2 termine">
+                <div class="project-meta">
+                  <span class="project-badge">Main work</span>
+                  <span class="project-status">Completed</span>
+                </div>
+                <h3>BREXOLF</h3>
+                <p>
+                  Experimental pre-test on boundary extension, designed to test the logic of the paradigm before its adaptation to odorized contexts.
+                </p>
+                <p class="project-role">
+                  <strong>Project role:</strong> main lead of the pre-test, including protocol preparation, pilot testing, and exploratory analyses.
+                </p>
+              </article>
+
+              <article class="project-card filter-item" data-category="axe-2 a-debuter">
+                <div class="project-meta">
+                  <span class="project-badge">Main work</span>
+                  <span class="project-status">To begin</span>
+                </div>
+                <h3>BREXOLF_Odorised</h3>
+                <p>
+                  Upcoming experiment on boundary extension in an odorized context, aimed at studying the influence of odors on visual perception of space.
+                </p>
+                <p class="project-role">
+                  <strong>Project role:</strong> main lead of the experiment, including protocol preparation, odor integration, data collection, and upcoming analyses.
+                </p>
+              </article>
+            </div>
           </article>
         </div>
       </section>
@@ -1563,94 +1776,25 @@
         </article>
       </section>
 
-      <section id="en-projects" class="reveal" data-section="projets">
+      <section id="en-side" class="reveal" data-section="side">
         <div class="section-title">
           <span>05</span>
-          <h2>Research projects</h2>
+          <h2>Side project</h2>
         </div>
 
-        <p class="lead">
-          This section presents completed work, upcoming experiments, and collaborative projects associated with my research on relations between olfaction, vision, and audition.
-        </p>
-
-        <div class="filter-controls" aria-label="Research project filters">
-          <button class="filter-button active" type="button" data-filter="all">All</button>
-          <button class="filter-button" type="button" data-filter="termine">Completed</button>
-          <button class="filter-button" type="button" data-filter="en-cours">Ongoing</button>
-          <button class="filter-button" type="button" data-filter="a-debuter">To begin</button>
-        </div>
-
-        <div class="project-grid">
-          <article class="project-card filter-item" data-category="termine">
-            <div class="project-meta">
-              <span class="project-badge">Main work</span>
-              <span class="project-status">Completed</span>
-            </div>
-            <h3>TWIXOLF</h3>
-            <p>
-              Experimental pre-test examining the effect of visual and auditory stimulus durations on the temporal binding window, before launching a future olfactory version.
-            </p>
-            <p class="project-role">
-              <strong>Project role:</strong> main lead of the pre-test, including protocol preparation, pilot testing, and exploratory analyses.
-            </p>
-          </article>
-
-          <article class="project-card filter-item" data-category="termine">
-            <div class="project-meta">
-              <span class="project-badge">Main work</span>
-              <span class="project-status">Completed</span>
-            </div>
-            <h3>BREXOLF</h3>
-            <p>
-              Experimental pre-test on boundary extension, designed to test the logic of the paradigm before its adaptation to odorized contexts.
-            </p>
-            <p class="project-role">
-              <strong>Project role:</strong> main lead of the pre-test, including protocol preparation, pilot testing, and exploratory analyses.
-            </p>
-          </article>
-
-          <article class="project-card filter-item" data-category="a-debuter">
-            <div class="project-meta">
-              <span class="project-badge">Main work</span>
-              <span class="project-status">To begin</span>
-            </div>
-            <h3>BREXOLF_Odorised</h3>
-            <p>
-              Upcoming experiment on boundary extension in an odorized context, aimed at studying the influence of odors on visual perception of space.
-            </p>
-            <p class="project-role">
-              <strong>Project role:</strong> main lead of the experiment, including protocol preparation, odor integration, data collection, and upcoming analyses.
-            </p>
-          </article>
-
-          <article class="project-card filter-item" data-category="a-debuter">
-            <div class="project-meta">
-              <span class="project-badge">Main work</span>
-              <span class="project-status">To begin</span>
-            </div>
-            <h3>SOFT</h3>
-            <p>
-              Upcoming experiment focused on the detection of stimulus durations, as part of the study of temporal dimensions of perception.
-            </p>
-            <p class="project-role">
-              <strong>Project role:</strong> main lead of the experiment, including paradigm design, task programming, data collection, and upcoming analyses.
-            </p>
-          </article>
-
-          <article class="project-card filter-item" data-category="en-cours">
-            <div class="project-meta">
-              <span class="project-badge secondary">Collaboration</span>
-              <span class="project-status">Ongoing</span>
-            </div>
-            <h3>FLUXOLF</h3>
-            <p>
-              Collaborative project on the intermodal music-odor paradox, with an interest in neurophysiological responses measured through EEG.
-            </p>
-            <p class="project-role">
-              <strong>Project role:</strong> scientific and methodological contribution to a collaborative project connected to multisensory research.
-            </p>
-          </article>
-        </div>
+        <article class="project-card">
+          <div class="project-meta">
+            <span class="project-badge secondary">Side project</span>
+            <span class="project-status">Ongoing</span>
+          </div>
+          <h3>FLUXOLF</h3>
+          <p>
+            Collaborative project on the intermodal music-odor paradox, with an interest in neurophysiological responses measured through EEG.
+          </p>
+          <p class="project-role">
+            <strong>Project role:</strong> scientific and methodological contribution to a collaborative project connected to multisensory research.
+          </p>
+        </article>
       </section>
 
       <section id="en-methods" class="reveal" data-section="methodes">
@@ -1690,22 +1834,34 @@
         </div>
 
         <div class="filter-controls" aria-label="Publication filters">
-          <button class="filter-button active" type="button" data-filter="all">All</button>
-          <button class="filter-button" type="button" data-filter="article">Articles</button>
-          <button class="filter-button" type="button" data-filter="preprint">Preprints</button>
+          <button class="filter-button active" type="button" data-filter="all" data-label="All">All</button>
+          <button class="filter-button" type="button" data-filter="article" data-label="Articles">Articles</button>
+          <button class="filter-button" type="button" data-filter="preprint" data-label="Preprints">Preprints</button>
         </div>
 
         <div class="publication-subsection">
           <h3>Articles</h3>
           <ul class="publication-list">
-            <li class="filter-item" data-category="article">To be added.</li>
+            <li class="filter-item placeholder-item" data-category="article" data-countable="false">
+              <span class="publication-type">Article</span>
+              <strong>Pending addition</strong>
+              <p>
+                Articles will be added here after submission, acceptance, or publication.
+              </p>
+            </li>
           </ul>
         </div>
 
         <div class="publication-subsection">
           <h3>Preprints</h3>
           <ul class="publication-list">
-            <li class="filter-item" data-category="preprint">To be added.</li>
+            <li class="filter-item placeholder-item" data-category="preprint" data-countable="false">
+              <span class="publication-type">Preprint</span>
+              <strong>Pending addition</strong>
+              <p>
+                Preprints will be added here when a shareable version is available.
+              </p>
+            </li>
           </ul>
         </div>
       </section>
@@ -1717,17 +1873,20 @@
         </div>
 
         <div class="filter-controls" aria-label="Scientific communication filters">
-          <button class="filter-button active" type="button" data-filter="all">All</button>
-          <button class="filter-button" type="button" data-filter="communication">Communications</button>
-          <button class="filter-button" type="button" data-filter="poster">Posters</button>
+          <button class="filter-button active" type="button" data-filter="all" data-label="All">All</button>
+          <button class="filter-button" type="button" data-filter="communication" data-label="Communications">Communications</button>
+          <button class="filter-button" type="button" data-filter="poster" data-label="Posters">Posters</button>
         </div>
 
         <div class="publication-subsection">
           <h3>Communications</h3>
           <ul class="publication-list">
             <li class="filter-item" data-category="communication">
-              <strong>Doctoral Students' Day 2026</strong><br />
-              Presentation of thesis work and recipient of the Originality Award for a bold and creative scientific approach that surprised and inspired the jury.
+              <span class="publication-type">Communication</span>
+              <strong>Doctoral Students' Day 2026</strong>
+              <p>
+                Presentation of thesis work and recipient of the Originality Award for a bold and creative scientific approach that surprised and inspired the jury.
+              </p>
             </li>
           </ul>
         </div>
@@ -1735,7 +1894,13 @@
         <div class="publication-subsection">
           <h3>Posters</h3>
           <ul class="publication-list">
-            <li class="filter-item" data-category="poster">To be added.</li>
+            <li class="filter-item placeholder-item" data-category="poster" data-countable="false">
+              <span class="publication-type">Poster</span>
+              <strong>Pending addition</strong>
+              <p>
+                Posters will be added here after presentation or dissemination.
+              </p>
+            </li>
           </ul>
         </div>
       </section>
@@ -1770,6 +1935,15 @@
             <a href="mailto:luc.perroquin@gmail.com">
               luc.perroquin@gmail.com
             </a>
+            <button
+              class="copy-email-button"
+              type="button"
+              data-copy-email="luc.perroquin@gmail.com"
+              data-default-label="Copy"
+              data-copied-label="Copied"
+            >
+              Copy
+            </button>
           </p>
 
           <p class="contact-item">
@@ -1812,12 +1986,18 @@
     const shareButton = document.querySelector("[data-share-button]");
     const metaDescription = document.getElementById("meta-description");
     const metaKeywords = document.getElementById("meta-keywords");
+    const ogTitle = document.getElementById("og-title");
+    const ogDescription = document.getElementById("og-description");
+    const ogLocale = document.getElementById("og-locale");
+    const twitterTitle = document.getElementById("twitter-title");
+    const twitterDescription = document.getElementById("twitter-description");
 
     const pageMetadata = {
       fr: {
         title: "Luc Perroquin | Portfolio académique",
         description: "Portfolio académique de Luc Perroquin, doctorant en psychologie cognitive, consacré à l'intégration entre olfaction, vision et audition.",
         keywords: "Olfaction, Vision, Audition, Perception multisensorielle",
+        locale: "fr_FR",
         shareLabel: "Partager",
         copiedLabel: "Lien copié"
       },
@@ -1825,6 +2005,7 @@
         title: "Luc Perroquin | Academic portfolio",
         description: "Academic portfolio of Luc Perroquin, PhD student in cognitive psychology, dedicated to the integration between olfaction, vision, and audition.",
         keywords: "Olfaction, Vision, Audition, Multisensory perception",
+        locale: "en_US",
         shareLabel: "Share",
         copiedLabel: "Link copied"
       }
@@ -1837,7 +2018,7 @@
         these: "fr-these",
         axes: "fr-axes",
         equipe: "fr-equipe",
-        projets: "fr-projets",
+        side: "fr-side",
         methodes: "fr-methodes",
         publications: "fr-publications",
         communications: "fr-communications",
@@ -1850,7 +2031,7 @@
         these: "en-thesis",
         axes: "en-axes",
         equipe: "en-team",
-        projets: "en-projects",
+        side: "en-side",
         methodes: "en-methods",
         publications: "en-publications",
         communications: "en-communications",
@@ -1862,6 +2043,48 @@
     let currentLanguage = "fr";
     let currentSectionKey = "top";
     let shareTimeout = null;
+
+    function getItemCategories(item) {
+      return (item.dataset.category || "")
+        .split(/\s+/)
+        .map((category) => category.trim())
+        .filter(Boolean);
+    }
+
+    function getInitialStateFromHash() {
+      const hashId = window.location.hash.replace("#", "");
+
+      if (!hashId) {
+        return null;
+      }
+
+      for (const [language, sections] of Object.entries(sectionIds)) {
+        for (const [sectionKey, sectionId] of Object.entries(sections)) {
+          if (sectionId === hashId) {
+            return {
+              language,
+              sectionKey
+            };
+          }
+        }
+      }
+
+      return null;
+    }
+
+    function updateUrlHash(sectionKey, mode = "replace") {
+      const targetId = sectionIds[currentLanguage][sectionKey] || sectionIds[currentLanguage].top;
+      const newHash = `#${targetId}`;
+
+      if (window.location.hash === newHash) {
+        return;
+      }
+
+      const newUrl = `${window.location.pathname}${window.location.search}${newHash}`;
+      const historyMethod = mode === "push" ? "pushState" : "replaceState";
+
+      window.history[historyMethod](null, "", newUrl);
+    }
 
     function revealVisibleElements() {
       const revealElements = document.querySelectorAll(".site-content:not([hidden]) .reveal");
@@ -1943,10 +2166,27 @@
       document.title = metadata.title;
       metaDescription.setAttribute("content", metadata.description);
       metaKeywords.setAttribute("content", metadata.keywords);
+      ogTitle.setAttribute("content", metadata.title);
+      ogDescription.setAttribute("content", metadata.description);
+      ogLocale.setAttribute("content", metadata.locale);
+      twitterTitle.setAttribute("content", metadata.title);
+      twitterDescription.setAttribute("content", metadata.description);
     }
 
-    function setLanguage(language, preserveSection = true) {
-      const targetSectionKey = preserveSection ? currentSectionKey : "top";
+    function refreshLanguageAnimation(language, animate) {
+      const activePage = document.querySelector(`.site-content[data-lang="${language}"]`);
+
+      if (!activePage || !animate) {
+        return;
+      }
+
+      activePage.classList.remove("language-fade");
+      void activePage.offsetWidth;
+      activePage.classList.add("language-fade");
+    }
+
+    function setLanguage(language, preserveSection = true, syncHash = true, animate = true) {
+      const targetSectionKey = currentSectionKey || "top";
 
       currentLanguage = language;
 
@@ -1968,6 +2208,8 @@
       updateShareButtonLabel();
       localStorage.setItem("portfolio-language", language);
       closeMobileNavigation();
+      refreshLanguageAnimation(language, animate);
+      updateActiveNavigation(targetSectionKey);
 
       const targetId = sectionIds[language][targetSectionKey] || sectionIds[language].top;
       const targetElement = document.getElementById(targetId);
@@ -1976,6 +2218,10 @@
         window.setTimeout(() => {
           targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
         }, 60);
+      }
+
+      if (syncHash) {
+        updateUrlHash(targetSectionKey);
       }
 
       window.setTimeout(() => {
@@ -1992,14 +2238,51 @@
       updateThemeToggleLabel();
     }
 
+    function updateFilterGroups(sectionElement) {
+      sectionElement.querySelectorAll("[data-filter-group]").forEach((group) => {
+        const groupItems = Array.from(group.querySelectorAll(".filter-item"));
+        const hasVisibleItem = groupItems.some((item) => !item.classList.contains("hidden-by-filter"));
+
+        group.classList.toggle("hidden-by-filter", groupItems.length > 0 && !hasVisibleItem);
+      });
+    }
+
     function applyFilter(sectionElement, filterValue) {
       sectionElement.querySelectorAll(".filter-button").forEach((button) => {
         button.classList.toggle("active", button.dataset.filter === filterValue);
       });
 
       sectionElement.querySelectorAll(".filter-item").forEach((item) => {
-        const shouldShow = filterValue === "all" || item.dataset.category === filterValue;
+        const itemCategories = getItemCategories(item);
+        const shouldShow = filterValue === "all" || itemCategories.includes(filterValue);
+
         item.classList.toggle("hidden-by-filter", !shouldShow);
+      });
+
+      updateFilterGroups(sectionElement);
+    }
+
+    function updateFilterCounts(sectionElement) {
+      const countableItems = Array.from(sectionElement.querySelectorAll(".filter-item"))
+        .filter((item) => item.dataset.countable !== "false");
+
+      sectionElement.querySelectorAll(".filter-button").forEach((button) => {
+        const filterValue = button.dataset.filter;
+        const label = button.dataset.label || button.textContent.replace(/\s\(\d+\)$/u, "");
+
+        const count = filterValue === "all"
+          ? countableItems.length
+          : countableItems.filter((item) => getItemCategories(item).includes(filterValue)).length;
+
+        button.textContent = `${label} (${count})`;
+      });
+    }
+
+    function updateAllFilterCounts() {
+      document.querySelectorAll("section").forEach((sectionElement) => {
+        if (sectionElement.querySelector(".filter-button")) {
+          updateFilterCounts(sectionElement);
+        }
       });
     }
 
@@ -2057,7 +2340,7 @@
 
     languageButtons.forEach((button) => {
       button.addEventListener("click", () => {
-        setLanguage(button.dataset.switchLang, true);
+        setLanguage(button.dataset.switchLang, true, true, true);
       });
     });
 
@@ -2071,6 +2354,7 @@
     document.querySelectorAll("nav a, .side-progress a").forEach((link) => {
       link.addEventListener("click", () => {
         currentSectionKey = link.dataset.sectionKey;
+        updateActiveNavigation(currentSectionKey);
         closeMobileNavigation();
       });
     });
@@ -2079,6 +2363,20 @@
       button.addEventListener("click", () => {
         const sectionElement = button.closest("section");
         applyFilter(sectionElement, button.dataset.filter);
+      });
+    });
+
+    document.querySelectorAll("[data-copy-email]").forEach((button) => {
+      button.addEventListener("click", async () => {
+        await copyTextToClipboard(button.dataset.copyEmail);
+
+        button.textContent = button.dataset.copiedLabel;
+        button.classList.add("active");
+
+        window.setTimeout(() => {
+          button.textContent = button.dataset.defaultLabel;
+          button.classList.remove("active");
+        }, 1600);
       });
     });
 
@@ -2093,6 +2391,8 @@
 
     backToTopButton.addEventListener("click", () => {
       currentSectionKey = "top";
+      updateActiveNavigation("top");
+      updateUrlHash("top", "push");
       const targetId = sectionIds[currentLanguage].top;
       document.getElementById(targetId).scrollIntoView({ behavior: "smooth", block: "start" });
     });
@@ -2106,13 +2406,26 @@
     window.addEventListener("load", () => {
       revealVisibleElements();
       detectCurrentSection();
+      updateAllFilterCounts();
     });
 
+    const initialHashState = getInitialStateFromHash();
     const savedTheme = localStorage.getItem("portfolio-theme");
-    setTheme(savedTheme === "dark" ? "dark" : "light");
-
     const savedLanguage = localStorage.getItem("portfolio-language");
-    setLanguage(savedLanguage === "en" ? "en" : "fr", false);
+    const initialLanguage = initialHashState?.language || (savedLanguage === "en" ? "en" : "fr");
+
+    currentSectionKey = initialHashState?.sectionKey || "top";
+
+    setTheme(savedTheme === "dark" ? "dark" : "light");
+    setLanguage(initialLanguage, false, false, false);
+    updateAllFilterCounts();
+
+    if (initialHashState?.sectionKey && initialHashState.sectionKey !== "top") {
+      window.setTimeout(() => {
+        const targetId = sectionIds[initialLanguage][initialHashState.sectionKey];
+        document.getElementById(targetId)?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 100);
+    }
   </script>
 </body>
 </html>
