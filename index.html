@@ -339,6 +339,80 @@
       color: #dceee3;
     }
 
+    .side-progress {
+      position: fixed;
+      right: 18px;
+      top: 50%;
+      z-index: 18;
+      transform: translateY(-50%);
+      display: grid;
+      gap: 6px;
+      max-height: calc(100vh - 180px);
+      overflow-y: auto;
+      padding: 10px;
+      border-radius: 22px;
+      background: rgba(251, 247, 237, 0.92);
+      border: 1px solid rgba(11, 47, 35, 0.12);
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(10px);
+      scrollbar-width: thin;
+    }
+
+    body.dark-mode .side-progress {
+      background: rgba(7, 19, 15, 0.88);
+      border-color: rgba(220, 238, 227, 0.14);
+    }
+
+    .side-progress a {
+      display: grid;
+      grid-template-columns: 30px 1fr;
+      align-items: center;
+      gap: 8px;
+      min-width: 142px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 800;
+      line-height: 1.2;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    }
+
+    .side-progress a:hover {
+      text-decoration: none;
+      transform: translateX(-2px);
+      background: rgba(119, 184, 146, 0.12);
+      color: var(--green-dark);
+    }
+
+    .side-progress a span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      background: var(--green-pale);
+      color: var(--green-main);
+      font-size: 0.72rem;
+      font-weight: 900;
+    }
+
+    .side-progress a.active {
+      background: var(--green-main);
+      color: #ffffff;
+    }
+
+    .side-progress a.active span {
+      background: #ffffff;
+      color: var(--green-main);
+    }
+
+    body.dark-mode .side-progress a.active span {
+      background: #dceee3;
+      color: #0b2f23;
+    }
+
     main {
       max-width: 1120px;
       margin: auto;
@@ -878,6 +952,12 @@
       pointer-events: auto;
     }
 
+    @media (max-width: 1220px) {
+      .side-progress {
+        display: none;
+      }
+    }
+
     @media (max-width: 850px) {
       header {
         min-height: auto;
@@ -1042,6 +1122,19 @@
       </div>
     </nav>
 
+    <aside class="side-progress" aria-label="Navigation latérale">
+      <a href="#fr-about" data-section-key="about"><span>01</span> À propos</a>
+      <a href="#fr-these" data-section-key="these"><span>02</span> Thèse</a>
+      <a href="#fr-axes" data-section-key="axes"><span>03</span> Axes</a>
+      <a href="#fr-equipe" data-section-key="equipe"><span>04</span> Équipe</a>
+      <a href="#fr-projets" data-section-key="projets"><span>05</span> Projets</a>
+      <a href="#fr-methodes" data-section-key="methodes"><span>06</span> Méthodes</a>
+      <a href="#fr-publications" data-section-key="publications"><span>07</span> Publications</a>
+      <a href="#fr-communications" data-section-key="communications"><span>08</span> Communications</a>
+      <a href="#fr-cv" data-section-key="cv"><span>09</span> CV</a>
+      <a href="#fr-contact" data-section-key="contact"><span>10</span> Contact</a>
+    </aside>
+
     <main>
       <section id="fr-about" class="reveal" data-section="about">
         <div class="section-title">
@@ -1131,57 +1224,44 @@
 
         <div class="filter-controls" aria-label="Filtres des travaux et projets">
           <button class="filter-button active" type="button" data-filter="all">Tous</button>
-          <button class="filter-button" type="button" data-filter="principal">Travaux principaux</button>
-          <button class="filter-button" type="button" data-filter="collaboration">Collaborations</button>
+          <button class="filter-button" type="button" data-filter="termine">Terminés</button>
+          <button class="filter-button" type="button" data-filter="en-cours">En cours</button>
+          <button class="filter-button" type="button" data-filter="a-debuter">À débuter</button>
         </div>
 
         <div class="project-grid">
-          <article class="project-card filter-item" data-category="principal">
+          <article class="project-card filter-item" data-category="termine">
             <div class="project-meta">
               <span class="project-badge">Travail principal</span>
-              <span class="project-status">Pré-test terminé</span>
+              <span class="project-status">Terminé</span>
             </div>
             <h3>TWIXOLF</h3>
             <p>
-              Pré-test expérimental portant sur la temporal binding window, afin d'examiner les fenêtres temporelles d'intégration entre modalités sensorielles.
+              Pré-test expérimental ayant testé l'effet des durées de stimuli visuels et auditifs sur la temporal binding window, avant le lancement d'une future version intégrant l'olfaction.
             </p>
             <p class="project-role">
               <strong>Rôle dans le projet :</strong> portage principal du pré-test, avec préparation du protocole, passation pilote et analyses exploratoires.
             </p>
           </article>
 
-          <article class="project-card filter-item" data-category="principal">
+          <article class="project-card filter-item" data-category="termine">
             <div class="project-meta">
               <span class="project-badge">Travail principal</span>
-              <span class="project-status">Pré-test terminé</span>
+              <span class="project-status">Terminé</span>
             </div>
             <h3>BREXOLF</h3>
             <p>
               Pré-test expérimental portant sur le boundary extension, conçu pour tester la logique du paradigme avant son adaptation avec des contextes olfactifs.
             </p>
             <p class="project-role">
-              <strong>Rôle dans le projet :</strong> portage principal du pré-test, avec conception de la procédure, mise en place expérimentale et analyses de faisabilité.
+              <strong>Rôle dans le projet :</strong> portage principal du pré-test, avec préparation du protocole, passation pilote et analyses exploratoires.
             </p>
           </article>
 
-          <article class="project-card filter-item" data-category="collaboration">
-            <div class="project-meta">
-              <span class="project-badge secondary">Side project collaboratif</span>
-              <span class="project-status">En cours</span>
-            </div>
-            <h3>Paradoxe intermodal musique-odeur avec EEG</h3>
-            <p>
-              Projet portant sur les relations intermodales entre musique et odeur, avec un intérêt pour les réponses neurophysiologiques mesurées par EEG.
-            </p>
-            <p class="project-role">
-              <strong>Rôle dans le projet :</strong> contribution scientifique et méthodologique à un projet mené en collaboration, en lien avec la problématique multisensorielle.
-            </p>
-          </article>
-
-          <article class="project-card filter-item" data-category="principal">
+          <article class="project-card filter-item" data-category="a-debuter">
             <div class="project-meta">
               <span class="project-badge">Travail principal</span>
-              <span class="project-status">À venir</span>
+              <span class="project-status">À débuter</span>
             </div>
             <h3>BREXOLF_Odorised</h3>
             <p>
@@ -1192,7 +1272,7 @@
             </p>
           </article>
 
-          <article class="project-card filter-item" data-category="principal">
+          <article class="project-card filter-item" data-category="a-debuter">
             <div class="project-meta">
               <span class="project-badge">Travail principal</span>
               <span class="project-status">À débuter</span>
@@ -1203,6 +1283,20 @@
             </p>
             <p class="project-role">
               <strong>Rôle dans le projet :</strong> portage principal de la manipulation, avec conception du paradigme, programmation expérimentale, passation et analyses à venir.
+            </p>
+          </article>
+
+          <article class="project-card filter-item" data-category="en-cours">
+            <div class="project-meta">
+              <span class="project-badge secondary">Collaboration</span>
+              <span class="project-status">En cours</span>
+            </div>
+            <h3>FLUXOLF</h3>
+            <p>
+              Projet collaboratif portant sur le paradoxe intermodal musique-odeur, avec un intérêt pour les réponses neurophysiologiques mesurées par EEG.
+            </p>
+            <p class="project-role">
+              <strong>Rôle dans le projet :</strong> contribution scientifique et méthodologique à un projet mené en collaboration, en lien avec la problématique multisensorielle.
             </p>
           </article>
         </div>
@@ -1416,6 +1510,19 @@
       </div>
     </nav>
 
+    <aside class="side-progress" aria-label="Side navigation">
+      <a href="#en-about" data-section-key="about"><span>01</span> About</a>
+      <a href="#en-thesis" data-section-key="these"><span>02</span> Thesis</a>
+      <a href="#en-axes" data-section-key="axes"><span>03</span> Axes</a>
+      <a href="#en-team" data-section-key="equipe"><span>04</span> Team</a>
+      <a href="#en-projects" data-section-key="projets"><span>05</span> Projects</a>
+      <a href="#en-methods" data-section-key="methodes"><span>06</span> Methods</a>
+      <a href="#en-publications" data-section-key="publications"><span>07</span> Publications</a>
+      <a href="#en-communications" data-section-key="communications"><span>08</span> Communications</a>
+      <a href="#en-cv" data-section-key="cv"><span>09</span> CV</a>
+      <a href="#en-contact" data-section-key="contact"><span>10</span> Contact</a>
+    </aside>
+
     <main>
       <section id="en-about" class="reveal" data-section="about">
         <div class="section-title">
@@ -1505,57 +1612,44 @@
 
         <div class="filter-controls" aria-label="Research project filters">
           <button class="filter-button active" type="button" data-filter="all">All</button>
-          <button class="filter-button" type="button" data-filter="principal">Main work</button>
-          <button class="filter-button" type="button" data-filter="collaboration">Collaborations</button>
+          <button class="filter-button" type="button" data-filter="termine">Completed</button>
+          <button class="filter-button" type="button" data-filter="en-cours">Ongoing</button>
+          <button class="filter-button" type="button" data-filter="a-debuter">To begin</button>
         </div>
 
         <div class="project-grid">
-          <article class="project-card filter-item" data-category="principal">
+          <article class="project-card filter-item" data-category="termine">
             <div class="project-meta">
               <span class="project-badge">Main work</span>
-              <span class="project-status">Completed pre-test</span>
+              <span class="project-status">Completed</span>
             </div>
             <h3>TWIXOLF</h3>
             <p>
-              Experimental pre-test on the temporal binding window, aimed at examining temporal windows of integration between sensory modalities.
+              Experimental pre-test examining the effect of visual and auditory stimulus durations on the temporal binding window, before launching a future olfactory version.
             </p>
             <p class="project-role">
               <strong>Project role:</strong> main lead of the pre-test, including protocol preparation, pilot testing, and exploratory analyses.
             </p>
           </article>
 
-          <article class="project-card filter-item" data-category="principal">
+          <article class="project-card filter-item" data-category="termine">
             <div class="project-meta">
               <span class="project-badge">Main work</span>
-              <span class="project-status">Completed pre-test</span>
+              <span class="project-status">Completed</span>
             </div>
             <h3>BREXOLF</h3>
             <p>
               Experimental pre-test on boundary extension, designed to test the logic of the paradigm before its adaptation to odorized contexts.
             </p>
             <p class="project-role">
-              <strong>Project role:</strong> main lead of the pre-test, including procedure design, experimental implementation, and feasibility analyses.
+              <strong>Project role:</strong> main lead of the pre-test, including protocol preparation, pilot testing, and exploratory analyses.
             </p>
           </article>
 
-          <article class="project-card filter-item" data-category="collaboration">
-            <div class="project-meta">
-              <span class="project-badge secondary">Collaborative side project</span>
-              <span class="project-status">Ongoing</span>
-            </div>
-            <h3>Intermodal music-odor paradox with EEG</h3>
-            <p>
-              Project focusing on intermodal relations between music and odor, with an interest in neurophysiological responses measured through EEG.
-            </p>
-            <p class="project-role">
-              <strong>Project role:</strong> scientific and methodological contribution to a collaborative project connected to multisensory research.
-            </p>
-          </article>
-
-          <article class="project-card filter-item" data-category="principal">
+          <article class="project-card filter-item" data-category="a-debuter">
             <div class="project-meta">
               <span class="project-badge">Main work</span>
-              <span class="project-status">Upcoming</span>
+              <span class="project-status">To begin</span>
             </div>
             <h3>BREXOLF_Odorised</h3>
             <p>
@@ -1566,7 +1660,7 @@
             </p>
           </article>
 
-          <article class="project-card filter-item" data-category="principal">
+          <article class="project-card filter-item" data-category="a-debuter">
             <div class="project-meta">
               <span class="project-badge">Main work</span>
               <span class="project-status">To begin</span>
@@ -1577,6 +1671,20 @@
             </p>
             <p class="project-role">
               <strong>Project role:</strong> main lead of the experiment, including paradigm design, task programming, data collection, and upcoming analyses.
+            </p>
+          </article>
+
+          <article class="project-card filter-item" data-category="en-cours">
+            <div class="project-meta">
+              <span class="project-badge secondary">Collaboration</span>
+              <span class="project-status">Ongoing</span>
+            </div>
+            <h3>FLUXOLF</h3>
+            <p>
+              Collaborative project on the intermodal music-odor paradox, with an interest in neurophysiological responses measured through EEG.
+            </p>
+            <p class="project-role">
+              <strong>Project role:</strong> scientific and methodological contribution to a collaborative project connected to multisensory research.
             </p>
           </article>
         </div>
@@ -1802,7 +1910,7 @@
     function updateActiveNavigation(sectionKey) {
       currentSectionKey = sectionKey || currentSectionKey;
 
-      document.querySelectorAll("nav a").forEach((link) => {
+      document.querySelectorAll("nav a, .side-progress a").forEach((link) => {
         link.classList.toggle("active", link.dataset.sectionKey === currentSectionKey);
       });
     }
@@ -1926,7 +2034,7 @@
       });
     });
 
-    document.querySelectorAll("nav a").forEach((link) => {
+    document.querySelectorAll("nav a, .side-progress a").forEach((link) => {
       link.addEventListener("click", () => {
         currentSectionKey = link.dataset.sectionKey;
         closeMobileNavigation();
