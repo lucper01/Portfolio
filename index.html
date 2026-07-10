@@ -416,6 +416,7 @@
 
     .card,
     .team-card,
+    .project-card,
     .cv-card,
     .publication-list li,
     .timeline-item,
@@ -438,6 +439,7 @@
 
     .card:hover,
     .team-card:hover,
+    .project-card:hover,
     .cv-card:hover,
     .publication-list li:hover {
       transform: translateY(-3px);
@@ -509,6 +511,88 @@
       text-decoration: none;
       background: #0b2f23;
       color: #ffffff;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 20px;
+    }
+
+    .project-card {
+      padding: 26px;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.90);
+      border: 1px solid rgba(11, 47, 35, 0.10);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    body.dark-mode .project-card {
+      background: rgba(16, 37, 28, 0.88);
+      border-color: rgba(220, 238, 227, 0.12);
+    }
+
+    .project-card h3 {
+      margin-bottom: 10px;
+    }
+
+    .project-card p {
+      color: var(--muted);
+    }
+
+    .project-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .project-badge,
+    .project-status {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 850;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .project-badge {
+      color: #ffffff;
+      background: var(--green-main);
+    }
+
+    .project-badge.secondary {
+      color: var(--green-dark);
+      background: var(--green-soft);
+    }
+
+    .project-status {
+      color: var(--green-dark);
+      background: var(--green-pale);
+      border: 1px solid rgba(11, 47, 35, 0.10);
+    }
+
+    body.dark-mode .project-badge.secondary,
+    body.dark-mode .project-status {
+      color: #dceee3;
+      background: rgba(119, 184, 146, 0.14);
+      border-color: rgba(220, 238, 227, 0.12);
+    }
+
+    .project-role {
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(11, 47, 35, 0.10);
+      font-size: 0.96rem;
+    }
+
+    body.dark-mode .project-role {
+      border-top-color: rgba(220, 238, 227, 0.12);
     }
 
     .tags {
@@ -798,7 +882,8 @@
 
       .hero,
       .grid.two,
-      .section-title {
+      .section-title,
+      .project-grid {
         grid-template-columns: 1fr;
       }
 
@@ -910,6 +995,7 @@
           <div class="buttons">
             <a class="button primary" href="#fr-these">Découvrir la thèse</a>
             <a class="button" href="#fr-equipe">Équipe de recherche</a>
+            <a class="button" href="#fr-projets">Projets en cours</a>
             <a class="button" href="#fr-communications">Communications</a>
             <a class="button cv-button" href="https://lucper01.github.io/Portfolio/assets/CV_PerroquinLuc_fr.pdf" target="_blank" rel="noopener noreferrer">Télécharger le CV</a>
             <a class="button" href="#fr-contact">Contact</a>
@@ -942,6 +1028,7 @@
           <a href="#fr-these" data-section-key="these">Thèse</a>
           <a href="#fr-axes" data-section-key="axes">Axes</a>
           <a href="#fr-equipe" data-section-key="equipe">Équipe</a>
+          <a href="#fr-projets" data-section-key="projets">Projets</a>
           <a href="#fr-methodes" data-section-key="methodes">Méthodes</a>
           <a href="#fr-publications" data-section-key="publications">Publications</a>
           <a href="#fr-communications" data-section-key="communications">Communications</a>
@@ -1028,9 +1115,84 @@
         </article>
       </section>
 
-      <section id="fr-methodes" class="reveal" data-section="methodes">
+      <section id="fr-projets" class="reveal" data-section="projets">
         <div class="section-title">
           <span>05</span>
+          <h2>Projets en cours</h2>
+        </div>
+
+        <p class="lead">
+          Cette section distingue les projets que je porte directement dans le cadre de ma thèse et les projets collaboratifs auxquels je contribue.
+        </p>
+
+        <div class="filter-controls" aria-label="Filtres des projets en cours">
+          <button class="filter-button active" type="button" data-filter="all">Tous</button>
+          <button class="filter-button" type="button" data-filter="principal">Projets principaux</button>
+          <button class="filter-button" type="button" data-filter="collaboration">Collaborations</button>
+        </div>
+
+        <div class="project-grid">
+          <article class="project-card filter-item" data-category="principal">
+            <div class="project-meta">
+              <span class="project-badge">Projet principal</span>
+              <span class="project-status">En cours</span>
+            </div>
+            <h3>Olfaction et perception spatio-temporelle</h3>
+            <p>
+              Étude expérimentale visant à examiner comment les odeurs peuvent moduler la perception de la durée, de la distance ou de la synchronie dans des contextes visuels et auditifs.
+            </p>
+            <p class="project-role">
+              <strong>Rôle :</strong> conception du protocole, programmation expérimentale, collecte des données, analyses et rédaction.
+            </p>
+          </article>
+
+          <article class="project-card filter-item" data-category="principal">
+            <div class="project-meta">
+              <span class="project-badge">Projet principal</span>
+              <span class="project-status">Préparation</span>
+            </div>
+            <h3>Correspondances multisensorielles entre odeurs, sons et images</h3>
+            <p>
+              Projet visant à caractériser les associations perceptives entre stimuli olfactifs, auditifs et visuels, avec un intérêt particulier pour les dimensions spatiales et temporelles.
+            </p>
+            <p class="project-role">
+              <strong>Rôle :</strong> élaboration des hypothèses, sélection des stimuli, construction du paradigme et analyses.
+            </p>
+          </article>
+
+          <article class="project-card filter-item" data-category="collaboration">
+            <div class="project-meta">
+              <span class="project-badge secondary">Collaboration</span>
+              <span class="project-status">En cours</span>
+            </div>
+            <h3>Projet collaboratif sur la cognition olfactive</h3>
+            <p>
+              Projet mené en collaboration autour des mécanismes cognitifs impliqués dans le traitement des odeurs et leur interaction avec d'autres dimensions perceptives.
+            </p>
+            <p class="project-role">
+              <strong>Rôle :</strong> contribution aux analyses, discussion théorique et valorisation scientifique.
+            </p>
+          </article>
+
+          <article class="project-card filter-item" data-category="collaboration">
+            <div class="project-meta">
+              <span class="project-badge secondary">Collaboration</span>
+              <span class="project-status">Analyse en cours</span>
+            </div>
+            <h3>Collaborations méthodologiques et expérimentales</h3>
+            <p>
+              Participation à des projets mobilisant des approches comportementales, psychophysiques ou physiologiques pour étudier les réponses aux stimuli sensoriels.
+            </p>
+            <p class="project-role">
+              <strong>Rôle :</strong> appui méthodologique, traitement de données, visualisation des résultats et échanges scientifiques.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="fr-methodes" class="reveal" data-section="methodes">
+        <div class="section-title">
+          <span>06</span>
           <h2>Méthodes</h2>
         </div>
 
@@ -1060,7 +1222,7 @@
 
       <section id="fr-publications" class="reveal" data-section="publications">
         <div class="section-title">
-          <span>06</span>
+          <span>07</span>
           <h2>Publications</h2>
         </div>
 
@@ -1087,7 +1249,7 @@
 
       <section id="fr-communications" class="reveal" data-section="communications">
         <div class="section-title">
-          <span>07</span>
+          <span>08</span>
           <h2>Communications scientifiques</h2>
         </div>
 
@@ -1117,7 +1279,7 @@
 
       <section id="fr-cv" class="reveal" data-section="cv">
         <div class="section-title">
-          <span>08</span>
+          <span>09</span>
           <h2>CV</h2>
         </div>
 
@@ -1134,7 +1296,7 @@
 
       <section id="fr-contact" class="reveal" data-section="contact">
         <div class="section-title">
-          <span>09</span>
+          <span>10</span>
           <h2>Contact</h2>
         </div>
 
@@ -1193,6 +1355,7 @@
           <div class="buttons">
             <a class="button primary" href="#en-thesis">Explore the thesis</a>
             <a class="button" href="#en-team">Research team</a>
+            <a class="button" href="#en-projects">Current projects</a>
             <a class="button" href="#en-communications">Communications</a>
             <a class="button cv-button" href="https://lucper01.github.io/Portfolio/assets/CV_PerroquinLuc_en.pdf" target="_blank" rel="noopener noreferrer">Download CV</a>
             <a class="button" href="#en-contact">Contact</a>
@@ -1225,6 +1388,7 @@
           <a href="#en-thesis" data-section-key="these">Thesis</a>
           <a href="#en-axes" data-section-key="axes">Axes</a>
           <a href="#en-team" data-section-key="equipe">Team</a>
+          <a href="#en-projects" data-section-key="projets">Projects</a>
           <a href="#en-methods" data-section-key="methodes">Methods</a>
           <a href="#en-publications" data-section-key="publications">Publications</a>
           <a href="#en-communications" data-section-key="communications">Communications</a>
@@ -1311,9 +1475,84 @@
         </article>
       </section>
 
-      <section id="en-methods" class="reveal" data-section="methodes">
+      <section id="en-projects" class="reveal" data-section="projets">
         <div class="section-title">
           <span>05</span>
+          <h2>Current projects</h2>
+        </div>
+
+        <p class="lead">
+          This section distinguishes between projects I directly lead as part of my PhD work and collaborative projects to which I contribute.
+        </p>
+
+        <div class="filter-controls" aria-label="Current project filters">
+          <button class="filter-button active" type="button" data-filter="all">All</button>
+          <button class="filter-button" type="button" data-filter="principal">Main projects</button>
+          <button class="filter-button" type="button" data-filter="collaboration">Collaborations</button>
+        </div>
+
+        <div class="project-grid">
+          <article class="project-card filter-item" data-category="principal">
+            <div class="project-meta">
+              <span class="project-badge">Main project</span>
+              <span class="project-status">Ongoing</span>
+            </div>
+            <h3>Olfaction and spatio-temporal perception</h3>
+            <p>
+              Experimental study examining how odors may modulate perceived duration, distance, or synchrony in visual and auditory contexts.
+            </p>
+            <p class="project-role">
+              <strong>Role:</strong> experimental design, task programming, data collection, analyses, and writing.
+            </p>
+          </article>
+
+          <article class="project-card filter-item" data-category="principal">
+            <div class="project-meta">
+              <span class="project-badge">Main project</span>
+              <span class="project-status">Preparation</span>
+            </div>
+            <h3>Multisensory correspondences between odors, sounds, and images</h3>
+            <p>
+              Project aiming to characterize perceptual associations between olfactory, auditory, and visual stimuli, with a particular focus on spatial and temporal dimensions.
+            </p>
+            <p class="project-role">
+              <strong>Role:</strong> hypothesis development, stimulus selection, paradigm construction, and analyses.
+            </p>
+          </article>
+
+          <article class="project-card filter-item" data-category="collaboration">
+            <div class="project-meta">
+              <span class="project-badge secondary">Collaboration</span>
+              <span class="project-status">Ongoing</span>
+            </div>
+            <h3>Collaborative project on olfactory cognition</h3>
+            <p>
+              Collaborative project focusing on cognitive mechanisms involved in odor processing and their interaction with other perceptual dimensions.
+            </p>
+            <p class="project-role">
+              <strong>Role:</strong> contribution to analyses, theoretical discussion, and scientific dissemination.
+            </p>
+          </article>
+
+          <article class="project-card filter-item" data-category="collaboration">
+            <div class="project-meta">
+              <span class="project-badge secondary">Collaboration</span>
+              <span class="project-status">Analysis ongoing</span>
+            </div>
+            <h3>Methodological and experimental collaborations</h3>
+            <p>
+              Contribution to projects using behavioral, psychophysical, or physiological approaches to study responses to sensory stimuli.
+            </p>
+            <p class="project-role">
+              <strong>Role:</strong> methodological support, data processing, result visualization, and scientific discussion.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="en-methods" class="reveal" data-section="methodes">
+        <div class="section-title">
+          <span>06</span>
           <h2>Methods</h2>
         </div>
 
@@ -1343,7 +1582,7 @@
 
       <section id="en-publications" class="reveal" data-section="publications">
         <div class="section-title">
-          <span>06</span>
+          <span>07</span>
           <h2>Publications</h2>
         </div>
 
@@ -1370,7 +1609,7 @@
 
       <section id="en-communications" class="reveal" data-section="communications">
         <div class="section-title">
-          <span>07</span>
+          <span>08</span>
           <h2>Scientific communications</h2>
         </div>
 
@@ -1400,7 +1639,7 @@
 
       <section id="en-cv" class="reveal" data-section="cv">
         <div class="section-title">
-          <span>08</span>
+          <span>09</span>
           <h2>CV</h2>
         </div>
 
@@ -1417,7 +1656,7 @@
 
       <section id="en-contact" class="reveal" data-section="contact">
         <div class="section-title">
-          <span>09</span>
+          <span>10</span>
           <h2>Contact</h2>
         </div>
 
@@ -1490,6 +1729,7 @@
         these: "fr-these",
         axes: "fr-axes",
         equipe: "fr-equipe",
+        projets: "fr-projets",
         methodes: "fr-methodes",
         publications: "fr-publications",
         communications: "fr-communications",
@@ -1502,6 +1742,7 @@
         these: "en-thesis",
         axes: "en-axes",
         equipe: "en-team",
+        projets: "en-projects",
         methodes: "en-methods",
         publications: "en-publications",
         communications: "en-communications",
