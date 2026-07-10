@@ -98,10 +98,13 @@
       display: flex;
       gap: 8px;
       align-items: center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
     }
 
     .language-switch,
-    .theme-switch {
+    .theme-switch,
+    .share-switch {
       display: flex;
       gap: 6px;
       padding: 6px;
@@ -113,13 +116,15 @@
     }
 
     body.dark-mode .language-switch,
-    body.dark-mode .theme-switch {
+    body.dark-mode .theme-switch,
+    body.dark-mode .share-switch {
       background: rgba(7, 19, 15, 0.92);
       border-color: rgba(220, 238, 227, 0.18);
     }
 
     .language-switch button,
-    .theme-switch button {
+    .theme-switch button,
+    .share-switch button {
       border: 0;
       padding: 8px 12px;
       border-radius: 999px;
@@ -127,15 +132,18 @@
       color: #0b2f23;
       font-weight: 850;
       cursor: pointer;
+      white-space: nowrap;
     }
 
     body.dark-mode .language-switch button,
-    body.dark-mode .theme-switch button {
+    body.dark-mode .theme-switch button,
+    body.dark-mode .share-switch button {
       color: #dceee3;
     }
 
     .language-switch button.active,
-    .theme-switch button.active {
+    .theme-switch button.active,
+    .share-switch button.active {
       background: var(--green-main);
       color: #ffffff;
     }
@@ -213,43 +221,6 @@
       max-width: 760px;
       font-size: 1.12rem;
       color: rgba(255, 255, 255, 0.86);
-    }
-
-    .buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 30px;
-    }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 12px 18px;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.38);
-      color: #ffffff;
-      transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .button:hover {
-      transform: translateY(-2px);
-      text-decoration: none;
-      background: rgba(255, 255, 255, 0.10);
-    }
-
-    .button.primary {
-      background: #dceee3;
-      color: #0b2f23;
-      border-color: #dceee3;
-    }
-
-    .button.cv-button {
-      background: #ffffff;
-      color: #0b2f23;
-      border-color: #ffffff;
-      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.18);
     }
 
     .portrait-card {
@@ -966,7 +937,7 @@
     @media (max-width: 850px) {
       header {
         min-height: auto;
-        padding: 78px 7% 58px;
+        padding: 86px 7% 58px;
       }
 
       .hero,
@@ -1001,6 +972,7 @@
       .top-controls {
         top: 10px;
         right: 10px;
+        left: 10px;
       }
 
       .nav-inner {
@@ -1066,6 +1038,10 @@
     <div class="theme-switch" aria-label="Theme switcher">
       <button type="button" data-theme-toggle>Sombre</button>
     </div>
+
+    <div class="share-switch" aria-label="Share">
+      <button type="button" data-share-button>Partager</button>
+    </div>
   </div>
 
   <button class="back-to-top" type="button" aria-label="Retour en haut">↑</button>
@@ -1080,15 +1056,6 @@
           <p>
             Je suis Luc Perroquin, doctorant en psychologie cognitive. Mes recherches portent sur les relations spatio-temporelles entre olfaction, vision et audition, ainsi que sur l'influence des odeurs dans la construction perceptive de l'espace et du temps.
           </p>
-
-          <div class="buttons">
-            <a class="button primary" href="#fr-these">Découvrir la thèse</a>
-            <a class="button" href="#fr-equipe">Équipe de recherche</a>
-            <a class="button" href="#fr-projets">Travaux et projets</a>
-            <a class="button" href="#fr-communications">Communications</a>
-            <a class="button cv-button" href="https://lucper01.github.io/Portfolio/assets/CV_PerroquinLuc_fr.pdf" target="_blank" rel="noopener noreferrer">Télécharger le CV</a>
-            <a class="button" href="#fr-contact">Contact</a>
-          </div>
         </div>
 
         <aside class="portrait-card">
@@ -1468,15 +1435,6 @@
           <p>
             I am Luc Perroquin, a PhD student in cognitive psychology. My research focuses on spatio-temporal relations between olfaction, vision, and audition, as well as on the influence of odors in the perceptual construction of space and time.
           </p>
-
-          <div class="buttons">
-            <a class="button primary" href="#en-thesis">Explore the thesis</a>
-            <a class="button" href="#en-team">Research team</a>
-            <a class="button" href="#en-projects">Research projects</a>
-            <a class="button" href="#en-communications">Communications</a>
-            <a class="button cv-button" href="https://lucper01.github.io/Portfolio/assets/CV_PerroquinLuc_en.pdf" target="_blank" rel="noopener noreferrer">Download CV</a>
-            <a class="button" href="#en-contact">Contact</a>
-          </div>
         </div>
 
         <aside class="portrait-card">
@@ -1851,6 +1809,7 @@
     const languagePages = document.querySelectorAll(".site-content");
     const backToTopButton = document.querySelector(".back-to-top");
     const themeToggle = document.querySelector("[data-theme-toggle]");
+    const shareButton = document.querySelector("[data-share-button]");
     const metaDescription = document.getElementById("meta-description");
     const metaKeywords = document.getElementById("meta-keywords");
 
@@ -1858,12 +1817,16 @@
       fr: {
         title: "Luc Perroquin | Portfolio académique",
         description: "Portfolio académique de Luc Perroquin, doctorant en psychologie cognitive, consacré à l'intégration entre olfaction, vision et audition.",
-        keywords: "Olfaction, Vision, Audition, Perception multisensorielle"
+        keywords: "Olfaction, Vision, Audition, Perception multisensorielle",
+        shareLabel: "Partager",
+        copiedLabel: "Lien copié"
       },
       en: {
         title: "Luc Perroquin | Academic portfolio",
         description: "Academic portfolio of Luc Perroquin, PhD student in cognitive psychology, dedicated to the integration between olfaction, vision, and audition.",
-        keywords: "Olfaction, Vision, Audition, Multisensory perception"
+        keywords: "Olfaction, Vision, Audition, Multisensory perception",
+        shareLabel: "Share",
+        copiedLabel: "Link copied"
       }
     };
 
@@ -1898,6 +1861,7 @@
 
     let currentLanguage = "fr";
     let currentSectionKey = "top";
+    let shareTimeout = null;
 
     function revealVisibleElements() {
       const revealElements = document.querySelectorAll(".site-content:not([hidden]) .reveal");
@@ -1961,6 +1925,18 @@
       }
     }
 
+    function updateShareButtonLabel(labelType = "default") {
+      const metadata = pageMetadata[currentLanguage];
+
+      if (labelType === "copied") {
+        shareButton.textContent = metadata.copiedLabel;
+        shareButton.classList.add("active");
+      } else {
+        shareButton.textContent = metadata.shareLabel;
+        shareButton.classList.remove("active");
+      }
+    }
+
     function updatePageMetadata(language) {
       const metadata = pageMetadata[language];
 
@@ -1989,6 +1965,7 @@
       document.documentElement.lang = language;
       updatePageMetadata(language);
       updateThemeToggleLabel();
+      updateShareButtonLabel();
       localStorage.setItem("portfolio-language", language);
       closeMobileNavigation();
 
@@ -2026,6 +2003,58 @@
       });
     }
 
+    async function copyTextToClipboard(text) {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(text);
+        return;
+      }
+
+      const textArea = document.createElement("textarea");
+      textArea.value = text;
+      textArea.setAttribute("readonly", "");
+      textArea.style.position = "fixed";
+      textArea.style.top = "-9999px";
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand("copy");
+      document.body.removeChild(textArea);
+    }
+
+    async function sharePortfolio() {
+      const metadata = pageMetadata[currentLanguage];
+      const shareUrl = window.location.href.split("#")[0];
+
+      const shareData = {
+        title: metadata.title,
+        text: metadata.description,
+        url: shareUrl
+      };
+
+      try {
+        if (navigator.share) {
+          await navigator.share(shareData);
+        } else {
+          await copyTextToClipboard(shareUrl);
+          updateShareButtonLabel("copied");
+
+          window.clearTimeout(shareTimeout);
+          shareTimeout = window.setTimeout(() => {
+            updateShareButtonLabel();
+          }, 1800);
+        }
+      } catch (error) {
+        if (error.name !== "AbortError") {
+          await copyTextToClipboard(shareUrl);
+          updateShareButtonLabel("copied");
+
+          window.clearTimeout(shareTimeout);
+          shareTimeout = window.setTimeout(() => {
+            updateShareButtonLabel();
+          }, 1800);
+        }
+      }
+    }
+
     languageButtons.forEach((button) => {
       button.addEventListener("click", () => {
         setLanguage(button.dataset.switchLang, true);
@@ -2056,6 +2085,10 @@
     themeToggle.addEventListener("click", () => {
       const newTheme = document.body.classList.contains("dark-mode") ? "light" : "dark";
       setTheme(newTheme);
+    });
+
+    shareButton.addEventListener("click", () => {
+      sharePortfolio();
     });
 
     backToTopButton.addEventListener("click", () => {
