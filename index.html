@@ -117,7 +117,7 @@
       position: fixed;
       top: 18px;
       right: 18px;
-      z-index: 100;
+      z-index: 1000;
       display: flex;
       gap: 8px;
       align-items: center;
@@ -358,7 +358,7 @@
       position: fixed;
       right: 18px;
       top: 50%;
-      z-index: 18;
+      z-index: 900;
       transform: translateY(-50%);
       display: grid;
       gap: 6px;
@@ -758,6 +758,37 @@
       color: var(--green-dark);
     }
 
+    .project-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--green-main);
+      color: #ffffff;
+      font-size: 0.85rem;
+      font-weight: 850;
+      border: 1px solid var(--green-main);
+    }
+
+    .project-link:hover {
+      text-decoration: none;
+      background: #0b2f23;
+      color: #ffffff;
+    }
+
+    .project-link.disabled {
+      opacity: 0.55;
+      pointer-events: none;
+    }
+
     .training-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1046,7 +1077,26 @@
 
     @media (max-width: 1220px) {
       .side-progress {
-        display: none;
+        display: grid;
+        right: 10px;
+        top: 50%;
+        z-index: 900;
+        transform: translateY(-50%) scale(0.88);
+        transform-origin: right center;
+      }
+
+      .side-progress a {
+        min-width: auto;
+        grid-template-columns: 26px;
+        gap: 0;
+        padding: 7px;
+        font-size: 0;
+      }
+
+      .side-progress a span {
+        width: 26px;
+        height: 26px;
+        font-size: 0.72rem;
       }
     }
 
@@ -1346,6 +1396,13 @@
                       <li><strong>Datas :</strong> données pilotes et fichiers dérivés à ajouter lorsque la diffusion sera possible.</li>
                       <li><strong>Statut :</strong> pré-test terminé, analyses exploratoires réalisées.</li>
                     </ul>
+
+                    <div class="project-links">
+                      <a href="#" class="project-link disabled">Code à venir</a>
+                      <a href="#" class="project-link disabled">Datas à venir</a>
+                      <a href="#" class="project-link disabled">Protocole à venir</a>
+                      <a href="#" class="project-link disabled">Support à venir</a>
+                    </div>
                   </div>
                 </details>
               </article>
@@ -1374,6 +1431,13 @@
                       <li><strong>Datas :</strong> données à ajouter après collecte et préparation.</li>
                       <li><strong>Statut :</strong> manipulation à débuter.</li>
                     </ul>
+
+                    <div class="project-links">
+                      <a href="#" class="project-link disabled">Code à venir</a>
+                      <a href="#" class="project-link disabled">Datas à venir</a>
+                      <a href="#" class="project-link disabled">Protocole à venir</a>
+                      <a href="#" class="project-link disabled">Support à venir</a>
+                    </div>
                   </div>
                 </details>
               </article>
@@ -1412,6 +1476,13 @@
                       <li><strong>Datas :</strong> données pilotes et fichiers dérivés à ajouter lorsque la diffusion sera possible.</li>
                       <li><strong>Statut :</strong> pré-test terminé, analyses exploratoires réalisées.</li>
                     </ul>
+
+                    <div class="project-links">
+                      <a href="#" class="project-link disabled">Code à venir</a>
+                      <a href="#" class="project-link disabled">Datas à venir</a>
+                      <a href="#" class="project-link disabled">Protocole à venir</a>
+                      <a href="#" class="project-link disabled">Support à venir</a>
+                    </div>
                   </div>
                 </details>
               </article>
@@ -1440,6 +1511,13 @@
                       <li><strong>Datas :</strong> données à ajouter après collecte, nettoyage et anonymisation.</li>
                       <li><strong>Statut :</strong> manipulation à venir.</li>
                     </ul>
+
+                    <div class="project-links">
+                      <a href="#" class="project-link disabled">Code à venir</a>
+                      <a href="#" class="project-link disabled">Datas à venir</a>
+                      <a href="#" class="project-link disabled">Protocole à venir</a>
+                      <a href="#" class="project-link disabled">Support à venir</a>
+                    </div>
                   </div>
                 </details>
               </article>
@@ -1478,6 +1556,13 @@
                 <li><strong>Datas :</strong> données EEG et comportementales à ajouter lorsque leur diffusion sera possible.</li>
                 <li><strong>Statut :</strong> projet collaboratif en cours.</li>
               </ul>
+
+              <div class="project-links">
+                <a href="#" class="project-link disabled">Code à venir</a>
+                <a href="#" class="project-link disabled">Datas à venir</a>
+                <a href="#" class="project-link disabled">Protocole à venir</a>
+                <a href="#" class="project-link disabled">Support à venir</a>
+              </div>
             </div>
           </details>
         </article>
@@ -1508,10 +1593,7 @@
             </div>
             <h3>Poursuite de carrière</h3>
             <p>
-              <strong>Enseignement</strong><br />
-              01 octobre 2025 - 30 avril 2026<br />
-              Université Bourgogne Europe, Dijon<br />
-              Heures enregistrées par : Environnements Santé.
+              <strong>Enseignement</strong>
             </p>
           </article>
 
@@ -1521,9 +1603,7 @@
             </div>
             <h3>Culture scientifique internationale et valorisation</h3>
             <p>
-              <strong>Introduction à l'intelligence économique</strong><br />
-              27 janvier 2026<br />
-              Institut Agro Dijon, Tour Déméter, Amphithéâtre Pisani.
+              <strong>Introduction à l'intelligence économique</strong>
             </p>
           </article>
 
@@ -1533,9 +1613,7 @@
             </div>
             <h3>Éthique de la recherche et intégrité scientifique</h3>
             <p>
-              <strong>Conférence : intégrité scientifique et déontologie</strong><br />
-              30 juin 2026<br />
-              Université Bourgogne Europe, MSH, Amphithéâtre RDC.
+              <strong>Conférence : intégrité scientifique et déontologie</strong>
             </p>
           </article>
 
@@ -1545,9 +1623,7 @@
             </div>
             <h3>Formations documentaires</h3>
             <p>
-              <strong>Zotero : gérer ses références bibliographiques, niveau initiation/intermédiaire</strong><br />
-              12 mars 2026<br />
-              Université Bourgogne Europe, BU Le Cortex, Salle Phosphore.
+              <strong>Zotero : gérer ses références bibliographiques, niveau initiation/intermédiaire</strong>
             </p>
           </article>
 
@@ -1557,9 +1633,7 @@
             </div>
             <h3>Connaissances et outils d'enseignement</h3>
             <p>
-              <strong>Apprendre à enseigner à l'université, niveau 1</strong><br />
-              08 janvier 2026 - 13 février 2026<br />
-              Université Bourgogne Europe, MSH, Salle des séminaires RDC.
+              <strong>Apprendre à enseigner à l'université, niveau 1</strong>
             </p>
           </article>
 
@@ -1569,10 +1643,7 @@
             </div>
             <h3>Connaissances et outils d'enseignement</h3>
             <p>
-              <strong>IA et Éducation</strong><br />
-              29 avril 2026<br />
-              Université Bourgogne Europe, MSH, Salle des conseils RDC.<br />
-              Objectif : conforter la culture scientifique des doctorants dans leur champ disciplinaire ou en interdisciplinaire.
+              <strong>IA et Éducation</strong>
             </p>
           </article>
         </div>
@@ -1895,6 +1966,13 @@
                       <li><strong>Data:</strong> pilot data and derived files to be added when dissemination becomes possible.</li>
                       <li><strong>Status:</strong> completed pre-test, exploratory analyses completed.</li>
                     </ul>
+
+                    <div class="project-links">
+                      <a href="#" class="project-link disabled">Code pending</a>
+                      <a href="#" class="project-link disabled">Data pending</a>
+                      <a href="#" class="project-link disabled">Protocol pending</a>
+                      <a href="#" class="project-link disabled">Support pending</a>
+                    </div>
                   </div>
                 </details>
               </article>
@@ -1923,6 +2001,13 @@
                       <li><strong>Data:</strong> data to be added after collection and preparation.</li>
                       <li><strong>Status:</strong> upcoming experiment.</li>
                     </ul>
+
+                    <div class="project-links">
+                      <a href="#" class="project-link disabled">Code pending</a>
+                      <a href="#" class="project-link disabled">Data pending</a>
+                      <a href="#" class="project-link disabled">Protocol pending</a>
+                      <a href="#" class="project-link disabled">Support pending</a>
+                    </div>
                   </div>
                 </details>
               </article>
@@ -1961,6 +2046,13 @@
                       <li><strong>Data:</strong> pilot data and derived files to be added when dissemination becomes possible.</li>
                       <li><strong>Status:</strong> completed pre-test, exploratory analyses completed.</li>
                     </ul>
+
+                    <div class="project-links">
+                      <a href="#" class="project-link disabled">Code pending</a>
+                      <a href="#" class="project-link disabled">Data pending</a>
+                      <a href="#" class="project-link disabled">Protocol pending</a>
+                      <a href="#" class="project-link disabled">Support pending</a>
+                    </div>
                   </div>
                 </details>
               </article>
@@ -1989,6 +2081,13 @@
                       <li><strong>Data:</strong> data to be added after collection, cleaning, and anonymization.</li>
                       <li><strong>Status:</strong> upcoming experiment.</li>
                     </ul>
+
+                    <div class="project-links">
+                      <a href="#" class="project-link disabled">Code pending</a>
+                      <a href="#" class="project-link disabled">Data pending</a>
+                      <a href="#" class="project-link disabled">Protocol pending</a>
+                      <a href="#" class="project-link disabled">Support pending</a>
+                    </div>
                   </div>
                 </details>
               </article>
@@ -2027,6 +2126,13 @@
                 <li><strong>Data:</strong> EEG and behavioral data to be added when dissemination becomes possible.</li>
                 <li><strong>Status:</strong> ongoing collaborative project.</li>
               </ul>
+
+              <div class="project-links">
+                <a href="#" class="project-link disabled">Code pending</a>
+                <a href="#" class="project-link disabled">Data pending</a>
+                <a href="#" class="project-link disabled">Protocol pending</a>
+                <a href="#" class="project-link disabled">Support pending</a>
+              </div>
             </div>
           </details>
         </article>
@@ -2057,10 +2163,7 @@
             </div>
             <h3>Career development</h3>
             <p>
-              <strong>Teaching</strong><br />
-              1 October 2025 - 30 April 2026<br />
-              Université Bourgogne Europe, Dijon<br />
-              Hours recorded by: Environnements Santé.
+              <strong>Teaching</strong>
             </p>
           </article>
 
@@ -2070,9 +2173,7 @@
             </div>
             <h3>International scientific culture and valorization</h3>
             <p>
-              <strong>Introduction to economic intelligence</strong><br />
-              27 January 2026<br />
-              Institut Agro Dijon, Tour Déméter, Amphithéâtre Pisani.
+              <strong>Introduction to economic intelligence</strong>
             </p>
           </article>
 
@@ -2082,9 +2183,7 @@
             </div>
             <h3>Research ethics and scientific integrity</h3>
             <p>
-              <strong>Conference: scientific integrity and professional ethics</strong><br />
-              30 June 2026<br />
-              Université Bourgogne Europe, MSH, Amphithéâtre RDC.
+              <strong>Conference: scientific integrity and professional ethics</strong>
             </p>
           </article>
 
@@ -2094,9 +2193,7 @@
             </div>
             <h3>Documentary training</h3>
             <p>
-              <strong>Zotero: managing bibliographic references, beginner/intermediate level</strong><br />
-              12 March 2026<br />
-              Université Bourgogne Europe, BU Le Cortex, Salle Phosphore.
+              <strong>Zotero: managing bibliographic references, beginner/intermediate level</strong>
             </p>
           </article>
 
@@ -2106,9 +2203,7 @@
             </div>
             <h3>Teaching knowledge and tools</h3>
             <p>
-              <strong>Learning to teach at university, level 1</strong><br />
-              8 January 2026 - 13 February 2026<br />
-              Université Bourgogne Europe, MSH, Salle des séminaires RDC.
+              <strong>Learning to teach at university, level 1</strong>
             </p>
           </article>
 
@@ -2118,10 +2213,7 @@
             </div>
             <h3>Teaching knowledge and tools</h3>
             <p>
-              <strong>AI and Education</strong><br />
-              29 April 2026<br />
-              Université Bourgogne Europe, MSH, Salle des conseils RDC.<br />
-              Objective: strengthen doctoral students' scientific culture in their disciplinary or interdisciplinary field.
+              <strong>AI and Education</strong>
             </p>
           </article>
         </div>
