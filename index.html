@@ -383,7 +383,7 @@
       grid-template-columns: 30px 1fr;
       align-items: center;
       gap: 8px;
-      min-width: 152px;
+      min-width: 160px;
       padding: 7px 10px;
       border-radius: 999px;
       color: var(--muted);
@@ -500,6 +500,8 @@
     .team-card,
     .axis-card,
     .project-card,
+    .training-card,
+    .training-summary,
     .cv-card,
     .publication-list li,
     .contact-box {
@@ -507,7 +509,8 @@
     }
 
     .team-card,
-    .axis-card {
+    .axis-card,
+    .training-summary {
       padding: 32px;
       border-radius: 28px;
       background:
@@ -518,7 +521,8 @@
     }
 
     body.dark-mode .team-card,
-    body.dark-mode .axis-card {
+    body.dark-mode .axis-card,
+    body.dark-mode .training-summary {
       background:
         radial-gradient(circle at top right, rgba(119, 184, 146, 0.16), transparent 34%),
         rgba(16, 37, 28, 0.88);
@@ -528,6 +532,8 @@
     .team-card:hover,
     .axis-card:hover,
     .project-card:hover,
+    .training-card:hover,
+    .training-summary:hover,
     .cv-card:hover,
     .publication-list li:hover {
       transform: translateY(-3px);
@@ -535,13 +541,16 @@
     }
 
     .team-card p,
-    .axis-card p {
+    .axis-card p,
+    .training-card p,
+    .training-summary p {
       color: var(--muted);
       margin-bottom: 0;
     }
 
     .team-kicker,
     .axis-kicker,
+    .training-kicker,
     .publication-type {
       display: inline-flex;
       align-items: center;
@@ -559,6 +568,7 @@
 
     body.dark-mode .team-kicker,
     body.dark-mode .axis-kicker,
+    body.dark-mode .training-kicker,
     body.dark-mode .publication-type {
       background: rgba(119, 184, 146, 0.18);
       color: #dceee3;
@@ -603,7 +613,8 @@
       margin-top: 22px;
     }
 
-    .project-card {
+    .project-card,
+    .training-card {
       padding: 26px;
       border-radius: 24px;
       background: rgba(255, 255, 255, 0.90);
@@ -611,12 +622,14 @@
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
-    body.dark-mode .project-card {
+    body.dark-mode .project-card,
+    body.dark-mode .training-card {
       background: rgba(16, 37, 28, 0.88);
       border-color: rgba(220, 238, 227, 0.12);
     }
 
-    .project-card h3 {
+    .project-card h3,
+    .training-card h3 {
       margin-bottom: 10px;
     }
 
@@ -624,7 +637,8 @@
       color: var(--muted);
     }
 
-    .project-meta {
+    .project-meta,
+    .training-meta {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
@@ -632,7 +646,8 @@
     }
 
     .project-badge,
-    .project-status {
+    .project-status,
+    .training-hours {
       display: inline-flex;
       align-items: center;
       width: fit-content;
@@ -644,7 +659,8 @@
       text-transform: uppercase;
     }
 
-    .project-badge {
+    .project-badge,
+    .training-hours {
       color: #ffffff;
       background: var(--green-main);
     }
@@ -680,6 +696,89 @@
 
     .project-role strong {
       color: var(--green-dark);
+    }
+
+    .project-details {
+      margin-top: 18px;
+    }
+
+    .project-details summary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: fit-content;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: var(--green-main);
+      color: #ffffff;
+      font-weight: 850;
+      cursor: pointer;
+      list-style: none;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .project-details summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .project-details summary:hover {
+      transform: translateY(-2px);
+      background: #0b2f23;
+    }
+
+    body.dark-mode .project-details summary:hover {
+      background: #dceee3;
+      color: #0b2f23;
+    }
+
+    .project-details-content {
+      margin-top: 14px;
+      padding: 18px;
+      border-radius: 18px;
+      background: var(--green-pale);
+      border: 1px solid rgba(11, 47, 35, 0.10);
+    }
+
+    body.dark-mode .project-details-content {
+      background: rgba(119, 184, 146, 0.10);
+      border-color: rgba(220, 238, 227, 0.12);
+    }
+
+    .project-details-content ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    .project-details-content li {
+      margin-bottom: 8px;
+    }
+
+    .project-details-content strong {
+      color: var(--green-dark);
+    }
+
+    .training-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 22px;
+    }
+
+    .training-total {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .training-total span {
+      display: inline-flex;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: var(--green-main);
+      color: #ffffff;
+      font-weight: 850;
     }
 
     .tags {
@@ -784,6 +883,7 @@
         var(--white);
       border: 1px solid rgba(11, 47, 35, 0.1);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: var(--shadow-soft);
     }
 
     body.dark-mode .cv-card {
@@ -958,7 +1058,8 @@
 
       .hero,
       .section-title,
-      .axis-projects {
+      .axis-projects,
+      .training-grid {
         grid-template-columns: 1fr;
       }
 
@@ -1118,6 +1219,7 @@
           <a href="#fr-these" data-section-key="these">Thèse</a>
           <a href="#fr-axes" data-section-key="axes">Axes</a>
           <a href="#fr-side" data-section-key="side">Projet parallèle</a>
+          <a href="#fr-formations" data-section-key="formations">Formations</a>
           <a href="#fr-publications" data-section-key="publications">Publications</a>
           <a href="#fr-communications" data-section-key="communications">Communications</a>
           <a href="#fr-cv" data-section-key="cv">CV</a>
@@ -1132,10 +1234,11 @@
       <a href="#fr-these" data-section-key="these"><span>03</span> Thèse</a>
       <a href="#fr-axes" data-section-key="axes"><span>04</span> Axes</a>
       <a href="#fr-side" data-section-key="side"><span>05</span> Projet parallèle</a>
-      <a href="#fr-publications" data-section-key="publications"><span>06</span> Publications</a>
-      <a href="#fr-communications" data-section-key="communications"><span>07</span> Communications</a>
-      <a href="#fr-cv" data-section-key="cv"><span>08</span> CV</a>
-      <a href="#fr-contact" data-section-key="contact"><span>09</span> Contact</a>
+      <a href="#fr-formations" data-section-key="formations"><span>06</span> Formations</a>
+      <a href="#fr-publications" data-section-key="publications"><span>07</span> Publications</a>
+      <a href="#fr-communications" data-section-key="communications"><span>08</span> Communications</a>
+      <a href="#fr-cv" data-section-key="cv"><span>09</span> CV</a>
+      <a href="#fr-contact" data-section-key="contact"><span>10</span> Contact</a>
     </aside>
 
     <main>
@@ -1231,6 +1334,20 @@
                 <p class="project-role">
                   <strong>Rôle dans le projet :</strong> portage principal du pré-test, avec préparation du protocole, passation pilote et analyses exploratoires.
                 </p>
+
+                <details class="project-details">
+                  <summary>Voir le projet</summary>
+                  <div class="project-details-content">
+                    <ul>
+                      <li><strong>Objectif :</strong> tester l'effet des durées visuelles et auditives sur la fenêtre d'intégration temporelle.</li>
+                      <li><strong>Paradigme :</strong> tâche comportementale de jugement temporel intermodal.</li>
+                      <li><strong>Supports :</strong> protocole, matériel expérimental et supports de présentation à ajouter.</li>
+                      <li><strong>Scripts :</strong> scripts d'expérience et d'analyse à ajouter.</li>
+                      <li><strong>Datas :</strong> données pilotes et fichiers dérivés à ajouter lorsque la diffusion sera possible.</li>
+                      <li><strong>Statut :</strong> pré-test terminé, analyses exploratoires réalisées.</li>
+                    </ul>
+                  </div>
+                </details>
               </article>
 
               <article class="project-card filter-item" data-category="axe-1 a-debuter">
@@ -1245,6 +1362,20 @@
                 <p class="project-role">
                   <strong>Rôle dans le projet :</strong> portage principal de la manipulation, avec conception du paradigme, programmation expérimentale, passation et analyses à venir.
                 </p>
+
+                <details class="project-details">
+                  <summary>Voir le projet</summary>
+                  <div class="project-details-content">
+                    <ul>
+                      <li><strong>Objectif :</strong> étudier la détection de durées de stimuli dans une perspective de perception temporelle.</li>
+                      <li><strong>Paradigme :</strong> tâche de détection ou de jugement de durée à formaliser.</li>
+                      <li><strong>Supports :</strong> protocole, consignes et matériel expérimental à ajouter.</li>
+                      <li><strong>Scripts :</strong> script de passation et scripts d'analyse à ajouter.</li>
+                      <li><strong>Datas :</strong> données à ajouter après collecte et préparation.</li>
+                      <li><strong>Statut :</strong> manipulation à débuter.</li>
+                    </ul>
+                  </div>
+                </details>
               </article>
             </div>
           </article>
@@ -1269,6 +1400,20 @@
                 <p class="project-role">
                   <strong>Rôle dans le projet :</strong> portage principal du pré-test, avec préparation du protocole, passation pilote et analyses exploratoires.
                 </p>
+
+                <details class="project-details">
+                  <summary>Voir le projet</summary>
+                  <div class="project-details-content">
+                    <ul>
+                      <li><strong>Objectif :</strong> tester la logique expérimentale d'un paradigme de boundary extension.</li>
+                      <li><strong>Paradigme :</strong> tâche de mémoire visuelle et de reconstruction perceptive de scènes.</li>
+                      <li><strong>Supports :</strong> protocole, stimuli visuels et supports de présentation à ajouter.</li>
+                      <li><strong>Scripts :</strong> scripts de passation et scripts d'analyse à ajouter.</li>
+                      <li><strong>Datas :</strong> données pilotes et fichiers dérivés à ajouter lorsque la diffusion sera possible.</li>
+                      <li><strong>Statut :</strong> pré-test terminé, analyses exploratoires réalisées.</li>
+                    </ul>
+                  </div>
+                </details>
               </article>
 
               <article class="project-card filter-item" data-category="axe-2 a-debuter">
@@ -1283,6 +1428,20 @@
                 <p class="project-role">
                   <strong>Rôle dans le projet :</strong> portage principal de la manipulation, avec préparation du protocole, intégration des odeurs, passation et analyses à venir.
                 </p>
+
+                <details class="project-details">
+                  <summary>Voir le projet</summary>
+                  <div class="project-details-content">
+                    <ul>
+                      <li><strong>Objectif :</strong> étudier l'influence d'un contexte odorisé sur le boundary extension.</li>
+                      <li><strong>Paradigme :</strong> adaptation odorisée d'une tâche de mémoire visuelle de scènes.</li>
+                      <li><strong>Supports :</strong> protocole, stimuli visuels, stimuli olfactifs et supports de passation à ajouter.</li>
+                      <li><strong>Scripts :</strong> script expérimental et scripts d'analyse à ajouter.</li>
+                      <li><strong>Datas :</strong> données à ajouter après collecte, nettoyage et anonymisation.</li>
+                      <li><strong>Statut :</strong> manipulation à venir.</li>
+                    </ul>
+                  </div>
+                </details>
               </article>
             </div>
           </article>
@@ -1307,12 +1466,121 @@
           <p class="project-role">
             <strong>Rôle dans le projet :</strong> contribution scientifique et méthodologique à un projet mené en collaboration, en lien avec la problématique multisensorielle.
           </p>
+
+          <details class="project-details">
+            <summary>Voir le projet</summary>
+            <div class="project-details-content">
+              <ul>
+                <li><strong>Objectif :</strong> explorer le paradoxe intermodal musique-odeur et ses réponses neurophysiologiques.</li>
+                <li><strong>Paradigme :</strong> projet collaboratif associant stimuli auditifs, stimuli olfactifs et mesures EEG.</li>
+                <li><strong>Supports :</strong> protocole, matériel de stimulation et supports de valorisation à ajouter.</li>
+                <li><strong>Scripts :</strong> scripts de traitement EEG et d'analyse comportementale à ajouter.</li>
+                <li><strong>Datas :</strong> données EEG et comportementales à ajouter lorsque leur diffusion sera possible.</li>
+                <li><strong>Statut :</strong> projet collaboratif en cours.</li>
+              </ul>
+            </div>
+          </details>
         </article>
+      </section>
+
+      <section id="fr-formations" class="reveal" data-section="formations">
+        <div class="section-title">
+          <span>06</span>
+          <h2>Formations doctorales</h2>
+        </div>
+
+        <article class="training-summary">
+          <span class="training-kicker">Parcours doctoral</span>
+          <h3>Total participation</h3>
+          <p>
+            Formations suivies dans le cadre du parcours doctoral, réparties entre poursuite de carrière, valorisation, intégrité scientifique, documentation et enseignement.
+          </p>
+          <div class="training-total">
+            <span>60 heures</span>
+            <span>6 modules</span>
+          </div>
+        </article>
+
+        <div class="training-grid">
+          <article class="training-card">
+            <div class="training-meta">
+              <span class="training-hours">27.5 h</span>
+            </div>
+            <h3>Poursuite de carrière</h3>
+            <p>
+              <strong>Enseignement</strong><br />
+              01 octobre 2025 - 30 avril 2026<br />
+              Université Bourgogne Europe, Dijon<br />
+              Heures enregistrées par : Environnements Santé.
+            </p>
+          </article>
+
+          <article class="training-card">
+            <div class="training-meta">
+              <span class="training-hours">4 h</span>
+            </div>
+            <h3>Culture scientifique internationale et valorisation</h3>
+            <p>
+              <strong>Introduction à l'intelligence économique</strong><br />
+              27 janvier 2026<br />
+              Institut Agro Dijon, Tour Déméter, Amphithéâtre Pisani.
+            </p>
+          </article>
+
+          <article class="training-card">
+            <div class="training-meta">
+              <span class="training-hours">3 h</span>
+            </div>
+            <h3>Éthique de la recherche et intégrité scientifique</h3>
+            <p>
+              <strong>Conférence : intégrité scientifique et déontologie</strong><br />
+              30 juin 2026<br />
+              Université Bourgogne Europe, MSH, Amphithéâtre RDC.
+            </p>
+          </article>
+
+          <article class="training-card">
+            <div class="training-meta">
+              <span class="training-hours">3 h</span>
+            </div>
+            <h3>Formations documentaires</h3>
+            <p>
+              <strong>Zotero : gérer ses références bibliographiques, niveau initiation/intermédiaire</strong><br />
+              12 mars 2026<br />
+              Université Bourgogne Europe, BU Le Cortex, Salle Phosphore.
+            </p>
+          </article>
+
+          <article class="training-card">
+            <div class="training-meta">
+              <span class="training-hours">17.5 h</span>
+            </div>
+            <h3>Connaissances et outils d'enseignement</h3>
+            <p>
+              <strong>Apprendre à enseigner à l'université, niveau 1</strong><br />
+              08 janvier 2026 - 13 février 2026<br />
+              Université Bourgogne Europe, MSH, Salle des séminaires RDC.
+            </p>
+          </article>
+
+          <article class="training-card">
+            <div class="training-meta">
+              <span class="training-hours">5 h</span>
+            </div>
+            <h3>Connaissances et outils d'enseignement</h3>
+            <p>
+              <strong>IA et Éducation</strong><br />
+              29 avril 2026<br />
+              Université Bourgogne Europe, MSH, Salle des conseils RDC.<br />
+              Objectif : conforter la culture scientifique des doctorants dans leur champ disciplinaire ou en interdisciplinaire.
+            </p>
+          </article>
+        </div>
       </section>
 
       <section id="fr-publications" class="reveal" data-section="publications">
         <div class="section-title">
-          <span>06</span>
+          <span>07</span>
           <h2>Publications</h2>
         </div>
 
@@ -1351,7 +1619,7 @@
 
       <section id="fr-communications" class="reveal" data-section="communications">
         <div class="section-title">
-          <span>07</span>
+          <span>08</span>
           <h2>Communications scientifiques</h2>
         </div>
 
@@ -1390,7 +1658,7 @@
 
       <section id="fr-cv" class="reveal" data-section="cv">
         <div class="section-title">
-          <span>08</span>
+          <span>09</span>
           <h2>CV</h2>
         </div>
 
@@ -1407,7 +1675,7 @@
 
       <section id="fr-contact" class="reveal" data-section="contact">
         <div class="section-title">
-          <span>09</span>
+          <span>10</span>
           <h2>Contact</h2>
         </div>
 
@@ -1500,6 +1768,7 @@
           <a href="#en-thesis" data-section-key="these">Thesis</a>
           <a href="#en-axes" data-section-key="axes">Axes</a>
           <a href="#en-side" data-section-key="side">Side project</a>
+          <a href="#en-training" data-section-key="formations">Training</a>
           <a href="#en-publications" data-section-key="publications">Publications</a>
           <a href="#en-communications" data-section-key="communications">Communications</a>
           <a href="#en-cv" data-section-key="cv">CV</a>
@@ -1514,10 +1783,11 @@
       <a href="#en-thesis" data-section-key="these"><span>03</span> Thesis</a>
       <a href="#en-axes" data-section-key="axes"><span>04</span> Axes</a>
       <a href="#en-side" data-section-key="side"><span>05</span> Side project</a>
-      <a href="#en-publications" data-section-key="publications"><span>06</span> Publications</a>
-      <a href="#en-communications" data-section-key="communications"><span>07</span> Communications</a>
-      <a href="#en-cv" data-section-key="cv"><span>08</span> CV</a>
-      <a href="#en-contact" data-section-key="contact"><span>09</span> Contact</a>
+      <a href="#en-training" data-section-key="formations"><span>06</span> Training</a>
+      <a href="#en-publications" data-section-key="publications"><span>07</span> Publications</a>
+      <a href="#en-communications" data-section-key="communications"><span>08</span> Communications</a>
+      <a href="#en-cv" data-section-key="cv"><span>09</span> CV</a>
+      <a href="#en-contact" data-section-key="contact"><span>10</span> Contact</a>
     </aside>
 
     <main>
@@ -1613,6 +1883,20 @@
                 <p class="project-role">
                   <strong>Project role:</strong> main lead of the pre-test, including protocol preparation, pilot testing, and exploratory analyses.
                 </p>
+
+                <details class="project-details">
+                  <summary>View project</summary>
+                  <div class="project-details-content">
+                    <ul>
+                      <li><strong>Objective:</strong> test the effect of visual and auditory stimulus durations on the temporal binding window.</li>
+                      <li><strong>Paradigm:</strong> behavioral task based on intermodal temporal judgment.</li>
+                      <li><strong>Materials:</strong> protocol, experimental material, and presentation materials to be added.</li>
+                      <li><strong>Scripts:</strong> experimental and analysis scripts to be added.</li>
+                      <li><strong>Data:</strong> pilot data and derived files to be added when dissemination becomes possible.</li>
+                      <li><strong>Status:</strong> completed pre-test, exploratory analyses completed.</li>
+                    </ul>
+                  </div>
+                </details>
               </article>
 
               <article class="project-card filter-item" data-category="axe-1 a-debuter">
@@ -1627,6 +1911,20 @@
                 <p class="project-role">
                   <strong>Project role:</strong> main lead of the experiment, including paradigm design, task programming, data collection, and upcoming analyses.
                 </p>
+
+                <details class="project-details">
+                  <summary>View project</summary>
+                  <div class="project-details-content">
+                    <ul>
+                      <li><strong>Objective:</strong> study the detection of stimulus durations within temporal perception research.</li>
+                      <li><strong>Paradigm:</strong> duration detection or duration judgment task to be finalized.</li>
+                      <li><strong>Materials:</strong> protocol, instructions, and experimental material to be added.</li>
+                      <li><strong>Scripts:</strong> task script and analysis scripts to be added.</li>
+                      <li><strong>Data:</strong> data to be added after collection and preparation.</li>
+                      <li><strong>Status:</strong> upcoming experiment.</li>
+                    </ul>
+                  </div>
+                </details>
               </article>
             </div>
           </article>
@@ -1651,6 +1949,20 @@
                 <p class="project-role">
                   <strong>Project role:</strong> main lead of the pre-test, including protocol preparation, pilot testing, and exploratory analyses.
                 </p>
+
+                <details class="project-details">
+                  <summary>View project</summary>
+                  <div class="project-details-content">
+                    <ul>
+                      <li><strong>Objective:</strong> test the experimental logic of a boundary extension paradigm.</li>
+                      <li><strong>Paradigm:</strong> visual memory task focused on perceptual reconstruction of scenes.</li>
+                      <li><strong>Materials:</strong> protocol, visual stimuli, and presentation materials to be added.</li>
+                      <li><strong>Scripts:</strong> task scripts and analysis scripts to be added.</li>
+                      <li><strong>Data:</strong> pilot data and derived files to be added when dissemination becomes possible.</li>
+                      <li><strong>Status:</strong> completed pre-test, exploratory analyses completed.</li>
+                    </ul>
+                  </div>
+                </details>
               </article>
 
               <article class="project-card filter-item" data-category="axe-2 a-debuter">
@@ -1665,6 +1977,20 @@
                 <p class="project-role">
                   <strong>Project role:</strong> main lead of the experiment, including protocol preparation, odor integration, data collection, and upcoming analyses.
                 </p>
+
+                <details class="project-details">
+                  <summary>View project</summary>
+                  <div class="project-details-content">
+                    <ul>
+                      <li><strong>Objective:</strong> study the influence of an odorized context on boundary extension.</li>
+                      <li><strong>Paradigm:</strong> odorized adaptation of a visual memory task using scenes.</li>
+                      <li><strong>Materials:</strong> protocol, visual stimuli, olfactory stimuli, and experimental materials to be added.</li>
+                      <li><strong>Scripts:</strong> experimental script and analysis scripts to be added.</li>
+                      <li><strong>Data:</strong> data to be added after collection, cleaning, and anonymization.</li>
+                      <li><strong>Status:</strong> upcoming experiment.</li>
+                    </ul>
+                  </div>
+                </details>
               </article>
             </div>
           </article>
@@ -1689,12 +2015,121 @@
           <p class="project-role">
             <strong>Project role:</strong> scientific and methodological contribution to a collaborative project connected to multisensory research.
           </p>
+
+          <details class="project-details">
+            <summary>View project</summary>
+            <div class="project-details-content">
+              <ul>
+                <li><strong>Objective:</strong> explore the intermodal music-odor paradox and associated neurophysiological responses.</li>
+                <li><strong>Paradigm:</strong> collaborative project combining auditory stimuli, olfactory stimuli, and EEG recordings.</li>
+                <li><strong>Materials:</strong> protocol, stimulation material, and dissemination materials to be added.</li>
+                <li><strong>Scripts:</strong> EEG processing scripts and behavioral analysis scripts to be added.</li>
+                <li><strong>Data:</strong> EEG and behavioral data to be added when dissemination becomes possible.</li>
+                <li><strong>Status:</strong> ongoing collaborative project.</li>
+              </ul>
+            </div>
+          </details>
         </article>
+      </section>
+
+      <section id="en-training" class="reveal" data-section="formations">
+        <div class="section-title">
+          <span>06</span>
+          <h2>Doctoral training</h2>
+        </div>
+
+        <article class="training-summary">
+          <span class="training-kicker">Doctoral pathway</span>
+          <h3>Total participation</h3>
+          <p>
+            Training completed as part of the doctoral pathway, covering career development, scientific culture and valorization, research integrity, documentary training, and teaching.
+          </p>
+          <div class="training-total">
+            <span>60 hours</span>
+            <span>6 modules</span>
+          </div>
+        </article>
+
+        <div class="training-grid">
+          <article class="training-card">
+            <div class="training-meta">
+              <span class="training-hours">27.5 h</span>
+            </div>
+            <h3>Career development</h3>
+            <p>
+              <strong>Teaching</strong><br />
+              1 October 2025 - 30 April 2026<br />
+              Université Bourgogne Europe, Dijon<br />
+              Hours recorded by: Environnements Santé.
+            </p>
+          </article>
+
+          <article class="training-card">
+            <div class="training-meta">
+              <span class="training-hours">4 h</span>
+            </div>
+            <h3>International scientific culture and valorization</h3>
+            <p>
+              <strong>Introduction to economic intelligence</strong><br />
+              27 January 2026<br />
+              Institut Agro Dijon, Tour Déméter, Amphithéâtre Pisani.
+            </p>
+          </article>
+
+          <article class="training-card">
+            <div class="training-meta">
+              <span class="training-hours">3 h</span>
+            </div>
+            <h3>Research ethics and scientific integrity</h3>
+            <p>
+              <strong>Conference: scientific integrity and professional ethics</strong><br />
+              30 June 2026<br />
+              Université Bourgogne Europe, MSH, Amphithéâtre RDC.
+            </p>
+          </article>
+
+          <article class="training-card">
+            <div class="training-meta">
+              <span class="training-hours">3 h</span>
+            </div>
+            <h3>Documentary training</h3>
+            <p>
+              <strong>Zotero: managing bibliographic references, beginner/intermediate level</strong><br />
+              12 March 2026<br />
+              Université Bourgogne Europe, BU Le Cortex, Salle Phosphore.
+            </p>
+          </article>
+
+          <article class="training-card">
+            <div class="training-meta">
+              <span class="training-hours">17.5 h</span>
+            </div>
+            <h3>Teaching knowledge and tools</h3>
+            <p>
+              <strong>Learning to teach at university, level 1</strong><br />
+              8 January 2026 - 13 February 2026<br />
+              Université Bourgogne Europe, MSH, Salle des séminaires RDC.
+            </p>
+          </article>
+
+          <article class="training-card">
+            <div class="training-meta">
+              <span class="training-hours">5 h</span>
+            </div>
+            <h3>Teaching knowledge and tools</h3>
+            <p>
+              <strong>AI and Education</strong><br />
+              29 April 2026<br />
+              Université Bourgogne Europe, MSH, Salle des conseils RDC.<br />
+              Objective: strengthen doctoral students' scientific culture in their disciplinary or interdisciplinary field.
+            </p>
+          </article>
+        </div>
       </section>
 
       <section id="en-publications" class="reveal" data-section="publications">
         <div class="section-title">
-          <span>06</span>
+          <span>07</span>
           <h2>Publications</h2>
         </div>
 
@@ -1733,7 +2168,7 @@
 
       <section id="en-communications" class="reveal" data-section="communications">
         <div class="section-title">
-          <span>07</span>
+          <span>08</span>
           <h2>Scientific communications</h2>
         </div>
 
@@ -1772,7 +2207,7 @@
 
       <section id="en-cv" class="reveal" data-section="cv">
         <div class="section-title">
-          <span>08</span>
+          <span>09</span>
           <h2>CV</h2>
         </div>
 
@@ -1789,7 +2224,7 @@
 
       <section id="en-contact" class="reveal" data-section="contact">
         <div class="section-title">
-          <span>09</span>
+          <span>10</span>
           <h2>Contact</h2>
         </div>
 
@@ -1884,6 +2319,7 @@
         these: "fr-these",
         axes: "fr-axes",
         side: "fr-side",
+        formations: "fr-formations",
         publications: "fr-publications",
         communications: "fr-communications",
         cv: "fr-cv",
@@ -1896,6 +2332,7 @@
         these: "en-thesis",
         axes: "en-axes",
         side: "en-side",
+        formations: "en-training",
         publications: "en-publications",
         communications: "en-communications",
         cv: "en-cv",
