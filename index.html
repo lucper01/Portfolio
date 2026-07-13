@@ -484,6 +484,7 @@
         radial-gradient(circle at top right, rgba(255, 255, 255, 0.14), transparent 28%),
         linear-gradient(135deg, #0b2f23, #1f6f50);
       box-shadow: var(--shadow);
+      margin-bottom: 28px;
     }
 
     .highlight h3 {
@@ -495,6 +496,13 @@
 
     .highlight p {
       color: rgba(255, 255, 255, 0.88);
+    }
+
+    .subsection-heading {
+      margin: 36px 0 10px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+      color: var(--green-dark);
     }
 
     .team-card,
@@ -717,7 +725,8 @@
       transition: transform 0.2s ease, background 0.2s ease;
     }
 
-    .project-details summary::-webkit-details-marker {
+    .project-details summary::-webkit-details-marker,
+    .training-card summary::-webkit-details-marker {
       display: none;
     }
 
@@ -789,11 +798,66 @@
       pointer-events: none;
     }
 
-    .training-grid {
+    .training-accordion {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
+      gap: 14px;
       margin-top: 22px;
+    }
+
+    .training-card {
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .training-card summary {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 14px;
+      align-items: center;
+      padding: 20px 22px;
+      cursor: pointer;
+      list-style: none;
+    }
+
+    .training-card summary::after {
+      content: "+";
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--green-soft);
+      color: var(--green-dark);
+      font-weight: 900;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .training-card[open] summary::after {
+      content: "−";
+      background: var(--green-main);
+      color: #ffffff;
+    }
+
+    .training-card summary strong {
+      color: var(--green-dark);
+      display: block;
+    }
+
+    .training-card summary small {
+      display: block;
+      color: var(--muted);
+      font-weight: 700;
+      margin-top: 2px;
+    }
+
+    .training-content {
+      padding: 0 22px 22px;
+      color: var(--muted);
+    }
+
+    .training-content p {
+      margin: 0;
     }
 
     .training-total {
@@ -1053,7 +1117,7 @@
       position: fixed;
       right: 18px;
       bottom: 18px;
-      z-index: 90;
+      z-index: 950;
       width: 44px;
       height: 44px;
       border: 0;
@@ -1108,8 +1172,7 @@
 
       .hero,
       .section-title,
-      .axis-projects,
-      .training-grid {
+      .axis-projects {
         grid-template-columns: 1fr;
       }
 
@@ -1185,6 +1248,14 @@
 
       .filter-button {
         flex: 1 1 auto;
+      }
+
+      .training-card summary {
+        grid-template-columns: 1fr auto;
+      }
+
+      .training-hours {
+        grid-column: 1 / -1;
       }
 
       .contact-item {
@@ -1267,7 +1338,6 @@
           <a href="#fr-about" data-section-key="about">À propos</a>
           <a href="#fr-equipe" data-section-key="equipe">Équipe</a>
           <a href="#fr-these" data-section-key="these">Thèse</a>
-          <a href="#fr-axes" data-section-key="axes">Axes</a>
           <a href="#fr-side" data-section-key="side">Projet parallèle</a>
           <a href="#fr-formations" data-section-key="formations">Formations</a>
           <a href="#fr-publications" data-section-key="publications">Publications</a>
@@ -1282,13 +1352,12 @@
       <a href="#fr-about" data-section-key="about"><span>01</span> À propos</a>
       <a href="#fr-equipe" data-section-key="equipe"><span>02</span> Équipe</a>
       <a href="#fr-these" data-section-key="these"><span>03</span> Thèse</a>
-      <a href="#fr-axes" data-section-key="axes"><span>04</span> Axes</a>
-      <a href="#fr-side" data-section-key="side"><span>05</span> Projet parallèle</a>
-      <a href="#fr-formations" data-section-key="formations"><span>06</span> Formations</a>
-      <a href="#fr-publications" data-section-key="publications"><span>07</span> Publications</a>
-      <a href="#fr-communications" data-section-key="communications"><span>08</span> Communications</a>
-      <a href="#fr-cv" data-section-key="cv"><span>09</span> CV</a>
-      <a href="#fr-contact" data-section-key="contact"><span>10</span> Contact</a>
+      <a href="#fr-side" data-section-key="side"><span>04</span> Projet parallèle</a>
+      <a href="#fr-formations" data-section-key="formations"><span>05</span> Formations</a>
+      <a href="#fr-publications" data-section-key="publications"><span>06</span> Publications</a>
+      <a href="#fr-communications" data-section-key="communications"><span>07</span> Communications</a>
+      <a href="#fr-cv" data-section-key="cv"><span>08</span> CV</a>
+      <a href="#fr-contact" data-section-key="contact"><span>09</span> Contact</a>
     </aside>
 
     <main>
@@ -1343,16 +1412,10 @@
             Cette thèse étudie les mécanismes d'intégration entre olfaction, vision et audition. Elle interroge la manière dont les odeurs peuvent être associées à des configurations spatiales et temporelles, mais aussi la façon dont elles peuvent influencer la perception spatio-temporelle dans les modalités auditive et visuelle. L'objectif général est de déterminer si l'expérience olfactive participe à une construction multisensorielle de l'espace et du temps.
           </p>
         </div>
-      </section>
 
-      <section id="fr-axes" class="reveal" data-section="axes">
-        <div class="section-title">
-          <span>04</span>
-          <h2>Axes de thèse</h2>
-        </div>
-
+        <h3 class="subsection-heading">Axes de thèse</h3>
         <p class="lead">
-          Les projets principaux sont organisés selon les deux axes structurants de la thèse.
+          Les axes structurent directement la thèse et regroupent les projets principaux actuellement terminés, en cours ou à venir.
         </p>
 
         <div class="filter-controls" aria-label="Filtres des axes et projets">
@@ -1360,7 +1423,7 @@
           <button class="filter-button" type="button" data-filter="axe-1" data-label="Axe 1">Axe 1</button>
           <button class="filter-button" type="button" data-filter="axe-2" data-label="Axe 2">Axe 2</button>
           <button class="filter-button" type="button" data-filter="termine" data-label="Terminés">Terminés</button>
-          <button class="filter-button" type="button" data-filter="a-debuter" data-label="À débuter">À débuter</button>
+          <button class="filter-button" type="button" data-filter="a-debuter" data-label="À développer">À développer</button>
         </div>
 
         <div class="axis-grid">
@@ -1410,11 +1473,11 @@
               <article class="project-card filter-item" data-category="axe-1 a-debuter">
                 <div class="project-meta">
                   <span class="project-badge">Travail principal</span>
-                  <span class="project-status">À débuter</span>
+                  <span class="project-status">À développer</span>
                 </div>
                 <h3>SOFT</h3>
                 <p>
-                  Manipulation à débuter portant sur la détection de durées de stimuli, dans le cadre de l'étude des dimensions temporelles de la perception.
+                  Manipulation à développer portant sur la détection de durées de stimuli, dans le cadre de l'étude des dimensions temporelles de la perception.
                 </p>
                 <p class="project-role">
                   <strong>Rôle dans le projet :</strong> portage principal de la manipulation, avec conception du paradigme, programmation expérimentale, passation et analyses à venir.
@@ -1429,7 +1492,7 @@
                       <li><strong>Supports :</strong> protocole, consignes et matériel expérimental à ajouter.</li>
                       <li><strong>Scripts :</strong> script de passation et scripts d'analyse à ajouter.</li>
                       <li><strong>Datas :</strong> données à ajouter après collecte et préparation.</li>
-                      <li><strong>Statut :</strong> manipulation à débuter.</li>
+                      <li><strong>Statut :</strong> manipulation à développer.</li>
                     </ul>
 
                     <div class="project-links">
@@ -1448,7 +1511,7 @@
             <span class="axis-kicker">Axe 2</span>
             <h3>Influence des odeurs sur la perception spatio-temporelle</h3>
             <p>
-              Cet axe vise à caractériser la manière dont les odeurs peuvent moduler la perception visuelle de l'espace et contribuer à la construction perceptive de scènes.
+              Cet axe vise à caractériser la manière dont les odeurs peuvent moduler la perception visuelle de l'espace, orienter l'attention spatiale et contribuer à la construction perceptive de scènes.
             </p>
 
             <div class="axis-projects">
@@ -1490,7 +1553,7 @@
               <article class="project-card filter-item" data-category="axe-2 a-debuter">
                 <div class="project-meta">
                   <span class="project-badge">Travail principal</span>
-                  <span class="project-status">À débuter</span>
+                  <span class="project-status">À développer</span>
                 </div>
                 <h3>BREXOLF_Odorised</h3>
                 <p>
@@ -1509,7 +1572,42 @@
                       <li><strong>Supports :</strong> protocole, stimuli visuels, stimuli olfactifs et supports de passation à ajouter.</li>
                       <li><strong>Scripts :</strong> script expérimental et scripts d'analyse à ajouter.</li>
                       <li><strong>Datas :</strong> données à ajouter après collecte, nettoyage et anonymisation.</li>
-                      <li><strong>Statut :</strong> manipulation à venir.</li>
+                      <li><strong>Statut :</strong> manipulation à développer.</li>
+                    </ul>
+
+                    <div class="project-links">
+                      <a href="#" class="project-link disabled">Code à venir</a>
+                      <a href="#" class="project-link disabled">Datas à venir</a>
+                      <a href="#" class="project-link disabled">Protocole à venir</a>
+                      <a href="#" class="project-link disabled">Support à venir</a>
+                    </div>
+                  </div>
+                </details>
+              </article>
+
+              <article class="project-card filter-item" data-category="axe-2 a-debuter">
+                <div class="project-meta">
+                  <span class="project-badge">Travail principal</span>
+                  <span class="project-status">À développer</span>
+                </div>
+                <h3>SOLAR</h3>
+                <p>
+                  Projet portant sur le cueing spatial avec les odeurs, afin d'étudier si un indice olfactif peut orienter l'attention spatiale et modifier le traitement d'une cible visuelle.
+                </p>
+                <p class="project-role">
+                  <strong>Rôle dans le projet :</strong> conception du paradigme, intégration des stimulations olfactives, programmation expérimentale et analyses à venir.
+                </p>
+
+                <details class="project-details">
+                  <summary>Voir le projet</summary>
+                  <div class="project-details-content">
+                    <ul>
+                      <li><strong>Objectif :</strong> tester le rôle potentiel d'indices olfactifs dans l'orientation de l'attention spatiale.</li>
+                      <li><strong>Paradigme :</strong> tâche de cueing spatial associant stimulation olfactive et détection ou discrimination visuelle.</li>
+                      <li><strong>Supports :</strong> protocole, matériel de stimulation olfactive, stimuli visuels et supports de passation à ajouter.</li>
+                      <li><strong>Scripts :</strong> script expérimental et scripts d'analyse à ajouter.</li>
+                      <li><strong>Datas :</strong> données à ajouter après collecte, nettoyage et anonymisation.</li>
+                      <li><strong>Statut :</strong> projet à développer.</li>
                     </ul>
 
                     <div class="project-links">
@@ -1528,7 +1626,7 @@
 
       <section id="fr-side" class="reveal" data-section="side">
         <div class="section-title">
-          <span>05</span>
+          <span>04</span>
           <h2>Projet parallèle</h2>
         </div>
 
@@ -1570,7 +1668,7 @@
 
       <section id="fr-formations" class="reveal" data-section="formations">
         <div class="section-title">
-          <span>06</span>
+          <span>05</span>
           <h2>Formations doctorales</h2>
         </div>
 
@@ -1586,72 +1684,102 @@
           </div>
         </article>
 
-        <div class="training-grid">
-          <article class="training-card">
-            <div class="training-meta">
+        <div class="training-accordion">
+          <details class="training-card">
+            <summary>
               <span class="training-hours">27.5 h</span>
+              <span>
+                <strong>Poursuite de carrière</strong>
+                <small>Enseignement</small>
+              </span>
+            </summary>
+            <div class="training-content">
+              <p>
+                <strong>Objectif pédagogique :</strong> développer les compétences liées à l'enseignement universitaire, à la préparation des séances, à l'encadrement des étudiants et à la transmission de contenus scientifiques.
+              </p>
             </div>
-            <h3>Poursuite de carrière</h3>
-            <p>
-              <strong>Enseignement</strong>
-            </p>
-          </article>
+          </details>
 
-          <article class="training-card">
-            <div class="training-meta">
+          <details class="training-card">
+            <summary>
               <span class="training-hours">4 h</span>
+              <span>
+                <strong>Culture scientifique internationale et valorisation</strong>
+                <small>Introduction à l'intelligence économique</small>
+              </span>
+            </summary>
+            <div class="training-content">
+              <p>
+                <strong>Objectif pédagogique :</strong> comprendre les enjeux de veille, de valorisation, de stratégie informationnelle et de positionnement des connaissances scientifiques dans un environnement institutionnel et socio-économique.
+              </p>
             </div>
-            <h3>Culture scientifique internationale et valorisation</h3>
-            <p>
-              <strong>Introduction à l'intelligence économique</strong>
-            </p>
-          </article>
+          </details>
 
-          <article class="training-card">
-            <div class="training-meta">
+          <details class="training-card">
+            <summary>
               <span class="training-hours">3 h</span>
+              <span>
+                <strong>Éthique de la recherche et intégrité scientifique</strong>
+                <small>Conférence : intégrité scientifique et déontologie</small>
+              </span>
+            </summary>
+            <div class="training-content">
+              <p>
+                <strong>Objectif pédagogique :</strong> renforcer la connaissance des principes d'intégrité scientifique, de déontologie, de responsabilité du chercheur et de bonnes pratiques dans la production et la diffusion des résultats.
+              </p>
             </div>
-            <h3>Éthique de la recherche et intégrité scientifique</h3>
-            <p>
-              <strong>Conférence : intégrité scientifique et déontologie</strong>
-            </p>
-          </article>
+          </details>
 
-          <article class="training-card">
-            <div class="training-meta">
+          <details class="training-card">
+            <summary>
               <span class="training-hours">3 h</span>
+              <span>
+                <strong>Formations documentaires</strong>
+                <small>Zotero : gérer ses références bibliographiques</small>
+              </span>
+            </summary>
+            <div class="training-content">
+              <p>
+                <strong>Objectif pédagogique :</strong> maîtriser les bases de la gestion bibliographique, organiser les références scientifiques, faciliter la rédaction académique et fiabiliser le suivi documentaire.
+              </p>
             </div>
-            <h3>Formations documentaires</h3>
-            <p>
-              <strong>Zotero : gérer ses références bibliographiques, niveau initiation/intermédiaire</strong>
-            </p>
-          </article>
+          </details>
 
-          <article class="training-card">
-            <div class="training-meta">
+          <details class="training-card">
+            <summary>
               <span class="training-hours">17.5 h</span>
+              <span>
+                <strong>Connaissances et outils d'enseignement</strong>
+                <small>Apprendre à enseigner à l'université, niveau 1</small>
+              </span>
+            </summary>
+            <div class="training-content">
+              <p>
+                <strong>Objectif pédagogique :</strong> acquérir des bases en pédagogie universitaire, concevoir des activités d'apprentissage, structurer un enseignement et adapter les méthodes pédagogiques aux publics étudiants.
+              </p>
             </div>
-            <h3>Connaissances et outils d'enseignement</h3>
-            <p>
-              <strong>Apprendre à enseigner à l'université, niveau 1</strong>
-            </p>
-          </article>
+          </details>
 
-          <article class="training-card">
-            <div class="training-meta">
+          <details class="training-card">
+            <summary>
               <span class="training-hours">5 h</span>
+              <span>
+                <strong>Connaissances et outils d'enseignement</strong>
+                <small>IA et Éducation</small>
+              </span>
+            </summary>
+            <div class="training-content">
+              <p>
+                <strong>Objectif pédagogique :</strong> conforter la culture scientifique des doctorants dans leur champ disciplinaire ou en interdisciplinaire, en interrogeant les usages, apports et limites de l'intelligence artificielle en contexte éducatif.
+              </p>
             </div>
-            <h3>Connaissances et outils d'enseignement</h3>
-            <p>
-              <strong>IA et Éducation</strong>
-            </p>
-          </article>
+          </details>
         </div>
       </section>
 
       <section id="fr-publications" class="reveal" data-section="publications">
         <div class="section-title">
-          <span>07</span>
+          <span>06</span>
           <h2>Publications</h2>
         </div>
 
@@ -1690,7 +1818,7 @@
 
       <section id="fr-communications" class="reveal" data-section="communications">
         <div class="section-title">
-          <span>08</span>
+          <span>07</span>
           <h2>Communications scientifiques</h2>
         </div>
 
@@ -1729,7 +1857,7 @@
 
       <section id="fr-cv" class="reveal" data-section="cv">
         <div class="section-title">
-          <span>09</span>
+          <span>08</span>
           <h2>CV</h2>
         </div>
 
@@ -1746,7 +1874,7 @@
 
       <section id="fr-contact" class="reveal" data-section="contact">
         <div class="section-title">
-          <span>10</span>
+          <span>09</span>
           <h2>Contact</h2>
         </div>
 
@@ -1837,7 +1965,6 @@
           <a href="#en-about" data-section-key="about">About</a>
           <a href="#en-team" data-section-key="equipe">Team</a>
           <a href="#en-thesis" data-section-key="these">Thesis</a>
-          <a href="#en-axes" data-section-key="axes">Axes</a>
           <a href="#en-side" data-section-key="side">Side project</a>
           <a href="#en-training" data-section-key="formations">Training</a>
           <a href="#en-publications" data-section-key="publications">Publications</a>
@@ -1852,13 +1979,12 @@
       <a href="#en-about" data-section-key="about"><span>01</span> About</a>
       <a href="#en-team" data-section-key="equipe"><span>02</span> Team</a>
       <a href="#en-thesis" data-section-key="these"><span>03</span> Thesis</a>
-      <a href="#en-axes" data-section-key="axes"><span>04</span> Axes</a>
-      <a href="#en-side" data-section-key="side"><span>05</span> Side project</a>
-      <a href="#en-training" data-section-key="formations"><span>06</span> Training</a>
-      <a href="#en-publications" data-section-key="publications"><span>07</span> Publications</a>
-      <a href="#en-communications" data-section-key="communications"><span>08</span> Communications</a>
-      <a href="#en-cv" data-section-key="cv"><span>09</span> CV</a>
-      <a href="#en-contact" data-section-key="contact"><span>10</span> Contact</a>
+      <a href="#en-side" data-section-key="side"><span>04</span> Side project</a>
+      <a href="#en-training" data-section-key="formations"><span>05</span> Training</a>
+      <a href="#en-publications" data-section-key="publications"><span>06</span> Publications</a>
+      <a href="#en-communications" data-section-key="communications"><span>07</span> Communications</a>
+      <a href="#en-cv" data-section-key="cv"><span>08</span> CV</a>
+      <a href="#en-contact" data-section-key="contact"><span>09</span> Contact</a>
     </aside>
 
     <main>
@@ -1913,16 +2039,10 @@
             This thesis investigates mechanisms of integration between olfaction, vision, and audition. It examines how odors may be associated with spatial and temporal configurations, as well as how they may influence spatio-temporal perception in auditory and visual modalities. The general objective is to determine whether olfactory experience contributes to a multisensory construction of space and time.
           </p>
         </div>
-      </section>
 
-      <section id="en-axes" class="reveal" data-section="axes">
-        <div class="section-title">
-          <span>04</span>
-          <h2>Thesis axes</h2>
-        </div>
-
+        <h3 class="subsection-heading">Thesis axes</h3>
         <p class="lead">
-          The main projects are organized according to the two structuring axes of the thesis.
+          The axes directly structure the thesis and gather the main projects that are completed, ongoing, or upcoming.
         </p>
 
         <div class="filter-controls" aria-label="Thesis axis and project filters">
@@ -1930,7 +2050,7 @@
           <button class="filter-button" type="button" data-filter="axe-1" data-label="Axis 1">Axis 1</button>
           <button class="filter-button" type="button" data-filter="axe-2" data-label="Axis 2">Axis 2</button>
           <button class="filter-button" type="button" data-filter="termine" data-label="Completed">Completed</button>
-          <button class="filter-button" type="button" data-filter="a-debuter" data-label="To begin">To begin</button>
+          <button class="filter-button" type="button" data-filter="a-debuter" data-label="To develop">To develop</button>
         </div>
 
         <div class="axis-grid">
@@ -1980,7 +2100,7 @@
               <article class="project-card filter-item" data-category="axe-1 a-debuter">
                 <div class="project-meta">
                   <span class="project-badge">Main work</span>
-                  <span class="project-status">To begin</span>
+                  <span class="project-status">To develop</span>
                 </div>
                 <h3>SOFT</h3>
                 <p>
@@ -1999,7 +2119,7 @@
                       <li><strong>Materials:</strong> protocol, instructions, and experimental material to be added.</li>
                       <li><strong>Scripts:</strong> task script and analysis scripts to be added.</li>
                       <li><strong>Data:</strong> data to be added after collection and preparation.</li>
-                      <li><strong>Status:</strong> upcoming experiment.</li>
+                      <li><strong>Status:</strong> project to develop.</li>
                     </ul>
 
                     <div class="project-links">
@@ -2018,7 +2138,7 @@
             <span class="axis-kicker">Axis 2</span>
             <h3>Influence of odors on spatio-temporal perception</h3>
             <p>
-              This axis aims to characterize how odors may modulate visual perception of space and contribute to the perceptual construction of scenes.
+              This axis aims to characterize how odors may modulate visual perception of space, orient spatial attention, and contribute to the perceptual construction of scenes.
             </p>
 
             <div class="axis-projects">
@@ -2060,7 +2180,7 @@
               <article class="project-card filter-item" data-category="axe-2 a-debuter">
                 <div class="project-meta">
                   <span class="project-badge">Main work</span>
-                  <span class="project-status">To begin</span>
+                  <span class="project-status">To develop</span>
                 </div>
                 <h3>BREXOLF_Odorised</h3>
                 <p>
@@ -2079,7 +2199,42 @@
                       <li><strong>Materials:</strong> protocol, visual stimuli, olfactory stimuli, and experimental materials to be added.</li>
                       <li><strong>Scripts:</strong> experimental script and analysis scripts to be added.</li>
                       <li><strong>Data:</strong> data to be added after collection, cleaning, and anonymization.</li>
-                      <li><strong>Status:</strong> upcoming experiment.</li>
+                      <li><strong>Status:</strong> project to develop.</li>
+                    </ul>
+
+                    <div class="project-links">
+                      <a href="#" class="project-link disabled">Code pending</a>
+                      <a href="#" class="project-link disabled">Data pending</a>
+                      <a href="#" class="project-link disabled">Protocol pending</a>
+                      <a href="#" class="project-link disabled">Support pending</a>
+                    </div>
+                  </div>
+                </details>
+              </article>
+
+              <article class="project-card filter-item" data-category="axe-2 a-debuter">
+                <div class="project-meta">
+                  <span class="project-badge">Main work</span>
+                  <span class="project-status">To develop</span>
+                </div>
+                <h3>SOLAR</h3>
+                <p>
+                  Project on spatial cueing with odors, aimed at testing whether an olfactory cue can orient spatial attention and modify the processing of a visual target.
+                </p>
+                <p class="project-role">
+                  <strong>Project role:</strong> paradigm design, integration of olfactory stimulation, experimental programming, and upcoming analyses.
+                </p>
+
+                <details class="project-details">
+                  <summary>View project</summary>
+                  <div class="project-details-content">
+                    <ul>
+                      <li><strong>Objective:</strong> test the potential role of olfactory cues in the orientation of spatial attention.</li>
+                      <li><strong>Paradigm:</strong> spatial cueing task combining olfactory stimulation with visual detection or discrimination.</li>
+                      <li><strong>Materials:</strong> protocol, olfactory stimulation material, visual stimuli, and testing materials to be added.</li>
+                      <li><strong>Scripts:</strong> experimental script and analysis scripts to be added.</li>
+                      <li><strong>Data:</strong> data to be added after collection, cleaning, and anonymization.</li>
+                      <li><strong>Status:</strong> project to develop.</li>
                     </ul>
 
                     <div class="project-links">
@@ -2098,7 +2253,7 @@
 
       <section id="en-side" class="reveal" data-section="side">
         <div class="section-title">
-          <span>05</span>
+          <span>04</span>
           <h2>Side project</h2>
         </div>
 
@@ -2140,7 +2295,7 @@
 
       <section id="en-training" class="reveal" data-section="formations">
         <div class="section-title">
-          <span>06</span>
+          <span>05</span>
           <h2>Doctoral training</h2>
         </div>
 
@@ -2156,72 +2311,102 @@
           </div>
         </article>
 
-        <div class="training-grid">
-          <article class="training-card">
-            <div class="training-meta">
+        <div class="training-accordion">
+          <details class="training-card">
+            <summary>
               <span class="training-hours">27.5 h</span>
+              <span>
+                <strong>Career development</strong>
+                <small>Teaching</small>
+              </span>
+            </summary>
+            <div class="training-content">
+              <p>
+                <strong>Pedagogical objective:</strong> develop skills related to university teaching, session preparation, student support, and the transmission of scientific content.
+              </p>
             </div>
-            <h3>Career development</h3>
-            <p>
-              <strong>Teaching</strong>
-            </p>
-          </article>
+          </details>
 
-          <article class="training-card">
-            <div class="training-meta">
+          <details class="training-card">
+            <summary>
               <span class="training-hours">4 h</span>
+              <span>
+                <strong>International scientific culture and valorization</strong>
+                <small>Introduction to economic intelligence</small>
+              </span>
+            </summary>
+            <div class="training-content">
+              <p>
+                <strong>Pedagogical objective:</strong> understand the challenges of monitoring, valorization, information strategy, and the positioning of scientific knowledge in institutional and socio-economic environments.
+              </p>
             </div>
-            <h3>International scientific culture and valorization</h3>
-            <p>
-              <strong>Introduction to economic intelligence</strong>
-            </p>
-          </article>
+          </details>
 
-          <article class="training-card">
-            <div class="training-meta">
+          <details class="training-card">
+            <summary>
               <span class="training-hours">3 h</span>
+              <span>
+                <strong>Research ethics and scientific integrity</strong>
+                <small>Scientific integrity and professional ethics</small>
+              </span>
+            </summary>
+            <div class="training-content">
+              <p>
+                <strong>Pedagogical objective:</strong> strengthen knowledge of scientific integrity, professional ethics, researcher responsibility, and good practices in producing and disseminating results.
+              </p>
             </div>
-            <h3>Research ethics and scientific integrity</h3>
-            <p>
-              <strong>Conference: scientific integrity and professional ethics</strong>
-            </p>
-          </article>
+          </details>
 
-          <article class="training-card">
-            <div class="training-meta">
+          <details class="training-card">
+            <summary>
               <span class="training-hours">3 h</span>
+              <span>
+                <strong>Documentary training</strong>
+                <small>Zotero: managing bibliographic references</small>
+              </span>
+            </summary>
+            <div class="training-content">
+              <p>
+                <strong>Pedagogical objective:</strong> master the basics of bibliographic management, organize scientific references, support academic writing, and make documentary follow-up more reliable.
+              </p>
             </div>
-            <h3>Documentary training</h3>
-            <p>
-              <strong>Zotero: managing bibliographic references, beginner/intermediate level</strong>
-            </p>
-          </article>
+          </details>
 
-          <article class="training-card">
-            <div class="training-meta">
+          <details class="training-card">
+            <summary>
               <span class="training-hours">17.5 h</span>
+              <span>
+                <strong>Teaching knowledge and tools</strong>
+                <small>Learning to teach at university, level 1</small>
+              </span>
+            </summary>
+            <div class="training-content">
+              <p>
+                <strong>Pedagogical objective:</strong> acquire foundations in university pedagogy, design learning activities, structure a teaching session, and adapt pedagogical methods to student audiences.
+              </p>
             </div>
-            <h3>Teaching knowledge and tools</h3>
-            <p>
-              <strong>Learning to teach at university, level 1</strong>
-            </p>
-          </article>
+          </details>
 
-          <article class="training-card">
-            <div class="training-meta">
+          <details class="training-card">
+            <summary>
               <span class="training-hours">5 h</span>
+              <span>
+                <strong>Teaching knowledge and tools</strong>
+                <small>AI and Education</small>
+              </span>
+            </summary>
+            <div class="training-content">
+              <p>
+                <strong>Pedagogical objective:</strong> strengthen doctoral students' scientific culture in their disciplinary or interdisciplinary field by examining the uses, contributions, and limits of artificial intelligence in educational contexts.
+              </p>
             </div>
-            <h3>Teaching knowledge and tools</h3>
-            <p>
-              <strong>AI and Education</strong>
-            </p>
-          </article>
+          </details>
         </div>
       </section>
 
       <section id="en-publications" class="reveal" data-section="publications">
         <div class="section-title">
-          <span>07</span>
+          <span>06</span>
           <h2>Publications</h2>
         </div>
 
@@ -2260,7 +2445,7 @@
 
       <section id="en-communications" class="reveal" data-section="communications">
         <div class="section-title">
-          <span>08</span>
+          <span>07</span>
           <h2>Scientific communications</h2>
         </div>
 
@@ -2299,7 +2484,7 @@
 
       <section id="en-cv" class="reveal" data-section="cv">
         <div class="section-title">
-          <span>09</span>
+          <span>08</span>
           <h2>CV</h2>
         </div>
 
@@ -2316,7 +2501,7 @@
 
       <section id="en-contact" class="reveal" data-section="contact">
         <div class="section-title">
-          <span>10</span>
+          <span>09</span>
           <h2>Contact</h2>
         </div>
 
@@ -2409,7 +2594,6 @@
         about: "fr-about",
         equipe: "fr-equipe",
         these: "fr-these",
-        axes: "fr-axes",
         side: "fr-side",
         formations: "fr-formations",
         publications: "fr-publications",
@@ -2422,7 +2606,6 @@
         about: "en-about",
         equipe: "en-team",
         these: "en-thesis",
-        axes: "en-axes",
         side: "en-side",
         formations: "en-training",
         publications: "en-publications",
