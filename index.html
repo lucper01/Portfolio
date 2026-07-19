@@ -156,20 +156,7 @@
       background: var(--green-main);
       color: #ffffff;
     }
-
-    .print-switch {
-      opacity: 0.78;
-      box-shadow: 0 8px 22px rgba(11, 47, 35, 0.12);
-    }
-
-    .print-switch:hover { opacity: 1; }
-
-    .print-switch button {
-      padding: 7px 10px;
-      font-size: 0.8rem;
-    }
-
-    .accessibility-panel {
+.accessibility-panel {
       position: fixed;
       top: 78px;
       right: 18px;
@@ -594,6 +581,15 @@
     }
 
     .search-hidden { display: none !important; }
+
+    .search-focus {
+      outline: 3px solid var(--green-main);
+      outline-offset: 4px;
+    }
+
+    body.dark-mode .search-focus {
+      outline-color: #fbf7ed;
+    }
 
     main {
       max-width: var(--page-width);
@@ -1818,102 +1814,6 @@
       }
     }
 
-    @media print {
-      body {
-        background: #ffffff !important;
-        color: #000000 !important;
-        font-size: 11pt;
-      }
-
-      .top-controls,
-      nav.site-nav,
-      .side-progress,
-      .portfolio-search,
-      .accessibility-panel,
-      .back-to-top,
-      .filter-controls,
-      .project-toggle-label,
-      .project-summary::after,
-      .training-master > summary::after,
-      .training-card summary::after,
-      .portrait-actions,
-      .footer-button {
-        display: none !important;
-      }
-
-      header {
-        min-height: auto !important;
-        padding: 0 0 24px !important;
-        background: #ffffff !important;
-        color: #000000 !important;
-      }
-
-      header h1,
-      header p,
-      header .subtitle,
-      header .label {
-        color: #000000 !important;
-      }
-
-      .hero { display: block !important; }
-
-      .portrait-card { display: none !important; }
-
-      main {
-        max-width: none !important;
-        padding: 0 !important;
-      }
-
-      section {
-        break-inside: avoid;
-        margin-bottom: 28px !important;
-      }
-
-      .team-card,
-      .supervision-card,
-      .axis-card,
-      .project-card,
-      .training-card,
-      .training-summary,
-      .training-master,
-      .publication-list li,
-      .contact-box,
-      .highlight {
-        background: #ffffff !important;
-        color: #000000 !important;
-        box-shadow: none !important;
-        border: 1px solid #000000 !important;
-      }
-
-      .highlight h3,
-      .highlight p,
-      h1,
-      h2,
-      h3,
-      p,
-      li,
-      strong,
-      small {
-        color: #000000 !important;
-      }
-
-      .project-details-content,
-      .project-links,
-      .project-link.disabled {
-        display: none !important;
-      }
-
-      footer {
-        background: #ffffff !important;
-        color: #000000 !important;
-        border-top: 1px solid #000000;
-      }
-
-      footer p,
-      .version-note {
-        color: #000000 !important;
-      }
-    }
   </style>
 </head>
 
@@ -1936,11 +1836,6 @@
 
     <div class="control-group" aria-label="Share">
       <button type="button" data-share-button>Partager</button>
-    </div>
-
-    <div class="control-group print-switch" aria-label="Impression et export PDF">
-      <button type="button" data-print-button>Imprimer</button>
-      <button type="button" data-pdf-button title="Exporter en PDF via l'impression du navigateur">PDF</button>
     </div>
   </div>
 
@@ -2003,9 +1898,6 @@
         copiedLabel: "Lien copié",
         themeDark: "Sombre",
         themeLight: "Clair",
-        print: "Imprimer",
-        pdf: "PDF",
-        pdfTitle: "Exporter en PDF via l'impression du navigateur",
         skip: "Aller au contenu",
         accessibility: "Accessibilité",
         a11yIntro: "Ajustez l'affichage du portfolio selon vos besoins de lecture.",
@@ -2104,9 +1996,6 @@
         copiedLabel: "Link copied",
         themeDark: "Dark",
         themeLight: "Light",
-        print: "Print",
-        pdf: "PDF",
-        pdfTitle: "Export as PDF via browser printing",
         skip: "Skip to content",
         accessibility: "Accessibility",
         a11yIntro: "Adjust the portfolio display to your reading needs.",
@@ -2893,10 +2782,6 @@
           element.textContent = data[key];
         }
       });
-
-      document.querySelector("[data-print-button]").textContent = data.print;
-      document.querySelector("[data-pdf-button]").textContent = data.pdf;
-      document.querySelector("[data-pdf-button]").title = data.pdfTitle;
       skipLink.href = "#main";
 
       accessibilityPanel.setAttribute(
@@ -3050,6 +2935,10 @@
         ".team-card, .supervision-card, .project-card, .training-summary, .training-card, .publication-list li, .contact-item"
       );
 
+      document.querySelectorAll(".search-focus").forEach((item) => {
+        item.classList.remove("search-focus");
+      });
+
       if (query.length < 2) {
         searchableItems.forEach((item) => item.classList.remove("search-hidden"));
         if (resultBox) {
@@ -3060,12 +2949,21 @@
       }
 
       let visibleCount = 0;
+      let firstMatch = null;
 
       searchableItems.forEach((item) => {
-        const itemText = normalizeSearchText(item.innerText);
+        const itemText = normalizeSearchText(item.textContent);
         const isMatch = itemText.includes(query);
+
         item.classList.toggle("search-hidden", !isMatch);
-        if (isMatch) visibleCount += 1;
+
+        if (isMatch) {
+          visibleCount += 1;
+
+          if (!firstMatch) {
+            firstMatch = item;
+          }
+        }
       });
 
       if (resultBox) {
@@ -3073,14 +2971,32 @@
         resultBox.hidden = false;
         resultBox.textContent = `${visibleCount} ${word}`;
       }
+
+      if (firstMatch) {
+        const parentDetails = firstMatch.closest("details");
+
+        if (parentDetails) {
+          parentDetails.open = true;
+        }
+
+        firstMatch.classList.add("search-focus");
+
+        window.setTimeout(() => {
+          firstMatch.scrollIntoView({
+            behavior: "smooth",
+            block: "center",
+            inline: "nearest"
+          });
+        }, 80);
+      }
     }
 
     function clearSiteSearch() {
       const input = document.querySelector("[data-site-search]");
       if (input) input.value = "";
 
-      document.querySelectorAll(".search-hidden").forEach((item) => {
-        item.classList.remove("search-hidden");
+      document.querySelectorAll(".search-hidden, .search-focus").forEach((item) => {
+        item.classList.remove("search-hidden", "search-focus");
       });
 
       const resultBox = document.querySelector("[data-search-result]");
@@ -3158,16 +3074,6 @@
         }
       }
     }
-
-    function preparePrintView() {
-      const detailsElements = document.querySelectorAll("details");
-      const previouslyClosed = [];
-
-      detailsElements.forEach((details) => {
-        if (!details.open) {
-          details.open = true;
-          previouslyClosed.push(details);
-        }
       });
 
       window.print();
@@ -3384,10 +3290,6 @@
     });
 
     shareButton.addEventListener("click", sharePortfolio);
-
-    document.querySelectorAll("[data-print-button], [data-pdf-button]").forEach((button) => {
-      button.addEventListener("click", preparePrintView);
-    });
 
     backToTopButton.addEventListener("click", () => {
       currentSectionKey = "top";
