@@ -669,6 +669,7 @@
     }
 
     .team-card,
+    .supervision-card,
     .axis-card,
     .project-card,
     .training-card,
@@ -679,6 +680,7 @@
     }
 
     .team-card,
+    .supervision-card,
     .axis-card,
     .training-summary {
       padding: 32px;
@@ -691,6 +693,7 @@
     }
 
     body.dark-mode .team-card,
+    body.dark-mode .supervision-card,
     body.dark-mode .axis-card,
     body.dark-mode .training-summary {
       background:
@@ -700,6 +703,7 @@
     }
 
     .team-card:hover,
+    .supervision-card:hover,
     .axis-card:hover,
     .project-card:hover,
     .training-card:hover,
@@ -710,6 +714,7 @@
     }
 
     .team-card p,
+    .supervision-card p,
     .axis-card p,
     .training-card p,
     .training-summary p {
@@ -718,6 +723,7 @@
     }
 
     .team-kicker,
+    .supervision-kicker,
     .axis-kicker,
     .training-kicker,
     .publication-type {
@@ -736,6 +742,7 @@
     }
 
     body.dark-mode .team-kicker,
+    body.dark-mode .supervision-kicker,
     body.dark-mode .axis-kicker,
     body.dark-mode .training-kicker,
     body.dark-mode .publication-type {
@@ -766,6 +773,37 @@
       text-decoration: none;
       background: #0b2f23;
       color: #ffffff;
+    }
+
+    .supervision-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .supervision-photo {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border-radius: 20px;
+      margin-bottom: 18px;
+      border: 1px solid rgba(11, 47, 35, 0.12);
+      background: var(--green-soft);
+      display: block;
+    }
+
+    .supervision-card h3 {
+      margin-bottom: 8px;
+    }
+
+    .supervision-position {
+      font-weight: 850;
+      color: var(--green-dark) !important;
+      margin-bottom: 4px !important;
+    }
+
+    .supervision-role {
+      margin-top: 4px;
     }
 
     .axis-grid {
@@ -1307,6 +1345,7 @@
     }
 
     body.a11y-dyslexia .team-card:hover,
+    body.a11y-dyslexia .supervision-card:hover,
     body.a11y-dyslexia .axis-card:hover,
     body.a11y-dyslexia .project-card:hover,
     body.a11y-dyslexia .training-card:hover,
@@ -1338,6 +1377,7 @@
     body.a11y-high-contrast .accessibility-panel,
     body.a11y-high-contrast .side-progress,
     body.a11y-high-contrast .team-card,
+    body.a11y-high-contrast .supervision-card,
     body.a11y-high-contrast .axis-card,
     body.a11y-high-contrast .project-card,
     body.a11y-high-contrast .training-card,
@@ -1425,7 +1465,8 @@
 
       .hero,
       .section-title,
-      .axis-projects {
+      .axis-projects,
+      .supervision-grid {
         grid-template-columns: 1fr;
       }
 
@@ -1697,6 +1738,7 @@
         <div class="nav-links">
           <a href="#fr-about" data-section-key="about">À propos</a>
           <a href="#fr-equipe" data-section-key="equipe">Équipe</a>
+          <a href="#fr-direction" data-section-key="direction">Direction</a>
           <a href="#fr-these" data-section-key="these">Thèse</a>
           <a href="#fr-side" data-section-key="side">Autres projets</a>
           <a href="#fr-formations" data-section-key="formations">Formations</a>
@@ -1710,12 +1752,13 @@
     <aside class="side-progress" aria-label="Navigation latérale">
       <a href="#fr-about" data-section-key="about"><span>01</span> À propos</a>
       <a href="#fr-equipe" data-section-key="equipe"><span>02</span> Équipe</a>
-      <a href="#fr-these" data-section-key="these"><span>03</span> Thèse</a>
-      <a href="#fr-side" data-section-key="side"><span>04</span> Autres projets</a>
-      <a href="#fr-formations" data-section-key="formations"><span>05</span> Formations</a>
-      <a href="#fr-publications" data-section-key="publications"><span>06</span> Publications</a>
-      <a href="#fr-communications" data-section-key="communications"><span>07</span> Communications</a>
-      <a href="#fr-contact" data-section-key="contact"><span>08</span> Contact</a>
+      <a href="#fr-direction" data-section-key="direction"><span>03</span> Direction</a>
+      <a href="#fr-these" data-section-key="these"><span>04</span> Thèse</a>
+      <a href="#fr-side" data-section-key="side"><span>05</span> Autres projets</a>
+      <a href="#fr-formations" data-section-key="formations"><span>06</span> Formations</a>
+      <a href="#fr-publications" data-section-key="publications"><span>07</span> Publications</a>
+      <a href="#fr-communications" data-section-key="communications"><span>08</span> Communications</a>
+      <a href="#fr-contact" data-section-key="contact"><span>09</span> Contact</a>
     </aside>
 
     <main id="fr-main">
@@ -1758,9 +1801,42 @@
         </article>
       </section>
 
-      <section id="fr-these" class="reveal" data-section="these">
+      <section id="fr-direction" class="reveal" data-section="direction">
         <div class="section-title">
           <span>03</span>
+          <h2>Direction de thèse</h2>
+        </div>
+
+        <div class="supervision-grid">
+          <article class="supervision-card">
+            <img
+              src="assets/renaud.jpg"
+              alt="Portrait de Renaud BROCHARD"
+              class="supervision-photo"
+            />
+            <span class="supervision-kicker">Directeur de thèse</span>
+            <h3>Renaud BROCHARD</h3>
+            <p class="supervision-position">Professeur des Universités</p>
+            <p class="supervision-role">Directeur de thèse.</p>
+          </article>
+
+          <article class="supervision-card">
+            <img
+              src="assets/arnaud.jpg"
+              alt="Portrait d'Arnaud LELEU"
+              class="supervision-photo"
+            />
+            <span class="supervision-kicker">Directeur de thèse</span>
+            <h3>Arnaud LELEU</h3>
+            <p class="supervision-position">Maître de conférences</p>
+            <p class="supervision-role">Directeur de thèse.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="fr-these" class="reveal" data-section="these">
+        <div class="section-title">
+          <span>04</span>
           <h2>Thèse</h2>
         </div>
 
@@ -2069,7 +2145,7 @@
 
       <section id="fr-side" class="reveal" data-section="side">
         <div class="section-title">
-          <span>04</span>
+          <span>05</span>
           <h2>Autres projets</h2>
         </div>
 
@@ -2103,7 +2179,7 @@
 
       <section id="fr-formations" class="reveal" data-section="formations">
         <div class="section-title">
-          <span>05</span>
+          <span>06</span>
           <h2>Formations</h2>
         </div>
 
@@ -2182,7 +2258,7 @@
 
       <section id="fr-publications" class="reveal" data-section="publications">
         <div class="section-title">
-          <span>06</span>
+          <span>07</span>
           <h2>Publications</h2>
         </div>
 
@@ -2217,7 +2293,7 @@
 
       <section id="fr-communications" class="reveal" data-section="communications">
         <div class="section-title">
-          <span>07</span>
+          <span>08</span>
           <h2>Communications</h2>
         </div>
 
@@ -2252,7 +2328,7 @@
 
       <section id="fr-contact" class="reveal" data-section="contact">
         <div class="section-title">
-          <span>08</span>
+          <span>09</span>
           <h2>Contact</h2>
         </div>
 
@@ -2322,6 +2398,7 @@
         <div class="nav-links">
           <a href="#en-about" data-section-key="about">About</a>
           <a href="#en-team" data-section-key="equipe">Team</a>
+          <a href="#en-supervision" data-section-key="direction">Supervision</a>
           <a href="#en-thesis" data-section-key="these">Thesis</a>
           <a href="#en-side" data-section-key="side">Other projects</a>
           <a href="#en-training" data-section-key="formations">Training</a>
@@ -2335,12 +2412,13 @@
     <aside class="side-progress" aria-label="Side navigation">
       <a href="#en-about" data-section-key="about"><span>01</span> About</a>
       <a href="#en-team" data-section-key="equipe"><span>02</span> Team</a>
-      <a href="#en-thesis" data-section-key="these"><span>03</span> Thesis</a>
-      <a href="#en-side" data-section-key="side"><span>04</span> Other projects</a>
-      <a href="#en-training" data-section-key="formations"><span>05</span> Training</a>
-      <a href="#en-publications" data-section-key="publications"><span>06</span> Publications</a>
-      <a href="#en-communications" data-section-key="communications"><span>07</span> Communications</a>
-      <a href="#en-contact" data-section-key="contact"><span>08</span> Contact</a>
+      <a href="#en-supervision" data-section-key="direction"><span>03</span> Supervision</a>
+      <a href="#en-thesis" data-section-key="these"><span>04</span> Thesis</a>
+      <a href="#en-side" data-section-key="side"><span>05</span> Other projects</a>
+      <a href="#en-training" data-section-key="formations"><span>06</span> Training</a>
+      <a href="#en-publications" data-section-key="publications"><span>07</span> Publications</a>
+      <a href="#en-communications" data-section-key="communications"><span>08</span> Communications</a>
+      <a href="#en-contact" data-section-key="contact"><span>09</span> Contact</a>
     </aside>
 
     <main id="en-main">
@@ -2381,9 +2459,42 @@
         </article>
       </section>
 
-      <section id="en-thesis" class="reveal" data-section="these">
+      <section id="en-supervision" class="reveal" data-section="direction">
         <div class="section-title">
           <span>03</span>
+          <h2>PhD supervision</h2>
+        </div>
+
+        <div class="supervision-grid">
+          <article class="supervision-card">
+            <img
+              src="assets/renaud.jpg"
+              alt="Portrait of Renaud BROCHARD"
+              class="supervision-photo"
+            />
+            <span class="supervision-kicker">PhD supervisor</span>
+            <h3>Renaud BROCHARD</h3>
+            <p class="supervision-position">Professor of Universities</p>
+            <p class="supervision-role">PhD supervisor.</p>
+          </article>
+
+          <article class="supervision-card">
+            <img
+              src="assets/arnaud.jpg"
+              alt="Portrait of Arnaud LELEU"
+              class="supervision-photo"
+            />
+            <span class="supervision-kicker">PhD supervisor</span>
+            <h3>Arnaud LELEU</h3>
+            <p class="supervision-position">Associate Professor</p>
+            <p class="supervision-role">PhD supervisor.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="en-thesis" class="reveal" data-section="these">
+        <div class="section-title">
+          <span>04</span>
           <h2>Thesis</h2>
         </div>
 
@@ -2688,7 +2799,7 @@
 
       <section id="en-side" class="reveal" data-section="side">
         <div class="section-title">
-          <span>04</span>
+          <span>05</span>
           <h2>Other projects</h2>
         </div>
 
@@ -2721,7 +2832,7 @@
 
       <section id="en-training" class="reveal" data-section="formations">
         <div class="section-title">
-          <span>05</span>
+          <span>06</span>
           <h2>Training</h2>
         </div>
 
@@ -2770,7 +2881,7 @@
 
       <section id="en-publications" class="reveal" data-section="publications">
         <div class="section-title">
-          <span>06</span>
+          <span>07</span>
           <h2>Publications</h2>
         </div>
 
@@ -2805,7 +2916,7 @@
 
       <section id="en-communications" class="reveal" data-section="communications">
         <div class="section-title">
-          <span>07</span>
+          <span>08</span>
           <h2>Communications</h2>
         </div>
 
@@ -2840,7 +2951,7 @@
 
       <section id="en-contact" class="reveal" data-section="contact">
         <div class="section-title">
-          <span>08</span>
+          <span>09</span>
           <h2>Contact</h2>
         </div>
 
@@ -2925,6 +3036,7 @@
         top: "fr-top",
         about: "fr-about",
         equipe: "fr-equipe",
+        direction: "fr-direction",
         these: "fr-these",
         side: "fr-side",
         formations: "fr-formations",
@@ -2936,6 +3048,7 @@
         top: "en-top",
         about: "en-about",
         equipe: "en-team",
+        direction: "en-supervision",
         these: "en-thesis",
         side: "en-side",
         formations: "en-training",
