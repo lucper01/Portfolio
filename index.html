@@ -32,7 +32,7 @@
   <meta property="og:url" content="https://lucper01.github.io/Portfolio/" />
   <meta property="og:site_name" content="Luc Perroquin | Portfolio" />
   <meta id="og-locale" property="og:locale" content="fr_FR" />
-  <meta property="og:image" content="https://lucper01.github.io/Portfolio/assets/photo-profil.jpg" />
+  <meta property="og:image" content="https://lucper01.github.io/Portfolio/assets/photo-profil.png" />
   <meta property="og:image:alt" content="Portrait de Luc Perroquin" />
 
   <meta name="twitter:card" content="summary_large_image" />
@@ -42,7 +42,7 @@
     name="twitter:description"
     content="Portfolio académique de Luc Perroquin, doctorant en psychologie cognitive, consacré à l'intégration entre olfaction, vision et audition."
   />
-  <meta name="twitter:image" content="https://lucper01.github.io/Portfolio/assets/photo-profil.jpg" />
+  <meta name="twitter:image" content="https://lucper01.github.io/Portfolio/assets/photo-profil.png" />
 
   <title>Luc Perroquin | Portfolio académique</title>
 
@@ -476,6 +476,43 @@
       color: var(--muted);
     }
 
+    .about-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .cv-side-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 150px;
+      padding: 14px 20px;
+      border-radius: 999px;
+      background: var(--green-main);
+      color: #ffffff;
+      border: 1px solid var(--green-main);
+      font-weight: 900;
+      box-shadow: var(--shadow-soft);
+      white-space: nowrap;
+      margin-top: 6px;
+      transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .cv-side-button:hover {
+      text-decoration: none;
+      background: #0b2f23;
+      color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+
+    body.dark-mode .cv-side-button:hover {
+      background: #dceee3;
+      color: #0b2f23;
+    }
+
     .highlight {
       padding: 36px;
       border-radius: 30px;
@@ -510,7 +547,6 @@
     .project-card,
     .training-card,
     .training-summary,
-    .cv-card,
     .publication-list li,
     .contact-box {
       box-shadow: var(--shadow-soft);
@@ -542,7 +578,6 @@
     .project-card:hover,
     .training-card:hover,
     .training-summary:hover,
-    .cv-card:hover,
     .publication-list li:hover {
       transform: translateY(-3px);
       box-shadow: var(--shadow);
@@ -970,46 +1005,6 @@
       display: none !important;
     }
 
-    .cv-card {
-      padding: 28px;
-      border-radius: 26px;
-      background:
-        radial-gradient(circle at top right, rgba(119, 184, 146, 0.18), transparent 35%),
-        var(--white);
-      border: 1px solid rgba(11, 47, 35, 0.1);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      box-shadow: var(--shadow-soft);
-    }
-
-    body.dark-mode .cv-card {
-      background:
-        radial-gradient(circle at top right, rgba(119, 184, 146, 0.18), transparent 35%),
-        rgba(16, 37, 28, 0.88);
-      border-color: rgba(220, 238, 227, 0.12);
-    }
-
-    .cv-card p {
-      color: var(--muted);
-    }
-
-    .cv-download {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 10px;
-      padding: 12px 18px;
-      border-radius: 999px;
-      color: #ffffff;
-      background: var(--green-main);
-      border: 1px solid var(--green-main);
-    }
-
-    .cv-download:hover {
-      text-decoration: none;
-      background: #0b2f23;
-      color: #ffffff;
-    }
-
     .contact-box {
       padding: 28px;
       border-radius: 28px;
@@ -1172,7 +1167,8 @@
 
       .hero,
       .section-title,
-      .axis-projects {
+      .axis-projects,
+      .about-layout {
         grid-template-columns: 1fr;
       }
 
@@ -1202,6 +1198,11 @@
         top: 10px;
         right: 10px;
         left: 10px;
+      }
+
+      .cv-side-button {
+        width: fit-content;
+        margin-top: 0;
       }
 
       .nav-inner {
@@ -1342,7 +1343,6 @@
           <a href="#fr-formations" data-section-key="formations">Formations</a>
           <a href="#fr-publications" data-section-key="publications">Publications</a>
           <a href="#fr-communications" data-section-key="communications">Communications</a>
-          <a href="#fr-cv" data-section-key="cv">CV</a>
           <a href="#fr-contact" data-section-key="contact">Contact</a>
         </div>
       </div>
@@ -1356,8 +1356,7 @@
       <a href="#fr-formations" data-section-key="formations"><span>05</span> Formations</a>
       <a href="#fr-publications" data-section-key="publications"><span>06</span> Publications</a>
       <a href="#fr-communications" data-section-key="communications"><span>07</span> Communications</a>
-      <a href="#fr-cv" data-section-key="cv"><span>08</span> CV</a>
-      <a href="#fr-contact" data-section-key="contact"><span>09</span> Contact</a>
+      <a href="#fr-contact" data-section-key="contact"><span>08</span> Contact</a>
     </aside>
 
     <main id="main-content">
@@ -1367,16 +1366,29 @@
           <h2>À propos</h2>
         </div>
 
-        <p class="lead">
-          Mes travaux s'inscrivent dans le champ de la psychologie cognitive de l'olfaction et de la perception multisensorielle. Ils visent à comprendre comment les odeurs, bien qu'elles soient souvent décrites comme des stimuli diffus, instables et faiblement localisables, peuvent interagir avec la vision et l'audition pour modifier l'expérience subjective de l'espace et du temps.
-        </p>
+        <div class="about-layout">
+          <div>
+            <p class="lead">
+              Mes travaux s'inscrivent dans le champ de la psychologie cognitive de l'olfaction et de la perception multisensorielle. Ils visent à comprendre comment les odeurs, bien qu'elles soient souvent décrites comme des stimuli diffus, instables et faiblement localisables, peuvent interagir avec la vision et l'audition pour modifier l'expérience subjective de l'espace et du temps.
+            </p>
 
-        <ul class="tags" aria-label="Mots-clés">
-          <li>Olfaction</li>
-          <li>Vision</li>
-          <li>Audition</li>
-          <li>Perception multisensorielle</li>
-        </ul>
+            <ul class="tags" aria-label="Mots-clés">
+              <li>Olfaction</li>
+              <li>Vision</li>
+              <li>Audition</li>
+              <li>Perception multisensorielle</li>
+            </ul>
+          </div>
+
+          <a
+            class="cv-side-button"
+            href="https://lucper01.github.io/Portfolio/assets/CV_PerroquinLuc_fr.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Ouvrir CV
+          </a>
+        </div>
       </section>
 
       <section id="fr-equipe" class="reveal" data-section="equipe">
@@ -1387,9 +1399,9 @@
 
         <article class="team-card">
           <span class="team-kicker">DOCC | CSGA</span>
-          <h3>Cognition et Communication Olfactives en Développement</h3>
+          <h3>Cognition et communication olfactives en développement</h3>
           <p>
-            Ma thèse est menée au sein de l'équipe DOCC du Centre des Sciences du Goût et de l'Alimentation. Les travaux de l'équipe portent sur l'olfaction, la communication chimique, la cognition olfactive et les comportements associés. Cette inscription collective permet de situer mes recherches sur les interactions entre olfaction, vision et audition dans un environnement scientifique centré sur les mécanismes sensoriels, cognitifs et comportementaux liés aux odeurs.
+            Ma thèse est menée au sein de l'équipe DOCC du Centre des Sciences du Goût et de l'Alimentation. L'équipe Cognition et communication olfactives en développement étudie l'olfaction, la communication chimique, la cognition olfactive et les comportements associés. Cette inscription collective permet de situer mes recherches sur les interactions entre olfaction, vision et audition dans un environnement scientifique centré sur les mécanismes sensoriels, cognitifs et comportementaux liés aux odeurs.
           </p>
 
           <div class="team-actions">
@@ -1997,26 +2009,9 @@
         </div>
       </section>
 
-      <section id="fr-cv" class="reveal" data-section="cv">
-        <div class="section-title">
-          <span>08</span>
-          <h2>CV</h2>
-        </div>
-
-        <article class="cv-card">
-          <h3>CV</h3>
-          <p>
-            Version française du CV académique.
-          </p>
-          <a class="cv-download" href="https://lucper01.github.io/Portfolio/assets/CV_PerroquinLuc_fr.pdf" target="_blank" rel="noopener noreferrer">
-            Ouvrir CV
-          </a>
-        </article>
-      </section>
-
       <section id="fr-contact" class="reveal" data-section="contact">
         <div class="section-title">
-          <span>09</span>
+          <span>08</span>
           <h2>Contact</h2>
         </div>
 
@@ -2111,7 +2106,6 @@
           <a href="#en-training" data-section-key="formations">Training</a>
           <a href="#en-publications" data-section-key="publications">Publications</a>
           <a href="#en-communications" data-section-key="communications">Communications</a>
-          <a href="#en-cv" data-section-key="cv">CV</a>
           <a href="#en-contact" data-section-key="contact">Contact</a>
         </div>
       </div>
@@ -2125,8 +2119,7 @@
       <a href="#en-training" data-section-key="formations"><span>05</span> Training</a>
       <a href="#en-publications" data-section-key="publications"><span>06</span> Publications</a>
       <a href="#en-communications" data-section-key="communications"><span>07</span> Communications</a>
-      <a href="#en-cv" data-section-key="cv"><span>08</span> CV</a>
-      <a href="#en-contact" data-section-key="contact"><span>09</span> Contact</a>
+      <a href="#en-contact" data-section-key="contact"><span>08</span> Contact</a>
     </aside>
 
     <main>
@@ -2136,16 +2129,29 @@
           <h2>About</h2>
         </div>
 
-        <p class="lead">
-          My work is situated within cognitive psychology of olfaction and multisensory perception. It aims to understand how odors, although often described as diffuse, unstable, and weakly localizable stimuli, can interact with vision and audition to modify the subjective experience of space and time.
-        </p>
+        <div class="about-layout">
+          <div>
+            <p class="lead">
+              My work is situated within cognitive psychology of olfaction and multisensory perception. It aims to understand how odors, although often described as diffuse, unstable, and weakly localizable stimuli, can interact with vision and audition to modify the subjective experience of space and time.
+            </p>
 
-        <ul class="tags" aria-label="Keywords">
-          <li>Olfaction</li>
-          <li>Vision</li>
-          <li>Audition</li>
-          <li>Multisensory perception</li>
-        </ul>
+            <ul class="tags" aria-label="Keywords">
+              <li>Olfaction</li>
+              <li>Vision</li>
+              <li>Audition</li>
+              <li>Multisensory perception</li>
+            </ul>
+          </div>
+
+          <a
+            class="cv-side-button"
+            href="https://lucper01.github.io/Portfolio/assets/CV_PerroquinLuc_en.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Open CV
+          </a>
+        </div>
       </section>
 
       <section id="en-team" class="reveal" data-section="equipe">
@@ -2158,7 +2164,7 @@
           <span class="team-kicker">DOCC | CSGA</span>
           <h3>Development of Olfactory Communication and Cognition</h3>
           <p>
-            My PhD work is conducted within the DOCC team at the Centre for Taste and Feeding Behavior. The team's research focuses on olfaction, chemical communication, olfactory cognition, and associated behaviors. This research environment situates my work on interactions between olfaction, vision, and audition within a broader scientific framework dedicated to sensory, cognitive, and behavioral mechanisms related to odors.
+            My PhD work is conducted within the DOCC team at the Centre for Taste and Feeding Behavior. The Development of Olfactory Communication and Cognition team studies olfaction, chemical communication, olfactory cognition, and associated behaviors. This research environment situates my work on interactions between olfaction, vision, and audition within a broader scientific framework dedicated to sensory, cognitive, and behavioral mechanisms related to odors.
           </p>
 
           <div class="team-actions">
@@ -2766,26 +2772,9 @@
         </div>
       </section>
 
-      <section id="en-cv" class="reveal" data-section="cv">
-        <div class="section-title">
-          <span>08</span>
-          <h2>CV</h2>
-        </div>
-
-        <article class="cv-card">
-          <h3>CV</h3>
-          <p>
-            English version of the academic CV.
-          </p>
-          <a class="cv-download" href="https://lucper01.github.io/Portfolio/assets/CV_PerroquinLuc_en.pdf" target="_blank" rel="noopener noreferrer">
-            Open CV
-          </a>
-        </article>
-      </section>
-
       <section id="en-contact" class="reveal" data-section="contact">
         <div class="section-title">
-          <span>09</span>
+          <span>08</span>
           <h2>Contact</h2>
         </div>
 
@@ -2882,7 +2871,6 @@
         formations: "fr-formations",
         publications: "fr-publications",
         communications: "fr-communications",
-        cv: "fr-cv",
         contact: "fr-contact"
       },
       en: {
@@ -2894,7 +2882,6 @@
         formations: "en-training",
         publications: "en-publications",
         communications: "en-communications",
-        cv: "en-cv",
         contact: "en-contact"
       }
     };
