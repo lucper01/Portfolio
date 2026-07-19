@@ -3074,17 +3074,6 @@
         }
       }
     }
-      });
-
-      window.print();
-
-      window.setTimeout(() => {
-        previouslyClosed.forEach((details) => {
-          details.open = false;
-        });
-      }, 1000);
-    }
-
     function loadAccessibilitySettings() {
       try {
         return JSON.parse(localStorage.getItem("portfolio-accessibility")) || {};
