@@ -534,7 +534,7 @@
 
     .search-card {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) auto;
+      grid-template-columns: minmax(0, 1fr) auto auto;
       gap: 10px;
       align-items: center;
       padding: 12px;
@@ -589,6 +589,19 @@
 
     body.dark-mode .search-focus {
       outline-color: #fbf7ed;
+    }
+
+    .search-highlight {
+      padding: 0 0.12em;
+      border-radius: 0.28em;
+      background: #fff09a;
+      color: #061f17;
+      font-weight: 900;
+    }
+
+    body.dark-mode .search-highlight {
+      background: #fbf7ed;
+      color: #061f17;
     }
 
     main {
@@ -1978,6 +1991,7 @@
         copy: "Copier",
         copied: "Copié",
         searchPlaceholder: "Rechercher dans le portfolio…",
+        searchAction: "Rechercher",
         searchClear: "Effacer",
         resultWord: ["résultat", "résultats"],
         footer: "Luc Perroquin | Portfolio académique | Psychologie cognitive de l'olfaction",
@@ -2076,6 +2090,7 @@
         copy: "Copy",
         copied: "Copied",
         searchPlaceholder: "Search the portfolio…",
+        searchAction: "Search",
         searchClear: "Clear",
         resultWord: ["result", "results"],
         footer: "Luc Perroquin | Academic portfolio | Cognitive psychology of olfaction",
@@ -2530,6 +2545,7 @@
         <div class="portfolio-search" data-search-panel>
           <div class="search-card">
             <input type="search" data-site-search placeholder="${escapeHtml(data.searchPlaceholder)}" aria-label="${escapeHtml(data.searchPlaceholder)}" />
+            <button type="button" data-search-submit aria-label="${escapeHtml(data.searchAction)}" title="${escapeHtml(data.searchAction)}">🔎</button>
             <button type="button" data-search-clear>${escapeHtml(data.searchClear)}</button>
             <div class="search-result" data-search-result hidden></div>
           </div>
@@ -2927,6 +2943,123 @@
       });
     }
 
+
+    function getAccentInsensitiveMatches(text, query) {
+      const normalizedQuery = normalizeSearchText(query);
+
+      if (!normalizedQuery) {
+        return [];
+      }
+
+      let normalizedText = "";
+      const indexMap = [];
+
+      Array.from(text).forEach((char, originalIndex) => {
+        const normalizedChar = normalizeSearchText(char);
+
+        Array.from(normalizedChar).forEach((mappedChar) => {
+          normalizedText += mappedChar;
+          indexMap.push(originalIndex);
+        });
+      });
+
+      const matches = [];
+      let startIndex = normalizedText.indexOf(normalizedQuery);
+
+      while (startIndex !== -1) {
+        const endIndex = startIndex + normalizedQuery.length - 1;
+        matches.push({
+          start: indexMap[startIndex],
+          end: indexMap[endIndex] + 1
+        });
+
+        startIndex = normalizedText.indexOf(normalizedQuery, startIndex + normalizedQuery.length);
+      }
+
+      return matches;
+    }
+
+    function clearSearchHighlights() {
+      document.querySelectorAll("mark.search-highlight").forEach((mark) => {
+        mark.replaceWith(document.createTextNode(mark.textContent));
+      });
+
+      document.querySelectorAll(".search-focus").forEach((item) => {
+        item.classList.remove("search-focus");
+      });
+    }
+
+    function highlightOccurrencesInElement(element, query) {
+      const ignoredTags = new Set(["SCRIPT", "STYLE", "NOSCRIPT", "INPUT", "TEXTAREA", "BUTTON", "MARK"]);
+      const walker = document.createTreeWalker(
+        element,
+        NodeFilter.SHOW_TEXT,
+        {
+          acceptNode(node) {
+            const parent = node.parentElement;
+
+            if (!parent || ignoredTags.has(parent.tagName)) {
+              return NodeFilter.FILTER_REJECT;
+            }
+
+            if (!normalizeSearchText(node.nodeValue).includes(normalizeSearchText(query))) {
+              return NodeFilter.FILTER_REJECT;
+            }
+
+            return NodeFilter.FILTER_ACCEPT;
+          }
+        }
+      );
+
+      const textNodes = [];
+
+      while (walker.nextNode()) {
+        textNodes.push(walker.currentNode);
+      }
+
+      let occurrenceCount = 0;
+
+      textNodes.forEach((node) => {
+        const text = node.nodeValue;
+        const matches = getAccentInsensitiveMatches(text, query);
+
+        if (!matches.length) {
+          return;
+        }
+
+        occurrenceCount += matches.length;
+
+        const fragment = document.createDocumentFragment();
+        let cursor = 0;
+
+        matches.forEach((match) => {
+          if (match.start > cursor) {
+            fragment.appendChild(document.createTextNode(text.slice(cursor, match.start)));
+          }
+
+          const mark = document.createElement("mark");
+          mark.className = "search-highlight";
+          mark.textContent = text.slice(match.start, match.end);
+          fragment.appendChild(mark);
+
+          cursor = match.end;
+        });
+
+        if (cursor < text.length) {
+          fragment.appendChild(document.createTextNode(text.slice(cursor)));
+        }
+
+        node.replaceWith(fragment);
+      });
+
+      return occurrenceCount;
+    }
+
+    function runSiteSearchFromInput() {
+      const input = document.querySelector("[data-site-search]");
+      applySiteSearch(input ? input.value : "");
+    }
+
     function applySiteSearch(rawQuery) {
       const data = DATA[currentLanguage];
       const query = normalizeSearchText(rawQuery);
@@ -2935,20 +3068,21 @@
         ".team-card, .supervision-card, .project-card, .training-summary, .training-card, .publication-list li, .contact-item"
       );
 
-      document.querySelectorAll(".search-focus").forEach((item) => {
-        item.classList.remove("search-focus");
-      });
+      clearSearchHighlights();
 
       if (query.length < 2) {
         searchableItems.forEach((item) => item.classList.remove("search-hidden"));
+
         if (resultBox) {
           resultBox.hidden = true;
           resultBox.textContent = "";
         }
+
         return;
       }
 
-      let visibleCount = 0;
+      let visibleItemCount = 0;
+      let occurrenceCount = 0;
       let firstMatch = null;
 
       searchableItems.forEach((item) => {
@@ -2958,7 +3092,8 @@
         item.classList.toggle("search-hidden", !isMatch);
 
         if (isMatch) {
-          visibleCount += 1;
+          visibleItemCount += 1;
+          occurrenceCount += highlightOccurrencesInElement(item, rawQuery);
 
           if (!firstMatch) {
             firstMatch = item;
@@ -2967,16 +3102,17 @@
       });
 
       if (resultBox) {
-        const word = visibleCount > 1 ? data.resultWord[1] : data.resultWord[0];
+        const word = occurrenceCount > 1 ? data.resultWord[1] : data.resultWord[0];
         resultBox.hidden = false;
-        resultBox.textContent = `${visibleCount} ${word}`;
+        resultBox.textContent = `${occurrenceCount} ${word}`;
       }
 
       if (firstMatch) {
-        const parentDetails = firstMatch.closest("details");
+        let parentDetails = firstMatch.closest("details");
 
-        if (parentDetails) {
+        while (parentDetails) {
           parentDetails.open = true;
+          parentDetails = parentDetails.parentElement?.closest("details");
         }
 
         firstMatch.classList.add("search-focus");
@@ -2995,8 +3131,10 @@
       const input = document.querySelector("[data-site-search]");
       if (input) input.value = "";
 
-      document.querySelectorAll(".search-hidden, .search-focus").forEach((item) => {
-        item.classList.remove("search-hidden", "search-focus");
+      clearSearchHighlights();
+
+      document.querySelectorAll(".search-hidden").forEach((item) => {
+        item.classList.remove("search-hidden");
       });
 
       const resultBox = document.querySelector("[data-search-result]");
@@ -3210,9 +3348,14 @@
         });
       });
 
-      document.querySelector("[data-site-search]")?.addEventListener("input", (event) => {
-        applySiteSearch(event.target.value);
+      document.querySelector("[data-site-search]")?.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+          event.preventDefault();
+          runSiteSearchFromInput();
+        }
       });
+
+      document.querySelector("[data-search-submit]")?.addEventListener("click", runSiteSearchFromInput);
 
       document.querySelector("[data-search-clear]")?.addEventListener("click", clearSiteSearch);
 
