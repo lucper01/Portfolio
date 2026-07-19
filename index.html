@@ -48,6 +48,7 @@
 
   <style>
     :root {
+      --page-width: 1320px;
       --green-deep: #061f17;
       --green-dark: #0b2f23;
       --green-main: #1f6f50;
@@ -343,7 +344,7 @@
 
     .hero {
       width: 100%;
-      max-width: 1180px;
+      max-width: var(--page-width);
       display: grid;
       grid-template-columns: minmax(0, 1.18fr) minmax(280px, 0.82fr);
       gap: 54px;
@@ -473,7 +474,7 @@
     }
 
     .nav-inner {
-      max-width: 1120px;
+      max-width: var(--page-width);
       margin: auto;
       display: flex;
       justify-content: center;
@@ -592,9 +593,9 @@
     }
 
     main {
-      max-width: 1120px;
+      max-width: var(--page-width);
       margin: auto;
-      padding: 76px 8% 92px;
+      padding: 76px 6% 92px;
     }
 
     section {
@@ -779,6 +780,7 @@
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 18px;
+      margin: 22px 0 34px;
     }
 
     .supervision-photo {
@@ -799,11 +801,7 @@
     .supervision-position {
       font-weight: 850;
       color: var(--green-dark) !important;
-      margin-bottom: 4px !important;
-    }
-
-    .supervision-role {
-      margin-top: 4px;
+      margin-bottom: 0 !important;
     }
 
     .axis-grid {
@@ -1738,7 +1736,6 @@
         <div class="nav-links">
           <a href="#fr-about" data-section-key="about">À propos</a>
           <a href="#fr-equipe" data-section-key="equipe">Équipe</a>
-          <a href="#fr-direction" data-section-key="direction">Direction</a>
           <a href="#fr-these" data-section-key="these">Thèse</a>
           <a href="#fr-side" data-section-key="side">Autres projets</a>
           <a href="#fr-formations" data-section-key="formations">Formations</a>
@@ -1752,13 +1749,12 @@
     <aside class="side-progress" aria-label="Navigation latérale">
       <a href="#fr-about" data-section-key="about"><span>01</span> À propos</a>
       <a href="#fr-equipe" data-section-key="equipe"><span>02</span> Équipe</a>
-      <a href="#fr-direction" data-section-key="direction"><span>03</span> Direction</a>
-      <a href="#fr-these" data-section-key="these"><span>04</span> Thèse</a>
-      <a href="#fr-side" data-section-key="side"><span>05</span> Autres projets</a>
-      <a href="#fr-formations" data-section-key="formations"><span>06</span> Formations</a>
-      <a href="#fr-publications" data-section-key="publications"><span>07</span> Publications</a>
-      <a href="#fr-communications" data-section-key="communications"><span>08</span> Communications</a>
-      <a href="#fr-contact" data-section-key="contact"><span>09</span> Contact</a>
+      <a href="#fr-these" data-section-key="these"><span>03</span> Thèse</a>
+      <a href="#fr-side" data-section-key="side"><span>04</span> Autres projets</a>
+      <a href="#fr-formations" data-section-key="formations"><span>05</span> Formations</a>
+      <a href="#fr-publications" data-section-key="publications"><span>06</span> Publications</a>
+      <a href="#fr-communications" data-section-key="communications"><span>07</span> Communications</a>
+      <a href="#fr-contact" data-section-key="contact"><span>08</span> Contact</a>
     </aside>
 
     <main id="fr-main">
@@ -1801,11 +1797,20 @@
         </article>
       </section>
 
-      <section id="fr-direction" class="reveal" data-section="direction">
+      <section id="fr-these" class="reveal" data-section="these">
         <div class="section-title">
           <span>03</span>
-          <h2>Direction de thèse</h2>
+          <h2>Thèse</h2>
         </div>
+
+        <div class="highlight">
+          <h3>Y a-t-il un espace-temps pour les odeurs&nbsp;?</h3>
+          <p>
+            Cette thèse étudie les mécanismes d'intégration entre olfaction, vision et audition. Elle interroge la manière dont les odeurs peuvent être associées à des configurations spatiales et temporelles, mais aussi la façon dont elles peuvent influencer la perception spatio-temporelle dans les modalités auditive et visuelle. L'objectif général est de déterminer si l'expérience olfactive participe à une construction multisensorielle de l'espace et du temps.
+          </p>
+        </div>
+
+        <h3 class="subsection-heading">Direction de thèse</h3>
 
         <div class="supervision-grid">
           <article class="supervision-card">
@@ -1817,7 +1822,6 @@
             <span class="supervision-kicker">Directeur de thèse</span>
             <h3>Renaud BROCHARD</h3>
             <p class="supervision-position">Professeur des Universités</p>
-            <p class="supervision-role">Directeur de thèse.</p>
           </article>
 
           <article class="supervision-card">
@@ -1826,25 +1830,10 @@
               alt="Portrait d'Arnaud LELEU"
               class="supervision-photo"
             />
-            <span class="supervision-kicker">Directeur de thèse</span>
+            <span class="supervision-kicker">Co-direction de thèse</span>
             <h3>Arnaud LELEU</h3>
             <p class="supervision-position">Maître de conférences</p>
-            <p class="supervision-role">Directeur de thèse.</p>
           </article>
-        </div>
-      </section>
-
-      <section id="fr-these" class="reveal" data-section="these">
-        <div class="section-title">
-          <span>04</span>
-          <h2>Thèse</h2>
-        </div>
-
-        <div class="highlight">
-          <h3>Y a-t-il un espace-temps pour les odeurs&nbsp;?</h3>
-          <p>
-            Cette thèse étudie les mécanismes d'intégration entre olfaction, vision et audition. Elle interroge la manière dont les odeurs peuvent être associées à des configurations spatiales et temporelles, mais aussi la façon dont elles peuvent influencer la perception spatio-temporelle dans les modalités auditive et visuelle. L'objectif général est de déterminer si l'expérience olfactive participe à une construction multisensorielle de l'espace et du temps.
-          </p>
         </div>
 
         <h3 class="subsection-heading">Axes de thèse</h3>
@@ -2145,7 +2134,7 @@
 
       <section id="fr-side" class="reveal" data-section="side">
         <div class="section-title">
-          <span>05</span>
+          <span>04</span>
           <h2>Autres projets</h2>
         </div>
 
@@ -2179,7 +2168,7 @@
 
       <section id="fr-formations" class="reveal" data-section="formations">
         <div class="section-title">
-          <span>06</span>
+          <span>05</span>
           <h2>Formations</h2>
         </div>
 
@@ -2258,7 +2247,7 @@
 
       <section id="fr-publications" class="reveal" data-section="publications">
         <div class="section-title">
-          <span>07</span>
+          <span>06</span>
           <h2>Publications</h2>
         </div>
 
@@ -2293,7 +2282,7 @@
 
       <section id="fr-communications" class="reveal" data-section="communications">
         <div class="section-title">
-          <span>08</span>
+          <span>07</span>
           <h2>Communications</h2>
         </div>
 
@@ -2328,7 +2317,7 @@
 
       <section id="fr-contact" class="reveal" data-section="contact">
         <div class="section-title">
-          <span>09</span>
+          <span>08</span>
           <h2>Contact</h2>
         </div>
 
@@ -2398,7 +2387,6 @@
         <div class="nav-links">
           <a href="#en-about" data-section-key="about">About</a>
           <a href="#en-team" data-section-key="equipe">Team</a>
-          <a href="#en-supervision" data-section-key="direction">Supervision</a>
           <a href="#en-thesis" data-section-key="these">Thesis</a>
           <a href="#en-side" data-section-key="side">Other projects</a>
           <a href="#en-training" data-section-key="formations">Training</a>
@@ -2412,13 +2400,12 @@
     <aside class="side-progress" aria-label="Side navigation">
       <a href="#en-about" data-section-key="about"><span>01</span> About</a>
       <a href="#en-team" data-section-key="equipe"><span>02</span> Team</a>
-      <a href="#en-supervision" data-section-key="direction"><span>03</span> Supervision</a>
-      <a href="#en-thesis" data-section-key="these"><span>04</span> Thesis</a>
-      <a href="#en-side" data-section-key="side"><span>05</span> Other projects</a>
-      <a href="#en-training" data-section-key="formations"><span>06</span> Training</a>
-      <a href="#en-publications" data-section-key="publications"><span>07</span> Publications</a>
-      <a href="#en-communications" data-section-key="communications"><span>08</span> Communications</a>
-      <a href="#en-contact" data-section-key="contact"><span>09</span> Contact</a>
+      <a href="#en-thesis" data-section-key="these"><span>03</span> Thesis</a>
+      <a href="#en-side" data-section-key="side"><span>04</span> Other projects</a>
+      <a href="#en-training" data-section-key="formations"><span>05</span> Training</a>
+      <a href="#en-publications" data-section-key="publications"><span>06</span> Publications</a>
+      <a href="#en-communications" data-section-key="communications"><span>07</span> Communications</a>
+      <a href="#en-contact" data-section-key="contact"><span>08</span> Contact</a>
     </aside>
 
     <main id="en-main">
@@ -2459,11 +2446,20 @@
         </article>
       </section>
 
-      <section id="en-supervision" class="reveal" data-section="direction">
+      <section id="en-thesis" class="reveal" data-section="these">
         <div class="section-title">
           <span>03</span>
-          <h2>PhD supervision</h2>
+          <h2>Thesis</h2>
         </div>
+
+        <div class="highlight">
+          <h3>Is there a space-time for odors?</h3>
+          <p>
+            This thesis investigates mechanisms of integration between olfaction, vision, and audition. It examines how odors may be associated with spatial and temporal configurations, as well as how they may influence spatio-temporal perception in auditory and visual modalities. The general objective is to determine whether olfactory experience contributes to a multisensory construction of space and time.
+          </p>
+        </div>
+
+        <h3 class="subsection-heading">PhD supervision</h3>
 
         <div class="supervision-grid">
           <article class="supervision-card">
@@ -2474,8 +2470,7 @@
             />
             <span class="supervision-kicker">PhD supervisor</span>
             <h3>Renaud BROCHARD</h3>
-            <p class="supervision-position">Professor of Universities</p>
-            <p class="supervision-role">PhD supervisor.</p>
+            <p class="supervision-position">Full Professor</p>
           </article>
 
           <article class="supervision-card">
@@ -2484,25 +2479,10 @@
               alt="Portrait of Arnaud LELEU"
               class="supervision-photo"
             />
-            <span class="supervision-kicker">PhD supervisor</span>
+            <span class="supervision-kicker">PhD co-supervision</span>
             <h3>Arnaud LELEU</h3>
             <p class="supervision-position">Associate Professor</p>
-            <p class="supervision-role">PhD supervisor.</p>
           </article>
-        </div>
-      </section>
-
-      <section id="en-thesis" class="reveal" data-section="these">
-        <div class="section-title">
-          <span>04</span>
-          <h2>Thesis</h2>
-        </div>
-
-        <div class="highlight">
-          <h3>Is there a space-time for odors?</h3>
-          <p>
-            This thesis investigates mechanisms of integration between olfaction, vision, and audition. It examines how odors may be associated with spatial and temporal configurations, as well as how they may influence spatio-temporal perception in auditory and visual modalities. The general objective is to determine whether olfactory experience contributes to a multisensory construction of space and time.
-          </p>
         </div>
 
         <h3 class="subsection-heading">Thesis axes</h3>
@@ -2799,7 +2779,7 @@
 
       <section id="en-side" class="reveal" data-section="side">
         <div class="section-title">
-          <span>05</span>
+          <span>04</span>
           <h2>Other projects</h2>
         </div>
 
@@ -2832,7 +2812,7 @@
 
       <section id="en-training" class="reveal" data-section="formations">
         <div class="section-title">
-          <span>06</span>
+          <span>05</span>
           <h2>Training</h2>
         </div>
 
@@ -2881,7 +2861,7 @@
 
       <section id="en-publications" class="reveal" data-section="publications">
         <div class="section-title">
-          <span>07</span>
+          <span>06</span>
           <h2>Publications</h2>
         </div>
 
@@ -2916,7 +2896,7 @@
 
       <section id="en-communications" class="reveal" data-section="communications">
         <div class="section-title">
-          <span>08</span>
+          <span>07</span>
           <h2>Communications</h2>
         </div>
 
@@ -2951,7 +2931,7 @@
 
       <section id="en-contact" class="reveal" data-section="contact">
         <div class="section-title">
-          <span>09</span>
+          <span>08</span>
           <h2>Contact</h2>
         </div>
 
@@ -3036,7 +3016,6 @@
         top: "fr-top",
         about: "fr-about",
         equipe: "fr-equipe",
-        direction: "fr-direction",
         these: "fr-these",
         side: "fr-side",
         formations: "fr-formations",
@@ -3048,7 +3027,6 @@
         top: "en-top",
         about: "en-about",
         equipe: "en-team",
-        direction: "en-supervision",
         these: "en-thesis",
         side: "en-side",
         formations: "en-training",
