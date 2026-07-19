@@ -683,6 +683,7 @@
     .project-card,
     .training-card,
     .training-summary,
+    .training-master,
     .publication-list li,
     .contact-box {
       box-shadow: var(--shadow-soft);
@@ -697,7 +698,8 @@
     .team-card,
     .supervision-card,
     .axis-card,
-    .training-summary {
+    .training-summary,
+    .training-master {
       padding: 32px;
       border-radius: 28px;
       background:
@@ -744,7 +746,8 @@
     body.dark-mode .team-card,
     body.dark-mode .supervision-card,
     body.dark-mode .axis-card,
-    body.dark-mode .training-summary {
+    body.dark-mode .training-summary,
+    body.dark-mode .training-master {
       background:
         radial-gradient(circle at top right, rgba(119, 184, 146, 0.16), transparent 34%),
         rgba(16, 37, 28, 0.88);
@@ -757,6 +760,7 @@
     .project-card:hover,
     .training-card:hover,
     .training-summary:hover,
+    .training-master:hover,
     .publication-list li:hover,
     .contact-box:hover {
       transform: translateY(-3px);
@@ -769,6 +773,7 @@
     body:not(.dark-mode) .project-card:hover,
     body:not(.dark-mode) .training-card:hover,
     body:not(.dark-mode) .training-summary:hover,
+    body:not(.dark-mode) .training-master:hover,
     body:not(.dark-mode) .publication-list li:hover,
     body:not(.dark-mode) .contact-box:hover {
       border-color: var(--green-main);
@@ -780,6 +785,7 @@
     body.dark-mode .project-card:hover,
     body.dark-mode .training-card:hover,
     body.dark-mode .training-summary:hover,
+    body.dark-mode .training-master:hover,
     body.dark-mode .publication-list li:hover,
     body.dark-mode .contact-box:hover {
       border-color: #fbf7ed;
@@ -790,7 +796,8 @@
     .axis-card p,
     .project-card p,
     .training-card p,
-    .training-summary p {
+    .training-summary p,
+    .training-master p {
       color: var(--muted);
       margin-bottom: 0;
     }
@@ -875,21 +882,20 @@
 
     .project-card,
     .training-card {
-      padding: 26px;
+      padding: 24px;
       border-radius: 24px;
       background: rgba(255, 255, 255, 0.90);
       border: 1px solid rgba(11, 47, 35, 0.10);
     }
 
-    .project-card.filter-item {
-      height: 100%;
-      min-height: 430px;
-      display: flex;
-      flex-direction: column;
+    .project-card {
+      display: block;
+      height: auto;
+      min-height: auto;
     }
 
-    .project-card .project-details {
-      margin-top: auto;
+    .project-card.filter-item {
+      min-height: auto;
     }
 
     body.dark-mode .project-card,
@@ -898,14 +904,105 @@
       border-color: rgba(220, 238, 227, 0.12);
     }
 
-    .project-card h3,
-    .training-card h3 {
-      margin-bottom: 10px;
+    .project-summary {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto auto;
+      gap: 14px;
+      align-items: center;
+      cursor: pointer;
+      list-style: none;
     }
 
-    .project-card p {
+    .project-summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .project-summary-text {
+      min-width: 0;
+    }
+
+    .project-summary strong {
+      display: block;
+      color: var(--green-dark);
+      font-size: 1.15rem;
+      line-height: 1.25;
+    }
+
+    .project-summary small {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-weight: 800;
+      line-height: 1.3;
+    }
+
+    .project-toggle-label {
+      color: var(--green-main);
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .project-card .open-label {
+      display: none;
+    }
+
+    .project-card[open] .closed-label {
+      display: none;
+    }
+
+    .project-card[open] .open-label {
+      display: inline;
+    }
+
+    .project-summary::after {
+      content: "+";
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      background: var(--green-soft);
+      color: var(--green-dark);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 1.1rem;
+    }
+
+    .project-card[open] .project-summary::after {
+      content: "−";
+      background: var(--green-main);
+      color: #ffffff;
+    }
+
+    .project-body {
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(11, 47, 35, 0.10);
+    }
+
+    body.dark-mode .project-body {
+      border-top-color: rgba(220, 238, 227, 0.12);
+    }
+
+    .project-body p {
       color: var(--muted);
       max-width: 100%;
+      margin-top: 0;
+    }
+
+    .project-role {
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(11, 47, 35, 0.10);
+      font-size: 0.96rem;
+    }
+
+    body.dark-mode .project-role {
+      border-top-color: rgba(220, 238, 227, 0.12);
+    }
+
+    .project-role strong {
+      color: var(--green-dark);
     }
 
     .project-meta,
@@ -954,55 +1051,6 @@
       border-color: rgba(220, 238, 227, 0.12);
     }
 
-    .project-role {
-      margin-top: 16px;
-      padding-top: 14px;
-      border-top: 1px solid rgba(11, 47, 35, 0.10);
-      font-size: 0.96rem;
-    }
-
-    body.dark-mode .project-role {
-      border-top-color: rgba(220, 238, 227, 0.12);
-    }
-
-    .project-role strong {
-      color: var(--green-dark);
-    }
-
-    .project-details {
-      margin-top: 18px;
-    }
-
-    .project-details summary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: fit-content;
-      padding: 10px 14px;
-      border-radius: 999px;
-      background: var(--green-main);
-      color: #ffffff;
-      font-weight: 850;
-      cursor: pointer;
-      list-style: none;
-      transition: transform 0.2s ease, background 0.2s ease;
-    }
-
-    .project-details summary::-webkit-details-marker,
-    .training-card summary::-webkit-details-marker {
-      display: none;
-    }
-
-    .project-details summary:hover {
-      transform: translateY(-2px);
-      background: #0b2f23;
-    }
-
-    body.dark-mode .project-details summary:hover {
-      background: #dceee3;
-      color: #0b2f23;
-    }
-
     .project-details-content {
       margin-top: 14px;
       padding: 18px;
@@ -1047,6 +1095,45 @@
       pointer-events: none;
     }
 
+    .training-master {
+      margin-top: 22px;
+      padding: 22px;
+    }
+
+    .training-master > summary {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 14px;
+      align-items: center;
+      cursor: pointer;
+      font-weight: 900;
+      color: var(--green-dark);
+      list-style: none;
+    }
+
+    .training-master > summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .training-master > summary::after {
+      content: "+";
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      background: var(--green-soft);
+      color: var(--green-dark);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+    }
+
+    .training-master[open] > summary::after {
+      content: "−";
+      background: var(--green-main);
+      color: #ffffff;
+    }
+
     .training-accordion {
       display: grid;
       gap: 14px;
@@ -1086,6 +1173,10 @@
       content: "−";
       background: var(--green-main);
       color: #ffffff;
+    }
+
+    .training-card summary::-webkit-details-marker {
+      display: none;
     }
 
     .training-card summary strong {
@@ -1313,6 +1404,7 @@
     .project-card p,
     .training-card p,
     .training-summary p,
+    .training-master p,
     .publication-list p,
     .contact-box p,
     .highlight p,
@@ -1418,6 +1510,7 @@
     body.a11y-dyslexia .project-card:hover,
     body.a11y-dyslexia .training-card:hover,
     body.a11y-dyslexia .training-summary:hover,
+    body.a11y-dyslexia .training-master:hover,
     body.a11y-dyslexia .publication-list li:hover,
     body.a11y-dyslexia .contact-box:hover {
       transform: none;
@@ -1451,12 +1544,51 @@
     body.a11y-high-contrast .project-card,
     body.a11y-high-contrast .training-card,
     body.a11y-high-contrast .training-summary,
+    body.a11y-high-contrast .training-master,
     body.a11y-high-contrast .publication-list li,
     body.a11y-high-contrast .contact-box {
       background: #ffffff;
       color: #000000;
       border-color: #000000;
       box-shadow: none;
+    }
+
+    body.a11y-high-contrast h1,
+    body.a11y-high-contrast h2,
+    body.a11y-high-contrast h3,
+    body.a11y-high-contrast .project-summary strong,
+    body.a11y-high-contrast .project-summary small,
+    body.a11y-high-contrast .subtitle,
+    body.a11y-high-contrast .label,
+    body.a11y-high-contrast .section-title span,
+    body.a11y-high-contrast .team-kicker,
+    body.a11y-high-contrast .supervision-kicker,
+    body.a11y-high-contrast .axis-kicker,
+    body.a11y-high-contrast .training-kicker,
+    body.a11y-high-contrast .publication-type,
+    body.a11y-high-contrast .supervision-position,
+    body.a11y-high-contrast .project-role strong,
+    body.a11y-high-contrast .contact-item strong,
+    body.a11y-high-contrast .training-master > summary,
+    body.a11y-high-contrast .training-card summary strong,
+    body.a11y-high-contrast .training-card summary small {
+      color: #000000 !important;
+    }
+
+    body.a11y-high-contrast header h1,
+    body.a11y-high-contrast header .subtitle,
+    body.a11y-high-contrast header .label,
+    body.a11y-high-contrast header p,
+    body.a11y-high-contrast footer,
+    body.a11y-high-contrast footer p {
+      color: #ffffff !important;
+    }
+
+    body.a11y-high-contrast .highlight,
+    body.a11y-high-contrast .highlight h3,
+    body.a11y-high-contrast .highlight p {
+      background: #000000 !important;
+      color: #ffffff !important;
     }
 
     body.a11y-high-contrast a {
@@ -1630,8 +1762,12 @@
         flex: 1 1 auto;
       }
 
-      .project-card.filter-item {
-        min-height: auto;
+      .project-summary {
+        grid-template-columns: minmax(0, 1fr) auto;
+      }
+
+      .project-toggle-label {
+        display: none;
       }
 
       .training-card summary {
@@ -1658,6 +1794,7 @@
       .project-card p,
       .training-card p,
       .training-summary p,
+      .training-master p,
       .publication-list p,
       .contact-box p,
       .highlight p,
@@ -1827,7 +1964,7 @@
           <a href="#fr-about" data-section-key="about">À propos</a>
           <a href="#fr-equipe" data-section-key="equipe">Équipe</a>
           <a href="#fr-these" data-section-key="these">Thèse</a>
-          <a href="#fr-side" data-section-key="side">Autres projets</a>
+          <a href="#fr-side" data-section-key="side">Projets en collaboration</a>
           <a href="#fr-formations" data-section-key="formations">Formations</a>
           <a href="#fr-publications" data-section-key="publications">Publications</a>
           <a href="#fr-communications" data-section-key="communications">Communications</a>
@@ -1840,7 +1977,7 @@
       <a href="#fr-about" data-section-key="about"><span>01</span> À propos</a>
       <a href="#fr-equipe" data-section-key="equipe"><span>02</span> Équipe</a>
       <a href="#fr-these" data-section-key="these"><span>03</span> Thèse</a>
-      <a href="#fr-side" data-section-key="side"><span>04</span> Autres projets</a>
+      <a href="#fr-side" data-section-key="side"><span>04</span> Projets en collaboration</a>
       <a href="#fr-formations" data-section-key="formations"><span>05</span> Formations</a>
       <a href="#fr-publications" data-section-key="publications"><span>06</span> Publications</a>
       <a href="#fr-communications" data-section-key="communications"><span>07</span> Communications</a>
@@ -1944,16 +2081,20 @@
             </p>
 
             <div class="axis-projects">
-              <article class="project-card filter-item" data-category="axe-1 termine">
-                <div class="project-meta">
-                  <span class="project-badge">Travail principal</span>
-                  <span class="project-status">Terminé</span>
-                </div>
-                <h3>TWIXAV</h3>
-                <p>Étude de référence sur la fenêtre temporelle d'intégration audiovisuelle, en l'absence de stimulation olfactive.</p>
-                <p class="project-role"><strong>Rôle dans le projet :</strong> portage principal du pré-test, préparation du protocole, passation pilote et analyses exploratoires.</p>
-                <details class="project-details">
-                  <summary>Voir le projet</summary>
+              <details class="project-card filter-item" data-category="axe-1 termine">
+                <summary class="project-summary">
+                  <span class="project-summary-text">
+                    <strong>TWIXAV</strong>
+                    <small>Travail principal · Terminé</small>
+                  </span>
+                  <span class="project-toggle-label">
+                    <span class="closed-label">Voir le projet</span>
+                    <span class="open-label">Masquer le projet</span>
+                  </span>
+                </summary>
+                <div class="project-body">
+                  <p>Étude de référence sur la fenêtre temporelle d'intégration audiovisuelle, en l'absence de stimulation olfactive.</p>
+                  <p class="project-role"><strong>Rôle dans le projet :</strong> portage principal du pré-test, préparation du protocole, passation pilote et analyses exploratoires.</p>
                   <div class="project-details-content">
                     <div class="project-links">
                       <a href="#" class="project-link disabled">Protocole</a>
@@ -1962,19 +2103,23 @@
                       <a href="#" class="project-link disabled">Supports</a>
                     </div>
                   </div>
-                </details>
-              </article>
+                </div>
+              </details>
 
-              <article class="project-card filter-item" data-category="axe-1 a-developper">
-                <div class="project-meta">
-                  <span class="project-badge">Travail principal</span>
-                  <span class="project-status">À développer</span>
-                </div>
-                <h3>TWIXOLF</h3>
-                <p>Version olfactive de TWIXAV, visant à étudier les fenêtres temporelles d'intégration impliquant une composante olfactive.</p>
-                <p class="project-role"><strong>Rôle dans le projet :</strong> adaptation du paradigme temporel, intégration de la stimulation olfactive, programmation expérimentale et analyses à venir.</p>
-                <details class="project-details">
-                  <summary>Voir le projet</summary>
+              <details class="project-card filter-item" data-category="axe-1 a-developper">
+                <summary class="project-summary">
+                  <span class="project-summary-text">
+                    <strong>TWIXOLF</strong>
+                    <small>Travail principal · À développer</small>
+                  </span>
+                  <span class="project-toggle-label">
+                    <span class="closed-label">Voir le projet</span>
+                    <span class="open-label">Masquer le projet</span>
+                  </span>
+                </summary>
+                <div class="project-body">
+                  <p>Version olfactive de TWIXAV, visant à étudier les fenêtres temporelles d'intégration impliquant une composante olfactive.</p>
+                  <p class="project-role"><strong>Rôle dans le projet :</strong> adaptation du paradigme temporel, intégration de la stimulation olfactive, programmation expérimentale et analyses à venir.</p>
                   <div class="project-details-content">
                     <div class="project-links">
                       <a href="#" class="project-link disabled">Protocole</a>
@@ -1983,19 +2128,23 @@
                       <a href="#" class="project-link disabled">Supports</a>
                     </div>
                   </div>
-                </details>
-              </article>
+                </div>
+              </details>
 
-              <article class="project-card filter-item" data-category="axe-1 a-developper">
-                <div class="project-meta">
-                  <span class="project-badge">Travail principal</span>
-                  <span class="project-status">À développer</span>
-                </div>
-                <h3>SOFT</h3>
-                <p>Manipulation portant sur la détection de durées de stimuli, dans le cadre de l'étude des dimensions temporelles de la perception.</p>
-                <p class="project-role"><strong>Rôle dans le projet :</strong> conception du paradigme, programmation expérimentale, passation et analyses à venir.</p>
-                <details class="project-details">
-                  <summary>Voir le projet</summary>
+              <details class="project-card filter-item" data-category="axe-1 a-developper">
+                <summary class="project-summary">
+                  <span class="project-summary-text">
+                    <strong>SOFT</strong>
+                    <small>Travail principal · À développer</small>
+                  </span>
+                  <span class="project-toggle-label">
+                    <span class="closed-label">Voir le projet</span>
+                    <span class="open-label">Masquer le projet</span>
+                  </span>
+                </summary>
+                <div class="project-body">
+                  <p>Manipulation portant sur la détection de durées de stimuli, dans le cadre de l'étude des dimensions temporelles de la perception.</p>
+                  <p class="project-role"><strong>Rôle dans le projet :</strong> conception du paradigme, programmation expérimentale, passation et analyses à venir.</p>
                   <div class="project-details-content">
                     <div class="project-links">
                       <a href="#" class="project-link disabled">Protocole</a>
@@ -2004,19 +2153,23 @@
                       <a href="#" class="project-link disabled">Supports</a>
                     </div>
                   </div>
-                </details>
-              </article>
+                </div>
+              </details>
 
-              <article class="project-card filter-item" data-category="axe-1 a-developper">
-                <div class="project-meta">
-                  <span class="project-badge">Travail principal</span>
-                  <span class="project-status">À développer</span>
-                </div>
-                <h3>SORBET</h3>
-                <p>Étude de la recalibration subjective du timing entre odeurs et événements visuels ou auditifs.</p>
-                <p class="project-role"><strong>Rôle dans le projet :</strong> conception du protocole d'adaptation temporelle, intégration olfactive et analyses psychométriques à venir.</p>
-                <details class="project-details">
-                  <summary>Voir le projet</summary>
+              <details class="project-card filter-item" data-category="axe-1 a-developper">
+                <summary class="project-summary">
+                  <span class="project-summary-text">
+                    <strong>SORBET</strong>
+                    <small>Travail principal · À développer</small>
+                  </span>
+                  <span class="project-toggle-label">
+                    <span class="closed-label">Voir le projet</span>
+                    <span class="open-label">Masquer le projet</span>
+                  </span>
+                </summary>
+                <div class="project-body">
+                  <p>Étude de la recalibration subjective du timing entre odeurs et événements visuels ou auditifs.</p>
+                  <p class="project-role"><strong>Rôle dans le projet :</strong> conception du protocole d'adaptation temporelle, intégration olfactive et analyses psychométriques à venir.</p>
                   <div class="project-details-content">
                     <div class="project-links">
                       <a href="#" class="project-link disabled">Protocole</a>
@@ -2025,8 +2178,8 @@
                       <a href="#" class="project-link disabled">Supports</a>
                     </div>
                   </div>
-                </details>
-              </article>
+                </div>
+              </details>
             </div>
           </article>
 
@@ -2038,16 +2191,20 @@
             </p>
 
             <div class="axis-projects">
-              <article class="project-card filter-item" data-category="axe-2 termine">
-                <div class="project-meta">
-                  <span class="project-badge">Travail principal</span>
-                  <span class="project-status">Terminé</span>
-                </div>
-                <h3>VIBEX</h3>
-                <p>Ligne de base visuelle consacrée au phénomène de boundary extension.</p>
-                <p class="project-role"><strong>Rôle dans le projet :</strong> portage principal du pré-test, préparation du protocole, passation pilote et analyses exploratoires.</p>
-                <details class="project-details">
-                  <summary>Voir le projet</summary>
+              <details class="project-card filter-item" data-category="axe-2 termine">
+                <summary class="project-summary">
+                  <span class="project-summary-text">
+                    <strong>VIBEX</strong>
+                    <small>Travail principal · Terminé</small>
+                  </span>
+                  <span class="project-toggle-label">
+                    <span class="closed-label">Voir le projet</span>
+                    <span class="open-label">Masquer le projet</span>
+                  </span>
+                </summary>
+                <div class="project-body">
+                  <p>Ligne de base visuelle consacrée au phénomène de boundary extension.</p>
+                  <p class="project-role"><strong>Rôle dans le projet :</strong> portage principal du pré-test, préparation du protocole, passation pilote et analyses exploratoires.</p>
                   <div class="project-details-content">
                     <div class="project-links">
                       <a href="#" class="project-link disabled">Protocole</a>
@@ -2056,19 +2213,23 @@
                       <a href="#" class="project-link disabled">Supports</a>
                     </div>
                   </div>
-                </details>
-              </article>
+                </div>
+              </details>
 
-              <article class="project-card filter-item" data-category="axe-2 a-developper">
-                <div class="project-meta">
-                  <span class="project-badge">Travail principal</span>
-                  <span class="project-status">À développer</span>
-                </div>
-                <h3>OASIS</h3>
-                <p>Étude de l'influence de la valence olfactive sur la représentation de l'espace visuel.</p>
-                <p class="project-role"><strong>Rôle dans le projet :</strong> préparation du protocole, intégration des odeurs, passation et analyses à venir.</p>
-                <details class="project-details">
-                  <summary>Voir le projet</summary>
+              <details class="project-card filter-item" data-category="axe-2 a-developper">
+                <summary class="project-summary">
+                  <span class="project-summary-text">
+                    <strong>OASIS</strong>
+                    <small>Travail principal · À développer</small>
+                  </span>
+                  <span class="project-toggle-label">
+                    <span class="closed-label">Voir le projet</span>
+                    <span class="open-label">Masquer le projet</span>
+                  </span>
+                </summary>
+                <div class="project-body">
+                  <p>Étude de l'influence de la valence olfactive sur la représentation de l'espace visuel.</p>
+                  <p class="project-role"><strong>Rôle dans le projet :</strong> préparation du protocole, intégration des odeurs, passation et analyses à venir.</p>
                   <div class="project-details-content">
                     <div class="project-links">
                       <a href="#" class="project-link disabled">Protocole</a>
@@ -2077,19 +2238,23 @@
                       <a href="#" class="project-link disabled">Supports</a>
                     </div>
                   </div>
-                </details>
-              </article>
+                </div>
+              </details>
 
-              <article class="project-card filter-item" data-category="axe-2 a-developper">
-                <div class="project-meta">
-                  <span class="project-badge">Travail principal</span>
-                  <span class="project-status">À développer</span>
-                </div>
-                <h3>SOLAR</h3>
-                <p>Projet portant sur le cueing spatial avec les odeurs, afin d'étudier si un indice olfactif peut orienter l'attention spatiale.</p>
-                <p class="project-role"><strong>Rôle dans le projet :</strong> conception du paradigme, intégration des stimulations olfactives, programmation expérimentale et analyses à venir.</p>
-                <details class="project-details">
-                  <summary>Voir le projet</summary>
+              <details class="project-card filter-item" data-category="axe-2 a-developper">
+                <summary class="project-summary">
+                  <span class="project-summary-text">
+                    <strong>SOLAR</strong>
+                    <small>Travail principal · À développer</small>
+                  </span>
+                  <span class="project-toggle-label">
+                    <span class="closed-label">Voir le projet</span>
+                    <span class="open-label">Masquer le projet</span>
+                  </span>
+                </summary>
+                <div class="project-body">
+                  <p>Projet portant sur le cueing spatial avec les odeurs, afin d'étudier si un indice olfactif peut orienter l'attention spatiale.</p>
+                  <p class="project-role"><strong>Rôle dans le projet :</strong> conception du paradigme, intégration des stimulations olfactives, programmation expérimentale et analyses à venir.</p>
                   <div class="project-details-content">
                     <div class="project-links">
                       <a href="#" class="project-link disabled">Protocole</a>
@@ -2098,19 +2263,23 @@
                       <a href="#" class="project-link disabled">Supports</a>
                     </div>
                   </div>
-                </details>
-              </article>
+                </div>
+              </details>
 
-              <article class="project-card filter-item" data-category="axe-2 a-developper">
-                <div class="project-meta">
-                  <span class="project-badge">Travail principal</span>
-                  <span class="project-status">À développer</span>
-                </div>
-                <h3>COBEX</h3>
-                <p>Étude de l'effet de la congruence entre odeur et scène visuelle sur le boundary extension.</p>
-                <p class="project-role"><strong>Rôle dans le projet :</strong> conception du paradigme, validation des associations odeur-scène et analyses à venir.</p>
-                <details class="project-details">
-                  <summary>Voir le projet</summary>
+              <details class="project-card filter-item" data-category="axe-2 a-developper">
+                <summary class="project-summary">
+                  <span class="project-summary-text">
+                    <strong>COBEX</strong>
+                    <small>Travail principal · À développer</small>
+                  </span>
+                  <span class="project-toggle-label">
+                    <span class="closed-label">Voir le projet</span>
+                    <span class="open-label">Masquer le projet</span>
+                  </span>
+                </summary>
+                <div class="project-body">
+                  <p>Étude de l'effet de la congruence entre odeur et scène visuelle sur le boundary extension.</p>
+                  <p class="project-role"><strong>Rôle dans le projet :</strong> conception du paradigme, validation des associations odeur-scène et analyses à venir.</p>
                   <div class="project-details-content">
                     <div class="project-links">
                       <a href="#" class="project-link disabled">Protocole</a>
@@ -2119,19 +2288,23 @@
                       <a href="#" class="project-link disabled">Supports</a>
                     </div>
                   </div>
-                </details>
-              </article>
+                </div>
+              </details>
 
-              <article class="project-card filter-item" data-category="axe-2 a-developper">
-                <div class="project-meta">
-                  <span class="project-badge">Travail principal</span>
-                  <span class="project-status">À développer</span>
-                </div>
-                <h3>BRAUD</h3>
-                <p>Étude de la boundary restriction dans la mémoire des événements auditifs.</p>
-                <p class="project-role"><strong>Rôle dans le projet :</strong> conception du paradigme auditif, sélection des stimuli et analyses comportementales à venir.</p>
-                <details class="project-details">
-                  <summary>Voir le projet</summary>
+              <details class="project-card filter-item" data-category="axe-2 a-developper">
+                <summary class="project-summary">
+                  <span class="project-summary-text">
+                    <strong>BRAUD</strong>
+                    <small>Travail principal · À développer</small>
+                  </span>
+                  <span class="project-toggle-label">
+                    <span class="closed-label">Voir le projet</span>
+                    <span class="open-label">Masquer le projet</span>
+                  </span>
+                </summary>
+                <div class="project-body">
+                  <p>Étude de la boundary restriction dans la mémoire des événements auditifs.</p>
+                  <p class="project-role"><strong>Rôle dans le projet :</strong> conception du paradigme auditif, sélection des stimuli et analyses comportementales à venir.</p>
                   <div class="project-details-content">
                     <div class="project-links">
                       <a href="#" class="project-link disabled">Protocole</a>
@@ -2140,19 +2313,23 @@
                       <a href="#" class="project-link disabled">Supports</a>
                     </div>
                   </div>
-                </details>
-              </article>
+                </div>
+              </details>
 
-              <article class="project-card filter-item" data-category="axe-2 a-developper">
-                <div class="project-meta">
-                  <span class="project-badge">Travail principal</span>
-                  <span class="project-status">À développer</span>
-                </div>
-                <h3>BRAUDOLF</h3>
-                <p>Version olfactive de BRAUD, centrée sur l'effet des odeurs sur la restriction auditive.</p>
-                <p class="project-role"><strong>Rôle dans le projet :</strong> adaptation du paradigme BRAUD, intégration olfactive et analyses à venir.</p>
-                <details class="project-details">
-                  <summary>Voir le projet</summary>
+              <details class="project-card filter-item" data-category="axe-2 a-developper">
+                <summary class="project-summary">
+                  <span class="project-summary-text">
+                    <strong>BRAUDOLF</strong>
+                    <small>Travail principal · À développer</small>
+                  </span>
+                  <span class="project-toggle-label">
+                    <span class="closed-label">Voir le projet</span>
+                    <span class="open-label">Masquer le projet</span>
+                  </span>
+                </summary>
+                <div class="project-body">
+                  <p>Version olfactive de BRAUD, centrée sur l'effet des odeurs sur la restriction auditive.</p>
+                  <p class="project-role"><strong>Rôle dans le projet :</strong> adaptation du paradigme BRAUD, intégration olfactive et analyses à venir.</p>
                   <div class="project-details-content">
                     <div class="project-links">
                       <a href="#" class="project-link disabled">Protocole</a>
@@ -2161,8 +2338,8 @@
                       <a href="#" class="project-link disabled">Supports</a>
                     </div>
                   </div>
-                </details>
-              </article>
+                </div>
+              </details>
             </div>
           </article>
         </div>
@@ -2171,19 +2348,23 @@
       <section id="fr-side" class="reveal" data-section="side">
         <div class="section-title">
           <span>04</span>
-          <h2>Autres projets</h2>
+          <h2>Projets en collaboration</h2>
         </div>
 
-        <article class="project-card">
-          <div class="project-meta">
-            <span class="project-badge secondary">Projet collaboratif</span>
-            <span class="project-status">En cours</span>
-          </div>
-          <h3>FLUXOLF</h3>
-          <p>Projet collaboratif portant sur le paradoxe intermodal musique-odeur, avec un intérêt pour les réponses neurophysiologiques mesurées par EEG.</p>
-          <p class="project-role"><strong>Rôle dans le projet :</strong> contribution scientifique et méthodologique à un projet mené en collaboration, en lien avec la problématique multisensorielle.</p>
-          <details class="project-details">
-            <summary>Voir le projet</summary>
+        <details class="project-card">
+          <summary class="project-summary">
+            <span class="project-summary-text">
+              <strong>FLUXOLF</strong>
+              <small>Projet collaboratif · En cours</small>
+            </span>
+            <span class="project-toggle-label">
+              <span class="closed-label">Voir le projet</span>
+              <span class="open-label">Masquer le projet</span>
+            </span>
+          </summary>
+          <div class="project-body">
+            <p>Projet collaboratif portant sur le paradoxe intermodal musique-odeur, avec un intérêt pour les réponses neurophysiologiques mesurées par EEG.</p>
+            <p class="project-role"><strong>Rôle dans le projet :</strong> contribution scientifique et méthodologique à un projet mené en collaboration, en lien avec la problématique multisensorielle.</p>
             <div class="project-details-content">
               <div class="project-links">
                 <a href="#" class="project-link disabled">Protocole</a>
@@ -2192,8 +2373,8 @@
                 <a href="#" class="project-link disabled">Supports</a>
               </div>
             </div>
-          </details>
-        </article>
+          </div>
+        </details>
       </section>
 
       <section id="fr-formations" class="reveal" data-section="formations">
@@ -2212,37 +2393,71 @@
           </div>
         </article>
 
-        <div class="training-accordion">
-          <details class="training-card">
-            <summary><span class="training-hours">27.5 h</span><span><strong>Poursuite de carrière</strong><small>Enseignement</small></span></summary>
-            <div class="training-content"><p><strong>Objectif pédagogique :</strong> développer les compétences liées à l'enseignement universitaire, à la préparation des séances, à l'encadrement des étudiants et à la transmission de contenus scientifiques.</p></div>
-          </details>
+        <details class="training-master">
+          <summary>Voir le détail des formations</summary>
 
-          <details class="training-card">
-            <summary><span class="training-hours">4 h</span><span><strong>Culture scientifique internationale et valorisation</strong><small>Introduction à l'intelligence économique</small></span></summary>
-            <div class="training-content"><p><strong>Objectif pédagogique :</strong> comprendre les enjeux de veille, de valorisation, de stratégie informationnelle et de positionnement des connaissances scientifiques dans un environnement institutionnel et socio-économique.</p></div>
-          </details>
+          <div class="training-accordion">
+            <details class="training-card">
+              <summary>
+                <span class="training-hours">27.5 h</span>
+                <span><strong>Poursuite de carrière</strong><small>Enseignement</small></span>
+              </summary>
+              <div class="training-content">
+                <p><strong>Objectif pédagogique :</strong> développer les compétences liées à l'enseignement universitaire, à la préparation des séances, à l'encadrement des étudiants et à la transmission de contenus scientifiques.</p>
+              </div>
+            </details>
 
-          <details class="training-card">
-            <summary><span class="training-hours">3 h</span><span><strong>Éthique de la recherche et intégrité scientifique</strong><small>Conférence : intégrité scientifique et déontologie</small></span></summary>
-            <div class="training-content"><p><strong>Objectif pédagogique :</strong> renforcer la connaissance des principes d'intégrité scientifique, de déontologie, de responsabilité du chercheur et de bonnes pratiques dans la production et la diffusion des résultats.</p></div>
-          </details>
+            <details class="training-card">
+              <summary>
+                <span class="training-hours">4 h</span>
+                <span><strong>Culture scientifique internationale et valorisation</strong><small>Introduction à l'intelligence économique</small></span>
+              </summary>
+              <div class="training-content">
+                <p><strong>Objectif pédagogique :</strong> comprendre les enjeux de veille, de valorisation, de stratégie informationnelle et de positionnement des connaissances scientifiques dans un environnement institutionnel et socio-économique.</p>
+              </div>
+            </details>
 
-          <details class="training-card">
-            <summary><span class="training-hours">3 h</span><span><strong>Formations documentaires</strong><small>Zotero : gérer ses références bibliographiques</small></span></summary>
-            <div class="training-content"><p><strong>Objectif pédagogique :</strong> maîtriser les bases de la gestion bibliographique, organiser les références scientifiques, faciliter la rédaction académique et fiabiliser le suivi documentaire.</p></div>
-          </details>
+            <details class="training-card">
+              <summary>
+                <span class="training-hours">3 h</span>
+                <span><strong>Éthique de la recherche et intégrité scientifique</strong><small>Conférence : intégrité scientifique et déontologie</small></span>
+              </summary>
+              <div class="training-content">
+                <p><strong>Objectif pédagogique :</strong> renforcer la connaissance des principes d'intégrité scientifique, de déontologie, de responsabilité du chercheur et de bonnes pratiques dans la production et la diffusion des résultats.</p>
+              </div>
+            </details>
 
-          <details class="training-card">
-            <summary><span class="training-hours">17.5 h</span><span><strong>Connaissances et outils d'enseignement</strong><small>Apprendre à enseigner à l'université, niveau 1</small></span></summary>
-            <div class="training-content"><p><strong>Objectif pédagogique :</strong> acquérir des bases en pédagogie universitaire, concevoir des activités d'apprentissage, structurer un enseignement et adapter les méthodes pédagogiques aux publics étudiants.</p></div>
-          </details>
+            <details class="training-card">
+              <summary>
+                <span class="training-hours">3 h</span>
+                <span><strong>Formations documentaires</strong><small>Zotero : gérer ses références bibliographiques</small></span>
+              </summary>
+              <div class="training-content">
+                <p><strong>Objectif pédagogique :</strong> maîtriser les bases de la gestion bibliographique, organiser les références scientifiques, faciliter la rédaction académique et fiabiliser le suivi documentaire.</p>
+              </div>
+            </details>
 
-          <details class="training-card">
-            <summary><span class="training-hours">5 h</span><span><strong>Connaissances et outils d'enseignement</strong><small>IA et Éducation</small></span></summary>
-            <div class="training-content"><p><strong>Objectif pédagogique :</strong> conforter la culture scientifique des doctorants dans leur champ disciplinaire ou en interdisciplinaire, en interrogeant les usages, apports et limites de l'intelligence artificielle en contexte éducatif.</p></div>
-          </details>
-        </div>
+            <details class="training-card">
+              <summary>
+                <span class="training-hours">17.5 h</span>
+                <span><strong>Connaissances et outils d'enseignement</strong><small>Apprendre à enseigner à l'université, niveau 1</small></span>
+              </summary>
+              <div class="training-content">
+                <p><strong>Objectif pédagogique :</strong> acquérir des bases en pédagogie universitaire, concevoir des activités d'apprentissage, structurer un enseignement et adapter les méthodes pédagogiques aux publics étudiants.</p>
+              </div>
+            </details>
+
+            <details class="training-card">
+              <summary>
+                <span class="training-hours">5 h</span>
+                <span><strong>Connaissances et outils d'enseignement</strong><small>IA et Éducation</small></span>
+              </summary>
+              <div class="training-content">
+                <p><strong>Objectif pédagogique :</strong> conforter la culture scientifique des doctorants dans leur champ disciplinaire ou en interdisciplinaire, en interrogeant les usages, apports et limites de l'intelligence artificielle en contexte éducatif.</p>
+              </div>
+            </details>
+          </div>
+        </details>
       </section>
 
       <section id="fr-publications" class="reveal" data-section="publications">
@@ -2388,7 +2603,7 @@
           <a href="#en-about" data-section-key="about">About</a>
           <a href="#en-team" data-section-key="equipe">Team</a>
           <a href="#en-thesis" data-section-key="these">Thesis</a>
-          <a href="#en-side" data-section-key="side">Other projects</a>
+          <a href="#en-side" data-section-key="side">Featured projects</a>
           <a href="#en-training" data-section-key="formations">Training</a>
           <a href="#en-publications" data-section-key="publications">Publications</a>
           <a href="#en-communications" data-section-key="communications">Communications</a>
@@ -2401,7 +2616,7 @@
       <a href="#en-about" data-section-key="about"><span>01</span> About</a>
       <a href="#en-team" data-section-key="equipe"><span>02</span> Team</a>
       <a href="#en-thesis" data-section-key="these"><span>03</span> Thesis</a>
-      <a href="#en-side" data-section-key="side"><span>04</span> Other projects</a>
+      <a href="#en-side" data-section-key="side"><span>04</span> Featured projects</a>
       <a href="#en-training" data-section-key="formations"><span>05</span> Training</a>
       <a href="#en-publications" data-section-key="publications"><span>06</span> Publications</a>
       <a href="#en-communications" data-section-key="communications"><span>07</span> Communications</a>
@@ -2505,16 +2720,20 @@
             </p>
 
             <div class="axis-projects">
-              <article class="project-card filter-item" data-category="axe-1 termine">
-                <div class="project-meta">
-                  <span class="project-badge">Main work</span>
-                  <span class="project-status">Completed</span>
-                </div>
-                <h3>TWIXAV</h3>
-                <p>Reference study on the audiovisual temporal window of integration, without olfactory stimulation.</p>
-                <p class="project-role"><strong>Project role:</strong> main lead of the pre-test, protocol preparation, pilot testing, and exploratory analyses.</p>
-                <details class="project-details">
-                  <summary>View project</summary>
+              <details class="project-card filter-item" data-category="axe-1 termine">
+                <summary class="project-summary">
+                  <span class="project-summary-text">
+                    <strong>TWIXAV</strong>
+                    <small>Main work · Completed</small>
+                  </span>
+                  <span class="project-toggle-label">
+                    <span class="closed-label">View project</span>
+                    <span class="open-label">Hide project</span>
+                  </span>
+                </summary>
+                <div class="project-body">
+                  <p>Reference study on the audiovisual temporal window of integration, without olfactory stimulation.</p>
+                  <p class="project-role"><strong>Project role:</strong> main lead of the pre-test, protocol preparation, pilot testing, and exploratory analyses.</p>
                   <div class="project-details-content">
                     <div class="project-links">
                       <a href="#" class="project-link disabled">Protocol</a>
@@ -2523,19 +2742,23 @@
                       <a href="#" class="project-link disabled">Materials</a>
                     </div>
                   </div>
-                </details>
-              </article>
+                </div>
+              </details>
 
-              <article class="project-card filter-item" data-category="axe-1 a-developper">
-                <div class="project-meta">
-                  <span class="project-badge">Main work</span>
-                  <span class="project-status">To develop</span>
-                </div>
-                <h3>TWIXOLF</h3>
-                <p>Olfactory version of TWIXAV, aimed at studying temporal integration windows involving an olfactory component.</p>
-                <p class="project-role"><strong>Project role:</strong> adaptation of the temporal paradigm, integration of olfactory stimulation, experimental programming, and upcoming analyses.</p>
-                <details class="project-details">
-                  <summary>View project</summary>
+              <details class="project-card filter-item" data-category="axe-1 a-developper">
+                <summary class="project-summary">
+                  <span class="project-summary-text">
+                    <strong>TWIXOLF</strong>
+                    <small>Main work · To develop</small>
+                  </span>
+                  <span class="project-toggle-label">
+                    <span class="closed-label">View project</span>
+                    <span class="open-label">Hide project</span>
+                  </span>
+                </summary>
+                <div class="project-body">
+                  <p>Olfactory version of TWIXAV, aimed at studying temporal integration windows involving an olfactory component.</p>
+                  <p class="project-role"><strong>Project role:</strong> adaptation of the temporal paradigm, integration of olfactory stimulation, experimental programming, and upcoming analyses.</p>
                   <div class="project-details-content">
                     <div class="project-links">
                       <a href="#" class="project-link disabled">Protocol</a>
@@ -2544,19 +2767,23 @@
                       <a href="#" class="project-link disabled">Materials</a>
                     </div>
                   </div>
-                </details>
-              </article>
+                </div>
+              </details>
 
-              <article class="project-card filter-item" data-category="axe-1 a-developper">
-                <div class="project-meta">
-                  <span class="project-badge">Main work</span>
-                  <span class="project-status">To develop</span>
-                </div>
-                <h3>SOFT</h3>
-                <p>Experiment focused on the detection of stimulus durations, within the study of temporal dimensions of perception.</p>
-                <p class="project-role"><strong>Project role:</strong> paradigm design, experimental programming, data collection, and upcoming analyses.</p>
-                <details class="project-details">
-                  <summary>View project</summary>
+              <details class="project-card filter-item" data-category="axe-1 a-developper">
+                <summary class="project-summary">
+                  <span class="project-summary-text">
+                    <strong>SOFT</strong>
+                    <small>Main work · To develop</small>
+                  </span>
+                  <span class="project-toggle-label">
+                    <span class="closed-label">View project</span>
+                    <span class="open-label">Hide project</span>
+                  </span>
+                </summary>
+                <div class="project-body">
+                  <p>Experiment focused on the detection of stimulus durations, within the study of temporal dimensions of perception.</p>
+                  <p class="project-role"><strong>Project role:</strong> paradigm design, experimental programming, data collection, and upcoming analyses.</p>
                   <div class="project-details-content">
                     <div class="project-links">
                       <a href="#" class="project-link disabled">Protocol</a>
@@ -2565,19 +2792,23 @@
                       <a href="#" class="project-link disabled">Materials</a>
                     </div>
                   </div>
-                </details>
-              </article>
+                </div>
+              </details>
 
-              <article class="project-card filter-item" data-category="axe-1 a-developper">
-                <div class="project-meta">
-                  <span class="project-badge">Main work</span>
-                  <span class="project-status">To develop</span>
-                </div>
-                <h3>SORBET</h3>
-                <p>Study of subjective timing recalibration between odors and visual or auditory events.</p>
-                <p class="project-role"><strong>Project role:</strong> temporal adaptation protocol design, olfactory integration, and upcoming psychometric analyses.</p>
-                <details class="project-details">
-                  <summary>View project</summary>
+              <details class="project-card filter-item" data-category="axe-1 a-developper">
+                <summary class="project-summary">
+                  <span class="project-summary-text">
+                    <strong>SORBET</strong>
+                    <small>Main work · To develop</small>
+                  </span>
+                  <span class="project-toggle-label">
+                    <span class="closed-label">View project</span>
+                    <span class="open-label">Hide project</span>
+                  </span>
+                </summary>
+                <div class="project-body">
+                  <p>Study of subjective timing recalibration between odors and visual or auditory events.</p>
+                  <p class="project-role"><strong>Project role:</strong> temporal adaptation protocol design, olfactory integration, and upcoming psychometric analyses.</p>
                   <div class="project-details-content">
                     <div class="project-links">
                       <a href="#" class="project-link disabled">Protocol</a>
@@ -2586,8 +2817,8 @@
                       <a href="#" class="project-link disabled">Materials</a>
                     </div>
                   </div>
-                </details>
-              </article>
+                </div>
+              </details>
             </div>
           </article>
 
@@ -2599,16 +2830,20 @@
             </p>
 
             <div class="axis-projects">
-              <article class="project-card filter-item" data-category="axe-2 termine">
-                <div class="project-meta">
-                  <span class="project-badge">Main work</span>
-                  <span class="project-status">Completed</span>
-                </div>
-                <h3>VIBEX</h3>
-                <p>Visual baseline study dedicated to the boundary extension phenomenon.</p>
-                <p class="project-role"><strong>Project role:</strong> main lead of the pre-test, protocol preparation, pilot testing, and exploratory analyses.</p>
-                <details class="project-details">
-                  <summary>View project</summary>
+              <details class="project-card filter-item" data-category="axe-2 termine">
+                <summary class="project-summary">
+                  <span class="project-summary-text">
+                    <strong>VIBEX</strong>
+                    <small>Main work · Completed</small>
+                  </span>
+                  <span class="project-toggle-label">
+                    <span class="closed-label">View project</span>
+                    <span class="open-label">Hide project</span>
+                  </span>
+                </summary>
+                <div class="project-body">
+                  <p>Visual baseline study dedicated to the boundary extension phenomenon.</p>
+                  <p class="project-role"><strong>Project role:</strong> main lead of the pre-test, protocol preparation, pilot testing, and exploratory analyses.</p>
                   <div class="project-details-content">
                     <div class="project-links">
                       <a href="#" class="project-link disabled">Protocol</a>
@@ -2617,19 +2852,23 @@
                       <a href="#" class="project-link disabled">Materials</a>
                     </div>
                   </div>
-                </details>
-              </article>
+                </div>
+              </details>
 
-              <article class="project-card filter-item" data-category="axe-2 a-developper">
-                <div class="project-meta">
-                  <span class="project-badge">Main work</span>
-                  <span class="project-status">To develop</span>
-                </div>
-                <h3>OASIS</h3>
-                <p>Study of the influence of olfactory valence on the representation of visual space.</p>
-                <p class="project-role"><strong>Project role:</strong> protocol preparation, odor integration, data collection, and upcoming analyses.</p>
-                <details class="project-details">
-                  <summary>View project</summary>
+              <details class="project-card filter-item" data-category="axe-2 a-developper">
+                <summary class="project-summary">
+                  <span class="project-summary-text">
+                    <strong>OASIS</strong>
+                    <small>Main work · To develop</small>
+                  </span>
+                  <span class="project-toggle-label">
+                    <span class="closed-label">View project</span>
+                    <span class="open-label">Hide project</span>
+                  </span>
+                </summary>
+                <div class="project-body">
+                  <p>Study of the influence of olfactory valence on the representation of visual space.</p>
+                  <p class="project-role"><strong>Project role:</strong> protocol preparation, odor integration, data collection, and upcoming analyses.</p>
                   <div class="project-details-content">
                     <div class="project-links">
                       <a href="#" class="project-link disabled">Protocol</a>
@@ -2638,19 +2877,23 @@
                       <a href="#" class="project-link disabled">Materials</a>
                     </div>
                   </div>
-                </details>
-              </article>
+                </div>
+              </details>
 
-              <article class="project-card filter-item" data-category="axe-2 a-developper">
-                <div class="project-meta">
-                  <span class="project-badge">Main work</span>
-                  <span class="project-status">To develop</span>
-                </div>
-                <h3>SOLAR</h3>
-                <p>Project on spatial cueing with odors, aimed at testing whether an olfactory cue can orient spatial attention.</p>
-                <p class="project-role"><strong>Project role:</strong> paradigm design, integration of olfactory stimulation, experimental programming, and upcoming analyses.</p>
-                <details class="project-details">
-                  <summary>View project</summary>
+              <details class="project-card filter-item" data-category="axe-2 a-developper">
+                <summary class="project-summary">
+                  <span class="project-summary-text">
+                    <strong>SOLAR</strong>
+                    <small>Main work · To develop</small>
+                  </span>
+                  <span class="project-toggle-label">
+                    <span class="closed-label">View project</span>
+                    <span class="open-label">Hide project</span>
+                  </span>
+                </summary>
+                <div class="project-body">
+                  <p>Project on spatial cueing with odors, aimed at testing whether an olfactory cue can orient spatial attention.</p>
+                  <p class="project-role"><strong>Project role:</strong> paradigm design, integration of olfactory stimulation, experimental programming, and upcoming analyses.</p>
                   <div class="project-details-content">
                     <div class="project-links">
                       <a href="#" class="project-link disabled">Protocol</a>
@@ -2659,19 +2902,23 @@
                       <a href="#" class="project-link disabled">Materials</a>
                     </div>
                   </div>
-                </details>
-              </article>
+                </div>
+              </details>
 
-              <article class="project-card filter-item" data-category="axe-2 a-developper">
-                <div class="project-meta">
-                  <span class="project-badge">Main work</span>
-                  <span class="project-status">To develop</span>
-                </div>
-                <h3>COBEX</h3>
-                <p>Study of the effect of odor-scene congruence on boundary extension.</p>
-                <p class="project-role"><strong>Project role:</strong> paradigm design, validation of odor-scene associations, and upcoming analyses.</p>
-                <details class="project-details">
-                  <summary>View project</summary>
+              <details class="project-card filter-item" data-category="axe-2 a-developper">
+                <summary class="project-summary">
+                  <span class="project-summary-text">
+                    <strong>COBEX</strong>
+                    <small>Main work · To develop</small>
+                  </span>
+                  <span class="project-toggle-label">
+                    <span class="closed-label">View project</span>
+                    <span class="open-label">Hide project</span>
+                  </span>
+                </summary>
+                <div class="project-body">
+                  <p>Study of the effect of odor-scene congruence on boundary extension.</p>
+                  <p class="project-role"><strong>Project role:</strong> paradigm design, validation of odor-scene associations, and upcoming analyses.</p>
                   <div class="project-details-content">
                     <div class="project-links">
                       <a href="#" class="project-link disabled">Protocol</a>
@@ -2680,19 +2927,23 @@
                       <a href="#" class="project-link disabled">Materials</a>
                     </div>
                   </div>
-                </details>
-              </article>
+                </div>
+              </details>
 
-              <article class="project-card filter-item" data-category="axe-2 a-developper">
-                <div class="project-meta">
-                  <span class="project-badge">Main work</span>
-                  <span class="project-status">To develop</span>
-                </div>
-                <h3>BRAUD</h3>
-                <p>Study of boundary restriction in memory for auditory events.</p>
-                <p class="project-role"><strong>Project role:</strong> auditory paradigm design, stimulus selection, and upcoming behavioral analyses.</p>
-                <details class="project-details">
-                  <summary>View project</summary>
+              <details class="project-card filter-item" data-category="axe-2 a-developper">
+                <summary class="project-summary">
+                  <span class="project-summary-text">
+                    <strong>BRAUD</strong>
+                    <small>Main work · To develop</small>
+                  </span>
+                  <span class="project-toggle-label">
+                    <span class="closed-label">View project</span>
+                    <span class="open-label">Hide project</span>
+                  </span>
+                </summary>
+                <div class="project-body">
+                  <p>Study of boundary restriction in memory for auditory events.</p>
+                  <p class="project-role"><strong>Project role:</strong> auditory paradigm design, stimulus selection, and upcoming behavioral analyses.</p>
                   <div class="project-details-content">
                     <div class="project-links">
                       <a href="#" class="project-link disabled">Protocol</a>
@@ -2701,19 +2952,23 @@
                       <a href="#" class="project-link disabled">Materials</a>
                     </div>
                   </div>
-                </details>
-              </article>
+                </div>
+              </details>
 
-              <article class="project-card filter-item" data-category="axe-2 a-developper">
-                <div class="project-meta">
-                  <span class="project-badge">Main work</span>
-                  <span class="project-status">To develop</span>
-                </div>
-                <h3>BRAUDOLF</h3>
-                <p>Olfactory version of BRAUD, focused on the effect of odors on auditory boundary restriction.</p>
-                <p class="project-role"><strong>Project role:</strong> adaptation of the BRAUD paradigm, olfactory integration, and upcoming analyses.</p>
-                <details class="project-details">
-                  <summary>View project</summary>
+              <details class="project-card filter-item" data-category="axe-2 a-developper">
+                <summary class="project-summary">
+                  <span class="project-summary-text">
+                    <strong>BRAUDOLF</strong>
+                    <small>Main work · To develop</small>
+                  </span>
+                  <span class="project-toggle-label">
+                    <span class="closed-label">View project</span>
+                    <span class="open-label">Hide project</span>
+                  </span>
+                </summary>
+                <div class="project-body">
+                  <p>Olfactory version of BRAUD, focused on the effect of odors on auditory boundary restriction.</p>
+                  <p class="project-role"><strong>Project role:</strong> adaptation of the BRAUD paradigm, olfactory integration, and upcoming analyses.</p>
                   <div class="project-details-content">
                     <div class="project-links">
                       <a href="#" class="project-link disabled">Protocol</a>
@@ -2722,8 +2977,8 @@
                       <a href="#" class="project-link disabled">Materials</a>
                     </div>
                   </div>
-                </details>
-              </article>
+                </div>
+              </details>
             </div>
           </article>
         </div>
@@ -2732,19 +2987,23 @@
       <section id="en-side" class="reveal" data-section="side">
         <div class="section-title">
           <span>04</span>
-          <h2>Other projects</h2>
+          <h2>Featured projects</h2>
         </div>
 
-        <article class="project-card">
-          <div class="project-meta">
-            <span class="project-badge secondary">Collaborative project</span>
-            <span class="project-status">Ongoing</span>
-          </div>
-          <h3>FLUXOLF</h3>
-          <p>Collaborative project on the intermodal music-odor paradox, with an interest in neurophysiological responses measured through EEG.</p>
-          <p class="project-role"><strong>Project role:</strong> scientific and methodological contribution to a collaborative project connected to multisensory research.</p>
-          <details class="project-details">
-            <summary>View project</summary>
+        <details class="project-card">
+          <summary class="project-summary">
+            <span class="project-summary-text">
+              <strong>FLUXOLF</strong>
+              <small>Collaborative project · Ongoing</small>
+            </span>
+            <span class="project-toggle-label">
+              <span class="closed-label">View project</span>
+              <span class="open-label">Hide project</span>
+            </span>
+          </summary>
+          <div class="project-body">
+            <p>Collaborative project on the intermodal music-odor paradox, with an interest in neurophysiological responses measured through EEG.</p>
+            <p class="project-role"><strong>Project role:</strong> scientific and methodological contribution to a collaborative project connected to multisensory research.</p>
             <div class="project-details-content">
               <div class="project-links">
                 <a href="#" class="project-link disabled">Protocol</a>
@@ -2753,8 +3012,8 @@
                 <a href="#" class="project-link disabled">Materials</a>
               </div>
             </div>
-          </details>
-        </article>
+          </div>
+        </details>
       </section>
 
       <section id="en-training" class="reveal" data-section="formations">
@@ -2773,37 +3032,71 @@
           </div>
         </article>
 
-        <div class="training-accordion">
-          <details class="training-card">
-            <summary><span class="training-hours">27.5 h</span><span><strong>Career development</strong><small>Teaching</small></span></summary>
-            <div class="training-content"><p><strong>Pedagogical objective:</strong> develop skills related to university teaching, session preparation, student support, and the transmission of scientific content.</p></div>
-          </details>
+        <details class="training-master">
+          <summary>View training details</summary>
 
-          <details class="training-card">
-            <summary><span class="training-hours">4 h</span><span><strong>International scientific culture and valorization</strong><small>Introduction to economic intelligence</small></span></summary>
-            <div class="training-content"><p><strong>Pedagogical objective:</strong> understand the challenges of monitoring, valorization, information strategy, and the positioning of scientific knowledge in institutional and socio-economic environments.</p></div>
-          </details>
+          <div class="training-accordion">
+            <details class="training-card">
+              <summary>
+                <span class="training-hours">27.5 h</span>
+                <span><strong>Career development</strong><small>Teaching</small></span>
+              </summary>
+              <div class="training-content">
+                <p><strong>Pedagogical objective:</strong> develop skills related to university teaching, session preparation, student support, and the transmission of scientific content.</p>
+              </div>
+            </details>
 
-          <details class="training-card">
-            <summary><span class="training-hours">3 h</span><span><strong>Research ethics and scientific integrity</strong><small>Scientific integrity and professional ethics</small></span></summary>
-            <div class="training-content"><p><strong>Pedagogical objective:</strong> strengthen knowledge of scientific integrity, professional ethics, researcher responsibility, and good practices in producing and disseminating results.</p></div>
-          </details>
+            <details class="training-card">
+              <summary>
+                <span class="training-hours">4 h</span>
+                <span><strong>International scientific culture and valorization</strong><small>Introduction to economic intelligence</small></span>
+              </summary>
+              <div class="training-content">
+                <p><strong>Pedagogical objective:</strong> understand the challenges of monitoring, valorization, information strategy, and the positioning of scientific knowledge in institutional and socio-economic environments.</p>
+              </div>
+            </details>
 
-          <details class="training-card">
-            <summary><span class="training-hours">3 h</span><span><strong>Documentary training</strong><small>Zotero: managing bibliographic references</small></span></summary>
-            <div class="training-content"><p><strong>Pedagogical objective:</strong> master the basics of bibliographic management, organize scientific references, support academic writing, and make documentary follow-up more reliable.</p></div>
-          </details>
+            <details class="training-card">
+              <summary>
+                <span class="training-hours">3 h</span>
+                <span><strong>Research ethics and scientific integrity</strong><small>Scientific integrity and professional ethics</small></span>
+              </summary>
+              <div class="training-content">
+                <p><strong>Pedagogical objective:</strong> strengthen knowledge of scientific integrity, professional ethics, researcher responsibility, and good practices in producing and disseminating results.</p>
+              </div>
+            </details>
 
-          <details class="training-card">
-            <summary><span class="training-hours">17.5 h</span><span><strong>Teaching knowledge and tools</strong><small>Learning to teach at university, level 1</small></span></summary>
-            <div class="training-content"><p><strong>Pedagogical objective:</strong> acquire foundations in university pedagogy, design learning activities, structure a teaching session, and adapt pedagogical methods to student audiences.</p></div>
-          </details>
+            <details class="training-card">
+              <summary>
+                <span class="training-hours">3 h</span>
+                <span><strong>Documentary training</strong><small>Zotero: managing bibliographic references</small></span>
+              </summary>
+              <div class="training-content">
+                <p><strong>Pedagogical objective:</strong> master the basics of bibliographic management, organize scientific references, support academic writing, and make documentary follow-up more reliable.</p>
+              </div>
+            </details>
 
-          <details class="training-card">
-            <summary><span class="training-hours">5 h</span><span><strong>Teaching knowledge and tools</strong><small>AI and Education</small></span></summary>
-            <div class="training-content"><p><strong>Pedagogical objective:</strong> strengthen doctoral students' scientific culture in their disciplinary or interdisciplinary field by examining the uses, contributions, and limits of artificial intelligence in educational contexts.</p></div>
-          </details>
-        </div>
+            <details class="training-card">
+              <summary>
+                <span class="training-hours">17.5 h</span>
+                <span><strong>Teaching knowledge and tools</strong><small>Learning to teach at university, level 1</small></span>
+              </summary>
+              <div class="training-content">
+                <p><strong>Pedagogical objective:</strong> acquire foundations in university pedagogy, design learning activities, structure a teaching session, and adapt pedagogical methods to student audiences.</p>
+              </div>
+            </details>
+
+            <details class="training-card">
+              <summary>
+                <span class="training-hours">5 h</span>
+                <span><strong>Teaching knowledge and tools</strong><small>AI and Education</small></span>
+              </summary>
+              <div class="training-content">
+                <p><strong>Pedagogical objective:</strong> strengthen doctoral students' scientific culture in their disciplinary or interdisciplinary field by examining the uses, contributions, and limits of artificial intelligence in educational contexts.</p>
+              </div>
+            </details>
+          </div>
+        </details>
       </section>
 
       <section id="en-publications" class="reveal" data-section="publications">
