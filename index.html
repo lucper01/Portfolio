@@ -303,7 +303,7 @@
     h1 {
       margin: 22px 0 14px;
       font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(2.25rem, 5.6vw, 4.35rem);
+      font-size: clamp(2.5rem, 7vw, 5.3rem);
       line-height: 0.98;
       letter-spacing: -0.045em;
       max-width: 850px;
@@ -684,10 +684,10 @@
     .section-title:hover h2::after {
       width: 100%;
     }
+
     .hero-title-fr {
-      max-width: 1100px;
-      font-size: clamp(2.1rem, 4.6vw, 3.95rem);
-      letter-spacing: -0.055em;
+      max-width: 1000px;
+      font-size: clamp(2.25rem, 5.25vw, 4.45rem);
     }
 
     .lead {
@@ -709,14 +709,27 @@
 
     .highlight h3 {
       color: #ffffff;
-      text-wrap: balance;
       font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(1.55rem, 2.25vw, 2.15rem);
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
       line-height: 1.08;
     }
 
     .highlight p { color: rgba(255, 255, 255, 0.88); }
-body.dark-mode .thesis-toc {
+
+    .thesis-toc {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin: 20px 0 34px;
+      padding: 14px;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(11, 47, 35, 0.10);
+      box-shadow: var(--shadow-soft);
+    }
+
+    body.dark-mode .thesis-toc {
       background: rgba(16, 37, 28, 0.78);
       border-color: rgba(220, 238, 227, 0.12);
     }
@@ -1618,6 +1631,7 @@ body.dark-mode .thesis-toc {
     body.a11y-high-contrast .training-master,
     body.a11y-high-contrast .publication-list li,
     body.a11y-high-contrast .contact-box,
+    body.a11y-high-contrast .thesis-toc {
       background: #ffffff;
       color: #000000;
       border-color: #000000;
@@ -1643,6 +1657,7 @@ body.dark-mode .thesis-toc {
     body.a11y-high-contrast .training-master > summary,
     body.a11y-high-contrast .training-card summary strong,
     body.a11y-high-contrast .training-card summary small,
+    body.a11y-high-contrast .thesis-toc strong {
       color: #000000 !important;
     }
 
@@ -1957,7 +1972,7 @@ body.dark-mode .thesis-toc {
         reduceMotionHelp: "Limite les transitions, animations et effets de mouvement.",
         nav: ["À propos", "Équipe", "Thèse", "Projets en collaboration", "Formations", "Publications", "Communications", "Contact"],
         heroLabel: "Portfolio académique",
-        heroTitle: "Y a-t-il un espace-temps pour les odeurs&nbsp;?",
+        heroTitle: "Y a-t-il un espace-temps pour les odeurs ?",
         heroSubtitle: "Mécanismes d'intégration entre olfaction, vision et audition",
         heroText: "Je suis Luc Perroquin, doctorant en psychologie cognitive. Mes recherches portent sur les relations spatio-temporelles entre olfaction, vision et audition, ainsi que sur l'influence des odeurs dans la construction perceptive de l'espace et du temps.",
         cv: "Ouvrir CV",
@@ -2627,7 +2642,16 @@ body.dark-mode .thesis-toc {
               <h3>${escapeHtmlFrenchPunctuation(data.thesisHeadline)}</h3>
               <p>${escapeHtml(data.thesisText)}</p>
             </div>
-<h3 id="${currentLanguage}-supervision" class="subsection-heading">${escapeHtml(data.supervision)}</h3>
+
+            <nav class="thesis-toc" aria-label="${currentLanguage === "fr" ? "Sommaire interne de la thèse" : "Internal thesis summary"}">
+              <strong>${escapeHtml(data.inSection)}</strong>
+              <a href="#${currentLanguage}-supervision">${escapeHtml(data.toc[0])}</a>
+              <a href="#${currentLanguage}-thesis-axes">${escapeHtml(data.toc[1])}</a>
+              <a href="#${currentLanguage}-axis-1">${escapeHtml(data.toc[2])}</a>
+              <a href="#${currentLanguage}-axis-2">${escapeHtml(data.toc[3])}</a>
+            </nav>
+
+            <h3 id="${currentLanguage}-supervision" class="subsection-heading">${escapeHtml(data.supervision)}</h3>
 
             <div class="supervision-grid">
               <article class="supervision-card">
