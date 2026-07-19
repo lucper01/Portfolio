@@ -527,6 +527,9 @@
     }
 
     .portfolio-search {
+      position: sticky;
+      top: 58px;
+      z-index: 18;
       max-width: var(--page-width);
       margin: 18px auto 0;
       padding: 0 6%;
@@ -534,7 +537,7 @@
 
     .search-card {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) auto auto;
+      grid-template-columns: minmax(0, 1fr) auto auto auto auto;
       gap: 10px;
       align-items: center;
       padding: 12px;
@@ -571,6 +574,15 @@
       color: var(--green-dark);
       font-weight: 900;
       cursor: pointer;
+    }
+
+    .search-nav-button {
+      min-width: 38px;
+    }
+
+    .search-nav-button:disabled {
+      opacity: 0.42;
+      cursor: not-allowed;
     }
 
     .search-result {
@@ -644,6 +656,38 @@
     h3 {
       color: var(--green-dark);
       margin-top: 0;
+    }
+
+    .section-title h2 {
+      position: relative;
+      width: fit-content;
+      transition: transform 0.22s ease, color 0.22s ease;
+    }
+
+    .section-title h2::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+      width: 0;
+      height: 3px;
+      border-radius: 999px;
+      background: var(--green-main);
+      transition: width 0.22s ease;
+    }
+
+    .section-title:hover h2 {
+      transform: translateX(4px);
+      color: var(--green-main);
+    }
+
+    .section-title:hover h2::after {
+      width: 100%;
+    }
+
+    .hero-title-fr {
+      max-width: 1000px;
+      font-size: clamp(2.25rem, 5.25vw, 4.45rem);
     }
 
     .lead {
@@ -1793,6 +1837,10 @@
 
       .copy-email-button { margin-left: 0; }
 
+      .portfolio-search {
+        top: 62px;
+      }
+
       .search-card {
         border-radius: 24px;
         grid-template-columns: 1fr;
@@ -1992,6 +2040,8 @@
         copied: "Copié",
         searchPlaceholder: "Rechercher dans le portfolio…",
         searchAction: "Rechercher",
+        searchPrev: "Résultat précédent",
+        searchNext: "Résultat suivant",
         searchClear: "Effacer",
         resultWord: ["résultat", "résultats"],
         footer: "Luc Perroquin | Portfolio académique | Psychologie cognitive de l'olfaction",
@@ -2091,6 +2141,8 @@
         copied: "Copied",
         searchPlaceholder: "Search the portfolio…",
         searchAction: "Search",
+        searchPrev: "Previous result",
+        searchNext: "Next result",
         searchClear: "Clear",
         resultWord: ["result", "results"],
         footer: "Luc Perroquin | Academic portfolio | Cognitive psychology of olfaction",
@@ -2335,6 +2387,8 @@
 
     let currentLanguage = "fr";
     let currentSectionKey = "top";
+    let currentSearchResults = [];
+    let currentSearchIndex = 0;
     let shareTimeout = null;
 
     const app = document.getElementById("app");
@@ -2362,6 +2416,10 @@
         .replace(/>/g, "&gt;")
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#039;");
+    }
+
+    function escapeHtmlFrenchPunctuation(value) {
+      return escapeHtml(value).replace(/\s([?!:;])/g, "&nbsp;$1");
     }
 
     function normalizeSearchText(text) {
@@ -2496,12 +2554,15 @@
     function render(data) {
       document.documentElement.lang = data.lang;
 
+      currentSearchResults = [];
+      currentSearchIndex = 0;
+
       app.innerHTML = `
         <header id="${currentLanguage}-top" data-section="top">
           <div class="hero">
             <div>
               <span class="label">${escapeHtml(data.heroLabel)}</span>
-              <h1>${escapeHtml(data.heroTitle)}</h1>
+              <h1 class="${currentLanguage === "fr" ? "hero-title-fr" : ""}">${escapeHtmlFrenchPunctuation(data.heroTitle)}</h1>
               <p class="subtitle">${escapeHtml(data.heroSubtitle)}</p>
               <p>${escapeHtml(data.heroText)}</p>
             </div>
@@ -2546,6 +2607,8 @@
           <div class="search-card">
             <input type="search" data-site-search placeholder="${escapeHtml(data.searchPlaceholder)}" aria-label="${escapeHtml(data.searchPlaceholder)}" />
             <button type="button" data-search-submit aria-label="${escapeHtml(data.searchAction)}" title="${escapeHtml(data.searchAction)}">🔎</button>
+            <button type="button" class="search-nav-button" data-search-prev aria-label="${escapeHtml(data.searchPrev)}" title="${escapeHtml(data.searchPrev)}" disabled>↑</button>
+            <button type="button" class="search-nav-button" data-search-next aria-label="${escapeHtml(data.searchNext)}" title="${escapeHtml(data.searchNext)}" disabled>↓</button>
             <button type="button" data-search-clear>${escapeHtml(data.searchClear)}</button>
             <div class="search-result" data-search-result hidden></div>
           </div>
@@ -2576,7 +2639,7 @@
             ${sectionHeader("03", data.thesisTitle)}
 
             <div class="highlight">
-              <h3>${escapeHtml(data.thesisHeadline)}</h3>
+              <h3>${escapeHtmlFrenchPunctuation(data.thesisHeadline)}</h3>
               <p>${escapeHtml(data.thesisText)}</p>
             </div>
 
@@ -3060,6 +3123,50 @@
       applySiteSearch(input ? input.value : "");
     }
 
+    function updateSearchNavigationButtons() {
+      const hasMultipleResults = currentSearchResults.length > 1;
+
+      document.querySelector("[data-search-prev]")?.toggleAttribute("disabled", !hasMultipleResults);
+      document.querySelector("[data-search-next]")?.toggleAttribute("disabled", !hasMultipleResults);
+    }
+
+    function focusSearchResult(index) {
+      if (!currentSearchResults.length) {
+        updateSearchNavigationButtons();
+        return;
+      }
+
+      document.querySelectorAll(".search-focus").forEach((item) => {
+        item.classList.remove("search-focus");
+      });
+
+      currentSearchIndex = (index + currentSearchResults.length) % currentSearchResults.length;
+      const target = currentSearchResults[currentSearchIndex];
+
+      let parentDetails = target.closest("details");
+
+      while (parentDetails) {
+        parentDetails.open = true;
+        parentDetails = parentDetails.parentElement?.closest("details");
+      }
+
+      target.classList.add("search-focus");
+
+      window.setTimeout(() => {
+        target.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+          inline: "nearest"
+        });
+      }, 80);
+
+      updateSearchNavigationButtons();
+    }
+
+    function goToSearchResult(direction) {
+      focusSearchResult(currentSearchIndex + direction);
+    }
+
     function applySiteSearch(rawQuery) {
       const data = DATA[currentLanguage];
       const query = normalizeSearchText(rawQuery);
@@ -3085,6 +3192,9 @@
       let occurrenceCount = 0;
       let firstMatch = null;
 
+      currentSearchResults = [];
+      currentSearchIndex = 0;
+
       searchableItems.forEach((item) => {
         const itemText = normalizeSearchText(item.textContent);
         const isMatch = itemText.includes(query);
@@ -3094,6 +3204,10 @@
         if (isMatch) {
           visibleItemCount += 1;
           occurrenceCount += highlightOccurrencesInElement(item, rawQuery);
+
+          item.querySelectorAll("mark.search-highlight").forEach((mark) => {
+            currentSearchResults.push(mark);
+          });
 
           if (!firstMatch) {
             firstMatch = item;
@@ -3107,29 +3221,20 @@
         resultBox.textContent = `${occurrenceCount} ${word}`;
       }
 
-      if (firstMatch) {
-        let parentDetails = firstMatch.closest("details");
-
-        while (parentDetails) {
-          parentDetails.open = true;
-          parentDetails = parentDetails.parentElement?.closest("details");
-        }
-
-        firstMatch.classList.add("search-focus");
-
-        window.setTimeout(() => {
-          firstMatch.scrollIntoView({
-            behavior: "smooth",
-            block: "center",
-            inline: "nearest"
-          });
-        }, 80);
+      if (currentSearchResults.length) {
+        focusSearchResult(0);
+      } else {
+        updateSearchNavigationButtons();
       }
     }
 
     function clearSiteSearch() {
       const input = document.querySelector("[data-site-search]");
       if (input) input.value = "";
+
+      currentSearchResults = [];
+      currentSearchIndex = 0;
+      updateSearchNavigationButtons();
 
       clearSearchHighlights();
 
@@ -3356,6 +3461,9 @@
       });
 
       document.querySelector("[data-search-submit]")?.addEventListener("click", runSiteSearchFromInput);
+
+      document.querySelector("[data-search-prev]")?.addEventListener("click", () => goToSearchResult(-1));
+      document.querySelector("[data-search-next]")?.addEventListener("click", () => goToSearchResult(1));
 
       document.querySelector("[data-search-clear]")?.addEventListener("click", clearSiteSearch);
 
