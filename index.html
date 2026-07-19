@@ -294,6 +294,45 @@
       font-weight: 750;
     }
 
+    .portrait-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .portrait-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: #dceee3;
+      color: #0b2f23;
+      font-size: 0.88rem;
+      font-weight: 900;
+      border: 1px solid rgba(255, 255, 255, 0.36);
+      transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+    }
+
+    .portrait-button:hover {
+      text-decoration: none;
+      transform: translateY(-2px);
+      background: #ffffff;
+      color: #0b2f23;
+    }
+
+    .portrait-button.secondary {
+      background: rgba(255, 255, 255, 0.14);
+      color: #ffffff;
+    }
+
+    .portrait-button.secondary:hover {
+      background: rgba(255, 255, 255, 0.24);
+      color: #ffffff;
+    }
+
     nav {
       position: sticky;
       top: 0;
@@ -474,43 +513,6 @@
       max-width: 900px;
       font-size: 1.1rem;
       color: var(--muted);
-    }
-
-    .about-layout {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) auto;
-      gap: 28px;
-      align-items: start;
-    }
-
-    .cv-side-button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 150px;
-      padding: 14px 20px;
-      border-radius: 999px;
-      background: var(--green-main);
-      color: #ffffff;
-      border: 1px solid var(--green-main);
-      font-weight: 900;
-      box-shadow: var(--shadow-soft);
-      white-space: nowrap;
-      margin-top: 6px;
-      transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .cv-side-button:hover {
-      text-decoration: none;
-      background: #0b2f23;
-      color: #ffffff;
-      transform: translateY(-2px);
-      box-shadow: var(--shadow);
-    }
-
-    body.dark-mode .cv-side-button:hover {
-      background: #dceee3;
-      color: #0b2f23;
     }
 
     .highlight {
@@ -1167,8 +1169,7 @@
 
       .hero,
       .section-title,
-      .axis-projects,
-      .about-layout {
+      .axis-projects {
         grid-template-columns: 1fr;
       }
 
@@ -1198,11 +1199,6 @@
         top: 10px;
         right: 10px;
         left: 10px;
-      }
-
-      .cv-side-button {
-        width: fit-content;
-        margin-top: 0;
       }
 
       .nav-inner {
@@ -1328,6 +1324,21 @@
             />
           </a>
           <p class="photo-note">Luc Perroquin</p>
+
+          <div class="portrait-actions">
+            <a
+              class="portrait-button"
+              href="https://lucper01.github.io/Portfolio/assets/CV_PerroquinLuc_fr.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Ouvrir CV
+            </a>
+
+            <a class="portrait-button secondary" href="#fr-contact">
+              Contact
+            </a>
+          </div>
         </aside>
       </div>
     </header>
@@ -1366,29 +1377,16 @@
           <h2>À propos</h2>
         </div>
 
-        <div class="about-layout">
-          <div>
-            <p class="lead">
-              Mes travaux s'inscrivent dans le champ de la psychologie cognitive de l'olfaction et de la perception multisensorielle. Ils visent à comprendre comment les odeurs, bien qu'elles soient souvent décrites comme des stimuli diffus, instables et faiblement localisables, peuvent interagir avec la vision et l'audition pour modifier l'expérience subjective de l'espace et du temps.
-            </p>
+        <p class="lead">
+          Mes travaux s'inscrivent dans le champ de la psychologie cognitive de l'olfaction et de la perception multisensorielle. Ils visent à comprendre comment les odeurs, bien qu'elles soient souvent décrites comme des stimuli diffus, instables et faiblement localisables, peuvent interagir avec la vision et l'audition pour modifier l'expérience subjective de l'espace et du temps.
+        </p>
 
-            <ul class="tags" aria-label="Mots-clés">
-              <li>Olfaction</li>
-              <li>Vision</li>
-              <li>Audition</li>
-              <li>Perception multisensorielle</li>
-            </ul>
-          </div>
-
-          <a
-            class="cv-side-button"
-            href="https://lucper01.github.io/Portfolio/assets/CV_PerroquinLuc_fr.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Ouvrir CV
-          </a>
-        </div>
+        <ul class="tags" aria-label="Mots-clés">
+          <li>Olfaction</li>
+          <li>Vision</li>
+          <li>Audition</li>
+          <li>Perception multisensorielle</li>
+        </ul>
       </section>
 
       <section id="fr-equipe" class="reveal" data-section="equipe">
@@ -2091,6 +2089,21 @@
             />
           </a>
           <p class="photo-note">Luc Perroquin</p>
+
+          <div class="portrait-actions">
+            <a
+              class="portrait-button"
+              href="https://lucper01.github.io/Portfolio/assets/CV_PerroquinLuc_en.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Open CV
+            </a>
+
+            <a class="portrait-button secondary" href="#en-contact">
+              Contact
+            </a>
+          </div>
         </aside>
       </div>
     </header>
@@ -2129,29 +2142,16 @@
           <h2>About</h2>
         </div>
 
-        <div class="about-layout">
-          <div>
-            <p class="lead">
-              My work is situated within cognitive psychology of olfaction and multisensory perception. It aims to understand how odors, although often described as diffuse, unstable, and weakly localizable stimuli, can interact with vision and audition to modify the subjective experience of space and time.
-            </p>
+        <p class="lead">
+          My work is situated within cognitive psychology of olfaction and multisensory perception. It aims to understand how odors, although often described as diffuse, unstable, and weakly localizable stimuli, can interact with vision and audition to modify the subjective experience of space and time.
+        </p>
 
-            <ul class="tags" aria-label="Keywords">
-              <li>Olfaction</li>
-              <li>Vision</li>
-              <li>Audition</li>
-              <li>Multisensory perception</li>
-            </ul>
-          </div>
-
-          <a
-            class="cv-side-button"
-            href="https://lucper01.github.io/Portfolio/assets/CV_PerroquinLuc_en.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Open CV
-          </a>
-        </div>
+        <ul class="tags" aria-label="Keywords">
+          <li>Olfaction</li>
+          <li>Vision</li>
+          <li>Audition</li>
+          <li>Multisensory perception</li>
+        </ul>
       </section>
 
       <section id="en-team" class="reveal" data-section="equipe">
