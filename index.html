@@ -9,26 +9,12 @@
 
   <meta name="robots" content="noindex, nofollow, noarchive" />
   <meta name="theme-color" content="#0b2f23" />
-
-  <meta
-    id="meta-description"
-    name="description"
-    content="Portfolio académique de Luc Perroquin, doctorant en psychologie cognitive, consacré à l'intégration entre olfaction, vision et audition."
-  />
-
-  <meta
-    id="meta-keywords"
-    name="keywords"
-    content="Olfaction, Vision, Audition, Perception multisensorielle"
-  />
+  <meta id="meta-description" name="description" content="Portfolio académique de Luc Perroquin, doctorant en psychologie cognitive, consacré à l'intégration entre olfaction, vision et audition." />
+  <meta id="meta-keywords" name="keywords" content="Olfaction, Vision, Audition, Perception multisensorielle" />
 
   <meta property="og:type" content="website" />
   <meta id="og-title" property="og:title" content="Luc Perroquin | Portfolio académique" />
-  <meta
-    id="og-description"
-    property="og:description"
-    content="Portfolio académique de Luc Perroquin, doctorant en psychologie cognitive, consacré à l'intégration entre olfaction, vision et audition."
-  />
+  <meta id="og-description" property="og:description" content="Portfolio académique de Luc Perroquin, doctorant en psychologie cognitive, consacré à l'intégration entre olfaction, vision et audition." />
   <meta property="og:url" content="https://lucper01.github.io/Portfolio/" />
   <meta property="og:site_name" content="Luc Perroquin | Portfolio" />
   <meta id="og-locale" property="og:locale" content="fr_FR" />
@@ -37,11 +23,7 @@
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta id="twitter-title" name="twitter:title" content="Luc Perroquin | Portfolio académique" />
-  <meta
-    id="twitter-description"
-    name="twitter:description"
-    content="Portfolio académique de Luc Perroquin, doctorant en psychologie cognitive, consacré à l'intégration entre olfaction, vision et audition."
-  />
+  <meta id="twitter-description" name="twitter:description" content="Portfolio académique de Luc Perroquin, doctorant en psychologie cognitive, consacré à l'intégration entre olfaction, vision et audition." />
   <meta name="twitter:image" content="https://lucper01.github.io/Portfolio/assets/photo-profil.png" />
 
   <title>Luc Perroquin | Portfolio académique</title>
@@ -64,13 +46,9 @@
       --radius-large: 32px;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
@@ -110,9 +88,7 @@
       font-weight: 700;
     }
 
-    a:hover {
-      text-decoration: underline;
-    }
+    a:hover { text-decoration: underline; }
 
     .skip-link {
       position: fixed;
@@ -147,10 +123,7 @@
       justify-content: flex-end;
     }
 
-    .language-switch,
-    .theme-switch,
-    .share-switch,
-    .accessibility-switch {
+    .control-group {
       display: flex;
       gap: 6px;
       padding: 6px;
@@ -161,18 +134,12 @@
       backdrop-filter: blur(10px);
     }
 
-    body.dark-mode .language-switch,
-    body.dark-mode .theme-switch,
-    body.dark-mode .share-switch,
-    body.dark-mode .accessibility-switch {
+    body.dark-mode .control-group {
       background: rgba(7, 19, 15, 0.92);
       border-color: rgba(220, 238, 227, 0.18);
     }
 
-    .language-switch button,
-    .theme-switch button,
-    .share-switch button,
-    .accessibility-switch button {
+    .control-group button {
       border: 0;
       padding: 8px 12px;
       border-radius: 999px;
@@ -183,19 +150,23 @@
       white-space: nowrap;
     }
 
-    body.dark-mode .language-switch button,
-    body.dark-mode .theme-switch button,
-    body.dark-mode .share-switch button,
-    body.dark-mode .accessibility-switch button {
-      color: #dceee3;
-    }
+    body.dark-mode .control-group button { color: #dceee3; }
 
-    .language-switch button.active,
-    .theme-switch button.active,
-    .share-switch button.active,
-    .accessibility-switch button.active {
+    .control-group button.active {
       background: var(--green-main);
       color: #ffffff;
+    }
+
+    .print-switch {
+      opacity: 0.78;
+      box-shadow: 0 8px 22px rgba(11, 47, 35, 0.12);
+    }
+
+    .print-switch:hover { opacity: 1; }
+
+    .print-switch button {
+      padding: 7px 10px;
+      font-size: 0.8rem;
     }
 
     .accessibility-panel {
@@ -217,10 +188,7 @@
       border-color: rgba(220, 238, 227, 0.18);
     }
 
-    .accessibility-panel[hidden],
-    .site-content[hidden] {
-      display: none;
-    }
+    .accessibility-panel[hidden] { display: none; }
 
     .accessibility-header {
       display: flex;
@@ -295,22 +263,6 @@
       display: block;
       line-height: 1.35;
       margin-top: 2px;
-    }
-
-    .language-fade {
-      animation: languageFadeIn 0.34s ease both;
-    }
-
-    @keyframes languageFadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
     }
 
     header {
@@ -394,9 +346,7 @@
       transform: rotate(1.2deg);
     }
 
-    .portrait-link {
-      display: block;
-    }
+    .portrait-link { display: block; }
 
     .profile-photo {
       width: 100%;
@@ -455,7 +405,7 @@
       color: #ffffff;
     }
 
-    nav {
+    nav.site-nav {
       position: sticky;
       top: 0;
       z-index: 20;
@@ -465,7 +415,7 @@
       backdrop-filter: blur(10px);
     }
 
-    body.dark-mode nav {
+    body.dark-mode nav.site-nav {
       background: rgba(7, 19, 15, 0.94);
       border-bottom-color: rgba(220, 238, 227, 0.12);
     }
@@ -497,7 +447,7 @@
       gap: 8px 18px;
     }
 
-    nav a {
+    nav.site-nav a {
       color: var(--green-dark);
       font-size: 0.93rem;
       padding: 6px 10px;
@@ -505,12 +455,12 @@
       transition: background 0.2s ease, color 0.2s ease;
     }
 
-    nav a.active {
+    nav.site-nav a.active {
       background: var(--green-soft);
       color: var(--green-dark);
     }
 
-    body.dark-mode nav a.active {
+    body.dark-mode nav.site-nav a.active {
       background: rgba(119, 184, 146, 0.22);
       color: #dceee3;
     }
@@ -544,7 +494,7 @@
       grid-template-columns: 30px 1fr;
       align-items: center;
       gap: 8px;
-      min-width: 160px;
+      min-width: 170px;
       padding: 7px 10px;
       border-radius: 999px;
       color: var(--muted);
@@ -589,16 +539,61 @@
       color: #0b2f23;
     }
 
-    .site-content:not([hidden]) > .side-progress {
-      display: grid !important;
-      visibility: visible !important;
-      opacity: 1 !important;
-      pointer-events: auto !important;
+    .portfolio-search {
+      max-width: var(--page-width);
+      margin: 18px auto 0;
+      padding: 0 6%;
     }
 
-    .site-content[hidden] > .side-progress {
-      display: none !important;
+    .search-card {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 10px;
+      align-items: center;
+      padding: 12px;
+      border-radius: 999px;
+      background: rgba(251, 247, 237, 0.92);
+      border: 1px solid rgba(11, 47, 35, 0.12);
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(10px);
     }
+
+    body.dark-mode .search-card {
+      background: rgba(7, 19, 15, 0.88);
+      border-color: rgba(220, 238, 227, 0.14);
+    }
+
+    .search-card input {
+      width: 100%;
+      border: 0;
+      background: transparent;
+      color: var(--text);
+      font: inherit;
+      font-weight: 750;
+      outline: none;
+      padding: 8px 12px;
+    }
+
+    .search-card input::placeholder { color: var(--muted); }
+
+    .search-card button {
+      border: 0;
+      border-radius: 999px;
+      padding: 8px 12px;
+      background: var(--green-soft);
+      color: var(--green-dark);
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .search-result {
+      grid-column: 1 / -1;
+      color: var(--muted);
+      font-size: 0.85rem;
+      padding: 0 12px 4px;
+    }
+
+    .search-hidden { display: none !important; }
 
     main {
       max-width: var(--page-width);
@@ -666,8 +661,45 @@
       line-height: 1.08;
     }
 
-    .highlight p {
-      color: rgba(255, 255, 255, 0.88);
+    .highlight p { color: rgba(255, 255, 255, 0.88); }
+
+    .thesis-toc {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin: 20px 0 34px;
+      padding: 14px;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(11, 47, 35, 0.10);
+      box-shadow: var(--shadow-soft);
+    }
+
+    body.dark-mode .thesis-toc {
+      background: rgba(16, 37, 28, 0.78);
+      border-color: rgba(220, 238, 227, 0.12);
+    }
+
+    .thesis-toc strong {
+      color: var(--green-dark);
+      margin-right: 4px;
+    }
+
+    .thesis-toc a {
+      display: inline-flex;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--green-pale);
+      color: var(--green-dark);
+      font-size: 0.88rem;
+      font-weight: 900;
+    }
+
+    .thesis-toc a:hover {
+      text-decoration: none;
+      background: var(--green-main);
+      color: #ffffff;
     }
 
     .subsection-heading {
@@ -706,41 +738,6 @@
         radial-gradient(circle at top right, rgba(119, 184, 146, 0.20), transparent 34%),
         rgba(255, 255, 255, 0.92);
       border: 1px solid rgba(11, 47, 35, 0.10);
-    }
-
-    .supervision-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-      margin: 22px 0 34px;
-      align-items: stretch;
-    }
-
-    .supervision-card {
-      padding: 22px;
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) auto;
-      gap: 22px;
-      align-items: center;
-    }
-
-    .supervision-info {
-      min-width: 0;
-    }
-
-    .supervision-photo {
-      width: auto;
-      max-width: 170px;
-      height: auto;
-      max-height: 190px;
-      object-fit: contain;
-      object-position: center;
-      border-radius: 20px;
-      margin: 0;
-      border: 1px solid rgba(11, 47, 35, 0.12);
-      background: transparent;
-      display: block;
-      overflow: hidden;
     }
 
     body.dark-mode .team-card,
@@ -855,9 +852,40 @@
       color: #ffffff;
     }
 
-    .supervision-card h3 {
-      margin-bottom: 8px;
+    .supervision-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin: 22px 0 34px;
+      align-items: stretch;
     }
+
+    .supervision-card {
+      padding: 22px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 22px;
+      align-items: center;
+    }
+
+    .supervision-info { min-width: 0; }
+
+    .supervision-photo {
+      width: auto;
+      max-width: 170px;
+      height: auto;
+      max-height: 190px;
+      object-fit: contain;
+      object-position: center;
+      border-radius: 20px;
+      margin: 0;
+      border: 1px solid rgba(11, 47, 35, 0.12);
+      background: transparent;
+      display: block;
+      overflow: hidden;
+    }
+
+    .supervision-card h3 { margin-bottom: 8px; }
 
     .supervision-position {
       font-weight: 850;
@@ -870,6 +898,30 @@
       grid-template-columns: 1fr;
       gap: 22px;
       margin-top: 22px;
+    }
+
+    .axis-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .axis-action-button {
+      border: 1px solid rgba(11, 47, 35, 0.14);
+      border-radius: 999px;
+      padding: 8px 12px;
+      background: var(--white);
+      color: var(--green-dark);
+      font-weight: 850;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+    }
+
+    .axis-action-button:hover {
+      transform: translateY(-2px);
+      background: var(--green-main);
+      color: #ffffff;
     }
 
     .axis-projects {
@@ -894,10 +946,6 @@
       min-height: auto;
     }
 
-    .project-card.filter-item {
-      min-height: auto;
-    }
-
     body.dark-mode .project-card,
     body.dark-mode .training-card {
       background: rgba(16, 37, 28, 0.88);
@@ -913,13 +961,9 @@
       list-style: none;
     }
 
-    .project-summary::-webkit-details-marker {
-      display: none;
-    }
+    .project-summary::-webkit-details-marker { display: none; }
 
-    .project-summary-text {
-      min-width: 0;
-    }
+    .project-summary-text { min-width: 0; }
 
     .project-summary strong {
       display: block;
@@ -942,17 +986,9 @@
       white-space: nowrap;
     }
 
-    .project-card .open-label {
-      display: none;
-    }
-
-    .project-card[open] .closed-label {
-      display: none;
-    }
-
-    .project-card[open] .open-label {
-      display: inline;
-    }
+    .project-card .open-label { display: none; }
+    .project-card[open] .closed-label { display: none; }
+    .project-card[open] .open-label { display: inline; }
 
     .project-summary::after {
       content: "+";
@@ -980,9 +1016,7 @@
       border-top: 1px solid rgba(11, 47, 35, 0.10);
     }
 
-    body.dark-mode .project-body {
-      border-top-color: rgba(220, 238, 227, 0.12);
-    }
+    body.dark-mode .project-body { border-top-color: rgba(220, 238, 227, 0.12); }
 
     .project-body p {
       color: var(--muted);
@@ -997,59 +1031,9 @@
       font-size: 0.96rem;
     }
 
-    body.dark-mode .project-role {
-      border-top-color: rgba(220, 238, 227, 0.12);
-    }
+    body.dark-mode .project-role { border-top-color: rgba(220, 238, 227, 0.12); }
 
-    .project-role strong {
-      color: var(--green-dark);
-    }
-
-    .project-meta,
-    .training-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 14px;
-    }
-
-    .project-badge,
-    .project-status,
-    .training-hours {
-      display: inline-flex;
-      align-items: center;
-      width: fit-content;
-      padding: 6px 10px;
-      border-radius: 999px;
-      font-size: 0.78rem;
-      font-weight: 850;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-
-    .project-badge,
-    .training-hours {
-      color: #ffffff;
-      background: var(--green-main);
-    }
-
-    .project-badge.secondary {
-      color: var(--green-dark);
-      background: var(--green-soft);
-    }
-
-    .project-status {
-      color: var(--green-dark);
-      background: var(--green-pale);
-      border: 1px solid rgba(11, 47, 35, 0.10);
-    }
-
-    body.dark-mode .project-badge.secondary,
-    body.dark-mode .project-status {
-      color: #dceee3;
-      background: rgba(119, 184, 146, 0.14);
-      border-color: rgba(220, 238, 227, 0.12);
-    }
+    .project-role strong { color: var(--green-dark); }
 
     .project-details-content {
       margin-top: 14px;
@@ -1091,8 +1075,38 @@
     }
 
     .project-link.disabled {
+      position: relative;
       opacity: 0.55;
+      cursor: not-allowed;
+      pointer-events: auto;
+    }
+
+    .project-link.disabled::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      left: 50%;
+      bottom: calc(100% + 10px);
+      z-index: 50;
+      transform: translateX(-50%) translateY(4px);
+      width: max-content;
+      max-width: 220px;
+      padding: 8px 10px;
+      border-radius: 12px;
+      background: #0b2f23;
+      color: #ffffff;
+      font-size: 0.78rem;
+      line-height: 1.3;
+      font-weight: 800;
+      opacity: 0;
       pointer-events: none;
+      box-shadow: var(--shadow-soft);
+      transition: opacity 0.18s ease, transform 0.18s ease;
+    }
+
+    .project-link.disabled:hover::after,
+    .project-link.disabled:focus::after {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
     }
 
     .training-master {
@@ -1111,9 +1125,7 @@
       list-style: none;
     }
 
-    .training-master > summary::-webkit-details-marker {
-      display: none;
-    }
+    .training-master > summary::-webkit-details-marker { display: none; }
 
     .training-master > summary::after {
       content: "+";
@@ -1175,9 +1187,7 @@
       color: #ffffff;
     }
 
-    .training-card summary::-webkit-details-marker {
-      display: none;
-    }
+    .training-card summary::-webkit-details-marker { display: none; }
 
     .training-card summary strong {
       color: var(--green-dark);
@@ -1196,9 +1206,7 @@
       color: var(--muted);
     }
 
-    .training-content p {
-      margin: 0;
-    }
+    .training-content p { margin: 0; }
 
     .training-total {
       display: flex;
@@ -1214,6 +1222,17 @@
       background: var(--green-main);
       color: #ffffff;
       font-weight: 850;
+    }
+
+    .project-card[open] .project-body,
+    .training-master[open] .training-accordion,
+    .training-card[open] .training-content {
+      animation: softDetailsReveal 0.26s ease both;
+    }
+
+    @keyframes softDetailsReveal {
+      from { opacity: 0; transform: translateY(-8px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .tags {
@@ -1257,9 +1276,7 @@
       transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
     }
 
-    .filter-button:hover {
-      transform: translateY(-2px);
-    }
+    .filter-button:hover { transform: translateY(-2px); }
 
     .filter-button.active {
       background: var(--green-main);
@@ -1267,9 +1284,7 @@
       border-color: var(--green-main);
     }
 
-    .publication-subsection {
-      margin-top: 30px;
-    }
+    .publication-subsection { margin-top: 30px; }
 
     .publication-subsection h3 {
       margin-bottom: 12px;
@@ -1301,13 +1316,9 @@
       margin: 8px 0 0;
     }
 
-    .placeholder-item {
-      border-style: dashed !important;
-    }
+    .placeholder-item { border-style: dashed !important; }
 
-    .hidden-by-filter {
-      display: none !important;
-    }
+    .hidden-by-filter { display: none !important; }
 
     .contact-box {
       padding: 28px;
@@ -1345,9 +1356,7 @@
       margin-right: 2px;
     }
 
-    .contact-item a {
-      overflow-wrap: anywhere;
-    }
+    .contact-item a { overflow-wrap: anywhere; }
 
     .contact-icon {
       width: 34px;
@@ -1388,9 +1397,7 @@
       transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
     }
 
-    .copy-email-button:hover {
-      transform: translateY(-2px);
-    }
+    .copy-email-button:hover { transform: translateY(-2px); }
 
     .copy-email-button.active {
       background: var(--green-main);
@@ -1422,6 +1429,37 @@
       text-align: center;
       background: #0b2f23;
       color: rgba(255, 255, 255, 0.78);
+    }
+
+    .footer-actions {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+
+    .footer-button {
+      border: 1px solid rgba(255, 255, 255, 0.32);
+      border-radius: 999px;
+      padding: 8px 12px;
+      background: rgba(255, 255, 255, 0.10);
+      color: #ffffff;
+      font-weight: 850;
+      cursor: pointer;
+    }
+
+    .footer-button:hover,
+    .footer-button.active {
+      background: #ffffff;
+      color: #0b2f23;
+    }
+
+    .version-note {
+      color: rgba(255, 255, 255, 0.76);
+      font-size: 0.88rem;
+      font-weight: 750;
     }
 
     .reveal {
@@ -1461,15 +1499,11 @@
       pointer-events: auto;
     }
 
-    body.a11y-large-text {
-      font-size: 112.5%;
-    }
+    body.a11y-large-text { font-size: 112.5%; }
 
     body.a11y-large-text .lead,
     body.a11y-large-text p,
-    body.a11y-large-text li {
-      line-height: 1.85;
-    }
+    body.a11y-large-text li { line-height: 1.85; }
 
     body.a11y-large-text .filter-button,
     body.a11y-large-text .project-link,
@@ -1494,14 +1528,10 @@
     }
 
     body.a11y-dyslexia p,
-    body.a11y-dyslexia li {
-      line-height: 1.95;
-    }
+    body.a11y-dyslexia li { line-height: 1.95; }
 
     body.a11y-dyslexia .lead,
-    body.a11y-dyslexia .hero p {
-      max-width: 760px;
-    }
+    body.a11y-dyslexia .hero p { max-width: 760px; }
 
     body.a11y-dyslexia .portrait-card,
     body.a11y-dyslexia .team-card:hover,
@@ -1535,9 +1565,10 @@
       color: #ffffff;
     }
 
-    body.a11y-high-contrast nav,
+    body.a11y-high-contrast nav.site-nav,
     body.a11y-high-contrast .accessibility-panel,
     body.a11y-high-contrast .side-progress,
+    body.a11y-high-contrast .search-card,
     body.a11y-high-contrast .team-card,
     body.a11y-high-contrast .supervision-card,
     body.a11y-high-contrast .axis-card,
@@ -1546,7 +1577,8 @@
     body.a11y-high-contrast .training-summary,
     body.a11y-high-contrast .training-master,
     body.a11y-high-contrast .publication-list li,
-    body.a11y-high-contrast .contact-box {
+    body.a11y-high-contrast .contact-box,
+    body.a11y-high-contrast .thesis-toc {
       background: #ffffff;
       color: #000000;
       border-color: #000000;
@@ -1571,7 +1603,8 @@
     body.a11y-high-contrast .contact-item strong,
     body.a11y-high-contrast .training-master > summary,
     body.a11y-high-contrast .training-card summary strong,
-    body.a11y-high-contrast .training-card summary small {
+    body.a11y-high-contrast .training-card summary small,
+    body.a11y-high-contrast .thesis-toc strong {
       color: #000000 !important;
     }
 
@@ -1601,10 +1634,7 @@
     body.a11y-high-contrast .project-link,
     body.a11y-high-contrast .team-link,
     body.a11y-high-contrast .back-to-top,
-    body.a11y-high-contrast .language-switch button.active,
-    body.a11y-high-contrast .theme-switch button.active,
-    body.a11y-high-contrast .share-switch button.active,
-    body.a11y-high-contrast .accessibility-switch button.active {
+    body.a11y-high-contrast .control-group button.active {
       background: #000000;
       color: #ffffff;
       border-color: #000000;
@@ -1671,9 +1701,7 @@
         grid-template-columns: 1fr;
       }
 
-      .supervision-card {
-        grid-template-columns: 1fr;
-      }
+      .supervision-card { grid-template-columns: 1fr; }
 
       .supervision-photo {
         max-width: min(100%, 220px);
@@ -1681,13 +1709,9 @@
         margin: 0 auto;
       }
 
-      .hero {
-        gap: 30px;
-      }
+      .hero { gap: 30px; }
 
-      h1 {
-        font-size: clamp(2.25rem, 12vw, 4rem);
-      }
+      h1 { font-size: clamp(2.25rem, 12vw, 4rem); }
 
       .portrait-card {
         max-width: 340px;
@@ -1695,13 +1719,9 @@
         transform: none;
       }
 
-      main {
-        padding: 56px 7% 76px;
-      }
+      main { padding: 56px 7% 76px; }
 
-      section {
-        margin-bottom: 64px;
-      }
+      section { margin-bottom: 64px; }
 
       .top-controls {
         top: 10px;
@@ -1742,48 +1762,31 @@
         box-shadow: var(--shadow-soft);
       }
 
-      body.dark-mode .nav-links {
-        background: rgba(7, 19, 15, 0.98);
-      }
+      body.dark-mode .nav-links { background: rgba(7, 19, 15, 0.98); }
 
-      nav.open .nav-links {
-        display: flex;
-      }
+      nav.site-nav.open .nav-links { display: flex; }
 
-      nav a {
-        display: block;
-      }
+      nav.site-nav a { display: block; }
 
-      .filter-controls {
-        gap: 8px;
-      }
+      .filter-controls { gap: 8px; }
 
-      .filter-button {
-        flex: 1 1 auto;
-      }
+      .filter-button { flex: 1 1 auto; }
 
-      .project-summary {
-        grid-template-columns: minmax(0, 1fr) auto;
-      }
+      .project-summary { grid-template-columns: minmax(0, 1fr) auto; }
 
-      .project-toggle-label {
-        display: none;
-      }
+      .project-toggle-label { display: none; }
 
-      .training-card summary {
-        grid-template-columns: 1fr auto;
-      }
+      .training-card summary { grid-template-columns: 1fr auto; }
 
-      .training-hours {
-        grid-column: 1 / -1;
-      }
+      .training-hours { grid-column: 1 / -1; }
 
-      .contact-item {
-        align-items: flex-start;
-      }
+      .contact-item { align-items: flex-start; }
 
-      .copy-email-button {
-        margin-left: 0;
+      .copy-email-button { margin-left: 0; }
+
+      .search-card {
+        border-radius: 24px;
+        grid-template-columns: 1fr;
       }
     }
 
@@ -1804,9 +1807,7 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
+      html { scroll-behavior: auto; }
 
       *,
       *::before,
@@ -1816,98 +1817,171 @@
         transition-duration: 0.001ms !important;
       }
     }
+
+    @media print {
+      body {
+        background: #ffffff !important;
+        color: #000000 !important;
+        font-size: 11pt;
+      }
+
+      .top-controls,
+      nav.site-nav,
+      .side-progress,
+      .portfolio-search,
+      .accessibility-panel,
+      .back-to-top,
+      .filter-controls,
+      .project-toggle-label,
+      .project-summary::after,
+      .training-master > summary::after,
+      .training-card summary::after,
+      .portrait-actions,
+      .footer-button {
+        display: none !important;
+      }
+
+      header {
+        min-height: auto !important;
+        padding: 0 0 24px !important;
+        background: #ffffff !important;
+        color: #000000 !important;
+      }
+
+      header h1,
+      header p,
+      header .subtitle,
+      header .label {
+        color: #000000 !important;
+      }
+
+      .hero { display: block !important; }
+
+      .portrait-card { display: none !important; }
+
+      main {
+        max-width: none !important;
+        padding: 0 !important;
+      }
+
+      section {
+        break-inside: avoid;
+        margin-bottom: 28px !important;
+      }
+
+      .team-card,
+      .supervision-card,
+      .axis-card,
+      .project-card,
+      .training-card,
+      .training-summary,
+      .training-master,
+      .publication-list li,
+      .contact-box,
+      .highlight {
+        background: #ffffff !important;
+        color: #000000 !important;
+        box-shadow: none !important;
+        border: 1px solid #000000 !important;
+      }
+
+      .highlight h3,
+      .highlight p,
+      h1,
+      h2,
+      h3,
+      p,
+      li,
+      strong,
+      small {
+        color: #000000 !important;
+      }
+
+      .project-details-content,
+      .project-links,
+      .project-link.disabled {
+        display: none !important;
+      }
+
+      footer {
+        background: #ffffff !important;
+        color: #000000 !important;
+        border-top: 1px solid #000000;
+      }
+
+      footer p,
+      .version-note {
+        color: #000000 !important;
+      }
+    }
   </style>
 </head>
 
 <body>
-  <a
-    class="skip-link"
-    href="#fr-main"
-    data-skip-link
-    data-a11y-fr="Aller au contenu"
-    data-a11y-en="Skip to content"
-  >
-    Aller au contenu
-  </a>
+  <a class="skip-link" href="#main" data-i18n="skip">Aller au contenu</a>
 
   <div class="top-controls">
-    <div class="language-switch" aria-label="Language switcher">
+    <div class="control-group" aria-label="Language switcher">
       <button type="button" data-switch-lang="fr" class="active">FR</button>
       <button type="button" data-switch-lang="en">EN</button>
     </div>
 
-    <div class="theme-switch" aria-label="Theme switcher">
+    <div class="control-group" aria-label="Theme switcher">
       <button type="button" data-theme-toggle>Sombre</button>
     </div>
 
-    <div class="accessibility-switch" aria-label="Accessibility settings">
-      <button
-        type="button"
-        data-accessibility-toggle
-        data-a11y-fr="Accessibilité"
-        data-a11y-en="Accessibility"
-        aria-controls="accessibility-panel"
-        aria-expanded="false"
-      >
-        Accessibilité
-      </button>
+    <div class="control-group" aria-label="Accessibility settings">
+      <button type="button" data-accessibility-toggle aria-controls="accessibility-panel" aria-expanded="false" data-i18n="accessibility">Accessibilité</button>
     </div>
 
-    <div class="share-switch" aria-label="Share">
+    <div class="control-group" aria-label="Share">
       <button type="button" data-share-button>Partager</button>
+    </div>
+
+    <div class="control-group print-switch" aria-label="Impression et export PDF">
+      <button type="button" data-print-button>Imprimer</button>
+      <button type="button" data-pdf-button title="Exporter en PDF via l'impression du navigateur">PDF</button>
     </div>
   </div>
 
-  <section
-    id="accessibility-panel"
-    class="accessibility-panel"
-    data-accessibility-panel
-    hidden
-    aria-label="Options d'accessibilité"
-  >
+  <section id="accessibility-panel" class="accessibility-panel" data-accessibility-panel hidden aria-label="Options d'accessibilité">
     <div class="accessibility-header">
-      <h2 data-a11y-fr="Accessibilité" data-a11y-en="Accessibility">Accessibilité</h2>
+      <h2 data-i18n="accessibility">Accessibilité</h2>
       <button class="accessibility-close" type="button" data-accessibility-close aria-label="Fermer">×</button>
     </div>
 
-    <p
-      class="accessibility-intro"
-      data-a11y-fr="Ajustez l'affichage du portfolio selon vos besoins de lecture."
-      data-a11y-en="Adjust the portfolio display to your reading needs."
-    >
-      Ajustez l'affichage du portfolio selon vos besoins de lecture.
-    </p>
+    <p class="accessibility-intro" data-i18n="a11yIntro">Ajustez l'affichage du portfolio selon vos besoins de lecture.</p>
 
     <div class="accessibility-options">
       <label class="accessibility-option">
         <input type="checkbox" data-accessibility-option="largeText" />
         <span>
-          <strong data-a11y-fr="Texte agrandi" data-a11y-en="Larger text">Texte agrandi</strong>
-          <small data-a11y-fr="Augmente la taille du texte et l'interligne." data-a11y-en="Increases text size and line spacing.">Augmente la taille du texte et l'interligne.</small>
+          <strong data-i18n="largeText">Texte agrandi</strong>
+          <small data-i18n="largeTextHelp">Augmente la taille du texte et l'interligne.</small>
         </span>
       </label>
 
       <label class="accessibility-option">
         <input type="checkbox" data-accessibility-option="highContrast" />
         <span>
-          <strong data-a11y-fr="Contraste fort" data-a11y-en="High contrast">Contraste fort</strong>
-          <small data-a11y-fr="Renforce les contrastes entre texte, fonds et boutons." data-a11y-en="Strengthens contrast between text, backgrounds, and buttons.">Renforce les contrastes entre texte, fonds et boutons.</small>
+          <strong data-i18n="highContrast">Contraste fort</strong>
+          <small data-i18n="highContrastHelp">Renforce les contrastes entre texte, fonds et boutons.</small>
         </span>
       </label>
 
       <label class="accessibility-option">
         <input type="checkbox" data-accessibility-option="dyslexia" />
         <span>
-          <strong data-a11y-fr="Lecture dyslexie" data-a11y-en="Dyslexia-friendly reading">Lecture dyslexie</strong>
-          <small data-a11y-fr="Utilise une police plus simple et augmente les espacements." data-a11y-en="Uses a simpler font and increases spacing.">Utilise une police plus simple et augmente les espacements.</small>
+          <strong data-i18n="dyslexia">Lecture dyslexie</strong>
+          <small data-i18n="dyslexiaHelp">Utilise une police plus simple et augmente les espacements.</small>
         </span>
       </label>
 
       <label class="accessibility-option">
         <input type="checkbox" data-accessibility-option="reduceMotion" />
         <span>
-          <strong data-a11y-fr="Réduire les animations" data-a11y-en="Reduce motion">Réduire les animations</strong>
-          <small data-a11y-fr="Limite les transitions, animations et effets de mouvement." data-a11y-en="Limits transitions, animations, and motion effects.">Limite les transitions, animations et effets de mouvement.</small>
+          <strong data-i18n="reduceMotion">Réduire les animations</strong>
+          <small data-i18n="reduceMotionHelp">Limite les transitions, animations et effets de mouvement.</small>
         </span>
       </label>
     </div>
@@ -1915,1366 +1989,438 @@
 
   <button class="back-to-top" type="button" aria-label="Retour en haut">↑</button>
 
-  <div class="site-content" data-lang="fr">
-    <header id="fr-top" data-section="top">
-      <div class="hero">
-        <div>
-          <span class="label">Portfolio académique</span>
-          <h1>Y a-t-il un espace-temps pour les odeurs&nbsp;?</h1>
-          <p class="subtitle">Mécanismes d'intégration entre olfaction, vision et audition</p>
-          <p>
-            Je suis Luc Perroquin, doctorant en psychologie cognitive. Mes recherches portent sur les relations spatio-temporelles entre olfaction, vision et audition, ainsi que sur l'influence des odeurs dans la construction perceptive de l'espace et du temps.
-          </p>
-        </div>
-
-        <aside class="portrait-card">
-          <a
-            class="portrait-link"
-            href="https://raw.githubusercontent.com/lucper01/Portfolio/main/assets/photo-profil.png"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              src="https://raw.githubusercontent.com/lucper01/Portfolio/main/assets/photo-profil.png"
-              alt="Portrait de Luc Perroquin"
-              class="profile-photo"
-            />
-          </a>
-          <p class="photo-note">Luc Perroquin</p>
-
-          <div class="portrait-actions">
-            <a
-              class="portrait-button"
-              href="https://lucper01.github.io/Portfolio/assets/CV_PerroquinLuc_fr.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Ouvrir CV
-            </a>
-            <a class="portrait-button secondary" href="#fr-contact">Contact</a>
-          </div>
-        </aside>
-      </div>
-    </header>
-
-    <nav aria-label="Navigation principale" data-nav="fr">
-      <div class="nav-inner">
-        <button class="nav-toggle" type="button" data-nav-toggle="fr">Menu</button>
-        <div class="nav-links">
-          <a href="#fr-about" data-section-key="about">À propos</a>
-          <a href="#fr-equipe" data-section-key="equipe">Équipe</a>
-          <a href="#fr-these" data-section-key="these">Thèse</a>
-          <a href="#fr-side" data-section-key="side">Projets en collaboration</a>
-          <a href="#fr-formations" data-section-key="formations">Formations</a>
-          <a href="#fr-publications" data-section-key="publications">Publications</a>
-          <a href="#fr-communications" data-section-key="communications">Communications</a>
-          <a href="#fr-contact" data-section-key="contact">Contact</a>
-        </div>
-      </div>
-    </nav>
-
-    <aside class="side-progress" aria-label="Navigation latérale">
-      <a href="#fr-about" data-section-key="about"><span>01</span> À propos</a>
-      <a href="#fr-equipe" data-section-key="equipe"><span>02</span> Équipe</a>
-      <a href="#fr-these" data-section-key="these"><span>03</span> Thèse</a>
-      <a href="#fr-side" data-section-key="side"><span>04</span> Projets en collaboration</a>
-      <a href="#fr-formations" data-section-key="formations"><span>05</span> Formations</a>
-      <a href="#fr-publications" data-section-key="publications"><span>06</span> Publications</a>
-      <a href="#fr-communications" data-section-key="communications"><span>07</span> Communications</a>
-      <a href="#fr-contact" data-section-key="contact"><span>08</span> Contact</a>
-    </aside>
-
-    <main id="fr-main">
-      <section id="fr-about" class="reveal" data-section="about">
-        <div class="section-title">
-          <span>01</span>
-          <h2>À propos</h2>
-        </div>
-
-        <p class="lead">
-          Mes travaux s'inscrivent dans le champ de la psychologie cognitive de l'olfaction et de la perception multisensorielle. Ils visent à comprendre comment les odeurs, bien qu'elles soient souvent décrites comme des stimuli diffus, instables et faiblement localisables, peuvent interagir avec la vision et l'audition pour modifier l'expérience subjective de l'espace et du temps.
-        </p>
-
-        <ul class="tags" aria-label="Mots-clés">
-          <li>Olfaction</li>
-          <li>Vision</li>
-          <li>Audition</li>
-          <li>Perception multisensorielle</li>
-        </ul>
-      </section>
-
-      <section id="fr-equipe" class="reveal" data-section="equipe">
-        <div class="section-title">
-          <span>02</span>
-          <h2>Équipe de recherche</h2>
-        </div>
-
-        <article class="team-card">
-          <span class="team-kicker">DOCC | CSGA</span>
-          <h3>Cognition et communication olfactives en développement</h3>
-          <p>
-            Ma thèse est menée au sein de l'équipe DOCC du Centre des Sciences du Goût et de l'Alimentation. L'équipe Cognition et communication olfactives en développement étudie l'olfaction, la communication chimique, la cognition olfactive et les comportements associés. Cette inscription collective permet de situer mes recherches sur les interactions entre olfaction, vision et audition dans un environnement scientifique centré sur les mécanismes sensoriels, cognitifs et comportementaux liés aux odeurs.
-          </p>
-
-          <div class="team-actions">
-            <a class="team-link" href="https://csga.fr/home-fr/equipes/equipe-docc" target="_blank" rel="noopener noreferrer">
-              Voir les travaux de l'équipe
-            </a>
-          </div>
-        </article>
-      </section>
-
-      <section id="fr-these" class="reveal" data-section="these">
-        <div class="section-title">
-          <span>03</span>
-          <h2>Thèse</h2>
-        </div>
-
-        <div class="highlight">
-          <h3>Y a-t-il un espace-temps pour les odeurs&nbsp;?</h3>
-          <p>
-            Cette thèse étudie les mécanismes d'intégration entre olfaction, vision et audition. Elle interroge la manière dont les odeurs peuvent être associées à des configurations spatiales et temporelles, mais aussi la façon dont elles peuvent influencer la perception spatio-temporelle dans les modalités auditive et visuelle. L'objectif général est de déterminer si l'expérience olfactive participe à une construction multisensorielle de l'espace et du temps.
-          </p>
-        </div>
-
-        <h3 class="subsection-heading">Direction de thèse</h3>
-
-        <div class="supervision-grid">
-          <article class="supervision-card">
-            <div class="supervision-info">
-              <span class="supervision-kicker">Directeur de thèse</span>
-              <h3>Renaud BROCHARD</h3>
-              <p class="supervision-position">Professeur des Universités</p>
-            </div>
-            <img src="assets/renaud.jpg" alt="Portrait de Renaud BROCHARD" class="supervision-photo" />
-          </article>
-
-          <article class="supervision-card">
-            <div class="supervision-info">
-              <span class="supervision-kicker">Co-direction de thèse</span>
-              <h3>Arnaud LELEU</h3>
-              <p class="supervision-position">Maître de conférences</p>
-            </div>
-            <img src="assets/arnaud.jpg" alt="Portrait d'Arnaud LELEU" class="supervision-photo" />
-          </article>
-        </div>
-
-        <h3 class="subsection-heading">Axes de thèse</h3>
-        <p class="lead">
-          Les axes structurent directement la thèse et regroupent les projets principaux actuellement terminés, en cours ou à venir.
-        </p>
-
-        <div class="filter-controls" aria-label="Filtres des axes et projets">
-          <button class="filter-button active" type="button" data-filter="all" data-label="Tous">Tous</button>
-          <button class="filter-button" type="button" data-filter="axe-1" data-label="Axe 1">Axe 1</button>
-          <button class="filter-button" type="button" data-filter="axe-2" data-label="Axe 2">Axe 2</button>
-          <button class="filter-button" type="button" data-filter="termine" data-label="Terminés">Terminés</button>
-          <button class="filter-button" type="button" data-filter="a-developper" data-label="À développer">À développer</button>
-        </div>
-
-        <div class="axis-grid">
-          <article class="axis-card" data-filter-group>
-            <span class="axis-kicker">Axe 1</span>
-            <h3>Relations temporelles entre olfaction, vision et audition</h3>
-            <p>
-              Cet axe vise à caractériser les relations temporelles entre modalités sensorielles, puis à examiner comment l'olfaction peut modifier les fenêtres d'intégration et leur recalibration.
-            </p>
-
-            <div class="axis-projects">
-              <details class="project-card filter-item" data-category="axe-1 termine">
-                <summary class="project-summary">
-                  <span class="project-summary-text">
-                    <strong>TWIXAV</strong>
-                    <small>Travail principal · Terminé</small>
-                  </span>
-                  <span class="project-toggle-label">
-                    <span class="closed-label">Voir le projet</span>
-                    <span class="open-label">Masquer le projet</span>
-                  </span>
-                </summary>
-                <div class="project-body">
-                  <p>Étude de référence sur la fenêtre temporelle d'intégration audiovisuelle, en l'absence de stimulation olfactive.</p>
-                  <p class="project-role"><strong>Rôle dans le projet :</strong> portage principal du pré-test, préparation du protocole, passation pilote et analyses exploratoires.</p>
-                  <div class="project-details-content">
-                    <div class="project-links">
-                      <a href="#" class="project-link disabled">Protocole</a>
-                      <a href="#" class="project-link disabled">Données</a>
-                      <a href="#" class="project-link disabled">Code</a>
-                      <a href="#" class="project-link disabled">Supports</a>
-                    </div>
-                  </div>
-                </div>
-              </details>
-
-              <details class="project-card filter-item" data-category="axe-1 a-developper">
-                <summary class="project-summary">
-                  <span class="project-summary-text">
-                    <strong>TWIXOLF</strong>
-                    <small>Travail principal · À développer</small>
-                  </span>
-                  <span class="project-toggle-label">
-                    <span class="closed-label">Voir le projet</span>
-                    <span class="open-label">Masquer le projet</span>
-                  </span>
-                </summary>
-                <div class="project-body">
-                  <p>Version olfactive de TWIXAV, visant à étudier les fenêtres temporelles d'intégration impliquant une composante olfactive.</p>
-                  <p class="project-role"><strong>Rôle dans le projet :</strong> adaptation du paradigme temporel, intégration de la stimulation olfactive, programmation expérimentale et analyses à venir.</p>
-                  <div class="project-details-content">
-                    <div class="project-links">
-                      <a href="#" class="project-link disabled">Protocole</a>
-                      <a href="#" class="project-link disabled">Données</a>
-                      <a href="#" class="project-link disabled">Code</a>
-                      <a href="#" class="project-link disabled">Supports</a>
-                    </div>
-                  </div>
-                </div>
-              </details>
-
-              <details class="project-card filter-item" data-category="axe-1 a-developper">
-                <summary class="project-summary">
-                  <span class="project-summary-text">
-                    <strong>SOFT</strong>
-                    <small>Travail principal · À développer</small>
-                  </span>
-                  <span class="project-toggle-label">
-                    <span class="closed-label">Voir le projet</span>
-                    <span class="open-label">Masquer le projet</span>
-                  </span>
-                </summary>
-                <div class="project-body">
-                  <p>Manipulation portant sur la détection de durées de stimuli, dans le cadre de l'étude des dimensions temporelles de la perception.</p>
-                  <p class="project-role"><strong>Rôle dans le projet :</strong> conception du paradigme, programmation expérimentale, passation et analyses à venir.</p>
-                  <div class="project-details-content">
-                    <div class="project-links">
-                      <a href="#" class="project-link disabled">Protocole</a>
-                      <a href="#" class="project-link disabled">Données</a>
-                      <a href="#" class="project-link disabled">Code</a>
-                      <a href="#" class="project-link disabled">Supports</a>
-                    </div>
-                  </div>
-                </div>
-              </details>
-
-              <details class="project-card filter-item" data-category="axe-1 a-developper">
-                <summary class="project-summary">
-                  <span class="project-summary-text">
-                    <strong>SORBET</strong>
-                    <small>Travail principal · À développer</small>
-                  </span>
-                  <span class="project-toggle-label">
-                    <span class="closed-label">Voir le projet</span>
-                    <span class="open-label">Masquer le projet</span>
-                  </span>
-                </summary>
-                <div class="project-body">
-                  <p>Étude de la recalibration subjective du timing entre odeurs et événements visuels ou auditifs.</p>
-                  <p class="project-role"><strong>Rôle dans le projet :</strong> conception du protocole d'adaptation temporelle, intégration olfactive et analyses psychométriques à venir.</p>
-                  <div class="project-details-content">
-                    <div class="project-links">
-                      <a href="#" class="project-link disabled">Protocole</a>
-                      <a href="#" class="project-link disabled">Données</a>
-                      <a href="#" class="project-link disabled">Code</a>
-                      <a href="#" class="project-link disabled">Supports</a>
-                    </div>
-                  </div>
-                </div>
-              </details>
-            </div>
-          </article>
-
-          <article class="axis-card" data-filter-group>
-            <span class="axis-kicker">Axe 2</span>
-            <h3>Influence des odeurs sur la perception de l'espace et des événements</h3>
-            <p>
-              Cet axe vise à caractériser la manière dont les odeurs peuvent moduler la perception visuelle de l'espace, orienter l'attention spatiale et modifier la représentation de scènes ou d'événements.
-            </p>
-
-            <div class="axis-projects">
-              <details class="project-card filter-item" data-category="axe-2 termine">
-                <summary class="project-summary">
-                  <span class="project-summary-text">
-                    <strong>VIBEX</strong>
-                    <small>Travail principal · Terminé</small>
-                  </span>
-                  <span class="project-toggle-label">
-                    <span class="closed-label">Voir le projet</span>
-                    <span class="open-label">Masquer le projet</span>
-                  </span>
-                </summary>
-                <div class="project-body">
-                  <p>Ligne de base visuelle consacrée au phénomène de boundary extension.</p>
-                  <p class="project-role"><strong>Rôle dans le projet :</strong> portage principal du pré-test, préparation du protocole, passation pilote et analyses exploratoires.</p>
-                  <div class="project-details-content">
-                    <div class="project-links">
-                      <a href="#" class="project-link disabled">Protocole</a>
-                      <a href="#" class="project-link disabled">Données</a>
-                      <a href="#" class="project-link disabled">Code</a>
-                      <a href="#" class="project-link disabled">Supports</a>
-                    </div>
-                  </div>
-                </div>
-              </details>
-
-              <details class="project-card filter-item" data-category="axe-2 a-developper">
-                <summary class="project-summary">
-                  <span class="project-summary-text">
-                    <strong>OASIS</strong>
-                    <small>Travail principal · À développer</small>
-                  </span>
-                  <span class="project-toggle-label">
-                    <span class="closed-label">Voir le projet</span>
-                    <span class="open-label">Masquer le projet</span>
-                  </span>
-                </summary>
-                <div class="project-body">
-                  <p>Étude de l'influence de la valence olfactive sur la représentation de l'espace visuel.</p>
-                  <p class="project-role"><strong>Rôle dans le projet :</strong> préparation du protocole, intégration des odeurs, passation et analyses à venir.</p>
-                  <div class="project-details-content">
-                    <div class="project-links">
-                      <a href="#" class="project-link disabled">Protocole</a>
-                      <a href="#" class="project-link disabled">Données</a>
-                      <a href="#" class="project-link disabled">Code</a>
-                      <a href="#" class="project-link disabled">Supports</a>
-                    </div>
-                  </div>
-                </div>
-              </details>
-
-              <details class="project-card filter-item" data-category="axe-2 a-developper">
-                <summary class="project-summary">
-                  <span class="project-summary-text">
-                    <strong>SOLAR</strong>
-                    <small>Travail principal · À développer</small>
-                  </span>
-                  <span class="project-toggle-label">
-                    <span class="closed-label">Voir le projet</span>
-                    <span class="open-label">Masquer le projet</span>
-                  </span>
-                </summary>
-                <div class="project-body">
-                  <p>Projet portant sur le cueing spatial avec les odeurs, afin d'étudier si un indice olfactif peut orienter l'attention spatiale.</p>
-                  <p class="project-role"><strong>Rôle dans le projet :</strong> conception du paradigme, intégration des stimulations olfactives, programmation expérimentale et analyses à venir.</p>
-                  <div class="project-details-content">
-                    <div class="project-links">
-                      <a href="#" class="project-link disabled">Protocole</a>
-                      <a href="#" class="project-link disabled">Données</a>
-                      <a href="#" class="project-link disabled">Code</a>
-                      <a href="#" class="project-link disabled">Supports</a>
-                    </div>
-                  </div>
-                </div>
-              </details>
-
-              <details class="project-card filter-item" data-category="axe-2 a-developper">
-                <summary class="project-summary">
-                  <span class="project-summary-text">
-                    <strong>COBEX</strong>
-                    <small>Travail principal · À développer</small>
-                  </span>
-                  <span class="project-toggle-label">
-                    <span class="closed-label">Voir le projet</span>
-                    <span class="open-label">Masquer le projet</span>
-                  </span>
-                </summary>
-                <div class="project-body">
-                  <p>Étude de l'effet de la congruence entre odeur et scène visuelle sur le boundary extension.</p>
-                  <p class="project-role"><strong>Rôle dans le projet :</strong> conception du paradigme, validation des associations odeur-scène et analyses à venir.</p>
-                  <div class="project-details-content">
-                    <div class="project-links">
-                      <a href="#" class="project-link disabled">Protocole</a>
-                      <a href="#" class="project-link disabled">Données</a>
-                      <a href="#" class="project-link disabled">Code</a>
-                      <a href="#" class="project-link disabled">Supports</a>
-                    </div>
-                  </div>
-                </div>
-              </details>
-
-              <details class="project-card filter-item" data-category="axe-2 a-developper">
-                <summary class="project-summary">
-                  <span class="project-summary-text">
-                    <strong>BRAUD</strong>
-                    <small>Travail principal · À développer</small>
-                  </span>
-                  <span class="project-toggle-label">
-                    <span class="closed-label">Voir le projet</span>
-                    <span class="open-label">Masquer le projet</span>
-                  </span>
-                </summary>
-                <div class="project-body">
-                  <p>Étude de la boundary restriction dans la mémoire des événements auditifs.</p>
-                  <p class="project-role"><strong>Rôle dans le projet :</strong> conception du paradigme auditif, sélection des stimuli et analyses comportementales à venir.</p>
-                  <div class="project-details-content">
-                    <div class="project-links">
-                      <a href="#" class="project-link disabled">Protocole</a>
-                      <a href="#" class="project-link disabled">Données</a>
-                      <a href="#" class="project-link disabled">Code</a>
-                      <a href="#" class="project-link disabled">Supports</a>
-                    </div>
-                  </div>
-                </div>
-              </details>
-
-              <details class="project-card filter-item" data-category="axe-2 a-developper">
-                <summary class="project-summary">
-                  <span class="project-summary-text">
-                    <strong>BRAUDOLF</strong>
-                    <small>Travail principal · À développer</small>
-                  </span>
-                  <span class="project-toggle-label">
-                    <span class="closed-label">Voir le projet</span>
-                    <span class="open-label">Masquer le projet</span>
-                  </span>
-                </summary>
-                <div class="project-body">
-                  <p>Version olfactive de BRAUD, centrée sur l'effet des odeurs sur la restriction auditive.</p>
-                  <p class="project-role"><strong>Rôle dans le projet :</strong> adaptation du paradigme BRAUD, intégration olfactive et analyses à venir.</p>
-                  <div class="project-details-content">
-                    <div class="project-links">
-                      <a href="#" class="project-link disabled">Protocole</a>
-                      <a href="#" class="project-link disabled">Données</a>
-                      <a href="#" class="project-link disabled">Code</a>
-                      <a href="#" class="project-link disabled">Supports</a>
-                    </div>
-                  </div>
-                </div>
-              </details>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section id="fr-side" class="reveal" data-section="side">
-        <div class="section-title">
-          <span>04</span>
-          <h2>Projets en collaboration</h2>
-        </div>
-
-        <details class="project-card">
-          <summary class="project-summary">
-            <span class="project-summary-text">
-              <strong>FLUXOLF</strong>
-              <small>Projet collaboratif · En cours</small>
-            </span>
-            <span class="project-toggle-label">
-              <span class="closed-label">Voir le projet</span>
-              <span class="open-label">Masquer le projet</span>
-            </span>
-          </summary>
-          <div class="project-body">
-            <p>Projet collaboratif portant sur le paradoxe intermodal musique-odeur, avec un intérêt pour les réponses neurophysiologiques mesurées par EEG.</p>
-            <p class="project-role"><strong>Rôle dans le projet :</strong> contribution scientifique et méthodologique à un projet mené en collaboration, en lien avec la problématique multisensorielle.</p>
-            <div class="project-details-content">
-              <div class="project-links">
-                <a href="#" class="project-link disabled">Protocole</a>
-                <a href="#" class="project-link disabled">Données</a>
-                <a href="#" class="project-link disabled">Code</a>
-                <a href="#" class="project-link disabled">Supports</a>
-              </div>
-            </div>
-          </div>
-        </details>
-      </section>
-
-      <section id="fr-formations" class="reveal" data-section="formations">
-        <div class="section-title">
-          <span>05</span>
-          <h2>Formations</h2>
-        </div>
-
-        <article class="training-summary">
-          <span class="training-kicker">Parcours doctoral</span>
-          <h3>Total participation</h3>
-          <p>Formations suivies dans le cadre du parcours doctoral, réparties entre poursuite de carrière, valorisation, intégrité scientifique, documentation et enseignement.</p>
-          <div class="training-total">
-            <span>60 heures</span>
-            <span>6 modules</span>
-          </div>
-        </article>
-
-        <details class="training-master">
-          <summary>Voir le détail des formations</summary>
-
-          <div class="training-accordion">
-            <details class="training-card">
-              <summary>
-                <span class="training-hours">27.5 h</span>
-                <span><strong>Poursuite de carrière</strong><small>Enseignement</small></span>
-              </summary>
-              <div class="training-content">
-                <p><strong>Objectif pédagogique :</strong> développer les compétences liées à l'enseignement universitaire, à la préparation des séances, à l'encadrement des étudiants et à la transmission de contenus scientifiques.</p>
-              </div>
-            </details>
-
-            <details class="training-card">
-              <summary>
-                <span class="training-hours">4 h</span>
-                <span><strong>Culture scientifique internationale et valorisation</strong><small>Introduction à l'intelligence économique</small></span>
-              </summary>
-              <div class="training-content">
-                <p><strong>Objectif pédagogique :</strong> comprendre les enjeux de veille, de valorisation, de stratégie informationnelle et de positionnement des connaissances scientifiques dans un environnement institutionnel et socio-économique.</p>
-              </div>
-            </details>
-
-            <details class="training-card">
-              <summary>
-                <span class="training-hours">3 h</span>
-                <span><strong>Éthique de la recherche et intégrité scientifique</strong><small>Conférence : intégrité scientifique et déontologie</small></span>
-              </summary>
-              <div class="training-content">
-                <p><strong>Objectif pédagogique :</strong> renforcer la connaissance des principes d'intégrité scientifique, de déontologie, de responsabilité du chercheur et de bonnes pratiques dans la production et la diffusion des résultats.</p>
-              </div>
-            </details>
-
-            <details class="training-card">
-              <summary>
-                <span class="training-hours">3 h</span>
-                <span><strong>Formations documentaires</strong><small>Zotero : gérer ses références bibliographiques</small></span>
-              </summary>
-              <div class="training-content">
-                <p><strong>Objectif pédagogique :</strong> maîtriser les bases de la gestion bibliographique, organiser les références scientifiques, faciliter la rédaction académique et fiabiliser le suivi documentaire.</p>
-              </div>
-            </details>
-
-            <details class="training-card">
-              <summary>
-                <span class="training-hours">17.5 h</span>
-                <span><strong>Connaissances et outils d'enseignement</strong><small>Apprendre à enseigner à l'université, niveau 1</small></span>
-              </summary>
-              <div class="training-content">
-                <p><strong>Objectif pédagogique :</strong> acquérir des bases en pédagogie universitaire, concevoir des activités d'apprentissage, structurer un enseignement et adapter les méthodes pédagogiques aux publics étudiants.</p>
-              </div>
-            </details>
-
-            <details class="training-card">
-              <summary>
-                <span class="training-hours">5 h</span>
-                <span><strong>Connaissances et outils d'enseignement</strong><small>IA et Éducation</small></span>
-              </summary>
-              <div class="training-content">
-                <p><strong>Objectif pédagogique :</strong> conforter la culture scientifique des doctorants dans leur champ disciplinaire ou en interdisciplinaire, en interrogeant les usages, apports et limites de l'intelligence artificielle en contexte éducatif.</p>
-              </div>
-            </details>
-          </div>
-        </details>
-      </section>
-
-      <section id="fr-publications" class="reveal" data-section="publications">
-        <div class="section-title">
-          <span>06</span>
-          <h2>Publications</h2>
-        </div>
-
-        <div class="filter-controls" aria-label="Filtres des publications">
-          <button class="filter-button active" type="button" data-filter="all" data-label="Tous">Tous</button>
-          <button class="filter-button" type="button" data-filter="article" data-label="Articles">Articles</button>
-          <button class="filter-button" type="button" data-filter="preprint" data-label="Prépublications">Prépublications</button>
-        </div>
-
-        <div class="publication-subsection">
-          <h3>Articles</h3>
-          <ul class="publication-list">
-            <li class="filter-item placeholder-item" data-category="article" data-countable="false">
-              <span class="publication-type">Article</span>
-              <strong>En attente d'ajout</strong>
-              <p>Les articles seront ajoutés ici après soumission, acceptation ou publication.</p>
-            </li>
-          </ul>
-        </div>
-
-        <div class="publication-subsection">
-          <h3>Prépublications</h3>
-          <ul class="publication-list">
-            <li class="filter-item placeholder-item" data-category="preprint" data-countable="false">
-              <span class="publication-type">Prépublication</span>
-              <strong>En attente d'ajout</strong>
-              <p>Les prépublications seront ajoutées ici lorsqu'une version diffusable sera disponible.</p>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <section id="fr-communications" class="reveal" data-section="communications">
-        <div class="section-title">
-          <span>07</span>
-          <h2>Communications</h2>
-        </div>
-
-        <div class="filter-controls" aria-label="Filtres des communications">
-          <button class="filter-button active" type="button" data-filter="all" data-label="Tous">Tous</button>
-          <button class="filter-button" type="button" data-filter="communication" data-label="Communications">Communications</button>
-          <button class="filter-button" type="button" data-filter="poster" data-label="Posters">Posters</button>
-        </div>
-
-        <div class="publication-subsection">
-          <h3>Communications</h3>
-          <ul class="publication-list">
-            <li class="filter-item" data-category="communication">
-              <span class="publication-type">Communication</span>
-              <strong>Journée des Doctorants 2026</strong>
-              <p>Présentation des travaux de thèse et obtention du prix de l'originalité pour une approche scientifique audacieuse et créative qui a surpris et inspiré le jury.</p>
-            </li>
-          </ul>
-        </div>
-
-        <div class="publication-subsection">
-          <h3>Posters</h3>
-          <ul class="publication-list">
-            <li class="filter-item placeholder-item" data-category="poster" data-countable="false">
-              <span class="publication-type">Poster</span>
-              <strong>En attente d'ajout</strong>
-              <p>Les posters seront ajoutés ici après présentation ou diffusion.</p>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <section id="fr-contact" class="reveal" data-section="contact">
-        <div class="section-title">
-          <span>08</span>
-          <h2>Contact</h2>
-        </div>
-
-        <div class="contact-box">
-          <p class="contact-item">
-            <a class="contact-icon" href="mailto:luc.perroquin@gmail.com" aria-label="Email">✉</a>
-            <strong>Email :</strong>
-            <a href="mailto:luc.perroquin@gmail.com">luc.perroquin@gmail.com</a>
-            <button class="copy-email-button" type="button" data-copy-email="luc.perroquin@gmail.com" data-default-label="Copier" data-copied-label="Copié">Copier</button>
-          </p>
-
-          <p class="contact-item">
-            <a class="contact-icon" href="https://orcid.org/0009-0007-9278-0612" target="_blank" rel="noopener noreferrer" aria-label="ORCID">iD</a>
-            <strong>ORCID :</strong>
-            <a href="https://orcid.org/0009-0007-9278-0612" target="_blank" rel="noopener noreferrer">0009-0007-9278-0612</a>
-          </p>
-
-          <p class="contact-item">
-            <a class="contact-icon" href="https://www.researchgate.net/profile/Luc-Perroquin?ev=hdr_xprf" target="_blank" rel="noopener noreferrer" aria-label="ResearchGate">RG</a>
-            <strong>ResearchGate :</strong>
-            <a href="https://www.researchgate.net/profile/Luc-Perroquin?ev=hdr_xprf" target="_blank" rel="noopener noreferrer">Luc Perroquin</a>
-          </p>
-
-          <p class="contact-item">
-            <a class="contact-icon" href="https://www.linkedin.com/in/luc-perroquin-288b54328" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">in</a>
-            <strong>LinkedIn :</strong>
-            <a href="https://www.linkedin.com/in/luc-perroquin-288b54328" target="_blank" rel="noopener noreferrer">luc-perroquin-288b54328</a>
-          </p>
-        </div>
-      </section>
-    </main>
-
-    <footer>
-      <p>Luc Perroquin | Portfolio académique | Psychologie cognitive de l'olfaction</p>
-    </footer>
-  </div>
-
-  <div class="site-content" data-lang="en" hidden>
-    <header id="en-top" data-section="top">
-      <div class="hero">
-        <div>
-          <span class="label">Academic portfolio</span>
-          <h1>Is there a space-time for odors?</h1>
-          <p class="subtitle">Mechanisms of integration between olfaction, vision, and audition</p>
-          <p>
-            I am Luc Perroquin, a PhD student in cognitive psychology. My research focuses on spatio-temporal relations between olfaction, vision, and audition, as well as on the influence of odors in the perceptual construction of space and time.
-          </p>
-        </div>
-
-        <aside class="portrait-card">
-          <a class="portrait-link" href="https://raw.githubusercontent.com/lucper01/Portfolio/main/assets/photo-profil.png" target="_blank" rel="noopener noreferrer">
-            <img src="https://raw.githubusercontent.com/lucper01/Portfolio/main/assets/photo-profil.png" alt="Portrait of Luc Perroquin" class="profile-photo" />
-          </a>
-          <p class="photo-note">Luc Perroquin</p>
-
-          <div class="portrait-actions">
-            <a class="portrait-button" href="https://lucper01.github.io/Portfolio/assets/CV_PerroquinLuc_en.pdf" target="_blank" rel="noopener noreferrer">Open CV</a>
-            <a class="portrait-button secondary" href="#en-contact">Contact</a>
-          </div>
-        </aside>
-      </div>
-    </header>
-
-    <nav aria-label="Main navigation" data-nav="en">
-      <div class="nav-inner">
-        <button class="nav-toggle" type="button" data-nav-toggle="en">Menu</button>
-        <div class="nav-links">
-          <a href="#en-about" data-section-key="about">About</a>
-          <a href="#en-team" data-section-key="equipe">Team</a>
-          <a href="#en-thesis" data-section-key="these">Thesis</a>
-          <a href="#en-side" data-section-key="side">Featured projects</a>
-          <a href="#en-training" data-section-key="formations">Training</a>
-          <a href="#en-publications" data-section-key="publications">Publications</a>
-          <a href="#en-communications" data-section-key="communications">Communications</a>
-          <a href="#en-contact" data-section-key="contact">Contact</a>
-        </div>
-      </div>
-    </nav>
-
-    <aside class="side-progress" aria-label="Side navigation">
-      <a href="#en-about" data-section-key="about"><span>01</span> About</a>
-      <a href="#en-team" data-section-key="equipe"><span>02</span> Team</a>
-      <a href="#en-thesis" data-section-key="these"><span>03</span> Thesis</a>
-      <a href="#en-side" data-section-key="side"><span>04</span> Featured projects</a>
-      <a href="#en-training" data-section-key="formations"><span>05</span> Training</a>
-      <a href="#en-publications" data-section-key="publications"><span>06</span> Publications</a>
-      <a href="#en-communications" data-section-key="communications"><span>07</span> Communications</a>
-      <a href="#en-contact" data-section-key="contact"><span>08</span> Contact</a>
-    </aside>
-
-    <main id="en-main">
-      <section id="en-about" class="reveal" data-section="about">
-        <div class="section-title">
-          <span>01</span>
-          <h2>About</h2>
-        </div>
-
-        <p class="lead">
-          My work is situated within cognitive psychology of olfaction and multisensory perception. It aims to understand how odors, although often described as diffuse, unstable, and weakly localizable stimuli, can interact with vision and audition to modify the subjective experience of space and time.
-        </p>
-
-        <ul class="tags" aria-label="Keywords">
-          <li>Olfaction</li>
-          <li>Vision</li>
-          <li>Audition</li>
-          <li>Multisensory perception</li>
-        </ul>
-      </section>
-
-      <section id="en-team" class="reveal" data-section="equipe">
-        <div class="section-title">
-          <span>02</span>
-          <h2>Research team</h2>
-        </div>
-
-        <article class="team-card">
-          <span class="team-kicker">DOCC | CSGA</span>
-          <h3>Development of Olfactory Communication and Cognition</h3>
-          <p>
-            My PhD work is conducted within the DOCC team at the Centre for Taste and Feeding Behavior. The Development of Olfactory Communication and Cognition team studies olfaction, chemical communication, olfactory cognition, and associated behaviors. This research environment situates my work on interactions between olfaction, vision, and audition within a broader scientific framework dedicated to sensory, cognitive, and behavioral mechanisms related to odors.
-          </p>
-
-          <div class="team-actions">
-            <a class="team-link" href="https://csga.fr/en_GB/home-en/teams/team-docc" target="_blank" rel="noopener noreferrer">
-              View the team's work
-            </a>
-          </div>
-        </article>
-      </section>
-
-      <section id="en-thesis" class="reveal" data-section="these">
-        <div class="section-title">
-          <span>03</span>
-          <h2>Thesis</h2>
-        </div>
-
-        <div class="highlight">
-          <h3>Is there a space-time for odors?</h3>
-          <p>
-            This thesis investigates mechanisms of integration between olfaction, vision, and audition. It examines how odors may be associated with spatial and temporal configurations, as well as how they may influence spatio-temporal perception in auditory and visual modalities. The general objective is to determine whether olfactory experience contributes to a multisensory construction of space and time.
-          </p>
-        </div>
-
-        <h3 class="subsection-heading">PhD supervision</h3>
-
-        <div class="supervision-grid">
-          <article class="supervision-card">
-            <div class="supervision-info">
-              <span class="supervision-kicker">PhD supervisor</span>
-              <h3>Renaud BROCHARD</h3>
-              <p class="supervision-position">Full Professor</p>
-            </div>
-            <img src="assets/renaud.jpg" alt="Portrait of Renaud BROCHARD" class="supervision-photo" />
-          </article>
-
-          <article class="supervision-card">
-            <div class="supervision-info">
-              <span class="supervision-kicker">PhD co-supervision</span>
-              <h3>Arnaud LELEU</h3>
-              <p class="supervision-position">Associate Professor</p>
-            </div>
-            <img src="assets/arnaud.jpg" alt="Portrait of Arnaud LELEU" class="supervision-photo" />
-          </article>
-        </div>
-
-        <h3 class="subsection-heading">Thesis axes</h3>
-        <p class="lead">
-          The axes directly structure the thesis and gather the main projects that are completed, ongoing, or upcoming.
-        </p>
-
-        <div class="filter-controls" aria-label="Thesis axis and project filters">
-          <button class="filter-button active" type="button" data-filter="all" data-label="All">All</button>
-          <button class="filter-button" type="button" data-filter="axe-1" data-label="Axis 1">Axis 1</button>
-          <button class="filter-button" type="button" data-filter="axe-2" data-label="Axis 2">Axis 2</button>
-          <button class="filter-button" type="button" data-filter="termine" data-label="Completed">Completed</button>
-          <button class="filter-button" type="button" data-filter="a-developper" data-label="To develop">To develop</button>
-        </div>
-
-        <div class="axis-grid">
-          <article class="axis-card" data-filter-group>
-            <span class="axis-kicker">Axis 1</span>
-            <h3>Temporal relations between olfaction, vision, and audition</h3>
-            <p>
-              This axis aims to characterize temporal relations between sensory modalities, and then to examine how olfaction may modify integration windows and their recalibration.
-            </p>
-
-            <div class="axis-projects">
-              <details class="project-card filter-item" data-category="axe-1 termine">
-                <summary class="project-summary">
-                  <span class="project-summary-text">
-                    <strong>TWIXAV</strong>
-                    <small>Main work · Completed</small>
-                  </span>
-                  <span class="project-toggle-label">
-                    <span class="closed-label">View project</span>
-                    <span class="open-label">Hide project</span>
-                  </span>
-                </summary>
-                <div class="project-body">
-                  <p>Reference study on the audiovisual temporal window of integration, without olfactory stimulation.</p>
-                  <p class="project-role"><strong>Project role:</strong> main lead of the pre-test, protocol preparation, pilot testing, and exploratory analyses.</p>
-                  <div class="project-details-content">
-                    <div class="project-links">
-                      <a href="#" class="project-link disabled">Protocol</a>
-                      <a href="#" class="project-link disabled">Data</a>
-                      <a href="#" class="project-link disabled">Code</a>
-                      <a href="#" class="project-link disabled">Materials</a>
-                    </div>
-                  </div>
-                </div>
-              </details>
-
-              <details class="project-card filter-item" data-category="axe-1 a-developper">
-                <summary class="project-summary">
-                  <span class="project-summary-text">
-                    <strong>TWIXOLF</strong>
-                    <small>Main work · To develop</small>
-                  </span>
-                  <span class="project-toggle-label">
-                    <span class="closed-label">View project</span>
-                    <span class="open-label">Hide project</span>
-                  </span>
-                </summary>
-                <div class="project-body">
-                  <p>Olfactory version of TWIXAV, aimed at studying temporal integration windows involving an olfactory component.</p>
-                  <p class="project-role"><strong>Project role:</strong> adaptation of the temporal paradigm, integration of olfactory stimulation, experimental programming, and upcoming analyses.</p>
-                  <div class="project-details-content">
-                    <div class="project-links">
-                      <a href="#" class="project-link disabled">Protocol</a>
-                      <a href="#" class="project-link disabled">Data</a>
-                      <a href="#" class="project-link disabled">Code</a>
-                      <a href="#" class="project-link disabled">Materials</a>
-                    </div>
-                  </div>
-                </div>
-              </details>
-
-              <details class="project-card filter-item" data-category="axe-1 a-developper">
-                <summary class="project-summary">
-                  <span class="project-summary-text">
-                    <strong>SOFT</strong>
-                    <small>Main work · To develop</small>
-                  </span>
-                  <span class="project-toggle-label">
-                    <span class="closed-label">View project</span>
-                    <span class="open-label">Hide project</span>
-                  </span>
-                </summary>
-                <div class="project-body">
-                  <p>Experiment focused on the detection of stimulus durations, within the study of temporal dimensions of perception.</p>
-                  <p class="project-role"><strong>Project role:</strong> paradigm design, experimental programming, data collection, and upcoming analyses.</p>
-                  <div class="project-details-content">
-                    <div class="project-links">
-                      <a href="#" class="project-link disabled">Protocol</a>
-                      <a href="#" class="project-link disabled">Data</a>
-                      <a href="#" class="project-link disabled">Code</a>
-                      <a href="#" class="project-link disabled">Materials</a>
-                    </div>
-                  </div>
-                </div>
-              </details>
-
-              <details class="project-card filter-item" data-category="axe-1 a-developper">
-                <summary class="project-summary">
-                  <span class="project-summary-text">
-                    <strong>SORBET</strong>
-                    <small>Main work · To develop</small>
-                  </span>
-                  <span class="project-toggle-label">
-                    <span class="closed-label">View project</span>
-                    <span class="open-label">Hide project</span>
-                  </span>
-                </summary>
-                <div class="project-body">
-                  <p>Study of subjective timing recalibration between odors and visual or auditory events.</p>
-                  <p class="project-role"><strong>Project role:</strong> temporal adaptation protocol design, olfactory integration, and upcoming psychometric analyses.</p>
-                  <div class="project-details-content">
-                    <div class="project-links">
-                      <a href="#" class="project-link disabled">Protocol</a>
-                      <a href="#" class="project-link disabled">Data</a>
-                      <a href="#" class="project-link disabled">Code</a>
-                      <a href="#" class="project-link disabled">Materials</a>
-                    </div>
-                  </div>
-                </div>
-              </details>
-            </div>
-          </article>
-
-          <article class="axis-card" data-filter-group>
-            <span class="axis-kicker">Axis 2</span>
-            <h3>Influence of odors on the perception of space and events</h3>
-            <p>
-              This axis aims to characterize how odors may modulate visual perception of space, orient spatial attention, and modify the representation of scenes or events.
-            </p>
-
-            <div class="axis-projects">
-              <details class="project-card filter-item" data-category="axe-2 termine">
-                <summary class="project-summary">
-                  <span class="project-summary-text">
-                    <strong>VIBEX</strong>
-                    <small>Main work · Completed</small>
-                  </span>
-                  <span class="project-toggle-label">
-                    <span class="closed-label">View project</span>
-                    <span class="open-label">Hide project</span>
-                  </span>
-                </summary>
-                <div class="project-body">
-                  <p>Visual baseline study dedicated to the boundary extension phenomenon.</p>
-                  <p class="project-role"><strong>Project role:</strong> main lead of the pre-test, protocol preparation, pilot testing, and exploratory analyses.</p>
-                  <div class="project-details-content">
-                    <div class="project-links">
-                      <a href="#" class="project-link disabled">Protocol</a>
-                      <a href="#" class="project-link disabled">Data</a>
-                      <a href="#" class="project-link disabled">Code</a>
-                      <a href="#" class="project-link disabled">Materials</a>
-                    </div>
-                  </div>
-                </div>
-              </details>
-
-              <details class="project-card filter-item" data-category="axe-2 a-developper">
-                <summary class="project-summary">
-                  <span class="project-summary-text">
-                    <strong>OASIS</strong>
-                    <small>Main work · To develop</small>
-                  </span>
-                  <span class="project-toggle-label">
-                    <span class="closed-label">View project</span>
-                    <span class="open-label">Hide project</span>
-                  </span>
-                </summary>
-                <div class="project-body">
-                  <p>Study of the influence of olfactory valence on the representation of visual space.</p>
-                  <p class="project-role"><strong>Project role:</strong> protocol preparation, odor integration, data collection, and upcoming analyses.</p>
-                  <div class="project-details-content">
-                    <div class="project-links">
-                      <a href="#" class="project-link disabled">Protocol</a>
-                      <a href="#" class="project-link disabled">Data</a>
-                      <a href="#" class="project-link disabled">Code</a>
-                      <a href="#" class="project-link disabled">Materials</a>
-                    </div>
-                  </div>
-                </div>
-              </details>
-
-              <details class="project-card filter-item" data-category="axe-2 a-developper">
-                <summary class="project-summary">
-                  <span class="project-summary-text">
-                    <strong>SOLAR</strong>
-                    <small>Main work · To develop</small>
-                  </span>
-                  <span class="project-toggle-label">
-                    <span class="closed-label">View project</span>
-                    <span class="open-label">Hide project</span>
-                  </span>
-                </summary>
-                <div class="project-body">
-                  <p>Project on spatial cueing with odors, aimed at testing whether an olfactory cue can orient spatial attention.</p>
-                  <p class="project-role"><strong>Project role:</strong> paradigm design, integration of olfactory stimulation, experimental programming, and upcoming analyses.</p>
-                  <div class="project-details-content">
-                    <div class="project-links">
-                      <a href="#" class="project-link disabled">Protocol</a>
-                      <a href="#" class="project-link disabled">Data</a>
-                      <a href="#" class="project-link disabled">Code</a>
-                      <a href="#" class="project-link disabled">Materials</a>
-                    </div>
-                  </div>
-                </div>
-              </details>
-
-              <details class="project-card filter-item" data-category="axe-2 a-developper">
-                <summary class="project-summary">
-                  <span class="project-summary-text">
-                    <strong>COBEX</strong>
-                    <small>Main work · To develop</small>
-                  </span>
-                  <span class="project-toggle-label">
-                    <span class="closed-label">View project</span>
-                    <span class="open-label">Hide project</span>
-                  </span>
-                </summary>
-                <div class="project-body">
-                  <p>Study of the effect of odor-scene congruence on boundary extension.</p>
-                  <p class="project-role"><strong>Project role:</strong> paradigm design, validation of odor-scene associations, and upcoming analyses.</p>
-                  <div class="project-details-content">
-                    <div class="project-links">
-                      <a href="#" class="project-link disabled">Protocol</a>
-                      <a href="#" class="project-link disabled">Data</a>
-                      <a href="#" class="project-link disabled">Code</a>
-                      <a href="#" class="project-link disabled">Materials</a>
-                    </div>
-                  </div>
-                </div>
-              </details>
-
-              <details class="project-card filter-item" data-category="axe-2 a-developper">
-                <summary class="project-summary">
-                  <span class="project-summary-text">
-                    <strong>BRAUD</strong>
-                    <small>Main work · To develop</small>
-                  </span>
-                  <span class="project-toggle-label">
-                    <span class="closed-label">View project</span>
-                    <span class="open-label">Hide project</span>
-                  </span>
-                </summary>
-                <div class="project-body">
-                  <p>Study of boundary restriction in memory for auditory events.</p>
-                  <p class="project-role"><strong>Project role:</strong> auditory paradigm design, stimulus selection, and upcoming behavioral analyses.</p>
-                  <div class="project-details-content">
-                    <div class="project-links">
-                      <a href="#" class="project-link disabled">Protocol</a>
-                      <a href="#" class="project-link disabled">Data</a>
-                      <a href="#" class="project-link disabled">Code</a>
-                      <a href="#" class="project-link disabled">Materials</a>
-                    </div>
-                  </div>
-                </div>
-              </details>
-
-              <details class="project-card filter-item" data-category="axe-2 a-developper">
-                <summary class="project-summary">
-                  <span class="project-summary-text">
-                    <strong>BRAUDOLF</strong>
-                    <small>Main work · To develop</small>
-                  </span>
-                  <span class="project-toggle-label">
-                    <span class="closed-label">View project</span>
-                    <span class="open-label">Hide project</span>
-                  </span>
-                </summary>
-                <div class="project-body">
-                  <p>Olfactory version of BRAUD, focused on the effect of odors on auditory boundary restriction.</p>
-                  <p class="project-role"><strong>Project role:</strong> adaptation of the BRAUD paradigm, olfactory integration, and upcoming analyses.</p>
-                  <div class="project-details-content">
-                    <div class="project-links">
-                      <a href="#" class="project-link disabled">Protocol</a>
-                      <a href="#" class="project-link disabled">Data</a>
-                      <a href="#" class="project-link disabled">Code</a>
-                      <a href="#" class="project-link disabled">Materials</a>
-                    </div>
-                  </div>
-                </div>
-              </details>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section id="en-side" class="reveal" data-section="side">
-        <div class="section-title">
-          <span>04</span>
-          <h2>Featured projects</h2>
-        </div>
-
-        <details class="project-card">
-          <summary class="project-summary">
-            <span class="project-summary-text">
-              <strong>FLUXOLF</strong>
-              <small>Collaborative project · Ongoing</small>
-            </span>
-            <span class="project-toggle-label">
-              <span class="closed-label">View project</span>
-              <span class="open-label">Hide project</span>
-            </span>
-          </summary>
-          <div class="project-body">
-            <p>Collaborative project on the intermodal music-odor paradox, with an interest in neurophysiological responses measured through EEG.</p>
-            <p class="project-role"><strong>Project role:</strong> scientific and methodological contribution to a collaborative project connected to multisensory research.</p>
-            <div class="project-details-content">
-              <div class="project-links">
-                <a href="#" class="project-link disabled">Protocol</a>
-                <a href="#" class="project-link disabled">Data</a>
-                <a href="#" class="project-link disabled">Code</a>
-                <a href="#" class="project-link disabled">Materials</a>
-              </div>
-            </div>
-          </div>
-        </details>
-      </section>
-
-      <section id="en-training" class="reveal" data-section="formations">
-        <div class="section-title">
-          <span>05</span>
-          <h2>Training</h2>
-        </div>
-
-        <article class="training-summary">
-          <span class="training-kicker">Doctoral pathway</span>
-          <h3>Total participation</h3>
-          <p>Training completed as part of the doctoral pathway, covering career development, scientific culture and valorization, research integrity, documentary training, and teaching.</p>
-          <div class="training-total">
-            <span>60 hours</span>
-            <span>6 modules</span>
-          </div>
-        </article>
-
-        <details class="training-master">
-          <summary>View training details</summary>
-
-          <div class="training-accordion">
-            <details class="training-card">
-              <summary>
-                <span class="training-hours">27.5 h</span>
-                <span><strong>Career development</strong><small>Teaching</small></span>
-              </summary>
-              <div class="training-content">
-                <p><strong>Pedagogical objective:</strong> develop skills related to university teaching, session preparation, student support, and the transmission of scientific content.</p>
-              </div>
-            </details>
-
-            <details class="training-card">
-              <summary>
-                <span class="training-hours">4 h</span>
-                <span><strong>International scientific culture and valorization</strong><small>Introduction to economic intelligence</small></span>
-              </summary>
-              <div class="training-content">
-                <p><strong>Pedagogical objective:</strong> understand the challenges of monitoring, valorization, information strategy, and the positioning of scientific knowledge in institutional and socio-economic environments.</p>
-              </div>
-            </details>
-
-            <details class="training-card">
-              <summary>
-                <span class="training-hours">3 h</span>
-                <span><strong>Research ethics and scientific integrity</strong><small>Scientific integrity and professional ethics</small></span>
-              </summary>
-              <div class="training-content">
-                <p><strong>Pedagogical objective:</strong> strengthen knowledge of scientific integrity, professional ethics, researcher responsibility, and good practices in producing and disseminating results.</p>
-              </div>
-            </details>
-
-            <details class="training-card">
-              <summary>
-                <span class="training-hours">3 h</span>
-                <span><strong>Documentary training</strong><small>Zotero: managing bibliographic references</small></span>
-              </summary>
-              <div class="training-content">
-                <p><strong>Pedagogical objective:</strong> master the basics of bibliographic management, organize scientific references, support academic writing, and make documentary follow-up more reliable.</p>
-              </div>
-            </details>
-
-            <details class="training-card">
-              <summary>
-                <span class="training-hours">17.5 h</span>
-                <span><strong>Teaching knowledge and tools</strong><small>Learning to teach at university, level 1</small></span>
-              </summary>
-              <div class="training-content">
-                <p><strong>Pedagogical objective:</strong> acquire foundations in university pedagogy, design learning activities, structure a teaching session, and adapt pedagogical methods to student audiences.</p>
-              </div>
-            </details>
-
-            <details class="training-card">
-              <summary>
-                <span class="training-hours">5 h</span>
-                <span><strong>Teaching knowledge and tools</strong><small>AI and Education</small></span>
-              </summary>
-              <div class="training-content">
-                <p><strong>Pedagogical objective:</strong> strengthen doctoral students' scientific culture in their disciplinary or interdisciplinary field by examining the uses, contributions, and limits of artificial intelligence in educational contexts.</p>
-              </div>
-            </details>
-          </div>
-        </details>
-      </section>
-
-      <section id="en-publications" class="reveal" data-section="publications">
-        <div class="section-title">
-          <span>06</span>
-          <h2>Publications</h2>
-        </div>
-
-        <div class="filter-controls" aria-label="Publication filters">
-          <button class="filter-button active" type="button" data-filter="all" data-label="All">All</button>
-          <button class="filter-button" type="button" data-filter="article" data-label="Articles">Articles</button>
-          <button class="filter-button" type="button" data-filter="preprint" data-label="Preprints">Preprints</button>
-        </div>
-
-        <div class="publication-subsection">
-          <h3>Articles</h3>
-          <ul class="publication-list">
-            <li class="filter-item placeholder-item" data-category="article" data-countable="false">
-              <span class="publication-type">Article</span>
-              <strong>Pending addition</strong>
-              <p>Articles will be added here after submission, acceptance, or publication.</p>
-            </li>
-          </ul>
-        </div>
-
-        <div class="publication-subsection">
-          <h3>Preprints</h3>
-          <ul class="publication-list">
-            <li class="filter-item placeholder-item" data-category="preprint" data-countable="false">
-              <span class="publication-type">Preprint</span>
-              <strong>Pending addition</strong>
-              <p>Preprints will be added here when a shareable version is available.</p>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <section id="en-communications" class="reveal" data-section="communications">
-        <div class="section-title">
-          <span>07</span>
-          <h2>Communications</h2>
-        </div>
-
-        <div class="filter-controls" aria-label="Communication filters">
-          <button class="filter-button active" type="button" data-filter="all" data-label="All">All</button>
-          <button class="filter-button" type="button" data-filter="communication" data-label="Communications">Communications</button>
-          <button class="filter-button" type="button" data-filter="poster" data-label="Posters">Posters</button>
-        </div>
-
-        <div class="publication-subsection">
-          <h3>Communications</h3>
-          <ul class="publication-list">
-            <li class="filter-item" data-category="communication">
-              <span class="publication-type">Communication</span>
-              <strong>Doctoral Students' Day 2026</strong>
-              <p>Presentation of thesis work and recipient of the Originality Award for a bold and creative scientific approach that surprised and inspired the jury.</p>
-            </li>
-          </ul>
-        </div>
-
-        <div class="publication-subsection">
-          <h3>Posters</h3>
-          <ul class="publication-list">
-            <li class="filter-item placeholder-item" data-category="poster" data-countable="false">
-              <span class="publication-type">Poster</span>
-              <strong>Pending addition</strong>
-              <p>Posters will be added here after presentation or dissemination.</p>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <section id="en-contact" class="reveal" data-section="contact">
-        <div class="section-title">
-          <span>08</span>
-          <h2>Contact</h2>
-        </div>
-
-        <div class="contact-box">
-          <p class="contact-item">
-            <a class="contact-icon" href="mailto:luc.perroquin@gmail.com" aria-label="Email">✉</a>
-            <strong>Email:</strong>
-            <a href="mailto:luc.perroquin@gmail.com">luc.perroquin@gmail.com</a>
-            <button class="copy-email-button" type="button" data-copy-email="luc.perroquin@gmail.com" data-default-label="Copy" data-copied-label="Copied">Copy</button>
-          </p>
-
-          <p class="contact-item">
-            <a class="contact-icon" href="https://orcid.org/0009-0007-9278-0612" target="_blank" rel="noopener noreferrer" aria-label="ORCID">iD</a>
-            <strong>ORCID:</strong>
-            <a href="https://orcid.org/0009-0007-9278-0612" target="_blank" rel="noopener noreferrer">0009-0007-9278-0612</a>
-          </p>
-
-          <p class="contact-item">
-            <a class="contact-icon" href="https://www.researchgate.net/profile/Luc-Perroquin?ev=hdr_xprf" target="_blank" rel="noopener noreferrer" aria-label="ResearchGate">RG</a>
-            <strong>ResearchGate:</strong>
-            <a href="https://www.researchgate.net/profile/Luc-Perroquin?ev=hdr_xprf" target="_blank" rel="noopener noreferrer">Luc Perroquin</a>
-          </p>
-
-          <p class="contact-item">
-            <a class="contact-icon" href="https://www.linkedin.com/in/luc-perroquin-288b54328" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">in</a>
-            <strong>LinkedIn:</strong>
-            <a href="https://www.linkedin.com/in/luc-perroquin-288b54328" target="_blank" rel="noopener noreferrer">luc-perroquin-288b54328</a>
-          </p>
-        </div>
-      </section>
-    </main>
-
-    <footer>
-      <p>Luc Perroquin | Academic portfolio | Cognitive psychology of olfaction</p>
-    </footer>
-  </div>
+  <div id="app"></div>
 
   <script>
-    const languageButtons = document.querySelectorAll("[data-switch-lang]");
-    const languagePages = document.querySelectorAll(".site-content");
-    const backToTopButton = document.querySelector(".back-to-top");
-    const themeToggle = document.querySelector("[data-theme-toggle]");
-    const shareButton = document.querySelector("[data-share-button]");
-    const accessibilityToggle = document.querySelector("[data-accessibility-toggle]");
-    const accessibilityPanel = document.querySelector("[data-accessibility-panel]");
-    const accessibilityClose = document.querySelector("[data-accessibility-close]");
-    const accessibilityControls = document.querySelectorAll("[data-accessibility-option]");
-    const skipLink = document.querySelector("[data-skip-link]");
-    const metaDescription = document.getElementById("meta-description");
-    const metaKeywords = document.getElementById("meta-keywords");
-    const ogTitle = document.getElementById("og-title");
-    const ogDescription = document.getElementById("og-description");
-    const ogLocale = document.getElementById("og-locale");
-    const twitterTitle = document.getElementById("twitter-title");
-    const twitterDescription = document.getElementById("twitter-description");
-
-    const pageMetadata = {
+    const DATA = {
       fr: {
+        lang: "fr",
+        locale: "fr_FR",
         title: "Luc Perroquin | Portfolio académique",
         description: "Portfolio académique de Luc Perroquin, doctorant en psychologie cognitive, consacré à l'intégration entre olfaction, vision et audition.",
         keywords: "Olfaction, Vision, Audition, Perception multisensorielle",
-        locale: "fr_FR",
         shareLabel: "Partager",
         copiedLabel: "Lien copié",
         themeDark: "Sombre",
-        themeLight: "Clair"
+        themeLight: "Clair",
+        print: "Imprimer",
+        pdf: "PDF",
+        pdfTitle: "Exporter en PDF via l'impression du navigateur",
+        skip: "Aller au contenu",
+        accessibility: "Accessibilité",
+        a11yIntro: "Ajustez l'affichage du portfolio selon vos besoins de lecture.",
+        largeText: "Texte agrandi",
+        largeTextHelp: "Augmente la taille du texte et l'interligne.",
+        highContrast: "Contraste fort",
+        highContrastHelp: "Renforce les contrastes entre texte, fonds et boutons.",
+        dyslexia: "Lecture dyslexie",
+        dyslexiaHelp: "Utilise une police plus simple et augmente les espacements.",
+        reduceMotion: "Réduire les animations",
+        reduceMotionHelp: "Limite les transitions, animations et effets de mouvement.",
+        nav: ["À propos", "Équipe", "Thèse", "Projets en collaboration", "Formations", "Publications", "Communications", "Contact"],
+        heroLabel: "Portfolio académique",
+        heroTitle: "Y a-t-il un espace-temps pour les odeurs ?",
+        heroSubtitle: "Mécanismes d'intégration entre olfaction, vision et audition",
+        heroText: "Je suis Luc Perroquin, doctorant en psychologie cognitive. Mes recherches portent sur les relations spatio-temporelles entre olfaction, vision et audition, ainsi que sur l'influence des odeurs dans la construction perceptive de l'espace et du temps.",
+        cv: "Ouvrir CV",
+        cvUrl: "https://lucper01.github.io/Portfolio/assets/CV_PerroquinLuc_fr.pdf",
+        aboutTitle: "À propos",
+        aboutText: "Mes travaux s'inscrivent dans le champ de la psychologie cognitive de l'olfaction et de la perception multisensorielle. Ils visent à comprendre comment les odeurs, bien qu'elles soient souvent décrites comme des stimuli diffus, instables et faiblement localisables, peuvent interagir avec la vision et l'audition pour modifier l'expérience subjective de l'espace et du temps.",
+        tags: ["Olfaction", "Vision", "Audition", "Perception multisensorielle"],
+        teamTitle: "Équipe de recherche",
+        teamKicker: "DOCC | CSGA",
+        teamName: "Cognition et communication olfactives en développement",
+        teamText: "Ma thèse est menée au sein de l'équipe DOCC du Centre des Sciences du Goût et de l'Alimentation. L'équipe Cognition et communication olfactives en développement étudie l'olfaction, la communication chimique, la cognition olfactive et les comportements associés. Cette inscription collective permet de situer mes recherches sur les interactions entre olfaction, vision et audition dans un environnement scientifique centré sur les mécanismes sensoriels, cognitifs et comportementaux liés aux odeurs.",
+        teamLink: "Voir les travaux de l'équipe",
+        teamUrl: "https://csga.fr/home-fr/equipes/equipe-docc",
+        thesisTitle: "Thèse",
+        thesisHeadline: "Y a-t-il un espace-temps pour les odeurs ?",
+        thesisText: "Cette thèse étudie les mécanismes d'intégration entre olfaction, vision et audition. Elle interroge la manière dont les odeurs peuvent être associées à des configurations spatiales et temporelles, mais aussi la façon dont elles peuvent influencer la perception spatio-temporelle dans les modalités auditive et visuelle. L'objectif général est de déterminer si l'expérience olfactive participe à une construction multisensorielle de l'espace et du temps.",
+        inSection: "Dans cette section :",
+        toc: ["Direction", "Axes", "Axe 1", "Axe 2"],
+        supervision: "Direction de thèse",
+        supervisor: "Directeur de thèse",
+        cosupervisor: "Co-direction de thèse",
+        professor: "Professeur des Universités",
+        associate: "Maître de conférences",
+        axesTitle: "Axes de thèse",
+        axesIntro: "Les axes structurent directement la thèse et regroupent les projets principaux actuellement terminés, en cours ou à venir.",
+        all: "Tous",
+        axis1: "Axe 1",
+        axis2: "Axe 2",
+        completed: "Terminés",
+        todo: "À développer",
+        openAll: "Tout ouvrir",
+        closeAll: "Tout fermer",
+        viewProject: "Voir le projet",
+        hideProject: "Masquer le projet",
+        role: "Rôle dans le projet :",
+        unavailable: "Non disponible pour le moment",
+        buttons: ["Protocole", "Données", "Code", "Supports"],
+        mainWork: "Travail principal",
+        statusDone: "Terminé",
+        statusTodo: "À développer",
+        collaborative: "Projet collaboratif",
+        ongoing: "En cours",
+        projectsInCollab: "Projets en collaboration",
+        trainingTitle: "Formations",
+        trainingKicker: "Parcours doctoral",
+        trainingSummaryTitle: "Total participation",
+        trainingSummary: "Formations suivies dans le cadre du parcours doctoral, réparties entre poursuite de carrière, valorisation, intégrité scientifique, documentation et enseignement.",
+        hours: "60 heures",
+        modules: "6 modules",
+        trainingDetails: "Voir le détail des formations",
+        pedagogy: "Objectif pédagogique :",
+        publications: "Publications",
+        articles: "Articles",
+        preprints: "Prépublications",
+        pending: "En attente d'ajout",
+        articlesPending: "Les articles seront ajoutés ici après soumission, acceptation ou publication.",
+        preprintsPending: "Les prépublications seront ajoutées ici lorsqu'une version diffusable sera disponible.",
+        communications: "Communications",
+        posters: "Posters",
+        posterPending: "Les posters seront ajoutés ici après présentation ou diffusion.",
+        jdd: "Journée des Doctorants 2026",
+        jddText: "Présentation des travaux de thèse et obtention du prix de l'originalité pour une approche scientifique audacieuse et créative qui a surpris et inspiré le jury.",
+        contact: "Contact",
+        copy: "Copier",
+        copied: "Copié",
+        searchPlaceholder: "Rechercher dans le portfolio…",
+        searchClear: "Effacer",
+        resultWord: ["résultat", "résultats"],
+        footer: "Luc Perroquin | Portfolio académique | Psychologie cognitive de l'olfaction",
+        cite: "Citer ce portfolio",
+        citationCopied: "Citation copiée",
+        citation: "Perroquin, L. (2026). Portfolio académique — Psychologie cognitive de l'olfaction. https://lucper01.github.io/Portfolio/",
+        version: "Version : juillet 2026 · Dernière mise à jour : 19 juillet 2026"
       },
       en: {
+        lang: "en",
+        locale: "en_US",
         title: "Luc Perroquin | Academic portfolio",
         description: "Academic portfolio of Luc Perroquin, PhD student in cognitive psychology, dedicated to the integration between olfaction, vision, and audition.",
         keywords: "Olfaction, Vision, Audition, Multisensory perception",
-        locale: "en_US",
         shareLabel: "Share",
         copiedLabel: "Link copied",
         themeDark: "Dark",
-        themeLight: "Light"
+        themeLight: "Light",
+        print: "Print",
+        pdf: "PDF",
+        pdfTitle: "Export as PDF via browser printing",
+        skip: "Skip to content",
+        accessibility: "Accessibility",
+        a11yIntro: "Adjust the portfolio display to your reading needs.",
+        largeText: "Larger text",
+        largeTextHelp: "Increases text size and line spacing.",
+        highContrast: "High contrast",
+        highContrastHelp: "Strengthens contrast between text, backgrounds, and buttons.",
+        dyslexia: "Dyslexia-friendly reading",
+        dyslexiaHelp: "Uses a simpler font and increases spacing.",
+        reduceMotion: "Reduce motion",
+        reduceMotionHelp: "Limits transitions, animations, and motion effects.",
+        nav: ["About", "Team", "Thesis", "Featured projects", "Training", "Publications", "Communications", "Contact"],
+        heroLabel: "Academic portfolio",
+        heroTitle: "Is there a space-time for odors?",
+        heroSubtitle: "Mechanisms of integration between olfaction, vision, and audition",
+        heroText: "I am Luc Perroquin, a PhD student in cognitive psychology. My research focuses on spatio-temporal relations between olfaction, vision, and audition, as well as on the influence of odors in the perceptual construction of space and time.",
+        cv: "Open CV",
+        cvUrl: "https://lucper01.github.io/Portfolio/assets/CV_PerroquinLuc_en.pdf",
+        aboutTitle: "About",
+        aboutText: "My work is situated within cognitive psychology of olfaction and multisensory perception. It aims to understand how odors, although often described as diffuse, unstable, and weakly localizable stimuli, can interact with vision and audition to modify the subjective experience of space and time.",
+        tags: ["Olfaction", "Vision", "Audition", "Multisensory perception"],
+        teamTitle: "Research team",
+        teamKicker: "DOCC | CSGA",
+        teamName: "Development of Olfactory Communication and Cognition",
+        teamText: "My PhD work is conducted within the DOCC team at the Centre for Taste and Feeding Behavior. The Development of Olfactory Communication and Cognition team studies olfaction, chemical communication, olfactory cognition, and associated behaviors. This research environment situates my work on interactions between olfaction, vision, and audition within a broader scientific framework dedicated to sensory, cognitive, and behavioral mechanisms related to odors.",
+        teamLink: "View the team's work",
+        teamUrl: "https://csga.fr/en_GB/home-en/teams/team-docc",
+        thesisTitle: "Thesis",
+        thesisHeadline: "Is there a space-time for odors?",
+        thesisText: "This thesis investigates mechanisms of integration between olfaction, vision, and audition. It examines how odors may be associated with spatial and temporal configurations, as well as how they may influence spatio-temporal perception in auditory and visual modalities. The general objective is to determine whether olfactory experience contributes to a multisensory construction of space and time.",
+        inSection: "In this section:",
+        toc: ["Supervision", "Axes", "Axis 1", "Axis 2"],
+        supervision: "PhD supervision",
+        supervisor: "PhD supervisor",
+        cosupervisor: "PhD co-supervision",
+        professor: "Full Professor",
+        associate: "Associate Professor",
+        axesTitle: "Thesis axes",
+        axesIntro: "The axes directly structure the thesis and gather the main projects that are completed, ongoing, or upcoming.",
+        all: "All",
+        axis1: "Axis 1",
+        axis2: "Axis 2",
+        completed: "Completed",
+        todo: "To develop",
+        openAll: "Open all",
+        closeAll: "Close all",
+        viewProject: "View project",
+        hideProject: "Hide project",
+        role: "Project role:",
+        unavailable: "Not available yet",
+        buttons: ["Protocol", "Data", "Code", "Materials"],
+        mainWork: "Main work",
+        statusDone: "Completed",
+        statusTodo: "To develop",
+        collaborative: "Collaborative project",
+        ongoing: "Ongoing",
+        projectsInCollab: "Featured projects",
+        trainingTitle: "Training",
+        trainingKicker: "Doctoral pathway",
+        trainingSummaryTitle: "Total participation",
+        trainingSummary: "Training completed as part of the doctoral pathway, covering career development, scientific culture and valorization, research integrity, documentary training, and teaching.",
+        hours: "60 hours",
+        modules: "6 modules",
+        trainingDetails: "View training details",
+        pedagogy: "Pedagogical objective:",
+        publications: "Publications",
+        articles: "Articles",
+        preprints: "Preprints",
+        pending: "Pending addition",
+        articlesPending: "Articles will be added here after submission, acceptance, or publication.",
+        preprintsPending: "Preprints will be added here when a shareable version is available.",
+        communications: "Communications",
+        posters: "Posters",
+        posterPending: "Posters will be added here after presentation or dissemination.",
+        jdd: "Doctoral Students' Day 2026",
+        jddText: "Presentation of thesis work and recipient of the Originality Award for a bold and creative scientific approach that surprised and inspired the jury.",
+        contact: "Contact",
+        copy: "Copy",
+        copied: "Copied",
+        searchPlaceholder: "Search the portfolio…",
+        searchClear: "Clear",
+        resultWord: ["result", "results"],
+        footer: "Luc Perroquin | Academic portfolio | Cognitive psychology of olfaction",
+        cite: "Cite this portfolio",
+        citationCopied: "Citation copied",
+        citation: "Perroquin, L. (2026). Academic portfolio — Cognitive psychology of olfaction. https://lucper01.github.io/Portfolio/",
+        version: "Version: July 2026 · Last updated: July 19, 2026"
       }
     };
 
-    const sectionIds = {
-      fr: {
-        top: "fr-top",
-        about: "fr-about",
-        equipe: "fr-equipe",
-        these: "fr-these",
-        side: "fr-side",
-        formations: "fr-formations",
-        publications: "fr-publications",
-        communications: "fr-communications",
-        contact: "fr-contact"
+    const PROJECTS = [
+      {
+        axis: 1,
+        name: "TWIXAV",
+        done: true,
+        fr: {
+          desc: "Étude de référence sur la fenêtre temporelle d'intégration audiovisuelle, en l'absence de stimulation olfactive.",
+          role: "portage principal du pré-test, préparation du protocole, passation pilote et analyses exploratoires."
+        },
+        en: {
+          desc: "Reference study on the audiovisual temporal window of integration, without olfactory stimulation.",
+          role: "main lead of the pre-test, protocol preparation, pilot testing, and exploratory analyses."
+        }
       },
-      en: {
-        top: "en-top",
-        about: "en-about",
-        equipe: "en-team",
-        these: "en-thesis",
-        side: "en-side",
-        formations: "en-training",
-        publications: "en-publications",
-        communications: "en-communications",
-        contact: "en-contact"
+      {
+        axis: 1,
+        name: "TWIXOLF",
+        done: false,
+        fr: {
+          desc: "Version olfactive de TWIXAV, visant à étudier les fenêtres temporelles d'intégration impliquant une composante olfactive.",
+          role: "adaptation du paradigme temporel, intégration de la stimulation olfactive, programmation expérimentale et analyses à venir."
+        },
+        en: {
+          desc: "Olfactory version of TWIXAV, aimed at studying temporal integration windows involving an olfactory component.",
+          role: "adaptation of the temporal paradigm, integration of olfactory stimulation, experimental programming, and upcoming analyses."
+        }
+      },
+      {
+        axis: 1,
+        name: "SOFT",
+        done: false,
+        fr: {
+          desc: "Manipulation portant sur la détection de durées de stimuli, dans le cadre de l'étude des dimensions temporelles de la perception.",
+          role: "conception du paradigme, programmation expérimentale, passation et analyses à venir."
+        },
+        en: {
+          desc: "Experiment focused on the detection of stimulus durations, within the study of temporal dimensions of perception.",
+          role: "paradigm design, experimental programming, data collection, and upcoming analyses."
+        }
+      },
+      {
+        axis: 1,
+        name: "SORBET",
+        done: false,
+        fr: {
+          desc: "Étude de la recalibration subjective du timing entre odeurs et événements visuels ou auditifs.",
+          role: "conception du protocole d'adaptation temporelle, intégration olfactive et analyses psychométriques à venir."
+        },
+        en: {
+          desc: "Study of subjective timing recalibration between odors and visual or auditory events.",
+          role: "temporal adaptation protocol design, olfactory integration, and upcoming psychometric analyses."
+        }
+      },
+      {
+        axis: 2,
+        name: "VIBEX",
+        done: true,
+        fr: {
+          desc: "Ligne de base visuelle consacrée au phénomène de boundary extension.",
+          role: "portage principal du pré-test, préparation du protocole, passation pilote et analyses exploratoires."
+        },
+        en: {
+          desc: "Visual baseline study dedicated to the boundary extension phenomenon.",
+          role: "main lead of the pre-test, protocol preparation, pilot testing, and exploratory analyses."
+        }
+      },
+      {
+        axis: 2,
+        name: "OASIS",
+        done: false,
+        fr: {
+          desc: "Étude de l'influence de la valence olfactive sur la représentation de l'espace visuel.",
+          role: "préparation du protocole, intégration des odeurs, passation et analyses à venir."
+        },
+        en: {
+          desc: "Study of the influence of olfactory valence on the representation of visual space.",
+          role: "protocol preparation, odor integration, data collection, and upcoming analyses."
+        }
+      },
+      {
+        axis: 2,
+        name: "SOLAR",
+        done: false,
+        fr: {
+          desc: "Projet portant sur le cueing spatial avec les odeurs, afin d'étudier si un indice olfactif peut orienter l'attention spatiale.",
+          role: "conception du paradigme, intégration des stimulations olfactives, programmation expérimentale et analyses à venir."
+        },
+        en: {
+          desc: "Project on spatial cueing with odors, aimed at testing whether an olfactory cue can orient spatial attention.",
+          role: "paradigm design, integration of olfactory stimulation, experimental programming, and upcoming analyses."
+        }
+      },
+      {
+        axis: 2,
+        name: "COBEX",
+        done: false,
+        fr: {
+          desc: "Étude de l'effet de la congruence entre odeur et scène visuelle sur le boundary extension.",
+          role: "conception du paradigme, validation des associations odeur-scène et analyses à venir."
+        },
+        en: {
+          desc: "Study of the effect of odor-scene congruence on boundary extension.",
+          role: "paradigm design, validation of odor-scene associations, and upcoming analyses."
+        }
+      },
+      {
+        axis: 2,
+        name: "BRAUD",
+        done: false,
+        fr: {
+          desc: "Étude de la boundary restriction dans la mémoire des événements auditifs.",
+          role: "conception du paradigme auditif, sélection des stimuli et analyses comportementales à venir."
+        },
+        en: {
+          desc: "Study of boundary restriction in memory for auditory events.",
+          role: "auditory paradigm design, stimulus selection, and upcoming behavioral analyses."
+        }
+      },
+      {
+        axis: 2,
+        name: "BRAUDOLF",
+        done: false,
+        fr: {
+          desc: "Version olfactive de BRAUD, centrée sur l'effet des odeurs sur la restriction auditive.",
+          role: "adaptation du paradigme BRAUD, intégration olfactive et analyses à venir."
+        },
+        en: {
+          desc: "Olfactory version of BRAUD, focused on the effect of odors on auditory boundary restriction.",
+          role: "adaptation of the BRAUD paradigm, olfactory integration, and upcoming analyses."
+        }
       }
-    };
+    ];
+
+    const TRAININGS = [
+      {
+        hours: "27.5 h",
+        fr: {
+          title: "Poursuite de carrière",
+          subtitle: "Enseignement",
+          objective: "développer les compétences liées à l'enseignement universitaire, à la préparation des séances, à l'encadrement des étudiants et à la transmission de contenus scientifiques."
+        },
+        en: {
+          title: "Career development",
+          subtitle: "Teaching",
+          objective: "develop skills related to university teaching, session preparation, student support, and the transmission of scientific content."
+        }
+      },
+      {
+        hours: "4 h",
+        fr: {
+          title: "Culture scientifique internationale et valorisation",
+          subtitle: "Introduction à l'intelligence économique",
+          objective: "comprendre les enjeux de veille, de valorisation, de stratégie informationnelle et de positionnement des connaissances scientifiques dans un environnement institutionnel et socio-économique."
+        },
+        en: {
+          title: "International scientific culture and valorization",
+          subtitle: "Introduction to economic intelligence",
+          objective: "understand the challenges of monitoring, valorization, information strategy, and the positioning of scientific knowledge in institutional and socio-economic environments."
+        }
+      },
+      {
+        hours: "3 h",
+        fr: {
+          title: "Éthique de la recherche et intégrité scientifique",
+          subtitle: "Conférence : intégrité scientifique et déontologie",
+          objective: "renforcer la connaissance des principes d'intégrité scientifique, de déontologie, de responsabilité du chercheur et de bonnes pratiques dans la production et la diffusion des résultats."
+        },
+        en: {
+          title: "Research ethics and scientific integrity",
+          subtitle: "Scientific integrity and professional ethics",
+          objective: "strengthen knowledge of scientific integrity, professional ethics, researcher responsibility, and good practices in producing and disseminating results."
+        }
+      },
+      {
+        hours: "3 h",
+        fr: {
+          title: "Formations documentaires",
+          subtitle: "Zotero : gérer ses références bibliographiques",
+          objective: "maîtriser les bases de la gestion bibliographique, organiser les références scientifiques, faciliter la rédaction académique et fiabiliser le suivi documentaire."
+        },
+        en: {
+          title: "Documentary training",
+          subtitle: "Zotero: managing bibliographic references",
+          objective: "master the basics of bibliographic management, organize scientific references, support academic writing, and make documentary follow-up more reliable."
+        }
+      },
+      {
+        hours: "17.5 h",
+        fr: {
+          title: "Connaissances et outils d'enseignement",
+          subtitle: "Apprendre à enseigner à l'université, niveau 1",
+          objective: "acquérir des bases en pédagogie universitaire, concevoir des activités d'apprentissage, structurer un enseignement et adapter les méthodes pédagogiques aux publics étudiants."
+        },
+        en: {
+          title: "Teaching knowledge and tools",
+          subtitle: "Learning to teach at university, level 1",
+          objective: "acquire foundations in university pedagogy, design learning activities, structure a teaching session, and adapt pedagogical methods to student audiences."
+        }
+      },
+      {
+        hours: "5 h",
+        fr: {
+          title: "Connaissances et outils d'enseignement",
+          subtitle: "IA et Éducation",
+          objective: "conforter la culture scientifique des doctorants dans leur champ disciplinaire ou en interdisciplinaire, en interrogeant les usages, apports et limites de l'intelligence artificielle en contexte éducatif."
+        },
+        en: {
+          title: "Teaching knowledge and tools",
+          subtitle: "AI and Education",
+          objective: "strengthen doctoral students' scientific culture in their disciplinary or interdisciplinary field by examining the uses, contributions, and limits of artificial intelligence in educational contexts."
+        }
+      }
+    ];
+
+    const SECTIONS = [
+      { key: "about", number: "01" },
+      { key: "team", number: "02" },
+      { key: "thesis", number: "03" },
+      { key: "side", number: "04" },
+      { key: "training", number: "05" },
+      { key: "publications", number: "06" },
+      { key: "communications", number: "07" },
+      { key: "contact", number: "08" }
+    ];
 
     const accessibilityClasses = {
       largeText: "a11y-large-text",
@@ -3287,53 +2433,524 @@
     let currentSectionKey = "top";
     let shareTimeout = null;
 
-    function getItemCategories(item) {
-      return (item.dataset.category || "")
-        .split(/\s+/)
-        .map((category) => category.trim())
-        .filter(Boolean);
+    const app = document.getElementById("app");
+    const languageButtons = document.querySelectorAll("[data-switch-lang]");
+    const backToTopButton = document.querySelector(".back-to-top");
+    const themeToggle = document.querySelector("[data-theme-toggle]");
+    const shareButton = document.querySelector("[data-share-button]");
+    const accessibilityToggle = document.querySelector("[data-accessibility-toggle]");
+    const accessibilityPanel = document.querySelector("[data-accessibility-panel]");
+    const accessibilityClose = document.querySelector("[data-accessibility-close]");
+    const accessibilityControls = document.querySelectorAll("[data-accessibility-option]");
+    const metaDescription = document.getElementById("meta-description");
+    const metaKeywords = document.getElementById("meta-keywords");
+    const ogTitle = document.getElementById("og-title");
+    const ogDescription = document.getElementById("og-description");
+    const ogLocale = document.getElementById("og-locale");
+    const twitterTitle = document.getElementById("twitter-title");
+    const twitterDescription = document.getElementById("twitter-description");
+    const skipLink = document.querySelector(".skip-link");
+
+    function escapeHtml(value) {
+      return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
     }
 
-    function getInitialStateFromHash() {
-      const hashId = window.location.hash.replace("#", "");
+    function normalizeSearchText(text) {
+      return text
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .trim();
+    }
 
-      if (!hashId) {
-        return null;
-      }
+    function slug(text) {
+      return normalizeSearchText(text)
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-|-$/g, "");
+    }
 
-      for (const [language, sections] of Object.entries(sectionIds)) {
-        for (const [sectionKey, sectionId] of Object.entries(sections)) {
-          if (sectionId === hashId) {
-            return { language, sectionKey };
-          }
+    function sectionId(sectionKey) {
+      return `${currentLanguage}-${sectionKey}`;
+    }
+
+    function getSectionTitle(key, data) {
+      const map = {
+        about: data.aboutTitle,
+        team: data.teamTitle,
+        thesis: data.thesisTitle,
+        side: data.projectsInCollab,
+        training: data.trainingTitle,
+        publications: data.publications,
+        communications: data.communications,
+        contact: data.contact
+      };
+      return map[key];
+    }
+
+    function sectionHeader(number, title) {
+      return `
+        <div class="section-title">
+          <span>${number}</span>
+          <h2>${escapeHtml(title)}</h2>
+        </div>
+      `;
+    }
+
+    function projectLinks(data) {
+      return `
+        <div class="project-details-content">
+          <div class="project-links">
+            ${data.buttons.map((label) => `<a href="#" class="project-link disabled">${escapeHtml(label)}</a>`).join("")}
+          </div>
+        </div>
+      `;
+    }
+
+    function projectCard(project, data) {
+      const text = project[currentLanguage];
+      const status = project.done ? data.statusDone : data.statusTodo;
+      const statusClass = project.done ? "termine" : "a-developper";
+      const category = `axe-${project.axis} ${statusClass}`;
+
+      return `
+        <details class="project-card filter-item" data-category="${category}">
+          <summary class="project-summary">
+            <span class="project-summary-text">
+              <strong>${escapeHtml(project.name)}</strong>
+              <small>${escapeHtml(data.mainWork)} · ${escapeHtml(status)}</small>
+            </span>
+            <span class="project-toggle-label">
+              <span class="closed-label">${escapeHtml(data.viewProject)}</span>
+              <span class="open-label">${escapeHtml(data.hideProject)}</span>
+            </span>
+          </summary>
+          <div class="project-body">
+            <p>${escapeHtml(text.desc)}</p>
+            <p class="project-role"><strong>${escapeHtml(data.role)}</strong> ${escapeHtml(text.role)}</p>
+            ${projectLinks(data)}
+          </div>
+        </details>
+      `;
+    }
+
+    function axisCard(axisNumber, data) {
+      const axisId = `${currentLanguage}-axis-${axisNumber}`;
+      const axisTitle = axisNumber === 1
+        ? (currentLanguage === "fr" ? "Relations temporelles entre olfaction, vision et audition" : "Temporal relations between olfaction, vision, and audition")
+        : (currentLanguage === "fr" ? "Influence des odeurs sur la perception de l'espace et des événements" : "Influence of odors on the perception of space and events");
+
+      const axisText = axisNumber === 1
+        ? (currentLanguage === "fr"
+          ? "Cet axe vise à caractériser les relations temporelles entre modalités sensorielles, puis à examiner comment l'olfaction peut modifier les fenêtres d'intégration et leur recalibration."
+          : "This axis aims to characterize temporal relations between sensory modalities, and then to examine how olfaction may modify integration windows and their recalibration.")
+        : (currentLanguage === "fr"
+          ? "Cet axe vise à caractériser la manière dont les odeurs peuvent moduler la perception visuelle de l'espace, orienter l'attention spatiale et modifier la représentation de scènes ou d'événements."
+          : "This axis aims to characterize how odors may modulate visual perception of space, orient spatial attention, and modify the representation of scenes or events.");
+
+      return `
+        <article id="${axisId}" class="axis-card" data-filter-group>
+          <span class="axis-kicker">${axisNumber === 1 ? data.axis1 : data.axis2}</span>
+          <h3>${escapeHtml(axisTitle)}</h3>
+          <p>${escapeHtml(axisText)}</p>
+
+          <div class="axis-actions">
+            <button class="axis-action-button" type="button" data-axis-action="open" data-axis-target="${axisId}">${escapeHtml(data.openAll)}</button>
+            <button class="axis-action-button" type="button" data-axis-action="close" data-axis-target="${axisId}">${escapeHtml(data.closeAll)}</button>
+          </div>
+
+          <div class="axis-projects">
+            ${PROJECTS.filter((project) => project.axis === axisNumber).map((project) => projectCard(project, data)).join("")}
+          </div>
+        </article>
+      `;
+    }
+
+    function trainingCard(training, data) {
+      const text = training[currentLanguage];
+
+      return `
+        <details class="training-card">
+          <summary>
+            <span class="training-hours">${escapeHtml(training.hours)}</span>
+            <span>
+              <strong>${escapeHtml(text.title)}</strong>
+              <small>${escapeHtml(text.subtitle)}</small>
+            </span>
+          </summary>
+          <div class="training-content">
+            <p><strong>${escapeHtml(data.pedagogy)}</strong> ${escapeHtml(text.objective)}</p>
+          </div>
+        </details>
+      `;
+    }
+
+    function render(data) {
+      document.documentElement.lang = data.lang;
+
+      app.innerHTML = `
+        <header id="${currentLanguage}-top" data-section="top">
+          <div class="hero">
+            <div>
+              <span class="label">${escapeHtml(data.heroLabel)}</span>
+              <h1>${escapeHtml(data.heroTitle)}</h1>
+              <p class="subtitle">${escapeHtml(data.heroSubtitle)}</p>
+              <p>${escapeHtml(data.heroText)}</p>
+            </div>
+
+            <aside class="portrait-card">
+              <a
+                class="portrait-link"
+                href="https://raw.githubusercontent.com/lucper01/Portfolio/main/assets/photo-profil.png"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src="https://raw.githubusercontent.com/lucper01/Portfolio/main/assets/photo-profil.png"
+                  alt="${currentLanguage === "fr" ? "Portrait de Luc Perroquin" : "Portrait of Luc Perroquin"}"
+                  class="profile-photo"
+                />
+              </a>
+              <p class="photo-note">Luc Perroquin</p>
+
+              <div class="portrait-actions">
+                <a class="portrait-button" href="${data.cvUrl}" target="_blank" rel="noopener noreferrer">${escapeHtml(data.cv)}</a>
+                <a class="portrait-button secondary" href="#${currentLanguage}-contact">Contact</a>
+              </div>
+            </aside>
+          </div>
+        </header>
+
+        <nav class="site-nav" aria-label="${currentLanguage === "fr" ? "Navigation principale" : "Main navigation"}">
+          <div class="nav-inner">
+            <button class="nav-toggle" type="button" data-nav-toggle>Menu</button>
+            <div class="nav-links">
+              ${SECTIONS.map((section, index) => `<a href="#${sectionId(section.key)}" data-section-key="${section.key}">${escapeHtml(data.nav[index])}</a>`).join("")}
+            </div>
+          </div>
+        </nav>
+
+        <aside class="side-progress" aria-label="${currentLanguage === "fr" ? "Navigation latérale" : "Side navigation"}">
+          ${SECTIONS.map((section, index) => `<a href="#${sectionId(section.key)}" data-section-key="${section.key}"><span>${section.number}</span> ${escapeHtml(data.nav[index])}</a>`).join("")}
+        </aside>
+
+        <div class="portfolio-search" data-search-panel>
+          <div class="search-card">
+            <input type="search" data-site-search placeholder="${escapeHtml(data.searchPlaceholder)}" aria-label="${escapeHtml(data.searchPlaceholder)}" />
+            <button type="button" data-search-clear>${escapeHtml(data.searchClear)}</button>
+            <div class="search-result" data-search-result hidden></div>
+          </div>
+        </div>
+
+        <main id="main">
+          <section id="${sectionId("about")}" class="reveal" data-section="about">
+            ${sectionHeader("01", data.aboutTitle)}
+            <p class="lead">${escapeHtml(data.aboutText)}</p>
+            <ul class="tags" aria-label="Keywords">
+              ${data.tags.map((tag) => `<li>${escapeHtml(tag)}</li>`).join("")}
+            </ul>
+          </section>
+
+          <section id="${sectionId("team")}" class="reveal" data-section="team">
+            ${sectionHeader("02", data.teamTitle)}
+            <article class="team-card">
+              <span class="team-kicker">${escapeHtml(data.teamKicker)}</span>
+              <h3>${escapeHtml(data.teamName)}</h3>
+              <p>${escapeHtml(data.teamText)}</p>
+              <div class="team-actions">
+                <a class="team-link" href="${data.teamUrl}" target="_blank" rel="noopener noreferrer">${escapeHtml(data.teamLink)}</a>
+              </div>
+            </article>
+          </section>
+
+          <section id="${sectionId("thesis")}" class="reveal" data-section="thesis">
+            ${sectionHeader("03", data.thesisTitle)}
+
+            <div class="highlight">
+              <h3>${escapeHtml(data.thesisHeadline)}</h3>
+              <p>${escapeHtml(data.thesisText)}</p>
+            </div>
+
+            <nav class="thesis-toc" aria-label="${currentLanguage === "fr" ? "Sommaire interne de la thèse" : "Internal thesis summary"}">
+              <strong>${escapeHtml(data.inSection)}</strong>
+              <a href="#${currentLanguage}-supervision">${escapeHtml(data.toc[0])}</a>
+              <a href="#${currentLanguage}-thesis-axes">${escapeHtml(data.toc[1])}</a>
+              <a href="#${currentLanguage}-axis-1">${escapeHtml(data.toc[2])}</a>
+              <a href="#${currentLanguage}-axis-2">${escapeHtml(data.toc[3])}</a>
+            </nav>
+
+            <h3 id="${currentLanguage}-supervision" class="subsection-heading">${escapeHtml(data.supervision)}</h3>
+
+            <div class="supervision-grid">
+              <article class="supervision-card">
+                <div class="supervision-info">
+                  <span class="supervision-kicker">${escapeHtml(data.supervisor)}</span>
+                  <h3>Renaud BROCHARD</h3>
+                  <p class="supervision-position">${escapeHtml(data.professor)}</p>
+                </div>
+                <img src="assets/renaud.jpg" alt="${currentLanguage === "fr" ? "Portrait de Renaud BROCHARD" : "Portrait of Renaud BROCHARD"}" class="supervision-photo" />
+              </article>
+
+              <article class="supervision-card">
+                <div class="supervision-info">
+                  <span class="supervision-kicker">${escapeHtml(data.cosupervisor)}</span>
+                  <h3>Arnaud LELEU</h3>
+                  <p class="supervision-position">${escapeHtml(data.associate)}</p>
+                </div>
+                <img src="assets/arnaud.jpg" alt="${currentLanguage === "fr" ? "Portrait d'Arnaud LELEU" : "Portrait of Arnaud LELEU"}" class="supervision-photo" />
+              </article>
+            </div>
+
+            <h3 id="${currentLanguage}-thesis-axes" class="subsection-heading">${escapeHtml(data.axesTitle)}</h3>
+            <p class="lead">${escapeHtml(data.axesIntro)}</p>
+
+            <div class="filter-controls" aria-label="${currentLanguage === "fr" ? "Filtres des axes et projets" : "Thesis axis and project filters"}">
+              <button class="filter-button active" type="button" data-filter="all" data-label="${escapeHtml(data.all)}">${escapeHtml(data.all)}</button>
+              <button class="filter-button" type="button" data-filter="axe-1" data-label="${escapeHtml(data.axis1)}">${escapeHtml(data.axis1)}</button>
+              <button class="filter-button" type="button" data-filter="axe-2" data-label="${escapeHtml(data.axis2)}">${escapeHtml(data.axis2)}</button>
+              <button class="filter-button" type="button" data-filter="termine" data-label="${escapeHtml(data.completed)}">${escapeHtml(data.completed)}</button>
+              <button class="filter-button" type="button" data-filter="a-developper" data-label="${escapeHtml(data.todo)}">${escapeHtml(data.todo)}</button>
+            </div>
+
+            <div class="axis-grid">
+              ${axisCard(1, data)}
+              ${axisCard(2, data)}
+            </div>
+          </section>
+
+          <section id="${sectionId("side")}" class="reveal" data-section="side">
+            ${sectionHeader("04", data.projectsInCollab)}
+
+            <details class="project-card">
+              <summary class="project-summary">
+                <span class="project-summary-text">
+                  <strong>FLUXOLF</strong>
+                  <small>${escapeHtml(data.collaborative)} · ${escapeHtml(data.ongoing)}</small>
+                </span>
+                <span class="project-toggle-label">
+                  <span class="closed-label">${escapeHtml(data.viewProject)}</span>
+                  <span class="open-label">${escapeHtml(data.hideProject)}</span>
+                </span>
+              </summary>
+              <div class="project-body">
+                <p>${escapeHtml(currentLanguage === "fr"
+                  ? "Projet collaboratif portant sur le paradoxe intermodal musique-odeur, avec un intérêt pour les réponses neurophysiologiques mesurées par EEG."
+                  : "Collaborative project on the intermodal music-odor paradox, with an interest in neurophysiological responses measured through EEG.")}</p>
+                <p class="project-role"><strong>${escapeHtml(data.role)}</strong> ${escapeHtml(currentLanguage === "fr"
+                  ? "contribution scientifique et méthodologique à un projet mené en collaboration, en lien avec la problématique multisensorielle."
+                  : "scientific and methodological contribution to a collaborative project connected to multisensory research.")}</p>
+                ${projectLinks(data)}
+              </div>
+            </details>
+          </section>
+
+          <section id="${sectionId("training")}" class="reveal" data-section="training">
+            ${sectionHeader("05", data.trainingTitle)}
+
+            <article class="training-summary">
+              <span class="training-kicker">${escapeHtml(data.trainingKicker)}</span>
+              <h3>${escapeHtml(data.trainingSummaryTitle)}</h3>
+              <p>${escapeHtml(data.trainingSummary)}</p>
+              <div class="training-total">
+                <span>${escapeHtml(data.hours)}</span>
+                <span>${escapeHtml(data.modules)}</span>
+              </div>
+            </article>
+
+            <details class="training-master">
+              <summary>${escapeHtml(data.trainingDetails)}</summary>
+              <div class="training-accordion">
+                ${TRAININGS.map((training) => trainingCard(training, data)).join("")}
+              </div>
+            </details>
+          </section>
+
+          <section id="${sectionId("publications")}" class="reveal" data-section="publications">
+            ${sectionHeader("06", data.publications)}
+
+            <div class="filter-controls" aria-label="${currentLanguage === "fr" ? "Filtres des publications" : "Publication filters"}">
+              <button class="filter-button active" type="button" data-filter="all" data-label="${escapeHtml(data.all)}">${escapeHtml(data.all)}</button>
+              <button class="filter-button" type="button" data-filter="article" data-label="${escapeHtml(data.articles)}">${escapeHtml(data.articles)}</button>
+              <button class="filter-button" type="button" data-filter="preprint" data-label="${escapeHtml(data.preprints)}">${escapeHtml(data.preprints)}</button>
+            </div>
+
+            <div class="publication-subsection">
+              <h3>${escapeHtml(data.articles)}</h3>
+              <ul class="publication-list">
+                <li class="filter-item placeholder-item" data-category="article" data-countable="false">
+                  <span class="publication-type">Article</span>
+                  <strong>${escapeHtml(data.pending)}</strong>
+                  <p>${escapeHtml(data.articlesPending)}</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="publication-subsection">
+              <h3>${escapeHtml(data.preprints)}</h3>
+              <ul class="publication-list">
+                <li class="filter-item placeholder-item" data-category="preprint" data-countable="false">
+                  <span class="publication-type">${currentLanguage === "fr" ? "Prépublication" : "Preprint"}</span>
+                  <strong>${escapeHtml(data.pending)}</strong>
+                  <p>${escapeHtml(data.preprintsPending)}</p>
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <section id="${sectionId("communications")}" class="reveal" data-section="communications">
+            ${sectionHeader("07", data.communications)}
+
+            <div class="filter-controls" aria-label="${currentLanguage === "fr" ? "Filtres des communications" : "Communication filters"}">
+              <button class="filter-button active" type="button" data-filter="all" data-label="${escapeHtml(data.all)}">${escapeHtml(data.all)}</button>
+              <button class="filter-button" type="button" data-filter="communication" data-label="${escapeHtml(data.communications)}">${escapeHtml(data.communications)}</button>
+              <button class="filter-button" type="button" data-filter="poster" data-label="${escapeHtml(data.posters)}">${escapeHtml(data.posters)}</button>
+            </div>
+
+            <div class="publication-subsection">
+              <h3>${escapeHtml(data.communications)}</h3>
+              <ul class="publication-list">
+                <li class="filter-item" data-category="communication">
+                  <span class="publication-type">Communication</span>
+                  <strong>${escapeHtml(data.jdd)}</strong>
+                  <p>${escapeHtml(data.jddText)}</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="publication-subsection">
+              <h3>${escapeHtml(data.posters)}</h3>
+              <ul class="publication-list">
+                <li class="filter-item placeholder-item" data-category="poster" data-countable="false">
+                  <span class="publication-type">Poster</span>
+                  <strong>${escapeHtml(data.pending)}</strong>
+                  <p>${escapeHtml(data.posterPending)}</p>
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <section id="${sectionId("contact")}" class="reveal" data-section="contact">
+            ${sectionHeader("08", data.contact)}
+
+            <div class="contact-box">
+              <p class="contact-item">
+                <a class="contact-icon" href="mailto:luc.perroquin@gmail.com" aria-label="Email">✉</a>
+                <strong>Email${currentLanguage === "fr" ? " :" : ":"}</strong>
+                <a href="mailto:luc.perroquin@gmail.com">luc.perroquin@gmail.com</a>
+                <button class="copy-email-button" type="button" data-copy-email="luc.perroquin@gmail.com" data-default-label="${escapeHtml(data.copy)}" data-copied-label="${escapeHtml(data.copied)}">${escapeHtml(data.copy)}</button>
+              </p>
+
+              <p class="contact-item">
+                <a class="contact-icon" href="https://orcid.org/0009-0007-9278-0612" target="_blank" rel="noopener noreferrer" aria-label="ORCID">iD</a>
+                <strong>ORCID${currentLanguage === "fr" ? " :" : ":"}</strong>
+                <a href="https://orcid.org/0009-0007-9278-0612" target="_blank" rel="noopener noreferrer">0009-0007-9278-0612</a>
+              </p>
+
+              <p class="contact-item">
+                <a class="contact-icon" href="https://www.researchgate.net/profile/Luc-Perroquin?ev=hdr_xprf" target="_blank" rel="noopener noreferrer" aria-label="ResearchGate">RG</a>
+                <strong>ResearchGate${currentLanguage === "fr" ? " :" : ":"}</strong>
+                <a href="https://www.researchgate.net/profile/Luc-Perroquin?ev=hdr_xprf" target="_blank" rel="noopener noreferrer">Luc Perroquin</a>
+              </p>
+
+              <p class="contact-item">
+                <a class="contact-icon" href="https://www.linkedin.com/in/luc-perroquin-288b54328" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">in</a>
+                <strong>LinkedIn${currentLanguage === "fr" ? " :" : ":"}</strong>
+                <a href="https://www.linkedin.com/in/luc-perroquin-288b54328" target="_blank" rel="noopener noreferrer">luc-perroquin-288b54328</a>
+              </p>
+            </div>
+          </section>
+        </main>
+
+        <footer>
+          <p>${escapeHtml(data.footer)}</p>
+          <div class="footer-actions">
+            <button
+              class="footer-button"
+              type="button"
+              data-cite-button
+              data-citation="${escapeHtml(data.citation)}"
+              data-default-label="${escapeHtml(data.cite)}"
+              data-copied-label="${escapeHtml(data.citationCopied)}"
+            >
+              ${escapeHtml(data.cite)}
+            </button>
+            <span class="version-note">${escapeHtml(data.version)}</span>
+          </div>
+        </footer>
+      `;
+
+      updateDynamicBindings();
+    }
+
+    function updateStaticI18n(data) {
+      document.querySelectorAll("[data-i18n]").forEach((element) => {
+        const key = element.dataset.i18n;
+        if (data[key]) {
+          element.textContent = data[key];
         }
-      }
+      });
 
-      return null;
+      document.querySelector("[data-print-button]").textContent = data.print;
+      document.querySelector("[data-pdf-button]").textContent = data.pdf;
+      document.querySelector("[data-pdf-button]").title = data.pdfTitle;
+      skipLink.href = "#main";
+
+      accessibilityPanel.setAttribute(
+        "aria-label",
+        currentLanguage === "fr" ? "Options d'accessibilité" : "Accessibility options"
+      );
+
+      accessibilityClose.setAttribute(
+        "aria-label",
+        currentLanguage === "fr" ? "Fermer le panneau d'accessibilité" : "Close accessibility panel"
+      );
     }
 
-    function updateUrlHash(sectionKey, mode = "replace") {
-      const targetId = sectionIds[currentLanguage][sectionKey] || sectionIds[currentLanguage].top;
-      const newHash = `#${targetId}`;
+    function updateMetadata(data) {
+      document.title = data.title;
+      metaDescription.setAttribute("content", data.description);
+      metaKeywords.setAttribute("content", data.keywords);
+      ogTitle.setAttribute("content", data.title);
+      ogDescription.setAttribute("content", data.description);
+      ogLocale.setAttribute("content", data.locale);
+      twitterTitle.setAttribute("content", data.title);
+      twitterDescription.setAttribute("content", data.description);
+    }
 
-      if (window.location.hash === newHash) {
-        return;
+    function updateThemeToggleLabel() {
+      const data = DATA[currentLanguage];
+      const isDark = document.body.classList.contains("dark-mode");
+      themeToggle.textContent = isDark ? data.themeLight : data.themeDark;
+    }
+
+    function updateShareButtonLabel(labelType = "default") {
+      const data = DATA[currentLanguage];
+
+      if (labelType === "copied") {
+        shareButton.textContent = data.copiedLabel;
+        shareButton.classList.add("active");
+      } else {
+        shareButton.textContent = data.shareLabel;
+        shareButton.classList.remove("active");
       }
+    }
 
-      const newUrl = `${window.location.pathname}${window.location.search}${newHash}`;
-      const historyMethod = mode === "push" ? "pushState" : "replaceState";
-
-      window.history[historyMethod](null, "", newUrl);
+    function updateLanguageButtons() {
+      languageButtons.forEach((button) => {
+        const isActive = button.dataset.switchLang === currentLanguage;
+        button.classList.toggle("active", isActive);
+        button.setAttribute("aria-pressed", String(isActive));
+      });
     }
 
     function revealVisibleElements() {
-      const revealElements = document.querySelectorAll(".site-content:not([hidden]) .reveal");
-
-      revealElements.forEach((element) => {
+      document.querySelectorAll(".reveal").forEach((element) => {
         const rect = element.getBoundingClientRect();
-        const isVisible = rect.top < window.innerHeight - 80;
-
-        if (isVisible) {
+        if (rect.top < window.innerHeight - 80) {
           element.classList.add("is-visible");
         }
       });
@@ -3342,7 +2959,7 @@
     function updateActiveNavigation(sectionKey) {
       currentSectionKey = sectionKey || currentSectionKey;
 
-      document.querySelectorAll("nav a, .side-progress a").forEach((link) => {
+      document.querySelectorAll("nav.site-nav a, .side-progress a").forEach((link) => {
         link.classList.toggle("active", link.dataset.sectionKey === currentSectionKey);
       });
     }
@@ -3353,7 +2970,7 @@
         return;
       }
 
-      const visibleSections = document.querySelectorAll(".site-content:not([hidden]) [data-section]");
+      const visibleSections = document.querySelectorAll("[data-section]");
       let bestSection = null;
       let bestDistance = Infinity;
 
@@ -3372,149 +2989,194 @@
       }
     }
 
-    function closeMobileNavigation() {
-      document.querySelectorAll("nav.open").forEach((nav) => {
-        nav.classList.remove("open");
+    function getItemCategories(item) {
+      return (item.dataset.category || "")
+        .split(/\s+/)
+        .map((category) => category.trim())
+        .filter(Boolean);
+    }
+
+    function updateFilterGroups(sectionElement) {
+      sectionElement.querySelectorAll("[data-filter-group]").forEach((group) => {
+        const groupItems = Array.from(group.querySelectorAll(".filter-item"));
+        const hasVisibleItem = groupItems.some((item) => !item.classList.contains("hidden-by-filter"));
+        group.classList.toggle("hidden-by-filter", groupItems.length > 0 && !hasVisibleItem);
       });
     }
 
-    function ensureSideProgressVisible() {
-      document.querySelectorAll(".site-content").forEach((page) => {
-        const sideProgress = page.querySelector(".side-progress");
+    function applyFilter(sectionElement, filterValue) {
+      sectionElement.querySelectorAll(".filter-button").forEach((button) => {
+        button.classList.toggle("active", button.dataset.filter === filterValue);
+      });
 
-        if (!sideProgress) {
-          return;
+      sectionElement.querySelectorAll(".filter-item").forEach((item) => {
+        const itemCategories = getItemCategories(item);
+        const shouldShow = filterValue === "all" || itemCategories.includes(filterValue);
+        item.classList.toggle("hidden-by-filter", !shouldShow);
+      });
+
+      updateFilterGroups(sectionElement);
+    }
+
+    function updateFilterCounts(sectionElement) {
+      const countableItems = Array.from(sectionElement.querySelectorAll(".filter-item"))
+        .filter((item) => item.dataset.countable !== "false");
+
+      sectionElement.querySelectorAll(".filter-button").forEach((button) => {
+        const filterValue = button.dataset.filter;
+        const label = button.dataset.label || button.textContent.replace(/\s\(\d+\)$/u, "");
+
+        const count = filterValue === "all"
+          ? countableItems.length
+          : countableItems.filter((item) => getItemCategories(item).includes(filterValue)).length;
+
+        button.textContent = `${label} (${count})`;
+      });
+    }
+
+    function updateAllFilterCounts() {
+      document.querySelectorAll("section").forEach((sectionElement) => {
+        if (sectionElement.querySelector(".filter-button")) {
+          updateFilterCounts(sectionElement);
         }
-
-        if (page.hidden) {
-          sideProgress.style.display = "none";
-        } else {
-          sideProgress.style.display = "grid";
-          sideProgress.style.visibility = "visible";
-          sideProgress.style.opacity = "1";
-          sideProgress.style.pointerEvents = "auto";
-        }
       });
     }
 
-    function updateThemeToggleLabel() {
-      const isDark = document.body.classList.contains("dark-mode");
-      const metadata = pageMetadata[currentLanguage];
-
-      themeToggle.textContent = isDark ? metadata.themeLight : metadata.themeDark;
-    }
-
-    function updateShareButtonLabel(labelType = "default") {
-      const metadata = pageMetadata[currentLanguage];
-
-      if (labelType === "copied") {
-        shareButton.textContent = metadata.copiedLabel;
-        shareButton.classList.add("active");
-      } else {
-        shareButton.textContent = metadata.shareLabel;
-        shareButton.classList.remove("active");
-      }
-    }
-
-    function updatePageMetadata(language) {
-      const metadata = pageMetadata[language];
-
-      document.title = metadata.title;
-      metaDescription.setAttribute("content", metadata.description);
-      metaKeywords.setAttribute("content", metadata.keywords);
-      ogTitle.setAttribute("content", metadata.title);
-      ogDescription.setAttribute("content", metadata.description);
-      ogLocale.setAttribute("content", metadata.locale);
-      twitterTitle.setAttribute("content", metadata.title);
-      twitterDescription.setAttribute("content", metadata.description);
-    }
-
-    function updateAccessibilityLanguage(language) {
-      document.querySelectorAll("[data-a11y-fr][data-a11y-en]").forEach((element) => {
-        element.textContent = element.dataset[`a11y${language === "fr" ? "Fr" : "En"}`];
-      });
-
-      accessibilityPanel.setAttribute(
-        "aria-label",
-        language === "fr" ? "Options d'accessibilité" : "Accessibility options"
+    function applySiteSearch(rawQuery) {
+      const data = DATA[currentLanguage];
+      const query = normalizeSearchText(rawQuery);
+      const resultBox = document.querySelector("[data-search-result]");
+      const searchableItems = document.querySelectorAll(
+        ".team-card, .supervision-card, .project-card, .training-summary, .training-card, .publication-list li, .contact-item"
       );
 
-      accessibilityClose.setAttribute(
-        "aria-label",
-        language === "fr" ? "Fermer le panneau d'accessibilité" : "Close accessibility panel"
-      );
-
-      skipLink.setAttribute("href", language === "fr" ? "#fr-main" : "#en-main");
-    }
-
-    function refreshLanguageAnimation(language, animate) {
-      const activePage = document.querySelector(`.site-content[data-lang="${language}"]`);
-
-      if (!activePage || !animate) {
+      if (query.length < 2) {
+        searchableItems.forEach((item) => item.classList.remove("search-hidden"));
+        if (resultBox) {
+          resultBox.hidden = true;
+          resultBox.textContent = "";
+        }
         return;
       }
 
-      activePage.classList.remove("language-fade");
-      void activePage.offsetWidth;
-      activePage.classList.add("language-fade");
+      let visibleCount = 0;
+
+      searchableItems.forEach((item) => {
+        const itemText = normalizeSearchText(item.innerText);
+        const isMatch = itemText.includes(query);
+        item.classList.toggle("search-hidden", !isMatch);
+        if (isMatch) visibleCount += 1;
+      });
+
+      if (resultBox) {
+        const word = visibleCount > 1 ? data.resultWord[1] : data.resultWord[0];
+        resultBox.hidden = false;
+        resultBox.textContent = `${visibleCount} ${word}`;
+      }
     }
 
-    function setLanguage(language, preserveSection = true, syncHash = true, animate = true) {
-      const targetSectionKey = currentSectionKey || "top";
+    function clearSiteSearch() {
+      const input = document.querySelector("[data-site-search]");
+      if (input) input.value = "";
 
-      currentLanguage = language;
-
-      languagePages.forEach((page) => {
-        const isActive = page.dataset.lang === language;
-        page.hidden = !isActive;
-        page.setAttribute("aria-hidden", String(!isActive));
+      document.querySelectorAll(".search-hidden").forEach((item) => {
+        item.classList.remove("search-hidden");
       });
 
-      ensureSideProgressVisible();
+      const resultBox = document.querySelector("[data-search-result]");
+      if (resultBox) {
+        resultBox.hidden = true;
+        resultBox.textContent = "";
+      }
+    }
 
-      languageButtons.forEach((button) => {
-        const isActive = button.dataset.switchLang === language;
-        button.classList.toggle("active", isActive);
-        button.setAttribute("aria-pressed", String(isActive));
+    function updateDisabledProjectTooltips() {
+      const text = DATA[currentLanguage].unavailable;
+
+      document.querySelectorAll(".project-link.disabled").forEach((link) => {
+        link.dataset.tooltip = text;
+        link.setAttribute("aria-disabled", "true");
+        link.setAttribute("title", text);
+      });
+    }
+
+    function openOrCloseAxisProjects(button) {
+      const targetAxis = document.getElementById(button.dataset.axisTarget);
+      if (!targetAxis) return;
+
+      targetAxis.querySelectorAll(".project-card").forEach((project) => {
+        project.open = button.dataset.axisAction === "open";
+      });
+    }
+
+    function closeMobileNavigation() {
+      document.querySelectorAll("nav.site-nav.open").forEach((nav) => nav.classList.remove("open"));
+    }
+
+    async function copyTextToClipboard(text) {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(text);
+        return;
+      }
+
+      const textArea = document.createElement("textarea");
+      textArea.value = text;
+      textArea.setAttribute("readonly", "");
+      textArea.style.position = "fixed";
+      textArea.style.top = "-9999px";
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand("copy");
+      document.body.removeChild(textArea);
+    }
+
+    async function sharePortfolio() {
+      const data = DATA[currentLanguage];
+      const shareUrl = window.location.href.split("#")[0];
+
+      const shareData = {
+        title: data.title,
+        text: data.description,
+        url: shareUrl
+      };
+
+      try {
+        if (navigator.share) {
+          await navigator.share(shareData);
+        } else {
+          await copyTextToClipboard(shareUrl);
+          updateShareButtonLabel("copied");
+          window.clearTimeout(shareTimeout);
+          shareTimeout = window.setTimeout(updateShareButtonLabel, 1800);
+        }
+      } catch (error) {
+        if (error.name !== "AbortError") {
+          await copyTextToClipboard(shareUrl);
+          updateShareButtonLabel("copied");
+          window.clearTimeout(shareTimeout);
+          shareTimeout = window.setTimeout(updateShareButtonLabel, 1800);
+        }
+      }
+    }
+
+    function preparePrintView() {
+      const detailsElements = document.querySelectorAll("details");
+      const previouslyClosed = [];
+
+      detailsElements.forEach((details) => {
+        if (!details.open) {
+          details.open = true;
+          previouslyClosed.push(details);
+        }
       });
 
-      document.documentElement.lang = language;
-      updatePageMetadata(language);
-      updateThemeToggleLabel();
-      updateShareButtonLabel();
-      updateAccessibilityLanguage(language);
-      localStorage.setItem("portfolio-language", language);
-      closeMobileNavigation();
-      refreshLanguageAnimation(language, animate);
-      updateActiveNavigation(targetSectionKey);
-
-      const targetId = sectionIds[language][targetSectionKey] || sectionIds[language].top;
-      const targetElement = document.getElementById(targetId);
-
-      if (targetElement && preserveSection) {
-        window.setTimeout(() => {
-          targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
-        }, 60);
-      }
-
-      if (syncHash) {
-        updateUrlHash(targetSectionKey);
-      }
+      window.print();
 
       window.setTimeout(() => {
-        revealVisibleElements();
-        detectCurrentSection();
-        ensureSideProgressVisible();
-      }, 160);
-    }
-
-    function setTheme(theme) {
-      const isDark = theme === "dark";
-      document.body.classList.toggle("dark-mode", isDark);
-      themeToggle.classList.toggle("active", isDark);
-      localStorage.setItem("portfolio-theme", theme);
-      updateThemeToggleLabel();
-      ensureSideProgressVisible();
+        previouslyClosed.forEach((details) => {
+          details.open = false;
+        });
+      }, 1000);
     }
 
     function loadAccessibilitySettings() {
@@ -3542,167 +3204,163 @@
       if (save) {
         localStorage.setItem("portfolio-accessibility", JSON.stringify(settings));
       }
-
-      ensureSideProgressVisible();
     }
 
-    function updateFilterGroups(sectionElement) {
-      sectionElement.querySelectorAll("[data-filter-group]").forEach((group) => {
-        const groupItems = Array.from(group.querySelectorAll(".filter-item"));
-        const hasVisibleItem = groupItems.some((item) => !item.classList.contains("hidden-by-filter"));
-
-        group.classList.toggle("hidden-by-filter", groupItems.length > 0 && !hasVisibleItem);
-      });
+    function setTheme(theme) {
+      const isDark = theme === "dark";
+      document.body.classList.toggle("dark-mode", isDark);
+      themeToggle.classList.toggle("active", isDark);
+      localStorage.setItem("portfolio-theme", theme);
+      updateThemeToggleLabel();
     }
 
-    function applyFilter(sectionElement, filterValue) {
-      sectionElement.querySelectorAll(".filter-button").forEach((button) => {
-        button.classList.toggle("active", button.dataset.filter === filterValue);
-      });
+    function updateHash(sectionKey, mode = "replace") {
+      if (!sectionKey || sectionKey === "top") return;
 
-      sectionElement.querySelectorAll(".filter-item").forEach((item) => {
-        const itemCategories = getItemCategories(item);
-        const shouldShow = filterValue === "all" || itemCategories.includes(filterValue);
+      const hash = `#${sectionId(sectionKey)}`;
+      if (window.location.hash === hash) return;
 
-        item.classList.toggle("hidden-by-filter", !shouldShow);
-      });
-
-      updateFilterGroups(sectionElement);
-      ensureSideProgressVisible();
+      const newUrl = `${window.location.pathname}${window.location.search}${hash}`;
+      window.history[mode === "push" ? "pushState" : "replaceState"](null, "", newUrl);
     }
 
-    function updateFilterCounts(sectionElement) {
-      const countableItems = Array.from(sectionElement.querySelectorAll(".filter-item"))
-        .filter((item) => item.dataset.countable !== "false");
+    function getInitialStateFromHash() {
+      const hashId = window.location.hash.replace("#", "");
+      if (!hashId) return null;
 
-      sectionElement.querySelectorAll(".filter-button").forEach((button) => {
-        const filterValue = button.dataset.filter;
-        const label = button.dataset.label || button.textContent.replace(/\s\(\d+\)$/u, "");
+      const parts = hashId.split("-");
+      const language = parts[0] === "en" ? "en" : parts[0] === "fr" ? "fr" : null;
+      const sectionKey = parts.slice(1).join("-");
 
-        const count = filterValue === "all"
-          ? countableItems.length
-          : countableItems.filter((item) => getItemCategories(item).includes(filterValue)).length;
+      if (!language) return null;
 
-        button.textContent = `${label} (${count})`;
-      });
-    }
-
-    function updateAllFilterCounts() {
-      document.querySelectorAll("section").forEach((sectionElement) => {
-        if (sectionElement.querySelector(".filter-button")) {
-          updateFilterCounts(sectionElement);
-        }
-      });
-    }
-
-    async function copyTextToClipboard(text) {
-      if (navigator.clipboard && window.isSecureContext) {
-        await navigator.clipboard.writeText(text);
-        return;
-      }
-
-      const textArea = document.createElement("textarea");
-      textArea.value = text;
-      textArea.setAttribute("readonly", "");
-      textArea.style.position = "fixed";
-      textArea.style.top = "-9999px";
-      document.body.appendChild(textArea);
-      textArea.select();
-      document.execCommand("copy");
-      document.body.removeChild(textArea);
-    }
-
-    async function sharePortfolio() {
-      const metadata = pageMetadata[currentLanguage];
-      const shareUrl = window.location.href.split("#")[0];
-
-      const shareData = {
-        title: metadata.title,
-        text: metadata.description,
-        url: shareUrl
+      const sectionMap = {
+        about: "about",
+        team: "team",
+        equipe: "team",
+        thesis: "thesis",
+        these: "thesis",
+        side: "side",
+        training: "training",
+        formations: "training",
+        publications: "publications",
+        communications: "communications",
+        contact: "contact"
       };
 
-      try {
-        if (navigator.share) {
-          await navigator.share(shareData);
-        } else {
-          await copyTextToClipboard(shareUrl);
-          updateShareButtonLabel("copied");
+      return { language, sectionKey: sectionMap[sectionKey] || "top" };
+    }
 
-          window.clearTimeout(shareTimeout);
-          shareTimeout = window.setTimeout(() => {
-            updateShareButtonLabel();
-          }, 1800);
-        }
-      } catch (error) {
-        if (error.name !== "AbortError") {
-          await copyTextToClipboard(shareUrl);
-          updateShareButtonLabel("copied");
+    function setLanguage(language, preserveSection = true, syncHash = true) {
+      currentLanguage = language;
+      const data = DATA[currentLanguage];
 
-          window.clearTimeout(shareTimeout);
-          shareTimeout = window.setTimeout(() => {
-            updateShareButtonLabel();
-          }, 1800);
+      updateMetadata(data);
+      updateStaticI18n(data);
+      updateThemeToggleLabel();
+      updateShareButtonLabel();
+      updateLanguageButtons();
+      localStorage.setItem("portfolio-language", currentLanguage);
+      render(data);
+      updateAllFilterCounts();
+      updateDisabledProjectTooltips();
+      applyAccessibilitySettings(loadAccessibilitySettings(), false);
+
+      if (preserveSection && currentSectionKey !== "top") {
+        const target = document.getElementById(sectionId(currentSectionKey));
+        if (target) {
+          window.setTimeout(() => target.scrollIntoView({ behavior: "smooth", block: "start" }), 50);
         }
       }
+
+      if (syncHash) {
+        updateHash(currentSectionKey);
+      }
+
+      window.setTimeout(() => {
+        revealVisibleElements();
+        detectCurrentSection();
+      }, 80);
+    }
+
+    function updateDynamicBindings() {
+      document.querySelector("[data-nav-toggle]")?.addEventListener("click", () => {
+        document.querySelector("nav.site-nav")?.classList.toggle("open");
+      });
+
+      document.querySelectorAll("nav.site-nav a, .side-progress a").forEach((link) => {
+        link.addEventListener("click", () => {
+          currentSectionKey = link.dataset.sectionKey;
+          updateActiveNavigation(currentSectionKey);
+          closeMobileNavigation();
+        });
+      });
+
+      document.querySelectorAll(".filter-button").forEach((button) => {
+        button.addEventListener("click", () => {
+          applyFilter(button.closest("section"), button.dataset.filter);
+        });
+      });
+
+      document.querySelectorAll("[data-copy-email]").forEach((button) => {
+        button.addEventListener("click", async () => {
+          await copyTextToClipboard(button.dataset.copyEmail);
+          button.textContent = button.dataset.copiedLabel;
+          button.classList.add("active");
+
+          window.setTimeout(() => {
+            button.textContent = button.dataset.defaultLabel;
+            button.classList.remove("active");
+          }, 1600);
+        });
+      });
+
+      document.querySelector("[data-site-search]")?.addEventListener("input", (event) => {
+        applySiteSearch(event.target.value);
+      });
+
+      document.querySelector("[data-search-clear]")?.addEventListener("click", clearSiteSearch);
+
+      document.querySelectorAll("[data-cite-button]").forEach((button) => {
+        button.addEventListener("click", async () => {
+          await copyTextToClipboard(button.dataset.citation);
+          button.textContent = button.dataset.copiedLabel;
+          button.classList.add("active");
+
+          window.setTimeout(() => {
+            button.textContent = button.dataset.defaultLabel;
+            button.classList.remove("active");
+          }, 1800);
+        });
+      });
+
+      document.querySelectorAll("[data-axis-action]").forEach((button) => {
+        button.addEventListener("click", () => openOrCloseAxisProjects(button));
+      });
+
+      document.querySelectorAll(".project-link.disabled").forEach((link) => {
+        link.addEventListener("click", (event) => event.preventDefault());
+      });
+
+      updateDisabledProjectTooltips();
+      revealVisibleElements();
+      updateActiveNavigation(currentSectionKey);
     }
 
     languageButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-        setLanguage(button.dataset.switchLang, true, true, true);
-      });
-    });
-
-    document.querySelectorAll("[data-nav-toggle]").forEach((button) => {
-      button.addEventListener("click", () => {
-        const nav = document.querySelector(`nav[data-nav="${button.dataset.navToggle}"]`);
-        nav.classList.toggle("open");
-        ensureSideProgressVisible();
-      });
-    });
-
-    document.querySelectorAll("nav a, .side-progress a").forEach((link) => {
-      link.addEventListener("click", () => {
-        currentSectionKey = link.dataset.sectionKey;
-        updateActiveNavigation(currentSectionKey);
-        closeMobileNavigation();
-        ensureSideProgressVisible();
-      });
-    });
-
-    document.querySelectorAll(".filter-button").forEach((button) => {
-      button.addEventListener("click", () => {
-        const sectionElement = button.closest("section");
-        applyFilter(sectionElement, button.dataset.filter);
-      });
-    });
-
-    document.querySelectorAll("[data-copy-email]").forEach((button) => {
-      button.addEventListener("click", async () => {
-        await copyTextToClipboard(button.dataset.copyEmail);
-
-        button.textContent = button.dataset.copiedLabel;
-        button.classList.add("active");
-
-        window.setTimeout(() => {
-          button.textContent = button.dataset.defaultLabel;
-          button.classList.remove("active");
-        }, 1600);
-      });
+      button.addEventListener("click", () => setLanguage(button.dataset.switchLang, true, true));
     });
 
     accessibilityToggle.addEventListener("click", () => {
       const isHidden = accessibilityPanel.hidden;
       accessibilityPanel.hidden = !isHidden;
       accessibilityToggle.setAttribute("aria-expanded", String(isHidden));
-      ensureSideProgressVisible();
     });
 
     accessibilityClose.addEventListener("click", () => {
       accessibilityPanel.hidden = true;
       accessibilityToggle.setAttribute("aria-expanded", "false");
       accessibilityToggle.focus();
-      ensureSideProgressVisible();
     });
 
     accessibilityControls.forEach((control) => {
@@ -3717,7 +3375,6 @@
       if (event.key === "Escape" && !accessibilityPanel.hidden) {
         accessibilityPanel.hidden = true;
         accessibilityToggle.setAttribute("aria-expanded", "false");
-        ensureSideProgressVisible();
       }
     });
 
@@ -3726,35 +3383,31 @@
       setTheme(newTheme);
     });
 
-    shareButton.addEventListener("click", () => {
-      sharePortfolio();
+    shareButton.addEventListener("click", sharePortfolio);
+
+    document.querySelectorAll("[data-print-button], [data-pdf-button]").forEach((button) => {
+      button.addEventListener("click", preparePrintView);
     });
 
     backToTopButton.addEventListener("click", () => {
       currentSectionKey = "top";
       updateActiveNavigation("top");
-      updateUrlHash("top", "push");
-      const targetId = sectionIds[currentLanguage].top;
-      document.getElementById(targetId).scrollIntoView({ behavior: "smooth", block: "start" });
-      ensureSideProgressVisible();
+      document.getElementById(`${currentLanguage}-top`)?.scrollIntoView({ behavior: "smooth", block: "start" });
     });
 
     window.addEventListener("scroll", () => {
       revealVisibleElements();
       detectCurrentSection();
       backToTopButton.classList.toggle("visible", window.scrollY > 500);
-      ensureSideProgressVisible();
     });
 
-    window.addEventListener("resize", () => {
-      ensureSideProgressVisible();
-    });
+    window.addEventListener("resize", revealVisibleElements);
 
     window.addEventListener("load", () => {
       revealVisibleElements();
       detectCurrentSection();
       updateAllFilterCounts();
-      ensureSideProgressVisible();
+      updateDisabledProjectTooltips();
     });
 
     const initialHashState = getInitialStateFromHash();
@@ -3762,19 +3415,16 @@
     const savedLanguage = localStorage.getItem("portfolio-language");
     const initialLanguage = initialHashState?.language || (savedLanguage === "en" ? "en" : "fr");
 
+    currentLanguage = initialLanguage;
     currentSectionKey = initialHashState?.sectionKey || "top";
 
     setTheme(savedTheme === "dark" ? "dark" : "light");
-    setLanguage(initialLanguage, false, false, false);
+    setLanguage(initialLanguage, false, false);
     applyAccessibilitySettings(loadAccessibilitySettings(), false);
-    updateAllFilterCounts();
-    ensureSideProgressVisible();
 
     if (initialHashState?.sectionKey && initialHashState.sectionKey !== "top") {
       window.setTimeout(() => {
-        const targetId = sectionIds[initialLanguage][initialHashState.sectionKey];
-        document.getElementById(targetId)?.scrollIntoView({ behavior: "smooth", block: "start" });
-        ensureSideProgressVisible();
+        document.getElementById(sectionId(initialHashState.sectionKey))?.scrollIntoView({ behavior: "smooth", block: "start" });
       }, 100);
     }
   </script>
