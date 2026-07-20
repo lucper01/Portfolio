@@ -477,6 +477,7 @@
     }
 
     .side-progress a {
+      --section-progress: 0%;
       display: grid;
       grid-template-columns: 30px 1fr;
       align-items: center;
@@ -512,7 +513,12 @@
     }
 
     .side-progress a.active {
-      background: var(--green-main);
+      background:
+        linear-gradient(
+          90deg,
+          var(--green-dark) 0 var(--section-progress),
+          var(--green-main) var(--section-progress) 100%
+        );
       color: #ffffff;
     }
 
@@ -533,6 +539,11 @@
       max-width: var(--page-width);
       margin: 18px auto 0;
       padding: 0 6%;
+      transition: margin 0.2s ease, transform 0.2s ease;
+    }
+
+    body.search-compact .portfolio-search {
+      margin-top: 8px;
     }
 
     .search-card {
@@ -546,6 +557,13 @@
       border: 1px solid rgba(11, 47, 35, 0.12);
       box-shadow: var(--shadow-soft);
       backdrop-filter: blur(10px);
+      transition: padding 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    }
+
+    body.search-compact .search-card {
+      padding: 7px 10px;
+      box-shadow: 0 12px 28px rgba(11, 47, 35, 0.16);
+      border-color: rgba(25, 97, 68, 0.22);
     }
 
     body.dark-mode .search-card {
@@ -562,6 +580,12 @@
       font-weight: 750;
       outline: none;
       padding: 8px 12px;
+      transition: padding 0.2s ease, font-size 0.2s ease;
+    }
+
+    body.search-compact .search-card input {
+      padding: 4px 10px;
+      font-size: 0.92rem;
     }
 
     .search-card input::placeholder { color: var(--muted); }
@@ -574,6 +598,22 @@
       color: var(--green-dark);
       font-weight: 900;
       cursor: pointer;
+      transition: transform 0.18s ease, background 0.18s ease, color 0.18s ease, padding 0.2s ease;
+    }
+
+    .search-card button:hover:not(:disabled) {
+      transform: translateY(-1px);
+      background: var(--green-main);
+      color: #ffffff;
+    }
+
+    body.search-compact .search-card button {
+      padding: 6px 10px;
+    }
+
+    .search-card.search-feedback {
+      border-color: var(--green-main);
+      box-shadow: 0 12px 30px rgba(25, 97, 68, 0.22);
     }
 
     .search-nav-button {
@@ -590,6 +630,13 @@
       color: var(--muted);
       font-size: 0.85rem;
       padding: 0 12px 4px;
+      font-weight: 800;
+      transition: font-size 0.2s ease, padding 0.2s ease;
+    }
+
+    body.search-compact .search-result {
+      font-size: 0.78rem;
+      padding: 0 10px 2px;
     }
 
     .search-hidden { display: none !important; }
@@ -717,31 +764,6 @@
     }
 
     .highlight p { color: rgba(255, 255, 255, 0.88); }
-body.dark-mode .thesis-toc {
-      background: rgba(16, 37, 28, 0.78);
-      border-color: rgba(220, 238, 227, 0.12);
-    }
-
-    .thesis-toc strong {
-      color: var(--green-dark);
-      margin-right: 4px;
-    }
-
-    .thesis-toc a {
-      display: inline-flex;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: var(--green-pale);
-      color: var(--green-dark);
-      font-size: 0.88rem;
-      font-weight: 900;
-    }
-
-    .thesis-toc a:hover {
-      text-decoration: none;
-      background: var(--green-main);
-      color: #ffffff;
-    }
 
     .subsection-heading {
       margin: 36px 0 10px;
@@ -987,6 +1009,16 @@ body.dark-mode .thesis-toc {
       min-height: auto;
     }
 
+    body.dark-mode .project-card[open],
+    body.dark-mode .training-card[open],
+    body.dark-mode .training-master[open] {
+      border-color: #77b892;
+      box-shadow: var(--shadow-soft), inset 4px 0 0 #77b892;
+      background:
+        radial-gradient(circle at top right, rgba(119, 184, 146, 0.18), transparent 34%),
+        rgba(16, 37, 28, 0.92);
+    }
+
     body.dark-mode .project-card,
     body.dark-mode .training-card {
       background: rgba(16, 37, 28, 0.88);
@@ -1032,7 +1064,7 @@ body.dark-mode .thesis-toc {
     .project-card[open] .open-label { display: inline; }
 
     .project-summary::after {
-      content: "+";
+      content: "›";
       width: 34px;
       height: 34px;
       border-radius: 999px;
@@ -1042,11 +1074,25 @@ body.dark-mode .thesis-toc {
       align-items: center;
       justify-content: center;
       font-weight: 900;
-      font-size: 1.1rem;
+      font-size: 1.35rem;
+      transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+    }
+
+    .project-card[open] {
+      border-color: var(--green-main);
+      box-shadow: var(--shadow-soft), inset 4px 0 0 var(--green-main);
+      background:
+        radial-gradient(circle at top right, rgba(119, 184, 146, 0.16), transparent 34%),
+        rgba(255, 255, 255, 0.94);
+    }
+
+    .project-card[open] .project-summary strong {
+      color: var(--green-main);
     }
 
     .project-card[open] .project-summary::after {
-      content: "−";
+      content: "›";
+      transform: rotate(90deg);
       background: var(--green-main);
       color: #ffffff;
     }
@@ -1169,7 +1215,7 @@ body.dark-mode .thesis-toc {
     .training-master > summary::-webkit-details-marker { display: none; }
 
     .training-master > summary::after {
-      content: "+";
+      content: "›";
       width: 34px;
       height: 34px;
       border-radius: 999px;
@@ -1179,10 +1225,18 @@ body.dark-mode .thesis-toc {
       align-items: center;
       justify-content: center;
       font-weight: 900;
+      font-size: 1.35rem;
+      transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+    }
+
+    .training-master[open] {
+      border-color: var(--green-main);
+      box-shadow: var(--shadow-soft), inset 4px 0 0 var(--green-main);
     }
 
     .training-master[open] > summary::after {
-      content: "−";
+      content: "›";
+      transform: rotate(90deg);
       background: var(--green-main);
       color: #ffffff;
     }
@@ -1209,7 +1263,7 @@ body.dark-mode .thesis-toc {
     }
 
     .training-card summary::after {
-      content: "+";
+      content: "›";
       width: 30px;
       height: 30px;
       border-radius: 999px;
@@ -1219,11 +1273,18 @@ body.dark-mode .thesis-toc {
       background: var(--green-soft);
       color: var(--green-dark);
       font-weight: 900;
-      transition: transform 0.2s ease, background 0.2s ease;
+      font-size: 1.25rem;
+      transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+    }
+
+    .training-card[open] {
+      border-color: var(--green-main);
+      box-shadow: var(--shadow-soft), inset 4px 0 0 var(--green-main);
     }
 
     .training-card[open] summary::after {
-      content: "−";
+      content: "›";
+      transform: rotate(90deg);
       background: var(--green-main);
       color: #ffffff;
     }
@@ -1307,22 +1368,28 @@ body.dark-mode .thesis-toc {
     }
 
     .filter-button {
-      border: 1px solid rgba(11, 47, 35, 0.14);
+      border: 1px solid rgba(11, 47, 35, 0.16);
       border-radius: 999px;
       padding: 9px 14px;
       color: var(--green-dark);
-      background: var(--white);
+      background: rgba(255, 255, 255, 0.82);
       font-weight: 800;
       cursor: pointer;
-      transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+      opacity: 0.76;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
     }
 
-    .filter-button:hover { transform: translateY(-2px); }
+    .filter-button:hover {
+      transform: translateY(-2px);
+      opacity: 1;
+    }
 
     .filter-button.active {
       background: var(--green-main);
       color: #ffffff;
       border-color: var(--green-main);
+      opacity: 1;
+      box-shadow: 0 10px 24px rgba(25, 97, 68, 0.22);
     }
 
     .publication-subsection { margin-top: 30px; }
@@ -1827,6 +1894,38 @@ body.dark-mode .thesis-toc {
         top: 62px;
       }
 
+
+      nav.site-nav.open {
+        padding-bottom: 14px;
+      }
+
+      nav.site-nav.open .nav-links {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 8px;
+        width: 100%;
+      }
+
+      nav.site-nav.open .nav-links a {
+        display: block;
+        width: 100%;
+        padding: 12px 14px;
+        text-align: center;
+      }
+
+      .contact-icon {
+        width: 42px;
+        height: 42px;
+        min-width: 42px;
+      }
+
+      .copy-button,
+      .contact-item a {
+        min-height: 42px;
+        display: inline-flex;
+        align-items: center;
+      }
+
       .search-card {
         border-radius: 24px;
         grid-template-columns: 1fr;
@@ -1987,7 +2086,7 @@ body.dark-mode .thesis-toc {
         toc: ["Direction", "Axes", "Axe 1", "Axe 2"],
         supervision: "Direction de thèse",
         supervisor: "Directeur de thèse",
-        cosupervisor: "Co-Directeur de thèse",
+        cosupervisor: "Co-direction de thèse",
         professor: "Professeur des Universités",
         associate: "Maître de conférences",
         axesTitle: "Axes de thèse",
@@ -2087,8 +2186,8 @@ body.dark-mode .thesis-toc {
         inSection: "In this section:",
         toc: ["Supervision", "Axes", "Axis 1", "Axis 2"],
         supervision: "PhD supervision",
-        supervisor: "PhD Supervisor",
-        cosupervisor: "PhD Co-Supervisor",
+        supervisor: "PhD supervisor",
+        cosupervisor: "PhD co-supervision",
         professor: "Full Professor",
         associate: "Associate Professor",
         axesTitle: "Thesis axes",
@@ -2383,6 +2482,8 @@ body.dark-mode .thesis-toc {
     let currentSectionKey = "top";
     let currentSearchResults = [];
     let currentSearchIndex = 0;
+    let currentSearchOccurrenceCount = 0;
+    let feedbackTimeout = null;
     let shareTimeout = null;
 
     const app = document.getElementById("app");
@@ -2550,6 +2651,7 @@ body.dark-mode .thesis-toc {
 
       currentSearchResults = [];
       currentSearchIndex = 0;
+      currentSearchOccurrenceCount = 0;
 
       app.innerHTML = `
         <header id="${currentLanguage}-top" data-section="top">
@@ -2911,7 +3013,40 @@ body.dark-mode .thesis-toc {
       document.querySelectorAll("nav.site-nav a, .side-progress a").forEach((link) => {
         link.classList.toggle("active", link.dataset.sectionKey === currentSectionKey);
       });
+
+      updateSectionProgressIndicator();
     }
+
+
+    function updateSectionProgressIndicator() {
+      document.querySelectorAll(".side-progress a").forEach((link) => {
+        link.style.setProperty("--section-progress", "0%");
+      });
+
+      if (!currentSectionKey || currentSectionKey === "top") {
+        return;
+      }
+
+      const section = document.getElementById(sectionId(currentSectionKey));
+      const activeLink = document.querySelector(`.side-progress a[data-section-key="${currentSectionKey}"]`);
+
+      if (!section || !activeLink) {
+        return;
+      }
+
+      const start = section.offsetTop - 140;
+      const end = section.offsetTop + section.offsetHeight - window.innerHeight * 0.45;
+      const denominator = Math.max(end - start, 1);
+      const rawProgress = (window.scrollY - start) / denominator;
+      const progress = Math.max(0, Math.min(1, rawProgress));
+
+      activeLink.style.setProperty("--section-progress", `${Math.round(progress * 100)}%`);
+    }
+
+    function updateStickySearchDensity() {
+      document.body.classList.toggle("search-compact", window.scrollY > 220);
+    }
+
 
     function detectCurrentSection() {
       if (window.scrollY < 260) {
@@ -3115,6 +3250,40 @@ body.dark-mode .thesis-toc {
       document.querySelector("[data-search-next]")?.toggleAttribute("disabled", !hasMultipleResults);
     }
 
+    function pulseSearchFeedback() {
+      const searchCard = document.querySelector(".search-card");
+      if (!searchCard) return;
+
+      searchCard.classList.add("search-feedback");
+      window.clearTimeout(feedbackTimeout);
+      feedbackTimeout = window.setTimeout(() => {
+        searchCard.classList.remove("search-feedback");
+      }, 420);
+    }
+
+    function updateSearchResultCounter() {
+      const data = DATA[currentLanguage];
+      const resultBox = document.querySelector("[data-search-result]");
+
+      if (!resultBox) return;
+
+      if (!currentSearchResults.length) {
+        if (currentSearchOccurrenceCount === 0) {
+          const word = data.resultWord[0];
+          resultBox.hidden = false;
+          resultBox.textContent = `0 ${word}`;
+        }
+
+        return;
+      }
+
+      const total = currentSearchResults.length;
+      const word = total > 1 ? data.resultWord[1] : data.resultWord[0];
+
+      resultBox.hidden = false;
+      resultBox.textContent = `${currentSearchIndex + 1} / ${total} · ${total} ${word}`;
+    }
+
     function focusSearchResult(index) {
       if (!currentSearchResults.length) {
         updateSearchNavigationButtons();
@@ -3146,6 +3315,8 @@ body.dark-mode .thesis-toc {
       }, 80);
 
       updateSearchNavigationButtons();
+      updateSearchResultCounter();
+      pulseSearchFeedback();
     }
 
     function goToSearchResult(direction) {
@@ -3164,6 +3335,11 @@ body.dark-mode .thesis-toc {
 
       if (query.length < 2) {
         searchableItems.forEach((item) => item.classList.remove("search-hidden"));
+
+        currentSearchOccurrenceCount = 0;
+        currentSearchResults = [];
+        currentSearchIndex = 0;
+        updateSearchNavigationButtons();
 
         if (resultBox) {
           resultBox.hidden = true;
@@ -3200,10 +3376,12 @@ body.dark-mode .thesis-toc {
         }
       });
 
-      if (resultBox) {
-        const word = occurrenceCount > 1 ? data.resultWord[1] : data.resultWord[0];
+      currentSearchOccurrenceCount = occurrenceCount;
+
+      if (resultBox && !currentSearchResults.length) {
+        const word = data.resultWord[0];
         resultBox.hidden = false;
-        resultBox.textContent = `${occurrenceCount} ${word}`;
+        resultBox.textContent = `0 ${word}`;
       }
 
       if (currentSearchResults.length) {
@@ -3219,6 +3397,7 @@ body.dark-mode .thesis-toc {
 
       currentSearchResults = [];
       currentSearchIndex = 0;
+      currentSearchOccurrenceCount = 0;
       updateSearchNavigationButtons();
 
       clearSearchHighlights();
@@ -3422,6 +3601,14 @@ body.dark-mode .thesis-toc {
       document.querySelectorAll(".filter-button").forEach((button) => {
         button.addEventListener("click", () => {
           applyFilter(button.closest("section"), button.dataset.filter);
+          button.animate(
+            [
+              { transform: "translateY(-2px) scale(1)" },
+              { transform: "translateY(-2px) scale(1.04)" },
+              { transform: "translateY(-2px) scale(1)" }
+            ],
+            { duration: 260, easing: "ease-out" }
+          );
         });
       });
 
@@ -3442,6 +3629,12 @@ body.dark-mode .thesis-toc {
         if (event.key === "Enter") {
           event.preventDefault();
           runSiteSearchFromInput();
+        }
+      });
+
+      document.querySelector("[data-site-search]")?.addEventListener("input", (event) => {
+        if (!event.target.value.trim()) {
+          clearSiteSearch();
         }
       });
 
@@ -3525,6 +3718,8 @@ body.dark-mode .thesis-toc {
     window.addEventListener("scroll", () => {
       revealVisibleElements();
       detectCurrentSection();
+      updateStickySearchDensity();
+      updateSectionProgressIndicator();
       backToTopButton.classList.toggle("visible", window.scrollY > 500);
     });
 
@@ -3533,6 +3728,8 @@ body.dark-mode .thesis-toc {
     window.addEventListener("load", () => {
       revealVisibleElements();
       detectCurrentSection();
+      updateStickySearchDensity();
+      updateSectionProgressIndicator();
       updateAllFilterCounts();
       updateDisabledProjectTooltips();
     });
