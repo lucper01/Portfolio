@@ -2799,11 +2799,11 @@
         name: "TWIXAV",
         done: true,
         fr: {
-          desc: "Étude de référence sur la fenêtre temporelle d'intégration audiovisuelle, en l'absence de stimulation olfactive.",
+          desc: "Étude de la fenêtre temporelle d\'intégration entre signaux auditifs et visuels, à partir de jugements de simultanéité.",
           role: "portage principal du pré-test, préparation du protocole, passation pilote et analyses exploratoires."
         },
         en: {
-          desc: "Reference study on the audiovisual temporal window of integration, without olfactory stimulation.",
+          desc: "Study of the temporal window of integration between auditory and visual signals, based on simultaneity judgments.",
           role: "main lead of the pre-test, protocol preparation, pilot testing, and exploratory analyses."
         }
       },
@@ -2812,11 +2812,11 @@
         name: "TWIXOLF",
         done: false,
         fr: {
-          desc: "Version olfactive de TWIXAV, visant à étudier les fenêtres temporelles d'intégration impliquant une composante olfactive.",
+          desc: "Étude de la manière dont les odeurs s\'intègrent temporellement avec des événements visuels ou auditifs.",
           role: "adaptation du paradigme temporel, intégration de la stimulation olfactive, programmation expérimentale et analyses à venir."
         },
         en: {
-          desc: "Olfactory version of TWIXAV, aimed at studying temporal integration windows involving an olfactory component.",
+          desc: "Study of how odors are temporally integrated with visual or auditory events.",
           role: "adaptation of the temporal paradigm, integration of olfactory stimulation, experimental programming, and upcoming analyses."
         }
       },
@@ -2825,11 +2825,11 @@
         name: "SOFT",
         done: false,
         fr: {
-          desc: "Manipulation portant sur la détection de durées de stimuli, dans le cadre de l'étude des dimensions temporelles de la perception.",
+          desc: "Étude de la précision de détection du début et de la fin de stimuli sensoriels selon la modalité.",
           role: "conception du paradigme, programmation expérimentale, passation et analyses à venir."
         },
         en: {
-          desc: "Experiment focused on the detection of stimulus durations, within the study of temporal dimensions of perception.",
+          desc: "Study of how accurately participants detect the onset and offset of sensory stimuli across modalities.",
           role: "paradigm design, experimental programming, data collection, and upcoming analyses."
         }
       },
@@ -2851,11 +2851,11 @@
         name: "VIBEX",
         done: true,
         fr: {
-          desc: "Ligne de base visuelle consacrée au phénomène de boundary extension.",
+          desc: "Étude du boundary extension dans la représentation visuelle des scènes.",
           role: "portage principal du pré-test, préparation du protocole, passation pilote et analyses exploratoires."
         },
         en: {
-          desc: "Visual baseline study dedicated to the boundary extension phenomenon.",
+          desc: "Study of boundary extension in the visual representation of scenes.",
           role: "main lead of the pre-test, protocol preparation, pilot testing, and exploratory analyses."
         }
       },
@@ -2864,11 +2864,11 @@
         name: "OASIS",
         done: false,
         fr: {
-          desc: "Étude de l'influence de la valence olfactive sur la représentation de l'espace visuel.",
+          desc: "Étude de l\'influence de la valence olfactive sur les tendances d\'approche-évitement et la représentation de l\'espace.",
           role: "préparation du protocole, intégration des odeurs, passation et analyses à venir."
         },
         en: {
-          desc: "Study of the influence of olfactory valence on the representation of visual space.",
+          desc: "Study of how olfactory valence influences approach-avoidance tendencies and the representation of space.",
           role: "protocol preparation, odor integration, data collection, and upcoming analyses."
         }
       },
@@ -2877,11 +2877,11 @@
         name: "SOLAR",
         done: false,
         fr: {
-          desc: "Projet portant sur le cueing spatial avec les odeurs, afin d'étudier si un indice olfactif peut orienter l'attention spatiale.",
+          desc: "Étude de la capacité d\'un indice olfactif à orienter l\'attention spatiale vers une position donnée.",
           role: "conception du paradigme, intégration des stimulations olfactives, programmation expérimentale et analyses à venir."
         },
         en: {
-          desc: "Project on spatial cueing with odors, aimed at testing whether an olfactory cue can orient spatial attention.",
+          desc: "Study of whether an olfactory cue can orient spatial attention toward a specific location.",
           role: "paradigm design, integration of olfactory stimulation, experimental programming, and upcoming analyses."
         }
       },
@@ -2890,11 +2890,11 @@
         name: "COBEX",
         done: false,
         fr: {
-          desc: "Étude de l'effet de la congruence entre odeur et scène visuelle sur le boundary extension.",
+          desc: "Étude de l\'effet de la congruence entre odeur et scène visuelle sur l\'extension des limites d\'une scène.",
           role: "conception du paradigme, validation des associations odeur-scène et analyses à venir."
         },
         en: {
-          desc: "Study of the effect of odor-scene congruence on boundary extension.",
+          desc: "Study of how odor-scene congruence influences the extension of perceived scene boundaries.",
           role: "paradigm design, validation of odor-scene associations, and upcoming analyses."
         }
       },
@@ -2903,7 +2903,7 @@
         name: "BRAUD",
         done: false,
         fr: {
-          desc: "Étude de la boundary restriction dans la mémoire des événements auditifs.",
+          desc: "Étude de la boundary restriction dans la mémoire d\'événements auditifs.",
           role: "conception du paradigme auditif, sélection des stimuli et analyses comportementales à venir."
         },
         en: {
@@ -2916,11 +2916,11 @@
         name: "BRAUDOLF",
         done: false,
         fr: {
-          desc: "Version olfactive de BRAUD, centrée sur l'effet des odeurs sur la restriction auditive.",
+          desc: "Étude de l\'effet des odeurs sur la restriction des limites dans la mémoire d\'événements auditifs.",
           role: "adaptation du paradigme BRAUD, intégration olfactive et analyses à venir."
         },
         en: {
-          desc: "Olfactory version of BRAUD, focused on the effect of odors on auditory boundary restriction.",
+          desc: "Study of how odors influence boundary restriction in memory for auditory events.",
           role: "adaptation of the BRAUD paradigm, olfactory integration, and upcoming analyses."
         }
       }
@@ -3194,7 +3194,6 @@
           </summary>
           <div class="project-body">
             <p>${escapeHtml(text.desc)}</p>
-            <p class="project-role"><strong>${escapeHtml(data.role)}</strong> ${escapeHtml(text.role)}</p>
             ${projectLinks(project, data)}
           </div>
         </details>
@@ -3400,9 +3399,6 @@
                 <p>${escapeHtml(currentLanguage === "fr"
                   ? "Projet collaboratif portant sur le paradoxe intermodal musique-odeur, avec un intérêt pour les réponses neurophysiologiques mesurées par EEG."
                   : "Collaborative project on the intermodal music-odor paradox, with an interest in neurophysiological responses measured through EEG.")}</p>
-                <p class="project-role"><strong>${escapeHtml(data.role)}</strong> ${escapeHtml(currentLanguage === "fr"
-                  ? "contribution scientifique et méthodologique à un projet mené en collaboration, en lien avec la problématique multisensorielle."
-                  : "scientific and methodological contribution to a collaborative project connected to multisensory research.")}</p>
                 ${projectLinks(data)}
               </div>
             </details>
