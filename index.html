@@ -794,6 +794,175 @@
     .supervision-card,
     .axis-card,
     .training-summary,
+
+
+    .recruitment-intro {
+      margin-bottom: 24px;
+    }
+
+    .recruitment-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .recruitment-card {
+      padding: 22px;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid rgba(11, 47, 35, 0.12);
+      box-shadow: var(--shadow-soft);
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .recruitment-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--green-main);
+      box-shadow: var(--shadow);
+    }
+
+    .recruitment-card.is-closed {
+      border-style: dashed;
+      background:
+        radial-gradient(circle at top right, rgba(119, 184, 146, 0.16), transparent 34%),
+        rgba(255, 255, 255, 0.90);
+    }
+
+    body.dark-mode .recruitment-card {
+      background: rgba(16, 37, 28, 0.88);
+      border-color: rgba(220, 238, 227, 0.12);
+    }
+
+    body.dark-mode .recruitment-card.is-closed {
+      background:
+        radial-gradient(circle at top right, rgba(119, 184, 146, 0.16), transparent 34%),
+        rgba(16, 37, 28, 0.88);
+    }
+
+    .recruitment-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 12px;
+    }
+
+    .recruitment-header h3 {
+      margin: 0;
+      color: var(--green-dark);
+      font-size: 1.25rem;
+      line-height: 1.2;
+    }
+
+    .recruitment-status {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: var(--green-soft);
+      color: var(--green-dark);
+      font-size: 0.76rem;
+      font-weight: 900;
+      line-height: 1.15;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .recruitment-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .recruitment-note {
+      margin-top: 12px !important;
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: var(--green-pale);
+      border: 1px solid rgba(11, 47, 35, 0.08);
+      font-size: 0.92rem;
+      font-weight: 760;
+    }
+
+    body.dark-mode .recruitment-note {
+      background: rgba(119, 184, 146, 0.10);
+      border-color: rgba(220, 238, 227, 0.12);
+    }
+
+    .recruitment-actions {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .recruitment-link {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 9px 12px;
+      border-radius: 999px;
+      background: var(--green-main);
+      color: #ffffff;
+      border: 1px solid var(--green-main);
+      font-size: 0.84rem;
+      font-weight: 900;
+      line-height: 1.2;
+      text-align: center;
+      transition: transform 0.18s ease, background 0.18s ease, opacity 0.18s ease;
+    }
+
+    .recruitment-link:hover {
+      text-decoration: none;
+      transform: translateY(-2px);
+      background: #0b2f23;
+      color: #ffffff;
+    }
+
+    .recruitment-link.is-closed {
+      opacity: 0.58;
+      cursor: not-allowed;
+      background: var(--green-soft);
+      color: var(--green-dark);
+      border-color: rgba(11, 47, 35, 0.12);
+    }
+
+    .recruitment-link.is-closed.active {
+      opacity: 1;
+      background: var(--green-main);
+      color: #ffffff;
+    }
+
+    .recruitment-link.is-closed::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      left: 50%;
+      bottom: calc(100% + 10px);
+      z-index: 50;
+      transform: translateX(-50%) translateY(4px);
+      width: max-content;
+      max-width: 240px;
+      padding: 8px 10px;
+      border-radius: 12px;
+      background: #0b2f23;
+      color: #ffffff;
+      font-size: 0.76rem;
+      line-height: 1.3;
+      font-weight: 800;
+      opacity: 0;
+      pointer-events: none;
+      box-shadow: var(--shadow-soft);
+      transition: opacity 0.18s ease, transform 0.18s ease;
+    }
+
+    .recruitment-link.is-closed:hover::after,
+    .recruitment-link.is-closed:focus::after {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
     .training-master {
       padding: 32px;
       border-radius: 28px;
@@ -1681,6 +1850,7 @@
     body.a11y-high-contrast .supervision-card,
     body.a11y-high-contrast .axis-card,
     body.a11y-high-contrast .project-card,
+    body.a11y-high-contrast .recruitment-card,
     body.a11y-high-contrast .training-card,
     body.a11y-high-contrast .training-summary,
     body.a11y-high-contrast .training-master,
@@ -1926,6 +2096,17 @@
         align-items: center;
       }
 
+
+      .recruitment-grid,
+      .recruitment-actions {
+        grid-template-columns: 1fr;
+      }
+
+      .recruitment-header {
+        display: grid;
+        gap: 8px;
+      }
+
       .search-card {
         border-radius: 24px;
         grid-template-columns: 1fr;
@@ -2063,7 +2244,7 @@
         dyslexiaHelp: "Utilise une police plus simple et augmente les espacements.",
         reduceMotion: "Réduire les animations",
         reduceMotionHelp: "Limite les transitions, animations et effets de mouvement.",
-        nav: ["À propos", "Équipe", "Thèse", "Projets en collaboration", "Formations", "Publications", "Communications", "Contact"],
+        nav: ["À propos", "Équipe", "Thèse", "Participer", "Projets en collaboration", "Formations", "Publications", "Communications", "Contact"],
         heroLabel: "Portfolio académique",
         heroTitle: "Y a-t-il un espace-temps pour les odeurs ?",
         heroSubtitle: "Mécanismes d'intégration entre olfaction, vision et audition",
@@ -2109,6 +2290,14 @@
         collaborative: "Projet collaboratif",
         ongoing: "En cours",
         projectsInCollab: "Projets en collaboration",
+        recruitmentTitle: "Participer aux études",
+        recruitmentIntro: "Cet espace est dédié au recrutement des participants. Les études apparaissent ici avant ou pendant leur ouverture aux inscriptions.",
+        recruitmentLead: "Les projets ci-dessous ne sont pas encore accessibles : les inscriptions ne sont pas ouvertes pour le moment.",
+        recruitmentStatusClosed: "Inscriptions non ouvertes",
+        recruitmentClosedText: "Cette étude n'est pas encore accessible pour le moment. Les liens seront activés lorsque le recrutement sera ouvert.",
+        recruitmentButtonClosed: "Bientôt disponible",
+        recruitmentButtons: ["Questionnaire de recrutement", "Affiche de l'étude", "Fiche d'information", "Planning des créneaux"],
+        recruitmentActionLabels: ["Questionnaire", "Affiche", "Fiche info", "Planning"],
         trainingTitle: "Formations",
         trainingKicker: "Parcours doctoral",
         trainingSummaryTitle: "Total participation",
@@ -2164,7 +2353,7 @@
         dyslexiaHelp: "Uses a simpler font and increases spacing.",
         reduceMotion: "Reduce motion",
         reduceMotionHelp: "Limits transitions, animations, and motion effects.",
-        nav: ["About", "Team", "Thesis", "Featured projects", "Training", "Publications", "Communications", "Contact"],
+        nav: ["About", "Team", "Thesis", "Participate", "Featured projects", "Training", "Publications", "Communications", "Contact"],
         heroLabel: "Academic portfolio",
         heroTitle: "Is there a space-time for odors?",
         heroSubtitle: "Mechanisms of integration between olfaction, vision, and audition",
@@ -2210,6 +2399,14 @@
         collaborative: "Collaborative project",
         ongoing: "Ongoing",
         projectsInCollab: "Featured projects",
+        recruitmentTitle: "Participate in studies",
+        recruitmentIntro: "This area is dedicated to participant recruitment. Studies will appear here before or during registration periods.",
+        recruitmentLead: "The studies below are not accessible yet: registration is not currently open.",
+        recruitmentStatusClosed: "Registration not open",
+        recruitmentClosedText: "This study is not accessible yet. Links will be activated when recruitment opens.",
+        recruitmentButtonClosed: "Available soon",
+        recruitmentButtons: ["Recruitment questionnaire", "Study poster", "Information sheet", "Session scheduling"],
+        recruitmentActionLabels: ["Questionnaire", "Poster", "Info sheet", "Schedule"],
         trainingTitle: "Training",
         trainingKicker: "Doctoral pathway",
         trainingSummaryTitle: "Total participation",
@@ -2464,11 +2661,12 @@
       { key: "about", number: "01" },
       { key: "team", number: "02" },
       { key: "thesis", number: "03" },
-      { key: "side", number: "04" },
-      { key: "training", number: "05" },
-      { key: "publications", number: "06" },
-      { key: "communications", number: "07" },
-      { key: "contact", number: "08" }
+      { key: "recruitment", number: "04" },
+      { key: "side", number: "05" },
+      { key: "training", number: "06" },
+      { key: "publications", number: "07" },
+      { key: "communications", number: "08" },
+      { key: "contact", number: "09" }
     ];
 
     const accessibilityClasses = {
@@ -2540,6 +2738,7 @@
         about: data.aboutTitle,
         team: data.teamTitle,
         thesis: data.thesisTitle,
+        recruitment: data.recruitmentTitle,
         side: data.projectsInCollab,
         training: data.trainingTitle,
         publications: data.publications,
@@ -2565,6 +2764,42 @@
             ${data.buttons.map((label) => `<a href="#" class="project-link disabled">${escapeHtml(label)}</a>`).join("")}
           </div>
         </div>
+      `;
+    }
+
+
+
+    function recruitmentLinks(project, data) {
+      return `
+        <div class="recruitment-actions">
+          ${data.recruitmentButtons.map((label, index) => `
+            <a
+              href="#"
+              class="recruitment-link is-closed"
+              data-recruitment-closed
+              data-default-label="${escapeHtml(label)}"
+              data-closed-label="${escapeHtml(data.recruitmentButtonClosed)}"
+              data-tooltip="${escapeHtml(data.recruitmentClosedText)}"
+              aria-label="${escapeHtml(label)} — ${escapeHtml(project.name)}"
+            >${escapeHtml(label)}</a>
+          `).join("")}
+        </div>
+      `;
+    }
+
+    function recruitmentCard(project, data) {
+      const text = project[currentLanguage];
+
+      return `
+        <article class="recruitment-card is-closed" data-study-name="${escapeHtml(project.name)}">
+          <div class="recruitment-header">
+            <h3>${escapeHtml(project.name)}</h3>
+            <span class="recruitment-status">${escapeHtml(data.recruitmentStatusClosed)}</span>
+          </div>
+          <p>${escapeHtml(text.desc)}</p>
+          <p class="recruitment-note">${escapeHtml(data.recruitmentClosedText)}</p>
+          ${recruitmentLinks(project, data)}
+        </article>
       `;
     }
 
@@ -2777,8 +3012,18 @@
             </div>
           </section>
 
+          <section id="${sectionId("recruitment")}" class="reveal" data-section="recruitment">
+            ${sectionHeader("04", data.recruitmentTitle)}
+            <p class="lead recruitment-intro">${escapeHtml(data.recruitmentIntro)}</p>
+            <p class="recruitment-note">${escapeHtml(data.recruitmentLead)}</p>
+
+            <div class="recruitment-grid">
+              ${PROJECTS.filter((project) => !project.done).map((project) => recruitmentCard(project, data)).join("")}
+            </div>
+          </section>
+
           <section id="${sectionId("side")}" class="reveal" data-section="side">
-            ${sectionHeader("04", data.projectsInCollab)}
+            ${sectionHeader("05", data.projectsInCollab)}
 
             <details class="project-card">
               <summary class="project-summary">
@@ -2804,7 +3049,7 @@
           </section>
 
           <section id="${sectionId("training")}" class="reveal" data-section="training">
-            ${sectionHeader("05", data.trainingTitle)}
+            ${sectionHeader("06", data.trainingTitle)}
 
             <article class="training-summary">
               <span class="training-kicker">${escapeHtml(data.trainingKicker)}</span>
@@ -2825,7 +3070,7 @@
           </section>
 
           <section id="${sectionId("publications")}" class="reveal" data-section="publications">
-            ${sectionHeader("06", data.publications)}
+            ${sectionHeader("07", data.publications)}
 
             <div class="filter-controls" aria-label="${currentLanguage === "fr" ? "Filtres des publications" : "Publication filters"}">
               <button class="filter-button active" type="button" data-filter="all" data-label="${escapeHtml(data.all)}">${escapeHtml(data.all)}</button>
@@ -2857,7 +3102,7 @@
           </section>
 
           <section id="${sectionId("communications")}" class="reveal" data-section="communications">
-            ${sectionHeader("07", data.communications)}
+            ${sectionHeader("08", data.communications)}
 
             <div class="filter-controls" aria-label="${currentLanguage === "fr" ? "Filtres des communications" : "Communication filters"}">
               <button class="filter-button active" type="button" data-filter="all" data-label="${escapeHtml(data.all)}">${escapeHtml(data.all)}</button>
@@ -2889,7 +3134,7 @@
           </section>
 
           <section id="${sectionId("contact")}" class="reveal" data-section="contact">
-            ${sectionHeader("08", data.contact)}
+            ${sectionHeader("09", data.contact)}
 
             <div class="contact-box">
               <p class="contact-item">
@@ -3328,7 +3573,7 @@
       const query = normalizeSearchText(rawQuery);
       const resultBox = document.querySelector("[data-search-result]");
       const searchableItems = document.querySelectorAll(
-        ".team-card, .supervision-card, .project-card, .training-summary, .training-card, .publication-list li, .contact-item"
+        ".team-card, .supervision-card, .project-card, .recruitment-card, .training-summary, .training-card, .publication-list li, .contact-item"
       );
 
       clearSearchHighlights();
@@ -3414,12 +3659,18 @@
     }
 
     function updateDisabledProjectTooltips() {
-      const text = DATA[currentLanguage].unavailable;
+      const data = DATA[currentLanguage];
 
       document.querySelectorAll(".project-link.disabled").forEach((link) => {
-        link.dataset.tooltip = text;
+        link.dataset.tooltip = data.unavailable;
         link.setAttribute("aria-disabled", "true");
-        link.setAttribute("title", text);
+        link.setAttribute("title", data.unavailable);
+      });
+
+      document.querySelectorAll(".recruitment-link.is-closed").forEach((link) => {
+        link.dataset.tooltip = data.recruitmentClosedText;
+        link.setAttribute("aria-disabled", "true");
+        link.setAttribute("title", data.recruitmentClosedText);
       });
     }
 
@@ -3542,6 +3793,10 @@
         equipe: "team",
         thesis: "thesis",
         these: "thesis",
+        recruitment: "recruitment",
+        recrutement: "recruitment",
+        participer: "recruitment",
+        participate: "recruitment",
         side: "side",
         training: "training",
         formations: "training",
@@ -3664,6 +3919,20 @@
 
       document.querySelectorAll(".project-link.disabled").forEach((link) => {
         link.addEventListener("click", (event) => event.preventDefault());
+      });
+
+      document.querySelectorAll(".recruitment-link.is-closed").forEach((link) => {
+        link.addEventListener("click", (event) => {
+          event.preventDefault();
+          const defaultLabel = link.dataset.defaultLabel;
+          link.textContent = link.dataset.closedLabel;
+          link.classList.add("active");
+
+          window.setTimeout(() => {
+            link.textContent = defaultLabel;
+            link.classList.remove("active");
+          }, 1500);
+        });
       });
 
       updateDisabledProjectTooltips();
