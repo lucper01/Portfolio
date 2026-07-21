@@ -3600,7 +3600,6 @@
             ${sectionHeader("08", data.recruitmentTitle)}
             <p class="lead recruitment-intro">${escapeHtml(data.recruitmentIntro)}</p>
             <p class="recruitment-note">${escapeHtml(data.recruitmentLead)}</p>
-            <p class="recruitment-note recruitment-file-rule">${escapeHtml(data.recruitmentFileRule)}</p>
 
             <div class="recruitment-grid">
               ${PROJECTS.filter((project) => !project.done).map((project) => recruitmentCard(project, data)).join("")}
