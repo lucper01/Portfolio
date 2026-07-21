@@ -2447,6 +2447,56 @@
       }
     }
 
+
+    /* Boutons projets : ressources sur une ligne, participation séparée dessous */
+    .project-links {
+      display: grid !important;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin-top: 0;
+    }
+
+    .project-resource-links {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      width: 100%;
+    }
+
+    .project-resource-links .project-link {
+      width: 100%;
+      min-height: 42px;
+      text-align: center;
+    }
+
+    .project-participation-row {
+      display: flex;
+      justify-content: flex-start;
+      padding-top: 2px;
+    }
+
+    .project-participation-row .participate-link {
+      min-width: 190px;
+      min-height: 44px;
+      padding-inline: 18px;
+    }
+
+    @media (max-width: 760px) {
+      .project-resource-links {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .project-participation-row .participate-link {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .project-resource-links {
+        grid-template-columns: 1fr;
+      }
+    }
+
   </style>
 </head>
 
@@ -3068,16 +3118,21 @@
       return `
         <div class="project-details-content">
           <div class="project-links">
+            <div class="project-resource-links">
+              ${data.buttons.map((label) => `<a href="#" class="project-link disabled" data-tooltip="${escapeHtml(data.unavailable)}">${escapeHtml(label)}</a>`).join("")}
+            </div>
+
             ${!project.done ? `
-              <a
-                href="#${recruitmentAnchor}"
-                class="project-link participate-link"
-                data-participate-link="${escapeHtml(project.name)}"
-              >
-                ${escapeHtml(data.participateButton)}
-              </a>
+              <div class="project-participation-row">
+                <a
+                  href="#${recruitmentAnchor}"
+                  class="project-link participate-link"
+                  data-participate-link="${escapeHtml(project.name)}"
+                >
+                  ${escapeHtml(data.participateButton)}
+                </a>
+              </div>
             ` : ""}
-            ${data.buttons.map((label) => `<a href="#" class="project-link disabled" data-tooltip="${escapeHtml(data.unavailable)}">${escapeHtml(label)}</a>`).join("")}
           </div>
         </div>
       `;
