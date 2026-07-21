@@ -641,12 +641,14 @@
 
     .search-hidden { display: none !important; }
 
-    .search-focus {
+    .search-focus,
+    .recruitment-focus {
       outline: 3px solid var(--green-main);
       outline-offset: 4px;
     }
 
-    body.dark-mode .search-focus {
+    body.dark-mode .search-focus,
+    body.dark-mode .recruitment-focus {
       outline-color: #fbf7ed;
     }
 
@@ -1328,6 +1330,26 @@
       text-decoration: none;
       background: #0b2f23;
       color: #ffffff;
+    }
+
+    .project-link.participate-link {
+      background: #0b2f23;
+      border-color: #0b2f23;
+      color: #ffffff;
+      box-shadow: 0 10px 22px rgba(11, 47, 35, 0.18);
+    }
+
+    .project-link.participate-link:hover,
+    .project-link.participate-link:focus {
+      background: var(--green-main);
+      border-color: var(--green-main);
+      transform: translateY(-1px);
+    }
+
+    .project-link.participate-link::before {
+      content: "↘";
+      margin-right: 6px;
+      font-weight: 900;
     }
 
     .project-link.disabled {
@@ -2281,6 +2303,7 @@
         closeAll: "Tout fermer",
         viewProject: "Voir le projet",
         hideProject: "Masquer le projet",
+        participateButton: "Participer",
         role: "Rôle dans le projet :",
         unavailable: "Non disponible pour le moment",
         buttons: ["Protocole", "Données", "Code", "Supports"],
@@ -2390,6 +2413,7 @@
         closeAll: "Close all",
         viewProject: "View project",
         hideProject: "Hide project",
+        participateButton: "Participate",
         role: "Project role:",
         unavailable: "Not available yet",
         buttons: ["Protocol", "Data", "Code", "Materials"],
@@ -2715,6 +2739,15 @@
       return escapeHtml(value).replace(/\s([?!:;])/g, "&#160;$1");
     }
 
+    function slugifyAnchor(value) {
+      return String(value)
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-+|-+$/g, "");
+    }
+
     function normalizeSearchText(text) {
       return text
         .toLowerCase()
@@ -2757,10 +2790,21 @@
       `;
     }
 
-    function projectLinks(data) {
+    function projectLinks(project, data) {
+      const recruitmentAnchor = `${currentLanguage}-participate-${slugifyAnchor(project.name)}`;
+
       return `
         <div class="project-details-content">
           <div class="project-links">
+            ${!project.done ? `
+              <a
+                href="#${recruitmentAnchor}"
+                class="project-link participate-link"
+                data-participate-link="${escapeHtml(project.name)}"
+              >
+                ${escapeHtml(data.participateButton)}
+              </a>
+            ` : ""}
             ${data.buttons.map((label) => `<a href="#" class="project-link disabled">${escapeHtml(label)}</a>`).join("")}
           </div>
         </div>
@@ -2791,7 +2835,7 @@
       const text = project[currentLanguage];
 
       return `
-        <article class="recruitment-card is-closed" data-study-name="${escapeHtml(project.name)}">
+        <article class="recruitment-card is-closed" id="${currentLanguage}-participate-${slugifyAnchor(project.name)}" data-study-name="${escapeHtml(project.name)}">
           <div class="recruitment-header">
             <h3>${escapeHtml(project.name)}</h3>
             <span class="recruitment-status">${escapeHtml(data.recruitmentStatusClosed)}</span>
@@ -2824,7 +2868,7 @@
           <div class="project-body">
             <p>${escapeHtml(text.desc)}</p>
             <p class="project-role"><strong>${escapeHtml(data.role)}</strong> ${escapeHtml(text.role)}</p>
-            ${projectLinks(data)}
+            ${projectLinks(project, data)}
           </div>
         </details>
       `;
@@ -3674,6 +3718,36 @@
       });
     }
 
+
+    function handleParticipateLink(event, link) {
+      const projectName = link.dataset.participateLink;
+      const target = document.getElementById(`${currentLanguage}-participate-${slugifyAnchor(projectName)}`);
+
+      if (!target) {
+        return;
+      }
+
+      event.preventDefault();
+
+      document.querySelectorAll(".recruitment-focus").forEach((item) => {
+        item.classList.remove("recruitment-focus");
+      });
+
+      target.classList.add("recruitment-focus");
+
+      target.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+        inline: "nearest"
+      });
+
+      window.history.replaceState(null, "", `#${currentLanguage}-participate-${slugifyAnchor(projectName)}`);
+
+      window.setTimeout(() => {
+        target.classList.remove("recruitment-focus");
+      }, 1800);
+    }
+
     function openOrCloseAxisProjects(button) {
       const targetAxis = document.getElementById(button.dataset.axisTarget);
       if (!targetAxis) return;
@@ -3915,6 +3989,10 @@
 
       document.querySelectorAll("[data-axis-action]").forEach((button) => {
         button.addEventListener("click", () => openOrCloseAxisProjects(button));
+      });
+
+      document.querySelectorAll("[data-participate-link]").forEach((link) => {
+        link.addEventListener("click", (event) => handleParticipateLink(event, link));
       });
 
       document.querySelectorAll(".project-link.disabled").forEach((link) => {
