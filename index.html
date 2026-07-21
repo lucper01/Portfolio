@@ -921,6 +921,34 @@
       color: #ffffff;
     }
 
+
+    .recruitment-file-rule {
+      font-size: 0.9rem;
+      color: var(--green-dark);
+    }
+
+    .recruitment-link.is-available {
+      opacity: 1;
+      cursor: pointer;
+      background: var(--green-main);
+      color: #ffffff;
+      border-color: var(--green-main);
+      box-shadow: 0 10px 22px rgba(31, 111, 80, 0.18);
+    }
+
+    .recruitment-link.is-available::before {
+      content: "↗";
+      margin-right: 7px;
+      font-weight: 950;
+    }
+
+    .recruitment-link.is-available:hover,
+    .recruitment-link.is-available:focus {
+      background: #0b2f23;
+      border-color: #0b2f23;
+      color: #ffffff;
+    }
+
     .recruitment-link.is-closed {
       opacity: 0.58;
       cursor: not-allowed;
@@ -2645,6 +2673,10 @@
         recruitmentStatusClosed: "Inscriptions non ouvertes",
         recruitmentClosedText: "Cette étude n'est pas encore accessible pour le moment. Les liens seront activés lorsque le recrutement sera ouvert.",
         recruitmentButtonClosed: "Bientôt disponible",
+        recruitmentDocumentWaiting: "Document non déposé pour le moment",
+        recruitmentDocumentAvailable: "Document disponible",
+        recruitmentLinkPending: "Lien à ajouter plus tard",
+        recruitmentFileRule: "Pour activer automatiquement les boutons Affiche et Fiche d'information, déposer les fichiers dans assets/participer avec le format NOMETUDE_TypeDoc.extension, par exemple TWIXOLF_FicheInformation.pdf ou COBEX_Affiche.pdf.",
         recruitmentButtons: ["Questionnaire de recrutement", "Affiche de l'étude", "Fiche d'information", "Planning des créneaux"],
         recruitmentActionLabels: ["Questionnaire", "Affiche", "Fiche info", "Planning"],
         trainingTitle: "Formations",
@@ -2755,6 +2787,10 @@
         recruitmentStatusClosed: "Registration not open",
         recruitmentClosedText: "This study is not accessible yet. Links will be activated when recruitment opens.",
         recruitmentButtonClosed: "Available soon",
+        recruitmentDocumentWaiting: "Document not uploaded yet",
+        recruitmentDocumentAvailable: "Document available",
+        recruitmentLinkPending: "Link to be added later",
+        recruitmentFileRule: "To activate the Poster and Information sheet buttons automatically, upload files to assets/participer using the format STUDYNAME_DocumentType.extension, for example TWIXOLF_FicheInformation.pdf or COBEX_Affiche.pdf.",
         recruitmentButtons: ["Recruitment questionnaire", "Study poster", "Information sheet", "Session scheduling"],
         recruitmentActionLabels: ["Questionnaire", "Poster", "Info sheet", "Schedule"],
         trainingTitle: "Training",
@@ -3107,6 +3143,38 @@
       `;
     }
 
+
+    function recruitmentDocumentCandidates(projectName, documentType) {
+      const baseName = `${projectName}_${documentType}`;
+      const directory = "assets/participer";
+
+      const extensions = documentType === "Affiche"
+        ? ["pdf", "png", "jpg", "jpeg"]
+        : ["pdf", "docx"];
+
+      return extensions.map((extension) => `${directory}/${baseName}.${extension}`);
+    }
+
+    async function urlExists(url) {
+      try {
+        const response = await fetch(url, { method: "HEAD", cache: "no-store" });
+        return response.ok;
+      } catch {
+        return false;
+      }
+    }
+
+    async function findFirstExistingUrl(urls) {
+      for (const url of urls) {
+        if (await urlExists(url)) {
+          return url;
+        }
+      }
+
+      return null;
+    }
+
+
     function projectLinks(project, data) {
       if (!data) {
         data = project;
@@ -3141,19 +3209,56 @@
 
 
     function recruitmentLinks(project, data) {
+      const questionnaireLabel = data.recruitmentButtons[0];
+      const posterLabel = data.recruitmentButtons[1];
+      const infoLabel = data.recruitmentButtons[2];
+      const planningLabel = data.recruitmentButtons[3];
+
       return `
         <div class="recruitment-actions">
-          ${data.recruitmentButtons.map((label, index) => `
-            <a
-              href="#"
-              class="recruitment-link is-closed"
-              data-recruitment-closed
-              data-default-label="${escapeHtml(label)}"
-              data-closed-label="${escapeHtml(data.recruitmentButtonClosed)}"
-              data-tooltip="${escapeHtml(data.recruitmentClosedText)}"
-              aria-label="${escapeHtml(label)} — ${escapeHtml(project.name)}"
-            >${escapeHtml(label)}</a>
-          `).join("")}
+          <a
+            href="#"
+            class="recruitment-link is-closed"
+            data-recruitment-closed
+            data-default-label="${escapeHtml(questionnaireLabel)}"
+            data-closed-label="${escapeHtml(data.recruitmentButtonClosed)}"
+            data-tooltip="${escapeHtml(data.recruitmentLinkPending)}"
+            aria-label="${escapeHtml(questionnaireLabel)} — ${escapeHtml(project.name)}"
+          >${escapeHtml(questionnaireLabel)}</a>
+
+          <a
+            href="#"
+            class="recruitment-link is-closed"
+            data-doc-autolink
+            data-doc-candidates="${escapeHtml(recruitmentDocumentCandidates(project.name, "Affiche").join("|"))}"
+            data-default-label="${escapeHtml(posterLabel)}"
+            data-closed-label="${escapeHtml(data.recruitmentDocumentWaiting)}"
+            data-open-label="${escapeHtml(data.recruitmentDocumentAvailable)}"
+            data-tooltip="${escapeHtml(data.recruitmentDocumentWaiting)}"
+            aria-label="${escapeHtml(posterLabel)} — ${escapeHtml(project.name)}"
+          >${escapeHtml(posterLabel)}</a>
+
+          <a
+            href="#"
+            class="recruitment-link is-closed"
+            data-doc-autolink
+            data-doc-candidates="${escapeHtml(recruitmentDocumentCandidates(project.name, "FicheInformation").join("|"))}"
+            data-default-label="${escapeHtml(infoLabel)}"
+            data-closed-label="${escapeHtml(data.recruitmentDocumentWaiting)}"
+            data-open-label="${escapeHtml(data.recruitmentDocumentAvailable)}"
+            data-tooltip="${escapeHtml(data.recruitmentDocumentWaiting)}"
+            aria-label="${escapeHtml(infoLabel)} — ${escapeHtml(project.name)}"
+          >${escapeHtml(infoLabel)}</a>
+
+          <a
+            href="#"
+            class="recruitment-link is-closed"
+            data-recruitment-closed
+            data-default-label="${escapeHtml(planningLabel)}"
+            data-closed-label="${escapeHtml(data.recruitmentButtonClosed)}"
+            data-tooltip="${escapeHtml(data.recruitmentLinkPending)}"
+            aria-label="${escapeHtml(planningLabel)} — ${escapeHtml(project.name)}"
+          >${escapeHtml(planningLabel)}</a>
         </div>
       `;
     }
@@ -3495,6 +3600,7 @@
             ${sectionHeader("08", data.recruitmentTitle)}
             <p class="lead recruitment-intro">${escapeHtml(data.recruitmentIntro)}</p>
             <p class="recruitment-note">${escapeHtml(data.recruitmentLead)}</p>
+            <p class="recruitment-note recruitment-file-rule">${escapeHtml(data.recruitmentFileRule)}</p>
 
             <div class="recruitment-grid">
               ${PROJECTS.filter((project) => !project.done).map((project) => recruitmentCard(project, data)).join("")}
@@ -4028,6 +4134,40 @@
       }
     }
 
+
+    async function updateRecruitmentDocumentLinks() {
+      const links = Array.from(document.querySelectorAll("[data-doc-autolink]"));
+
+      await Promise.all(links.map(async (link) => {
+        const candidates = (link.dataset.docCandidates || "")
+          .split("|")
+          .map((url) => url.trim())
+          .filter(Boolean);
+
+        const availableUrl = await findFirstExistingUrl(candidates);
+
+        if (!availableUrl) {
+          link.href = "#";
+          link.classList.add("is-closed");
+          link.classList.remove("is-available");
+          link.removeAttribute("target");
+          link.removeAttribute("rel");
+          link.setAttribute("aria-disabled", "true");
+          link.dataset.tooltip = link.dataset.closedLabel;
+          return;
+        }
+
+        link.href = availableUrl;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.classList.remove("is-closed");
+        link.classList.add("is-available");
+        link.setAttribute("aria-disabled", "false");
+        link.dataset.tooltip = link.dataset.openLabel;
+      }));
+    }
+
+
     function updateDisabledProjectTooltips() {
       const data = DATA[currentLanguage];
 
@@ -4324,11 +4464,15 @@
         link.addEventListener("click", (event) => event.preventDefault());
       });
 
-      document.querySelectorAll(".recruitment-link.is-closed").forEach((link) => {
+      document.querySelectorAll(".recruitment-link").forEach((link) => {
         link.addEventListener("click", (event) => {
+          if (!link.classList.contains("is-closed")) {
+            return;
+          }
+
           event.preventDefault();
           const defaultLabel = link.dataset.defaultLabel;
-          link.textContent = link.dataset.closedLabel;
+          link.textContent = link.dataset.closedLabel || link.dataset.defaultLabel;
           link.classList.add("active");
 
           window.setTimeout(() => {
@@ -4337,6 +4481,8 @@
           }, 1500);
         });
       });
+
+      updateRecruitmentDocumentLinks();
 
       updateDisabledProjectTooltips();
       revealVisibleElements();
