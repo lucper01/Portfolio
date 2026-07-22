@@ -2981,6 +2981,55 @@
       }
     }
 
+
+    /* Accueil : menu principal visible en bas de la première zone */
+    header {
+      min-height: 100svh;
+      display: flex !important;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 82px 8% 0;
+    }
+
+    header .hero {
+      flex: 1 1 auto;
+      align-content: center;
+      padding: 34px 0 42px;
+    }
+
+    header nav.site-nav {
+      width: calc(100% + 16%);
+      margin-left: -8%;
+      margin-right: -8%;
+      margin-top: auto;
+      align-self: stretch;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      border-bottom: 0;
+      background: rgba(251, 247, 237, 0.96);
+    }
+
+    body.dark-mode header nav.site-nav {
+      background: rgba(7, 19, 15, 0.96);
+    }
+
+    @media (max-width: 850px) {
+      header {
+        min-height: auto;
+        padding: 112px 7% 0;
+      }
+
+      header .hero {
+        padding: 0 0 32px;
+      }
+
+      header nav.site-nav {
+        width: calc(100% + 14%);
+        margin-left: -7%;
+        margin-right: -7%;
+      }
+    }
+
   </style>
 </head>
 
@@ -3156,8 +3205,8 @@
         recruitmentFileRule: "Pour activer automatiquement les boutons Affiche et Fiche d'information, déposer les fichiers dans assets/participer avec le format NOMETUDE_TypeDoc.extension, par exemple TWIXOLF_FicheInformation.pdf ou COBEX_Affiche.pdf.",
         recruitmentButtons: ["Questionnaire de recrutement", "Affiche de l'étude", "Fiche d'information", "Planning des créneaux"],
         recruitmentActionLabels: ["Questionnaire", "Affiche", "Fiche info", "Planning"],
-        recruitmentActionsOpen: "Développer les liens",
-        recruitmentActionsClose: "Rétracter les liens",
+        recruitmentActionsOpen: "Plus d\'infos",
+        recruitmentActionsClose: "Rétracter",
         trainingTitle: "Formations",
         trainingKicker: "Parcours doctoral",
         trainingSummaryTitle: "Total participation",
@@ -3293,8 +3342,8 @@
         recruitmentFileRule: "To activate the Poster and Information sheet buttons automatically, upload files to assets/participer using the format STUDYNAME_DocumentType.extension, for example TWIXOLF_FicheInformation.pdf or COBEX_Affiche.pdf.",
         recruitmentButtons: ["Recruitment questionnaire", "Study poster", "Information sheet", "Session scheduling"],
         recruitmentActionLabels: ["Questionnaire", "Poster", "Info sheet", "Schedule"],
-        recruitmentActionsOpen: "Expand links",
-        recruitmentActionsClose: "Collapse links",
+        recruitmentActionsOpen: "More info",
+        recruitmentActionsClose: "Collapse",
         trainingTitle: "Training",
         trainingKicker: "Doctoral pathway",
         trainingSummaryTitle: "Total participation",
@@ -3887,7 +3936,6 @@
             <span class="recruitment-status status-${escapeHtml(status)}">${escapeHtml(getRecruitmentStatusLabel(project, data))}</span>
           </div>
           <p>${escapeHtml(text.desc)}</p>
-          <p class="recruitment-note">${escapeHtml(getRecruitmentStatusText(project, data))}</p>
 
           <details class="recruitment-action-panel">
             <summary>
@@ -4015,16 +4063,16 @@
               </div>
             </aside>
           </div>
-        </header>
 
-        <nav class="site-nav" aria-label="${currentLanguage === "fr" ? "Navigation principale" : "Main navigation"}">
+          <nav class="site-nav" aria-label="${currentLanguage === "fr" ? "Navigation principale" : "Main navigation"}">
           <div class="nav-inner">
             <button class="nav-toggle" type="button" data-nav-toggle>Menu</button>
             <div class="nav-links">
               ${SECTIONS.map((section, index) => `<a href="#${sectionId(section.key)}" data-section-key="${section.key}">${escapeHtml(data.nav[index])}</a>`).join("")}
             </div>
           </div>
-        </nav>
+          </nav>
+        </header>
 
         <aside class="side-progress" aria-label="${currentLanguage === "fr" ? "Navigation latérale" : "Side navigation"}">
           ${SECTIONS.map((section, index) => `<a href="#${sectionId(section.key)}" data-section-key="${section.key}"><span>${section.number}</span> ${escapeHtml(data.nav[index])}</a>`).join("")}
