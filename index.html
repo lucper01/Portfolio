@@ -2525,6 +2525,125 @@
       }
     }
 
+
+    /* ============================================================
+       Recrutement : statuts, liens futurs et confort visuel final.
+       ============================================================ */
+
+    .recruitment-grid {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      align-items: stretch;
+    }
+
+    .recruitment-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+    }
+
+    .recruitment-card-kicker {
+      display: inline-flex;
+      width: fit-content;
+      margin-bottom: 6px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: rgba(31, 111, 80, 0.10);
+      color: var(--green-main);
+      font-size: 0.72rem;
+      font-weight: 950;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .recruitment-status {
+      box-shadow: inset 0 0 0 1px rgba(11, 47, 35, 0.08);
+    }
+
+    .recruitment-status.status-closed {
+      background: rgba(95, 111, 101, 0.12);
+      color: var(--muted);
+    }
+
+    .recruitment-status.status-soon {
+      background: rgba(119, 184, 146, 0.20);
+      color: var(--green-dark);
+    }
+
+    .recruitment-status.status-open {
+      background: var(--green-main);
+      color: #ffffff;
+    }
+
+    .recruitment-status.status-full {
+      background: #fbf7ed;
+      color: #8a5a00;
+    }
+
+    .recruitment-status.status-finished {
+      background: rgba(11, 47, 35, 0.12);
+      color: var(--green-dark);
+    }
+
+    .recruitment-card.status-open {
+      border-color: var(--green-main) !important;
+      box-shadow: 0 18px 44px rgba(31, 111, 80, 0.18);
+    }
+
+    .recruitment-card.status-soon {
+      border-style: solid;
+    }
+
+    .recruitment-card.status-closed,
+    .recruitment-card.status-full,
+    .recruitment-card.status-finished {
+      border-style: dashed;
+    }
+
+    .recruitment-actions {
+      margin-top: auto;
+      padding-top: 18px;
+    }
+
+    .recruitment-link {
+      letter-spacing: -0.01em;
+    }
+
+    .axis-projects,
+    .publication-list,
+    .training-accordion,
+    .supervision-grid {
+      align-items: stretch;
+    }
+
+    .project-card,
+    .training-card,
+    .publication-list li {
+      min-height: 100%;
+    }
+
+    .project-card[open] {
+      transform: translateY(-2px);
+    }
+
+    @media (min-width: 901px) {
+      .project-resource-links {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        width: 100%;
+      }
+
+      .project-resource-links .project-link {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .recruitment-status {
+        white-space: normal;
+      }
+    }
+
   </style>
 </head>
 
@@ -2668,10 +2787,24 @@
         ongoing: "En cours",
         projectsInCollab: "Projets en collaboration",
         recruitmentTitle: "Participer aux études",
-        recruitmentIntro: "Cet espace est dédié au recrutement des participants. Les études apparaissent ici avant ou pendant leur ouverture aux inscriptions.",
-        recruitmentLead: "Les projets ci-dessous ne sont pas encore accessibles : les inscriptions ne sont pas ouvertes pour le moment.",
+        recruitmentIntro: "Retrouvez ici les études qui pourront accueillir des participants, avec les documents utiles et, plus tard, les liens d’inscription et de prise de rendez-vous.",
+        recruitmentLead: "Les études listées ici ne sont pas toutes ouvertes au recrutement. Leur statut indique si les inscriptions sont disponibles, à venir, complètes ou terminées.",
         recruitmentStatusClosed: "Inscriptions non ouvertes",
-        recruitmentClosedText: "Cette étude n'est pas encore accessible pour le moment. Les liens seront activés lorsque le recrutement sera ouvert.",
+        recruitmentStatusLabels: {
+          closed: "Inscriptions non ouvertes",
+          soon: "Pré-recrutement bientôt disponible",
+          open: "Recrutement ouvert",
+          full: "Complet",
+          finished: "Étude terminée"
+        },
+        recruitmentStatusTexts: {
+          closed: "Les inscriptions ne sont pas encore ouvertes. Les documents disponibles peuvent déjà être consultés.",
+          soon: "Le pré-recrutement ouvrira bientôt. Les documents seront ajoutés progressivement.",
+          open: "Le recrutement est ouvert. Les documents et les liens actifs sont disponibles ci-dessous.",
+          full: "Les créneaux sont actuellement complets. De nouveaux créneaux pourront être ajoutés plus tard.",
+          finished: "Cette étude est terminée et n'accepte plus de nouvelles participations."
+        },
+        recruitmentClosedText: "Les inscriptions ne sont pas encore ouvertes. Les documents disponibles peuvent déjà être consultés.",
         recruitmentButtonClosed: "Bientôt disponible",
         recruitmentDocumentWaiting: "Document non déposé pour le moment",
         recruitmentDocumentAvailable: "Document disponible",
@@ -2785,7 +2918,21 @@
         recruitmentIntro: "This area is dedicated to participant recruitment. Studies will appear here before or during registration periods.",
         recruitmentLead: "The studies below are not accessible yet: registration is not currently open.",
         recruitmentStatusClosed: "Registration not open",
-        recruitmentClosedText: "This study is not accessible yet. Links will be activated when recruitment opens.",
+        recruitmentStatusLabels: {
+          closed: "Registration not open",
+          soon: "Pre-recruitment opening soon",
+          open: "Recruitment open",
+          full: "Fully booked",
+          finished: "Study completed"
+        },
+        recruitmentStatusTexts: {
+          closed: "Registration is not open yet. Available documents can already be consulted.",
+          soon: "Pre-recruitment will open soon. Documents will be added progressively.",
+          open: "Recruitment is open. Available documents and active links are listed below.",
+          full: "All current slots are booked. New slots may be added later.",
+          finished: "This study is completed and no longer accepts new participation."
+        },
+        recruitmentClosedText: "Registration is not open yet. Available documents can already be consulted.",
         recruitmentButtonClosed: "Available soon",
         recruitmentDocumentWaiting: "Document not uploaded yet",
         recruitmentDocumentAvailable: "Document available",
@@ -2961,6 +3108,18 @@
         }
       }
     ];
+
+
+    const RECRUITMENT_CONFIG = {
+      TWIXOLF: { status: "closed", questionnaire: "", planning: "" },
+      SOFT: { status: "closed", questionnaire: "", planning: "" },
+      SORBET: { status: "closed", questionnaire: "", planning: "" },
+      OASIS: { status: "closed", questionnaire: "", planning: "" },
+      SOLAR: { status: "closed", questionnaire: "", planning: "" },
+      COBEX: { status: "closed", questionnaire: "", planning: "" },
+      BRAUD: { status: "closed", questionnaire: "", planning: "" },
+      BRAUDOLF: { status: "closed", questionnaire: "", planning: "" }
+    };
 
     const TRAININGS = [
       {
@@ -3175,6 +3334,33 @@
     }
 
 
+    function getRecruitmentConfig(project) {
+      const defaultStatus = project.done ? "finished" : "closed";
+
+      return {
+        status: defaultStatus,
+        questionnaire: "",
+        planning: "",
+        ...(RECRUITMENT_CONFIG[project.name] || {})
+      };
+    }
+
+    function getRecruitmentStatusLabel(project, data) {
+      const status = getRecruitmentConfig(project).status;
+      return data.recruitmentStatusLabels?.[status] || data.recruitmentStatusClosed;
+    }
+
+    function getRecruitmentStatusText(project, data) {
+      const status = getRecruitmentConfig(project).status;
+      return data.recruitmentStatusTexts?.[status] || data.recruitmentClosedText;
+    }
+
+    function getRecruitmentFutureLink(project, key) {
+      const value = getRecruitmentConfig(project)[key];
+      return typeof value === "string" ? value.trim() : "";
+    }
+
+
     function projectLinks(project, data) {
       if (!data) {
         data = project;
@@ -3213,16 +3399,18 @@
       const posterLabel = data.recruitmentButtons[1];
       const infoLabel = data.recruitmentButtons[2];
       const planningLabel = data.recruitmentButtons[3];
+      const questionnaireUrl = getRecruitmentFutureLink(project, "questionnaire");
+      const planningUrl = getRecruitmentFutureLink(project, "planning");
 
       return `
         <div class="recruitment-actions">
           <a
-            href="#"
-            class="recruitment-link is-closed"
-            data-recruitment-closed
+            href="${escapeHtml(questionnaireUrl || "#")}"
+            class="recruitment-link ${questionnaireUrl ? "is-available" : "is-closed"}"
+            ${questionnaireUrl ? `target="_blank" rel="noopener noreferrer"` : `data-recruitment-closed`}
             data-default-label="${escapeHtml(questionnaireLabel)}"
             data-closed-label="${escapeHtml(data.recruitmentButtonClosed)}"
-            data-tooltip="${escapeHtml(data.recruitmentLinkPending)}"
+            data-tooltip="${escapeHtml(questionnaireUrl ? data.recruitmentDocumentAvailable : data.recruitmentLinkPending)}"
             aria-label="${escapeHtml(questionnaireLabel)} — ${escapeHtml(project.name)}"
           >${escapeHtml(questionnaireLabel)}</a>
 
@@ -3251,12 +3439,12 @@
           >${escapeHtml(infoLabel)}</a>
 
           <a
-            href="#"
-            class="recruitment-link is-closed"
-            data-recruitment-closed
+            href="${escapeHtml(planningUrl || "#")}"
+            class="recruitment-link ${planningUrl ? "is-available" : "is-closed"}"
+            ${planningUrl ? `target="_blank" rel="noopener noreferrer"` : `data-recruitment-closed`}
             data-default-label="${escapeHtml(planningLabel)}"
             data-closed-label="${escapeHtml(data.recruitmentButtonClosed)}"
-            data-tooltip="${escapeHtml(data.recruitmentLinkPending)}"
+            data-tooltip="${escapeHtml(planningUrl ? data.recruitmentDocumentAvailable : data.recruitmentLinkPending)}"
             aria-label="${escapeHtml(planningLabel)} — ${escapeHtml(project.name)}"
           >${escapeHtml(planningLabel)}</a>
         </div>
@@ -3265,15 +3453,20 @@
 
     function recruitmentCard(project, data) {
       const text = project[currentLanguage];
+      const config = getRecruitmentConfig(project);
+      const status = config.status;
 
       return `
-        <article class="recruitment-card is-closed" id="${currentLanguage}-participate-${slug(project.name)}" data-study-name="${escapeHtml(project.name)}">
+        <article class="recruitment-card status-${escapeHtml(status)}" id="${currentLanguage}-participate-${slug(project.name)}" data-study-name="${escapeHtml(project.name)}" data-recruitment-status="${escapeHtml(status)}">
           <div class="recruitment-header">
-            <h3>${escapeHtml(project.name)}</h3>
-            <span class="recruitment-status">${escapeHtml(data.recruitmentStatusClosed)}</span>
+            <div>
+              <span class="recruitment-card-kicker">${currentLanguage === "fr" ? "Étude" : "Study"}</span>
+              <h3>${escapeHtml(project.name)}</h3>
+            </div>
+            <span class="recruitment-status status-${escapeHtml(status)}">${escapeHtml(getRecruitmentStatusLabel(project, data))}</span>
           </div>
           <p>${escapeHtml(text.desc)}</p>
-          <p class="recruitment-note">${escapeHtml(data.recruitmentClosedText)}</p>
+          <p class="recruitment-note">${escapeHtml(getRecruitmentStatusText(project, data))}</p>
           ${recruitmentLinks(project, data)}
         </article>
       `;
