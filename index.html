@@ -3533,6 +3533,130 @@
       }
     }
 
+
+    /* Panneau Personnalisation : plus compact, sans débordement sur la photo */
+    .customization-panel {
+      width: min(310px, calc(100vw - 120px)) !important;
+      max-height: min(520px, calc(100vh - 150px)) !important;
+      padding: 13px !important;
+      border-radius: 20px !important;
+      right: 72px !important;
+      top: 96px !important;
+    }
+
+    .customization-header {
+      margin-bottom: 4px !important;
+    }
+
+    .customization-header h2 {
+      font-size: 1.02rem !important;
+      gap: 8px !important;
+    }
+
+    .customization-icon,
+    .accessibility-logo {
+      width: 25px !important;
+      height: 25px !important;
+      font-size: 0.82rem !important;
+    }
+
+    .customization-block {
+      padding-top: 9px !important;
+      margin-top: 9px !important;
+    }
+
+    .customization-block h3 {
+      margin-bottom: 7px !important;
+      font-size: 0.88rem !important;
+    }
+
+    .panel-button-row {
+      gap: 6px !important;
+    }
+
+    .panel-button-row button {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 10px !important;
+      min-height: 34px;
+      font-size: 0.86rem;
+    }
+
+    .accessibility-options {
+      gap: 7px !important;
+    }
+
+    .accessibility-option {
+      padding: 8px 9px !important;
+      border-radius: 13px !important;
+      gap: 8px !important;
+    }
+
+    .accessibility-option strong {
+      font-size: 0.85rem;
+      line-height: 1.18;
+    }
+
+    .accessibility-option small {
+      font-size: 0.76rem;
+      line-height: 1.25;
+    }
+
+    .accessibility-option input {
+      margin-top: 2px;
+    }
+
+    .flag-icon {
+      width: 22px;
+      height: 15px;
+      flex: 0 0 22px;
+      display: inline-block;
+      border-radius: 3px;
+      overflow: hidden;
+      box-shadow:
+        0 0 0 1px rgba(11, 47, 35, 0.22),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.24);
+    }
+
+    .flag-fr {
+      background: linear-gradient(
+        90deg,
+        #0055a4 0 33.333%,
+        #ffffff 33.333% 66.666%,
+        #ef4135 66.666% 100%
+      );
+    }
+
+    .flag-gb {
+      background:
+        linear-gradient(0deg, transparent 38%, #ffffff 38% 44%, #c8102e 44% 56%, #ffffff 56% 62%, transparent 62%),
+        linear-gradient(90deg, transparent 38%, #ffffff 38% 44%, #c8102e 44% 56%, #ffffff 56% 62%, transparent 62%),
+        linear-gradient(26deg, transparent 43%, #ffffff 43% 48%, #c8102e 48% 53%, #ffffff 53% 58%, transparent 58%),
+        linear-gradient(-26deg, transparent 43%, #ffffff 43% 48%, #c8102e 48% 53%, #ffffff 53% 58%, transparent 58%),
+        #012169;
+    }
+
+    @media (max-width: 850px) {
+      .customization-panel {
+        width: min(310px, calc(100vw - 44px)) !important;
+        max-height: min(500px, calc(100vh - 135px)) !important;
+        right: 22px !important;
+        left: auto !important;
+        top: 94px !important;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .customization-panel {
+        width: calc(100vw - 36px) !important;
+        max-height: min(480px, calc(100vh - 125px)) !important;
+        left: 18px !important;
+        right: 18px !important;
+        top: 88px !important;
+      }
+    }
+
   </style>
 </head>
 
@@ -3567,13 +3691,11 @@
       <button class="accessibility-close" type="button" data-accessibility-close aria-label="Fermer">×</button>
     </div>
 
-    <p class="accessibility-intro" data-i18n="customizeIntro">Regroupez ici la langue, l'apparence et les options d'accessibilité du portfolio.</p>
-
     <div class="customization-block">
       <h3 data-i18n="language">Langue</h3>
       <div class="panel-button-row" aria-label="Language switcher">
-        <button type="button" data-switch-lang="fr" class="active"><span aria-hidden="true">🇫🇷</span> FR</button>
-        <button type="button" data-switch-lang="en"><span aria-hidden="true">🇬🇧</span> EN</button>
+        <button type="button" data-switch-lang="fr" class="active"><span class="flag-icon flag-fr" aria-hidden="true"></span> FR</button>
+        <button type="button" data-switch-lang="en"><span class="flag-icon flag-gb" aria-hidden="true"></span> EN</button>
       </div>
     </div>
 
@@ -3641,7 +3763,6 @@
         shareLabel: "Partager",
         copiedLabel: "Lien copié",
         customize: "Personnalisation",
-        customizeIntro: "Regroupez ici la langue, l'apparence et les options d'accessibilité du portfolio.",
         language: "Langue",
         appearance: "Apparence",
         themeDark: "Sombre",
@@ -3782,7 +3903,6 @@
         shareLabel: "Share",
         copiedLabel: "Link copied",
         customize: "Customize",
-        customizeIntro: "Language, appearance, and accessibility options are grouped here.",
         language: "Language",
         appearance: "Appearance",
         themeDark: "Dark",
