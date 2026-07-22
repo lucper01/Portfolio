@@ -2872,6 +2872,115 @@
       }
     }
 
+
+    /* Section Participer : volet de boutons rétractable */
+    .recruitment-action-panel {
+      margin-top: auto;
+      padding-top: 16px;
+    }
+
+    .recruitment-action-panel summary {
+      list-style: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 46px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(31, 111, 80, 0.10);
+      color: var(--green-dark);
+      border: 1px solid rgba(31, 111, 80, 0.18);
+      font-weight: 950;
+      cursor: pointer;
+      transition: transform 0.18s ease, background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+    }
+
+    .recruitment-action-panel summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .recruitment-action-panel summary::before {
+      content: "+";
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: var(--green-main);
+      color: #ffffff;
+      font-weight: 950;
+      line-height: 1;
+      transition: transform 0.18s ease;
+    }
+
+    .recruitment-action-panel summary:hover,
+    .recruitment-action-panel summary:focus {
+      transform: translateY(-1px);
+      background: var(--green-main);
+      border-color: var(--green-main);
+      color: #ffffff;
+    }
+
+    .recruitment-action-panel[open] summary {
+      background: #0b2f23;
+      border-color: #0b2f23;
+      color: #ffffff;
+    }
+
+    .recruitment-action-panel[open] summary::before {
+      content: "-";
+      transform: rotate(180deg);
+    }
+
+    .recruitment-action-panel .panel-label-close {
+      display: none;
+    }
+
+    .recruitment-action-panel[open] .panel-label-open {
+      display: none;
+    }
+
+    .recruitment-action-panel[open] .panel-label-close {
+      display: inline;
+    }
+
+    .recruitment-action-panel .recruitment-actions {
+      margin-top: 14px;
+      padding-top: 0;
+      animation: recruitmentPanelOpen 0.18s ease both;
+    }
+
+    @keyframes recruitmentPanelOpen {
+      from {
+        opacity: 0;
+        transform: translateY(-6px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    body.dark-mode .recruitment-action-panel summary {
+      background: rgba(119, 184, 146, 0.12);
+      color: #dceee3;
+      border-color: rgba(220, 238, 227, 0.14);
+    }
+
+    body.dark-mode .recruitment-action-panel[open] summary {
+      background: #dceee3;
+      border-color: #dceee3;
+      color: #0b2f23;
+    }
+
+    @media (max-width: 620px) {
+      .recruitment-action-panel summary {
+        width: 100%;
+      }
+    }
+
   </style>
 </head>
 
@@ -3047,6 +3156,8 @@
         recruitmentFileRule: "Pour activer automatiquement les boutons Affiche et Fiche d'information, déposer les fichiers dans assets/participer avec le format NOMETUDE_TypeDoc.extension, par exemple TWIXOLF_FicheInformation.pdf ou COBEX_Affiche.pdf.",
         recruitmentButtons: ["Questionnaire de recrutement", "Affiche de l'étude", "Fiche d'information", "Planning des créneaux"],
         recruitmentActionLabels: ["Questionnaire", "Affiche", "Fiche info", "Planning"],
+        recruitmentActionsOpen: "Développer les liens",
+        recruitmentActionsClose: "Rétracter les liens",
         trainingTitle: "Formations",
         trainingKicker: "Parcours doctoral",
         trainingSummaryTitle: "Total participation",
@@ -3182,6 +3293,8 @@
         recruitmentFileRule: "To activate the Poster and Information sheet buttons automatically, upload files to assets/participer using the format STUDYNAME_DocumentType.extension, for example TWIXOLF_FicheInformation.pdf or COBEX_Affiche.pdf.",
         recruitmentButtons: ["Recruitment questionnaire", "Study poster", "Information sheet", "Session scheduling"],
         recruitmentActionLabels: ["Questionnaire", "Poster", "Info sheet", "Schedule"],
+        recruitmentActionsOpen: "Expand links",
+        recruitmentActionsClose: "Collapse links",
         trainingTitle: "Training",
         trainingKicker: "Doctoral pathway",
         trainingSummaryTitle: "Total participation",
@@ -3775,7 +3888,14 @@
           </div>
           <p>${escapeHtml(text.desc)}</p>
           <p class="recruitment-note">${escapeHtml(getRecruitmentStatusText(project, data))}</p>
-          ${recruitmentLinks(project, data)}
+
+          <details class="recruitment-action-panel">
+            <summary>
+              <span class="panel-label panel-label-open">${escapeHtml(data.recruitmentActionsOpen)}</span>
+              <span class="panel-label panel-label-close">${escapeHtml(data.recruitmentActionsClose)}</span>
+            </summary>
+            ${recruitmentLinks(project, data)}
+          </details>
         </article>
       `;
     }
