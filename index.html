@@ -2803,6 +2803,75 @@
       }
     }
 
+
+    /* Menu latéral : invisible dans la zone d'accueil avec la photo */
+    .side-progress {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translateY(-50%) translateX(18px);
+      transition:
+        opacity 0.22s ease,
+        visibility 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    body.show-side-progress .side-progress {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateY(-50%) translateX(0);
+    }
+
+    @media (max-width: 1180px) {
+      .side-progress {
+        display: none !important;
+      }
+    }
+
+
+    /* Barre de recherche : centrée et plus étroite pour éviter les boutons fixes */
+    .portfolio-search {
+      width: min(700px, calc(100vw - 520px));
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .search-card {
+      width: 100%;
+    }
+
+    @media (max-width: 1180px) {
+      .portfolio-search {
+        width: min(760px, calc(100vw - 40px));
+        max-width: 760px;
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .portfolio-search {
+        position: relative;
+        top: auto;
+        width: calc(100vw - 28px);
+        margin-top: 14px;
+      }
+
+      .search-card {
+        border-radius: 24px;
+        grid-template-columns: minmax(0, 1fr) auto auto;
+      }
+
+      .search-nav-button,
+      .search-card [data-search-clear] {
+        display: none;
+      }
+    }
+
   </style>
 </head>
 
@@ -4210,6 +4279,23 @@
       activeLink.style.setProperty("--section-progress", `${Math.round(progress * 100)}%`);
     }
 
+
+    function updateSideProgressVisibility() {
+      const hero = document.getElementById(`${currentLanguage}-top`);
+      const sideProgress = document.querySelector(".side-progress");
+
+      if (!hero || !sideProgress) {
+        document.body.classList.remove("show-side-progress");
+        return;
+      }
+
+      const heroRect = hero.getBoundingClientRect();
+      const shouldShow = heroRect.bottom <= 80;
+
+      document.body.classList.toggle("show-side-progress", shouldShow);
+      sideProgress.setAttribute("aria-hidden", String(!shouldShow));
+    }
+
     function updateStickySearchDensity() {
       document.body.classList.toggle("search-compact", window.scrollY > 220);
     }
@@ -4931,6 +5017,7 @@
       updateRecruitmentDocumentLinks();
 
       updateDisabledProjectTooltips();
+      updateSideProgressVisibility();
       revealVisibleElements();
       updateActiveNavigation(currentSectionKey);
     }
@@ -4983,16 +5070,21 @@
       revealVisibleElements();
       detectCurrentSection();
       updateStickySearchDensity();
+      updateSideProgressVisibility();
       updateSectionProgressIndicator();
       backToTopButton.classList.toggle("visible", window.scrollY > 500);
     });
 
-    window.addEventListener("resize", revealVisibleElements);
+    window.addEventListener("resize", () => {
+      revealVisibleElements();
+      updateSideProgressVisibility();
+    });
 
     window.addEventListener("load", () => {
       revealVisibleElements();
       detectCurrentSection();
       updateStickySearchDensity();
+      updateSideProgressVisibility();
       updateSectionProgressIndicator();
       updateAllFilterCounts();
       updateDisabledProjectTooltips();
