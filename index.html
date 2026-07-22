@@ -2804,6 +2804,48 @@
       }
     }
 
+
+    /* Anti-chevauchement : le bandeau sticky passe sous les boutons fixes */
+    nav.site-nav {
+      top: 72px;
+    }
+
+    .portfolio-search {
+      top: 132px;
+    }
+
+    main > section {
+      scroll-margin-top: 210px;
+    }
+
+    .top-controls {
+      max-width: min(460px, calc(100vw - 36px));
+    }
+
+    @media (max-width: 900px) {
+      nav.site-nav {
+        top: 104px;
+      }
+
+      .portfolio-search {
+        top: 164px;
+      }
+
+      main > section {
+        scroll-margin-top: 230px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      nav.site-nav {
+        top: 112px;
+      }
+
+      .portfolio-search {
+        top: 172px;
+      }
+    }
+
   </style>
 </head>
 
@@ -2951,10 +2993,10 @@
         recruitmentLead: "Les études listées ici ne sont pas toutes ouvertes au recrutement. Leur statut indique si les inscriptions sont disponibles, à venir, complètes ou terminées.",
         recruitmentHowTitle: "Comment participer ?",
         recruitmentHowSteps: [
-          "Consultez les études et vérifiez leur statut.",
-          "Lisez l'affiche et la fiche d'information lorsque les documents sont disponibles.",
-          "Remplissez le questionnaire de recrutement quand il est ouvert.",
-          "Choisissez ensuite un créneau d'expérience lorsque le planning est accessible."
+          "Consultez les études proposées.",
+          "Lisez l'affiche et la fiche d'information.",
+          "Remplissez le questionnaire de recrutement.",
+          "Choisissez un créneau d'expérience."
         ],
         recruitmentStatusClosed: "Inscriptions non ouvertes",
         recruitmentStatusLabels: {
@@ -3086,10 +3128,10 @@
         recruitmentLead: "The studies below are not accessible yet: registration is not currently open.",
         recruitmentHowTitle: "How to participate?",
         recruitmentHowSteps: [
-          "Browse the available studies and check their status.",
-          "Read the poster and information sheet when documents are available.",
-          "Complete the recruitment questionnaire when it opens.",
-          "Then choose an experimental session when scheduling is available."
+          "Browse the proposed studies.",
+          "Read the poster and information sheet.",
+          "Complete the recruitment questionnaire.",
+          "Choose an experimental session."
         ],
         recruitmentStatusClosed: "Registration not open",
         recruitmentStatusLabels: {
@@ -3441,6 +3483,13 @@
     let currentSearchOccurrenceCount = 0;
     let feedbackTimeout = null;
     let shareTimeout = null;
+
+    const navigationEntry = performance.getEntriesByType("navigation")[0];
+    const shouldResetScrollOnRefresh = navigationEntry?.type === "reload";
+
+    if ("scrollRestoration" in history) {
+      history.scrollRestoration = "manual";
+    }
 
     const app = document.getElementById("app");
     const languageButtons = document.querySelectorAll("[data-switch-lang]");
@@ -4972,10 +5021,14 @@
       updateDisabledProjectTooltips();
     });
 
-    const initialHashState = getInitialStateFromHash();
+    const initialHashState = shouldResetScrollOnRefresh ? null : getInitialStateFromHash();
     const savedTheme = localStorage.getItem("portfolio-theme");
     const savedLanguage = localStorage.getItem("portfolio-language");
     const initialLanguage = initialHashState?.language || (savedLanguage === "en" ? "en" : "fr");
+
+    if (shouldResetScrollOnRefresh && window.location.hash) {
+      history.replaceState(null, "", window.location.pathname + window.location.search);
+    }
 
     currentLanguage = initialLanguage;
     currentSectionKey = initialHashState?.sectionKey || "top";
@@ -4984,7 +5037,18 @@
     setLanguage(initialLanguage, false, false);
     applyAccessibilitySettings(loadAccessibilitySettings(), false);
 
-    if (initialHashState?.sectionKey && initialHashState.sectionKey !== "top") {
+    if (shouldResetScrollOnRefresh) {
+      const forceTop = () => {
+        currentSectionKey = "top";
+        window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+        updateActiveNavigation("top");
+      };
+
+      forceTop();
+      requestAnimationFrame(forceTop);
+      window.setTimeout(forceTop, 120);
+      window.setTimeout(forceTop, 350);
+    } else if (initialHashState?.sectionKey && initialHashState.sectionKey !== "top") {
       window.setTimeout(() => {
         document.getElementById(sectionId(initialHashState.sectionKey))?.scrollIntoView({ behavior: "smooth", block: "start" });
       }, 100);
