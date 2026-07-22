@@ -393,8 +393,7 @@
     }
 
     nav.site-nav {
-      position: sticky;
-      top: 0;
+      position: relative;
       z-index: 20;
       padding: 10px 6%;
       background: rgba(251, 247, 237, 0.94);
@@ -534,7 +533,7 @@
 
     .portfolio-search {
       position: sticky;
-      top: 58px;
+      top: 0;
       z-index: 18;
       max-width: var(--page-width);
       margin: 18px auto 0;
@@ -2804,48 +2803,6 @@
       }
     }
 
-
-    /* Anti-chevauchement : le bandeau sticky passe sous les boutons fixes */
-    nav.site-nav {
-      top: 72px;
-    }
-
-    .portfolio-search {
-      top: 132px;
-    }
-
-    main > section {
-      scroll-margin-top: 210px;
-    }
-
-    .top-controls {
-      max-width: min(460px, calc(100vw - 36px));
-    }
-
-    @media (max-width: 900px) {
-      nav.site-nav {
-        top: 104px;
-      }
-
-      .portfolio-search {
-        top: 164px;
-      }
-
-      main > section {
-        scroll-margin-top: 230px;
-      }
-    }
-
-    @media (max-width: 560px) {
-      nav.site-nav {
-        top: 112px;
-      }
-
-      .portfolio-search {
-        top: 172px;
-      }
-    }
-
   </style>
 </head>
 
@@ -3007,13 +2964,13 @@
           finished: "Étude terminée"
         },
         recruitmentStatusTexts: {
-          closed: "Les inscriptions ne sont pas encore ouvertes. Les documents disponibles peuvent déjà être consultés.",
+          closed: "Les inscriptions ne sont pas encore ouvertes.",
           soon: "Le pré-recrutement ouvrira bientôt. Les documents seront ajoutés progressivement.",
           open: "Le recrutement est ouvert. Les documents et les liens actifs sont disponibles ci-dessous.",
           full: "Les créneaux sont actuellement complets. De nouveaux créneaux pourront être ajoutés plus tard.",
           finished: "Cette étude est terminée et n'accepte plus de nouvelles participations."
         },
-        recruitmentClosedText: "Les inscriptions ne sont pas encore ouvertes. Les documents disponibles peuvent déjà être consultés.",
+        recruitmentClosedText: "Les inscriptions ne sont pas encore ouvertes.",
         recruitmentButtonClosed: "Bientôt disponible",
         recruitmentDocumentWaiting: "Document non déposé pour le moment",
         recruitmentDocumentAvailable: "Document disponible",
@@ -3052,8 +3009,8 @@
         footer: "Luc Perroquin | Portfolio académique | Psychologie cognitive de l'olfaction",
         cite: "Citer ce portfolio",
         citationCopied: "Citation copiée",
-        citation: "Perroquin, L. (2026). Portfolio académique — Psychologie cognitive de l'olfaction. https://lucper01.github.io/Portfolio/",
-        version: "Version : juillet 2026 · Dernière mise à jour : 19 juillet 2026"
+        citation: "Perroquin, L. (2026). Portfolio académique - Psychologie cognitive de l'olfaction. https://lucper01.github.io/Portfolio/",
+        version: "Version : juillet 2026 - Dernière mise à jour : automatique"
       },
       en: {
         lang: "en",
@@ -3142,13 +3099,13 @@
           finished: "Study completed"
         },
         recruitmentStatusTexts: {
-          closed: "Registration is not open yet. Available documents can already be consulted.",
+          closed: "Registration is not open yet.",
           soon: "Pre-recruitment will open soon. Documents will be added progressively.",
           open: "Recruitment is open. Available documents and active links are listed below.",
           full: "All current slots are booked. New slots may be added later.",
           finished: "This study is completed and no longer accepts new participation."
         },
-        recruitmentClosedText: "Registration is not open yet. Available documents can already be consulted.",
+        recruitmentClosedText: "Registration is not open yet.",
         recruitmentButtonClosed: "Available soon",
         recruitmentDocumentWaiting: "Document not uploaded yet",
         recruitmentDocumentAvailable: "Document available",
@@ -3187,8 +3144,8 @@
         footer: "Luc Perroquin | Academic portfolio | Cognitive psychology of olfaction",
         cite: "Cite this portfolio",
         citationCopied: "Citation copied",
-        citation: "Perroquin, L. (2026). Academic portfolio — Cognitive psychology of olfaction. https://lucper01.github.io/Portfolio/",
-        version: "Version: July 2026 · Last updated: July 19, 2026"
+        citation: "Perroquin, L. (2026). Academic portfolio - Cognitive psychology of olfaction. https://lucper01.github.io/Portfolio/",
+        version: "Version: July 2026 - Last updated: automatic"
       }
     };
 
@@ -3555,6 +3512,26 @@
       return map[key];
     }
 
+
+    function formatPortfolioDate(date, lang) {
+      try {
+        return new Intl.DateTimeFormat(lang === "fr" ? "fr-FR" : "en-GB", {
+          day: "2-digit",
+          month: "long",
+          year: "numeric"
+        }).format(date);
+      } catch {
+        return date.toISOString().slice(0, 10);
+      }
+    }
+
+    function getLastUpdateLabel(data) {
+      const parsed = new Date(document.lastModified);
+      const date = Number.isNaN(parsed.getTime()) ? new Date() : parsed;
+      const label = currentLanguage === "fr" ? "Dernière mise à jour" : "Last updated";
+      return `Version : juillet 2026 - ${label} : ${formatPortfolioDate(date, currentLanguage)}`;
+    }
+
     function sectionHeader(number, title) {
       return `
         <div class="section-title">
@@ -3673,7 +3650,7 @@
             data-default-label="${escapeHtml(questionnaireLabel)}"
             data-closed-label="${escapeHtml(data.recruitmentButtonClosed)}"
             data-tooltip="${escapeHtml(questionnaireUrl ? data.recruitmentDocumentAvailable : data.recruitmentLinkPending)}"
-            aria-label="${escapeHtml(questionnaireLabel)} — ${escapeHtml(project.name)}"
+            aria-label="${escapeHtml(questionnaireLabel)} - ${escapeHtml(project.name)}"
           >${escapeHtml(questionnaireLabel)}</a>
 
           <a
@@ -3685,7 +3662,7 @@
             data-closed-label="${escapeHtml(data.recruitmentDocumentWaiting)}"
             data-open-label="${escapeHtml(data.recruitmentDocumentAvailable)}"
             data-tooltip="${escapeHtml(data.recruitmentDocumentWaiting)}"
-            aria-label="${escapeHtml(posterLabel)} — ${escapeHtml(project.name)}"
+            aria-label="${escapeHtml(posterLabel)} - ${escapeHtml(project.name)}"
           >${escapeHtml(posterLabel)}</a>
 
           <a
@@ -3697,7 +3674,7 @@
             data-closed-label="${escapeHtml(data.recruitmentDocumentWaiting)}"
             data-open-label="${escapeHtml(data.recruitmentDocumentAvailable)}"
             data-tooltip="${escapeHtml(data.recruitmentDocumentWaiting)}"
-            aria-label="${escapeHtml(infoLabel)} — ${escapeHtml(project.name)}"
+            aria-label="${escapeHtml(infoLabel)} - ${escapeHtml(project.name)}"
           >${escapeHtml(infoLabel)}</a>
 
           <a
@@ -3707,7 +3684,7 @@
             data-default-label="${escapeHtml(planningLabel)}"
             data-closed-label="${escapeHtml(data.recruitmentButtonClosed)}"
             data-tooltip="${escapeHtml(planningUrl ? data.recruitmentDocumentAvailable : data.recruitmentLinkPending)}"
-            aria-label="${escapeHtml(planningLabel)} — ${escapeHtml(project.name)}"
+            aria-label="${escapeHtml(planningLabel)} - ${escapeHtml(project.name)}"
           >${escapeHtml(planningLabel)}</a>
         </div>
       `;
@@ -4123,7 +4100,7 @@
             >
               ${escapeHtml(data.cite)}
             </button>
-            <span class="version-note">${escapeHtml(data.version)}</span>
+            <span class="version-note" data-version-note>${escapeHtml(getLastUpdateLabel(data))}</span>
           </div>
         </footer>
       `;
