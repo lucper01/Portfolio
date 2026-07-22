@@ -3263,6 +3263,276 @@
       }
     }
 
+
+    /* Ajustement accueil : photo un peu plus grande et boutons haut-droite abaissés */
+    .top-controls {
+      top: 34px;
+    }
+
+    .accessibility-panel {
+      top: 96px;
+    }
+
+    .portrait-card {
+      max-width: 355px;
+    }
+
+    .profile-photo {
+      max-height: 315px;
+    }
+
+    @media (max-width: 850px) {
+      .top-controls {
+        top: 28px;
+      }
+
+      .accessibility-panel {
+        top: 132px;
+      }
+
+      .portrait-card {
+        max-width: 305px;
+      }
+
+      .profile-photo {
+        max-height: 260px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .portrait-card {
+        max-width: 270px;
+      }
+
+      .profile-photo {
+        max-height: 230px;
+      }
+    }
+
+
+    /* Finition esthétique globale : transition accueil/contenu, personnalisation unifiée */
+    body {
+      background:
+        radial-gradient(circle at top left, rgba(119, 184, 146, 0.16), transparent 26%),
+        linear-gradient(180deg, #fbf7ed 0%, #f3faf5 48%, #fbf7ed 100%);
+    }
+
+    body.dark-mode {
+      background:
+        radial-gradient(circle at top left, rgba(119, 184, 146, 0.12), transparent 28%),
+        linear-gradient(180deg, #07130f 0%, #0b1f17 52%, #07130f 100%);
+    }
+
+    header {
+      margin: 14px 14px 0;
+      width: calc(100% - 28px);
+      min-height: calc(100svh - 14px);
+      border-radius: 48px;
+      box-shadow:
+        0 30px 90px rgba(6, 31, 23, 0.24),
+        0 1px 0 rgba(255, 255, 255, 0.18) inset;
+    }
+
+    header::before {
+      inset: 18px !important;
+      border-radius: 34px !important;
+    }
+
+    header::after {
+      width: 520px;
+      height: 520px;
+      right: -180px;
+      bottom: -190px;
+      opacity: 0.72;
+    }
+
+    main {
+      position: relative;
+      padding-top: 46px !important;
+    }
+
+    main::before {
+      content: "";
+      display: block;
+      width: min(880px, 72vw);
+      height: 1px;
+      margin: -8px auto 38px;
+      background: linear-gradient(90deg, transparent, rgba(31, 111, 80, 0.34), transparent);
+    }
+
+    main > section:first-child {
+      margin-top: 0;
+    }
+
+    main > section {
+      border-radius: clamp(28px, 3vw, 46px) !important;
+    }
+
+    .top-controls {
+      top: 40px !important;
+      right: 64px !important;
+      max-width: min(430px, calc(100vw - 110px));
+    }
+
+    .customization-trigger {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .customization-panel {
+      right: 64px !important;
+      top: 102px !important;
+      width: min(430px, calc(100vw - 128px));
+      max-height: calc(100vh - 124px);
+      overflow-y: auto;
+    }
+
+    .customization-header h2 {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .customization-icon,
+    .accessibility-logo {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: var(--green-main);
+      color: #ffffff;
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .customization-block {
+      padding-top: 14px;
+      margin-top: 14px;
+      border-top: 1px solid rgba(11, 47, 35, 0.10);
+    }
+
+    body.dark-mode .customization-block {
+      border-top-color: rgba(220, 238, 227, 0.14);
+    }
+
+    .customization-block h3 {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0 0 10px;
+      font-size: 0.98rem;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      letter-spacing: 0;
+    }
+
+    .panel-button-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .panel-button-row button {
+      border: 1px solid rgba(11, 47, 35, 0.12);
+      padding: 9px 13px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      color: var(--green-dark);
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .panel-button-row button.active,
+    .panel-button-row button:hover,
+    .panel-button-row button:focus {
+      background: var(--green-main);
+      border-color: var(--green-main);
+      color: #ffffff;
+    }
+
+    body.dark-mode .panel-button-row button {
+      background: rgba(220, 238, 227, 0.08);
+      color: #dceee3;
+      border-color: rgba(220, 238, 227, 0.16);
+    }
+
+    body.dark-mode .panel-button-row button.active,
+    body.dark-mode .panel-button-row button:hover,
+    body.dark-mode .panel-button-row button:focus {
+      background: #dceee3;
+      border-color: #dceee3;
+      color: #0b2f23;
+    }
+
+    .portrait-card {
+      max-width: 410px !important;
+    }
+
+    .profile-photo {
+      max-height: 365px !important;
+    }
+
+    @media (max-width: 850px) {
+      header {
+        margin: 10px 10px 0;
+        width: calc(100% - 20px);
+        border-radius: 34px;
+      }
+
+      main::before {
+        width: min(720px, 82vw);
+        margin-bottom: 30px;
+      }
+
+      .top-controls {
+        top: 30px !important;
+        right: 32px !important;
+        max-width: calc(100vw - 64px);
+      }
+
+      .customization-panel {
+        right: 22px !important;
+        left: 22px !important;
+        top: 110px !important;
+        width: auto;
+      }
+
+      .portrait-card {
+        max-width: 330px !important;
+      }
+
+      .profile-photo {
+        max-height: 300px !important;
+      }
+    }
+
+    @media (max-width: 560px) {
+      header {
+        border-radius: 28px;
+      }
+
+      .top-controls {
+        right: 18px !important;
+        left: 18px;
+        justify-content: flex-end;
+        max-width: none;
+      }
+
+      .control-group button {
+        padding-inline: 10px;
+      }
+
+      .portrait-card {
+        max-width: 292px !important;
+      }
+
+      .profile-photo {
+        max-height: 265px !important;
+      }
+    }
+
   </style>
 </head>
 
@@ -3270,17 +3540,17 @@
   <a class="skip-link" href="#main" data-i18n="skip">Aller au contenu</a>
 
   <div class="top-controls">
-    <div class="control-group" aria-label="Language switcher">
-      <button type="button" data-switch-lang="fr" class="active">FR</button>
-      <button type="button" data-switch-lang="en">EN</button>
-    </div>
-
-    <div class="control-group" aria-label="Theme switcher">
-      <button type="button" data-theme-toggle>Sombre</button>
-    </div>
-
-    <div class="control-group" aria-label="Accessibility settings">
-      <button type="button" data-accessibility-toggle aria-controls="accessibility-panel" aria-expanded="false" data-i18n="accessibility">Accessibilité</button>
+    <div class="control-group customization-trigger-group" aria-label="Personnalisation">
+      <button
+        type="button"
+        class="customization-trigger"
+        data-accessibility-toggle
+        aria-controls="accessibility-panel"
+        aria-expanded="false"
+      >
+        <span aria-hidden="true">⚙</span>
+        <span data-i18n="customize">Personnalisation</span>
+      </button>
     </div>
 
     <div class="control-group" aria-label="Share">
@@ -3288,46 +3558,71 @@
     </div>
   </div>
 
-  <section id="accessibility-panel" class="accessibility-panel" data-accessibility-panel hidden aria-label="Options d'accessibilité">
-    <div class="accessibility-header">
-      <h2 data-i18n="accessibility">Accessibilité</h2>
+  <section id="accessibility-panel" class="accessibility-panel customization-panel" data-accessibility-panel hidden aria-label="Options de personnalisation">
+    <div class="accessibility-header customization-header">
+      <h2>
+        <span class="customization-icon" aria-hidden="true">⚙</span>
+        <span data-i18n="customize">Personnalisation</span>
+      </h2>
       <button class="accessibility-close" type="button" data-accessibility-close aria-label="Fermer">×</button>
     </div>
 
-    <p class="accessibility-intro" data-i18n="a11yIntro">Ajustez l'affichage du portfolio selon vos besoins de lecture.</p>
+    <p class="accessibility-intro" data-i18n="customizeIntro">Regroupez ici la langue, l'apparence et les options d'accessibilité du portfolio.</p>
 
-    <div class="accessibility-options">
-      <label class="accessibility-option">
-        <input type="checkbox" data-accessibility-option="largeText" />
-        <span>
-          <strong data-i18n="largeText">Texte agrandi</strong>
-          <small data-i18n="largeTextHelp">Augmente la taille du texte et l'interligne.</small>
-        </span>
-      </label>
+    <div class="customization-block">
+      <h3 data-i18n="language">Langue</h3>
+      <div class="panel-button-row" aria-label="Language switcher">
+        <button type="button" data-switch-lang="fr" class="active"><span aria-hidden="true">🇫🇷</span> FR</button>
+        <button type="button" data-switch-lang="en"><span aria-hidden="true">🇬🇧</span> EN</button>
+      </div>
+    </div>
 
-      <label class="accessibility-option">
-        <input type="checkbox" data-accessibility-option="highContrast" />
-        <span>
-          <strong data-i18n="highContrast">Contraste fort</strong>
-          <small data-i18n="highContrastHelp">Renforce les contrastes entre texte, fonds et boutons.</small>
-        </span>
-      </label>
+    <div class="customization-block">
+      <h3 data-i18n="appearance">Apparence</h3>
+      <div class="panel-button-row" aria-label="Theme switcher">
+        <button type="button" data-theme-toggle>Sombre</button>
+      </div>
+    </div>
 
-      <label class="accessibility-option">
-        <input type="checkbox" data-accessibility-option="dyslexia" />
-        <span>
-          <strong data-i18n="dyslexia">Lecture dyslexie</strong>
-          <small data-i18n="dyslexiaHelp">Utilise une police plus simple et augmente les espacements.</small>
-        </span>
-      </label>
+    <div class="customization-block">
+      <h3>
+        <span class="accessibility-logo" aria-hidden="true">♿</span>
+        <span data-i18n="accessibility">Accessibilité</span>
+      </h3>
 
-      <label class="accessibility-option">
-        <input type="checkbox" data-accessibility-option="reduceMotion" />
-        <span>
-          <strong data-i18n="reduceMotion">Réduire les animations</strong>
-          <small data-i18n="reduceMotionHelp">Limite les transitions, animations et effets de mouvement.</small>
-        </span>
-      </label>
+      <div class="accessibility-options">
+        <label class="accessibility-option">
+          <input type="checkbox" data-accessibility-option="largeText" />
+          <span>
+            <strong data-i18n="largeText">Texte agrandi</strong>
+            <small data-i18n="largeTextHelp">Augmente la taille du texte et l'interligne.</small>
+          </span>
+        </label>
+
+        <label class="accessibility-option">
+          <input type="checkbox" data-accessibility-option="highContrast" />
+          <span>
+            <strong data-i18n="highContrast">Contraste fort</strong>
+            <small data-i18n="highContrastHelp">Renforce les contrastes entre texte, fonds et boutons.</small>
+          </span>
+        </label>
+
+        <label class="accessibility-option">
+          <input type="checkbox" data-accessibility-option="dyslexia" />
+          <span>
+            <strong data-i18n="dyslexia">Lecture dyslexie</strong>
+            <small data-i18n="dyslexiaHelp">Utilise une police plus simple et augmente les espacements.</small>
+          </span>
+        </label>
+
+        <label class="accessibility-option">
+          <input type="checkbox" data-accessibility-option="reduceMotion" />
+          <span>
+            <strong data-i18n="reduceMotion">Réduire les animations</strong>
+            <small data-i18n="reduceMotionHelp">Limite les transitions, animations et effets de mouvement.</small>
+          </span>
+        </label>
+      </div>
     </div>
   </section>
 
@@ -3345,6 +3640,10 @@
         keywords: "Olfaction, Vision, Audition, Perception multisensorielle",
         shareLabel: "Partager",
         copiedLabel: "Lien copié",
+        customize: "Personnalisation",
+        customizeIntro: "Regroupez ici la langue, l'apparence et les options d'accessibilité du portfolio.",
+        language: "Langue",
+        appearance: "Apparence",
         themeDark: "Sombre",
         themeLight: "Clair",
         skip: "Aller au contenu",
@@ -3482,6 +3781,10 @@
         keywords: "Olfaction, Vision, Audition, Multisensory perception",
         shareLabel: "Share",
         copiedLabel: "Link copied",
+        customize: "Customize",
+        customizeIntro: "Language, appearance, and accessibility options are grouped here.",
+        language: "Language",
+        appearance: "Appearance",
         themeDark: "Dark",
         themeLight: "Light",
         skip: "Skip to content",
@@ -4589,12 +4892,12 @@
 
       accessibilityPanel.setAttribute(
         "aria-label",
-        currentLanguage === "fr" ? "Options d'accessibilité" : "Accessibility options"
+        currentLanguage === "fr" ? "Options de personnalisation" : "Customization options"
       );
 
       accessibilityClose.setAttribute(
         "aria-label",
-        currentLanguage === "fr" ? "Fermer le panneau d'accessibilité" : "Close accessibility panel"
+        currentLanguage === "fr" ? "Fermer le panneau de personnalisation" : "Close customization panel"
       );
     }
 
