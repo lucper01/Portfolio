@@ -7573,6 +7573,196 @@
       color: #ffffff !important;
     }
 
+
+    /* V51 : total global, formations par année, publications groupées, bouton recrutement avec logo */
+    .teaching-training-global-overview {
+      display: grid;
+      grid-template-columns: minmax(1.1fr, 1.35fr) repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin: 26px 0 34px;
+    }
+
+    .teaching-training-global-overview .teaching-overview-item {
+      margin: 0;
+      border-color: rgba(31, 111, 80, 0.18) !important;
+    }
+
+    .teaching-training-global-overview .global-overview-main {
+      background:
+        radial-gradient(circle at top right, rgba(119, 184, 146, 0.22), transparent 34%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(232, 246, 237, 0.94)) !important;
+    }
+
+    .teaching-training-global-overview .global-overview-main strong {
+      font-size: clamp(1.8rem, 3.2vw, 2.55rem);
+    }
+
+    .training-overview {
+      margin-bottom: 22px !important;
+    }
+
+    .training-year-grid {
+      margin-top: 0 !important;
+    }
+
+    .training-year-block .teaching-entry-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .training-entry {
+      grid-template-rows: auto auto auto !important;
+    }
+
+    .training-entry .teaching-type {
+      background: var(--green-light);
+      color: #0b2f23;
+    }
+
+    body.dark-mode .training-entry .teaching-type {
+      background: #dceee3;
+      color: #0b2f23;
+    }
+
+    .combined-training-subsection .enhanced-training-summary,
+    .combined-training-subsection .enhanced-training-master {
+      display: none !important;
+    }
+
+    .training-entry .teaching-audience {
+      min-height: 0 !important;
+    }
+
+    .publications-communications-intro {
+      max-width: 900px;
+      margin-bottom: 4px;
+    }
+
+    .publications-communications-layout {
+      margin-top: 34px;
+    }
+
+    .combined-publications-subsection {
+      background:
+        radial-gradient(circle at top right, rgba(31, 111, 80, 0.14), transparent 32%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(232, 246, 237, 0.92)) !important;
+    }
+
+    .combined-communications-subsection {
+      background:
+        radial-gradient(circle at top right, rgba(119, 184, 146, 0.18), transparent 34%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(241, 250, 245, 0.92)) !important;
+    }
+
+    .combined-communications-subsection::before {
+      background: linear-gradient(90deg, var(--green-light), #b8dfc4);
+    }
+
+    .publications-communications-section .filter-menu {
+      margin-top: 4px;
+      margin-bottom: 20px;
+    }
+
+    .publications-communications-section .publication-subsection {
+      margin-top: 22px;
+    }
+
+    body.dark-mode .combined-publications-subsection,
+    body.dark-mode .combined-communications-subsection {
+      background:
+        radial-gradient(circle at top right, rgba(119, 184, 146, 0.12), transparent 34%),
+        linear-gradient(135deg, rgba(16, 37, 28, 0.92), rgba(7, 19, 15, 0.86)) !important;
+    }
+
+    @media (max-width: 980px) {
+      .teaching-training-global-overview,
+      .training-year-block .teaching-entry-grid {
+        grid-template-columns: 1fr !important;
+      }
+    }
+
+    /* Bouton recrutement : logo discret à la place du point */
+    .recruitment-mode-dock button::before,
+    .recruitment-inline-toggle::before,
+    .top-controls button[data-recruitment-mode-toggle]::before {
+      content: none !important;
+      display: none !important;
+    }
+
+    .recruitment-mode-dock button {
+      gap: 8px !important;
+      overflow: hidden;
+    }
+
+    .recruitment-dock-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      background: rgba(31, 111, 80, 0.12);
+      color: var(--green-main);
+      flex: 0 0 auto;
+      position: relative;
+    }
+
+    .recruitment-dock-icon::before {
+      content: "";
+      width: 15px;
+      height: 15px;
+      display: block;
+      background: currentColor;
+      -webkit-mask:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M12 2a4 4 0 0 1 4 4c0 1.6-.94 2.98-2.3 3.62c2.64.66 4.8 2.46 5.2 4.76c.1.58-.36 1.12-.95 1.12H6.05c-.59 0-1.05-.54-.95-1.12c.4-2.3 2.56-4.1 5.2-4.76A4 4 0 0 1 12 2Zm6.8 13.8l1.05 1.05l2.3-2.3l1.05 1.05l-3.35 3.35l-2.1-2.1l1.05-1.05Z'/%3E%3C/svg%3E") center / contain no-repeat;
+        mask:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M12 2a4 4 0 0 1 4 4c0 1.6-.94 2.98-2.3 3.62c2.64.66 4.8 2.46 5.2 4.76c.1.58-.36 1.12-.95 1.12H6.05c-.59 0-1.05-.54-.95-1.12c.4-2.3 2.56-4.1 5.2-4.76A4 4 0 0 1 12 2Zm6.8 13.8l1.05 1.05l2.3-2.3l1.05 1.05l-3.35 3.35l-2.1-2.1l1.05-1.05Z'/%3E%3C/svg%3E") center / contain no-repeat;
+    }
+
+    .recruitment-dock-copy {
+      display: inline-grid;
+      gap: 2px;
+      min-width: 0;
+    }
+
+    @media (min-width: 1181px) {
+      .recruitment-mode-dock:not(.dummy) button {
+        display: inline-flex !important;
+        align-items: center !important;
+      }
+
+      .recruitment-mode-dock:not(.dummy) .recruitment-dock-icon {
+        margin-bottom: 8px;
+      }
+
+      body.show-side-progress .recruitment-mode-dock .recruitment-dock-icon,
+      body.recruitment-mode .recruitment-mode-dock .recruitment-dock-icon {
+        margin-bottom: 0;
+        width: 30px;
+        height: 30px;
+      }
+
+      body.show-side-progress .recruitment-mode-dock button,
+      body.recruitment-mode .recruitment-mode-dock button {
+        grid-template-columns: auto minmax(0, 1fr) !important;
+      }
+    }
+
+    body.dark-mode .recruitment-dock-icon {
+      background: rgba(220, 238, 227, 0.12);
+      color: #dceee3;
+    }
+
+    body.recruitment-mode .recruitment-dock-icon {
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+    }
+
+    body.dark-mode.a11y-high-contrast .recruitment-dock-icon,
+    body.dark-mode.a11y-high-contrast .recruitment-dock-icon::before {
+      background: #000000 !important;
+      color: #000000 !important;
+    }
+
   </style>
 </head>
 
@@ -7710,7 +7900,7 @@
         filterMenuLabel: "Trier",
         recruitmentDockHint: "Participant ? Cliquez ici pour accéder aux études.",
         recruitmentDockActiveHint: "Revenir à la présentation complète.",
-        nav: ["À propos", "Équipe", "Thèse", "Projets en Collaboration", "Enseignement et Formations", "Publications", "Communications", "Participer", "Contact"],
+        nav: ["À propos", "Équipe", "Thèse", "Projets en Collaboration", "Enseignement et Formations", "Publications et communications", "Participer", "Contact"],
         heroLabel: "Présentation académique",
         heroTitle: "Luc Perroquin",
         heroSubtitle: "Doctorant en psychologie cognitive",
@@ -7800,6 +7990,11 @@
         trainingSubsectionTitle: "Formations doctorales",
         trainingKicker: "Parcours doctoral",
         trainingSummaryTitle: "Formations suivies",
+        trainingTotalLabel: "Total formations",
+        trainingYearsLabel: "Années de formation",
+        trainingModulesLabel: "Modules",
+        trainingEntryType: "Formation",
+        trainingYearStatus: "Suivi",
         trainingSummary: "Modules suivis dans le cadre du parcours doctoral, autour de l'enseignement, de la valorisation scientifique, de l'intégrité, de la documentation et de la poursuite de carrière.",
         hours: "60 heures",
         modules: "6 modules",
@@ -7814,7 +8009,14 @@
         teachingCollapseLabel: "Masquer le détail",
         teachingPending: "Contenu à compléter",
         teachingPendingText: "Les enseignements, interventions ou supports pédagogiques seront ajoutés ici lorsqu'ils seront formalisés.",
-        publications: "Publications",
+        publications: "Publications et communications",
+        publicationsBlockTitle: "Publications",
+        publicationsCommunicationsIntro: "Cette section regroupe les publications, prépublications, communications et posters liés au parcours doctoral.",
+        communicationsBlockTitle: "Communications",
+        scientificOutputsLabel: "Productions renseignées",
+        outputTypesLabel: "Types de contenus",
+        outputStatusLabel: "État de la section",
+        outputStatusValue: "À compléter",
         articles: "Articles",
         preprints: "Prépublications",
         pending: "En attente d'ajout",
@@ -7880,7 +8082,7 @@
         filterMenuLabel: "Filter",
         recruitmentDockHint: "Participant? Click here to access the studies.",
         recruitmentDockActiveHint: "Return to the full presentation.",
-        nav: ["About", "Team", "Thesis", "Featured Projects", "Teaching and Training", "Publications", "Communications", "Participate", "Contact"],
+        nav: ["About", "Team", "Thesis", "Featured Projects", "Teaching and Training", "Publications and communications", "Participate", "Contact"],
         heroLabel: "Academic presentation",
         heroTitle: "Luc Perroquin",
         heroSubtitle: "PhD student in cognitive psychology",
@@ -7967,9 +8169,18 @@
         recruitmentActionsClose: "Hide info",
         trainingTitle: "Teaching and Training",
         teachingTrainingIntro: "This section brings together my university teaching activities and the training completed as part of the doctoral pathway.",
+        globalHoursLabel: "Overall credited volume",
+        globalScopeLabel: "Pathway components",
+        globalPeriodLabel: "Period covered",
+        globalScopeValue: "2 components",
         trainingSubsectionTitle: "Doctoral training",
         trainingKicker: "Doctoral pathway",
         trainingSummaryTitle: "Completed training",
+        trainingTotalLabel: "Training total",
+        trainingYearsLabel: "Training years",
+        trainingModulesLabel: "Modules",
+        trainingEntryType: "Training",
+        trainingYearStatus: "Completed",
         trainingSummary: "Modules completed as part of the doctoral pathway, covering teaching, scientific valorization, research integrity, documentary training, and career development.",
         hours: "60 hours",
         modules: "6 modules",
@@ -7984,7 +8195,14 @@
         teachingCollapseLabel: "Hide details",
         teachingPending: "Content to be completed",
         teachingPendingText: "Teaching activities, sessions, or pedagogical materials will be added here once formalized.",
-        publications: "Publications",
+        publications: "Publications and communications",
+        publicationsBlockTitle: "Publications",
+        publicationsCommunicationsIntro: "This section brings together publications, preprints, communications, and posters related to the doctoral pathway.",
+        communicationsBlockTitle: "Communications",
+        scientificOutputsLabel: "Listed outputs",
+        outputTypesLabel: "Content types",
+        outputStatusLabel: "Section status",
+        outputStatusValue: "To be completed",
         articles: "Articles",
         preprints: "Preprints",
         pending: "Pending addition",
@@ -8198,6 +8416,7 @@
 
     const TRAININGS = [
       {
+        year: "2025-2026",
         hours: "27.5 h",
         fr: {
           title: "Poursuite de carrière",
@@ -8211,6 +8430,7 @@
         }
       },
       {
+        year: "2025-2026",
         hours: "4 h",
         fr: {
           title: "Culture scientifique internationale et valorisation",
@@ -8224,6 +8444,7 @@
         }
       },
       {
+        year: "2025-2026",
         hours: "3 h",
         fr: {
           title: "Éthique de la recherche et intégrité scientifique",
@@ -8237,6 +8458,7 @@
         }
       },
       {
+        year: "2025-2026",
         hours: "3 h",
         fr: {
           title: "Formations documentaires",
@@ -8250,6 +8472,7 @@
         }
       },
       {
+        year: "2025-2026",
         hours: "17.5 h",
         fr: {
           title: "Connaissances et outils d'enseignement",
@@ -8263,6 +8486,7 @@
         }
       },
       {
+        year: "2025-2026",
         hours: "5 h",
         fr: {
           title: "Connaissances et outils d'enseignement",
@@ -8416,9 +8640,8 @@
       { key: "side", number: "04" },
       { key: "training", number: "05" },
       { key: "publications", number: "06" },
-      { key: "communications", number: "07" },
-      { key: "recruitment", number: "08" },
-      { key: "contact", number: "09" }
+      { key: "recruitment", number: "07" },
+      { key: "contact", number: "08" }
     ];
 
     const accessibilityClasses = {
@@ -8886,6 +9109,17 @@
       return match ? Number(match[0]) : 0;
     }
 
+    function formatHourValue(value, suffix = "h") {
+      const numericValue = Number(value) || 0;
+      const isInteger = Number.isInteger(numericValue);
+      const formatted = numericValue.toLocaleString(currentLanguage === "fr" ? "fr-FR" : "en-GB", {
+        minimumFractionDigits: 0,
+        maximumFractionDigits: isInteger ? 0 : 1
+      });
+
+      return `${formatted} ${suffix}`;
+    }
+
     function getTeachingTotals() {
       const hours = TEACHING.reduce((total, block) => total + parseTeachingHours(block.total), 0);
       const interventions = TEACHING.reduce((total, block) => total + block.entries.length, 0);
@@ -8895,6 +9129,78 @@
         years: TEACHING.length,
         interventions
       };
+    }
+
+    function getTrainingYearGroups() {
+      const groups = TRAININGS.reduce((accumulator, training) => {
+        const year = training.year || "2025-2026";
+
+        if (!accumulator[year]) {
+          accumulator[year] = [];
+        }
+
+        accumulator[year].push(training);
+        return accumulator;
+      }, {});
+
+      return Object.entries(groups)
+        .sort(([yearA], [yearB]) => yearA.localeCompare(yearB))
+        .map(([year, entries]) => ({
+          year,
+          entries,
+          totalHours: entries.reduce((total, training) => total + parseTeachingHours(training.hours), 0)
+        }));
+    }
+
+    function getTrainingTotals() {
+      const groups = getTrainingYearGroups();
+      const hours = groups.reduce((total, group) => total + group.totalHours, 0);
+      const modules = TRAININGS.length;
+
+      return {
+        hours,
+        years: groups.length,
+        modules
+      };
+    }
+
+    function getTrainingAndTeachingPeriod() {
+      const years = [
+        ...TEACHING.map((block) => block.year),
+        ...getTrainingYearGroups().map((group) => group.year)
+      ].filter(Boolean).sort();
+
+      if (!years.length) {
+        return currentLanguage === "fr" ? "À compléter" : "To be completed";
+      }
+
+      const firstStart = years[0].split("-")[0];
+      const lastEnd = years[years.length - 1].split("-")[1] || years[years.length - 1];
+
+      return firstStart && lastEnd ? `${firstStart}-${lastEnd}` : years[0];
+    }
+
+    function teachingTrainingGlobalOverview(data) {
+      const teachingTotals = getTeachingTotals();
+      const trainingTotals = getTrainingTotals();
+      const globalHours = trainingTotals.hours + (teachingTotals.hours / 2);
+
+      return `
+        <article class="teaching-training-global-overview">
+          <div class="teaching-overview-item global-overview-main">
+            <strong>${escapeHtml(formatHourValue(globalHours))}</strong>
+            <span>${escapeHtml(data.globalHoursLabel)}</span>
+          </div>
+          <div class="teaching-overview-item">
+            <strong>${escapeHtml(data.globalScopeValue)}</strong>
+            <span>${escapeHtml(data.globalScopeLabel)}</span>
+          </div>
+          <div class="teaching-overview-item">
+            <strong>${escapeHtml(getTrainingAndTeachingPeriod())}</strong>
+            <span>${escapeHtml(data.globalPeriodLabel)}</span>
+          </div>
+        </article>
+      `;
     }
 
     function teachingOverview(data) {
@@ -8913,6 +9219,27 @@
           <div class="teaching-overview-item">
             <strong>${escapeHtml(String(totals.interventions))}</strong>
             <span>${escapeHtml(data.teachingInterventionsLabel)}</span>
+          </div>
+        </article>
+      `;
+    }
+
+    function trainingOverview(data) {
+      const totals = getTrainingTotals();
+
+      return `
+        <article class="teaching-overview training-overview">
+          <div class="teaching-overview-item">
+            <strong>${escapeHtml(formatHourValue(totals.hours))}</strong>
+            <span>${escapeHtml(data.trainingTotalLabel)}</span>
+          </div>
+          <div class="teaching-overview-item">
+            <strong>${escapeHtml(String(totals.years))}</strong>
+            <span>${escapeHtml(data.trainingYearsLabel)}</span>
+          </div>
+          <div class="teaching-overview-item">
+            <strong>${escapeHtml(String(totals.modules))}</strong>
+            <span>${escapeHtml(data.trainingModulesLabel)}</span>
           </div>
         </article>
       `;
@@ -8962,21 +9289,63 @@
       `;
     }
 
-    function trainingCard(training, data, index = 0) {
+    function trainingEntryCard(training, data) {
       const text = training[currentLanguage];
 
       return `
-        <article class="training-card enhanced-training-card training-card-open">
-          <div class="training-card-head">
-            <span class="training-index">${String(index + 1).padStart(2, "0")}</span>
-            <span class="training-card-main">
-              <strong>${escapeHtml(text.title)}</strong>
-              <small>${escapeHtml(text.subtitle)}</small>
-            </span>
-            <span class="training-hours">${escapeHtml(training.hours)}</span>
+        <article class="teaching-entry training-entry">
+          <div class="teaching-entry-topline">
+            <span class="teaching-type">${escapeHtml(data.trainingEntryType)}</span>
+            <span class="teaching-hours">${escapeHtml(formatHourValue(parseTeachingHours(training.hours)))}</span>
           </div>
-          <div class="training-content">
-            <p><strong>${escapeHtml(data.pedagogy)}</strong> ${escapeHtml(text.objective)}</p>
+          <h4>${escapeHtml(text.title)}</h4>
+          <p class="teaching-audience">${escapeHtml(text.subtitle)}</p>
+          <p><strong>${escapeHtml(data.pedagogy)}</strong> ${escapeHtml(text.objective)}</p>
+        </article>
+      `;
+    }
+
+    function trainingYearBlock(group, data) {
+      return `
+        <details class="teaching-year-block training-year-block">
+          <summary class="teaching-year-summary">
+            <span class="teaching-year-main">
+              <span class="training-kicker">${escapeHtml(data.trainingYearStatus)}</span>
+              <strong>${escapeHtml(group.year)}</strong>
+            </span>
+            <span class="teaching-total">${escapeHtml(formatHourValue(group.totalHours))}</span>
+            <span class="teaching-year-toggle">
+              <span class="closed-label">${escapeHtml(data.teachingExpandLabel)}</span>
+              <span class="open-label">${escapeHtml(data.teachingCollapseLabel)}</span>
+            </span>
+          </summary>
+          <div class="teaching-year-content">
+            <div class="teaching-entry-grid training-entry-grid">
+              ${group.entries.map((training) => trainingEntryCard(training, data)).join("")}
+            </div>
+          </div>
+        </details>
+      `;
+    }
+
+    function trainingCard(training, data, index = 0) {
+      return trainingEntryCard(training, data, index);
+    }
+
+    function scientificOutputsOverview(data) {
+      return `
+        <article class="teaching-training-global-overview scientific-outputs-overview">
+          <div class="teaching-overview-item global-overview-main">
+            <strong>1</strong>
+            <span>${escapeHtml(data.scientificOutputsLabel)}</span>
+          </div>
+          <div class="teaching-overview-item">
+            <strong>4</strong>
+            <span>${escapeHtml(data.outputTypesLabel)}</span>
+          </div>
+          <div class="teaching-overview-item">
+            <strong>${escapeHtml(data.outputStatusValue)}</strong>
+            <span>${escapeHtml(data.outputStatusLabel)}</span>
           </div>
         </article>
       `;
@@ -9148,6 +9517,8 @@
             ${sectionHeader("05", data.trainingTitle)}
             <p class="lead teaching-training-intro">${escapeHtml(data.teachingTrainingIntro)}</p>
 
+            ${teachingTrainingGlobalOverview(data)}
+
             <div class="teaching-training-layout">
               <div class="combined-subsection combined-teaching-subsection">
                 <div class="combined-subsection-heading">
@@ -9174,104 +9545,112 @@
                   </div>
                 </div>
 
-                <article class="training-summary enhanced-training-summary">
-                  <span class="training-kicker">${escapeHtml(data.trainingKicker)}</span>
-                  <h3>${escapeHtml(data.trainingSummaryTitle)}</h3>
-                  <p>${escapeHtml(data.trainingSummary)}</p>
-                  <div class="training-total">
-                    <span>${escapeHtml(data.hours)}</span>
-                    <span>${escapeHtml(data.modules)}</span>
-                  </div>
-                </article>
+                ${trainingOverview(data)}
 
-                <details class="training-master enhanced-training-master">
-                  <summary>${escapeHtml(data.trainingDetails)}</summary>
-                  <div class="training-accordion">
-                    ${TRAININGS.map((training, index) => trainingCard(training, data, index)).join("")}
+                <div class="teaching-year-grid training-year-grid">
+                  ${getTrainingYearGroups().map((group) => trainingYearBlock(group, data)).join("")}
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="${sectionId("publications")}" class="reveal publications-communications-section" data-section="publications">
+            ${sectionHeader("06", data.publications)}
+            <p class="lead publications-communications-intro">${escapeHtml(data.publicationsCommunicationsIntro)}</p>
+
+            ${scientificOutputsOverview(data)}
+
+            <div class="teaching-training-layout publications-communications-layout">
+              <div class="combined-subsection combined-publications-subsection">
+                <div class="combined-subsection-heading">
+                  <span>01</span>
+                  <div>
+                    <h3>${escapeHtml(data.publicationsBlockTitle)}</h3>
+                    <p>${currentLanguage === "fr" ? "Articles et prépublications seront centralisés ici lorsqu'ils seront soumis, acceptés ou diffusables." : "Articles and preprints will be centralized here once they are submitted, accepted, or shareable."}</p>
+                  </div>
+                </div>
+
+                <details class="filter-menu">
+                  <summary>
+                    <span>${escapeHtml(data.filterMenuLabel)}</span>
+                  </summary>
+                  <div class="filter-controls" aria-label="${currentLanguage === "fr" ? "Filtres des publications" : "Publication filters"}">
+                    <button class="filter-button active" type="button" data-filter="all" data-label="${escapeHtml(data.all)}">${escapeHtml(data.all)}</button>
+                    <button class="filter-button" type="button" data-filter="article" data-label="${escapeHtml(data.articles)}">${escapeHtml(data.articles)}</button>
+                    <button class="filter-button" type="button" data-filter="preprint" data-label="${escapeHtml(data.preprints)}">${escapeHtml(data.preprints)}</button>
                   </div>
                 </details>
+
+                <div class="publication-subsection">
+                  <h3>${escapeHtml(data.articles)}</h3>
+                  <ul class="publication-list">
+                    <li class="filter-item placeholder-item" data-category="article" data-countable="false">
+                      <span class="publication-type">Article</span>
+                      <strong>${escapeHtml(data.pending)}</strong>
+                      <p>${escapeHtml(data.articlesPending)}</p>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="publication-subsection">
+                  <h3>${escapeHtml(data.preprints)}</h3>
+                  <ul class="publication-list">
+                    <li class="filter-item placeholder-item" data-category="preprint" data-countable="false">
+                      <span class="publication-type">${currentLanguage === "fr" ? "Prépublication" : "Preprint"}</span>
+                      <strong>${escapeHtml(data.pending)}</strong>
+                      <p>${escapeHtml(data.preprintsPending)}</p>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="combined-subsection combined-communications-subsection">
+                <div class="combined-subsection-heading">
+                  <span>02</span>
+                  <div>
+                    <h3>${escapeHtml(data.communicationsBlockTitle)}</h3>
+                    <p>${currentLanguage === "fr" ? "Communications orales et posters présentés dans des journées scientifiques, colloques ou événements doctoraux." : "Oral communications and posters presented during scientific days, conferences, or doctoral events."}</p>
+                  </div>
+                </div>
+
+                <details class="filter-menu">
+                  <summary>
+                    <span>${escapeHtml(data.filterMenuLabel)}</span>
+                  </summary>
+                  <div class="filter-controls" aria-label="${currentLanguage === "fr" ? "Filtres des communications" : "Communication filters"}">
+                    <button class="filter-button active" type="button" data-filter="all" data-label="${escapeHtml(data.all)}">${escapeHtml(data.all)}</button>
+                    <button class="filter-button" type="button" data-filter="communication" data-label="${escapeHtml(data.communications)}">${escapeHtml(data.communications)}</button>
+                    <button class="filter-button" type="button" data-filter="poster" data-label="${escapeHtml(data.posters)}">${escapeHtml(data.posters)}</button>
+                  </div>
+                </details>
+
+                <div class="publication-subsection">
+                  <h3>${escapeHtml(data.communicationsBlockTitle)}</h3>
+                  <ul class="publication-list">
+                    <li class="filter-item" data-category="communication">
+                      <span class="publication-type">Communication</span>
+                      <strong>${escapeHtml(data.jdd)}</strong>
+                      <p>${escapeHtml(data.jddText)}</p>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="publication-subsection">
+                  <h3>${escapeHtml(data.posters)}</h3>
+                  <ul class="publication-list">
+                    <li class="filter-item placeholder-item" data-category="poster" data-countable="false">
+                      <span class="publication-type">Poster</span>
+                      <strong>${escapeHtml(data.pending)}</strong>
+                      <p>${escapeHtml(data.posterPending)}</p>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
           </section>
-
-          <section id="${sectionId("publications")}" class="reveal" data-section="publications">
-            ${sectionHeader("06", data.publications)}
-
-            <details class="filter-menu">
-              <summary>
-                <span>${escapeHtml(data.filterMenuLabel)}</span>
-              </summary>
-              <div class="filter-controls" aria-label="${currentLanguage === "fr" ? "Filtres des publications" : "Publication filters"}">
-              <button class="filter-button active" type="button" data-filter="all" data-label="${escapeHtml(data.all)}">${escapeHtml(data.all)}</button>
-              <button class="filter-button" type="button" data-filter="article" data-label="${escapeHtml(data.articles)}">${escapeHtml(data.articles)}</button>
-              <button class="filter-button" type="button" data-filter="preprint" data-label="${escapeHtml(data.preprints)}">${escapeHtml(data.preprints)}</button>
-              </div>
-            </details>
-
-            <div class="publication-subsection">
-              <h3>${escapeHtml(data.articles)}</h3>
-              <ul class="publication-list">
-                <li class="filter-item placeholder-item" data-category="article" data-countable="false">
-                  <span class="publication-type">Article</span>
-                  <strong>${escapeHtml(data.pending)}</strong>
-                  <p>${escapeHtml(data.articlesPending)}</p>
-                </li>
-              </ul>
-            </div>
-
-            <div class="publication-subsection">
-              <h3>${escapeHtml(data.preprints)}</h3>
-              <ul class="publication-list">
-                <li class="filter-item placeholder-item" data-category="preprint" data-countable="false">
-                  <span class="publication-type">${currentLanguage === "fr" ? "Prépublication" : "Preprint"}</span>
-                  <strong>${escapeHtml(data.pending)}</strong>
-                  <p>${escapeHtml(data.preprintsPending)}</p>
-                </li>
-              </ul>
-            </div>
-          </section>
-
-          <section id="${sectionId("communications")}" class="reveal" data-section="communications">
-            ${sectionHeader("07", data.communications)}
-
-            <details class="filter-menu">
-              <summary>
-                <span>${escapeHtml(data.filterMenuLabel)}</span>
-              </summary>
-              <div class="filter-controls" aria-label="${currentLanguage === "fr" ? "Filtres des communications" : "Communication filters"}">
-              <button class="filter-button active" type="button" data-filter="all" data-label="${escapeHtml(data.all)}">${escapeHtml(data.all)}</button>
-              <button class="filter-button" type="button" data-filter="communication" data-label="${escapeHtml(data.communications)}">${escapeHtml(data.communications)}</button>
-              <button class="filter-button" type="button" data-filter="poster" data-label="${escapeHtml(data.posters)}">${escapeHtml(data.posters)}</button>
-              </div>
-            </details>
-
-            <div class="publication-subsection">
-              <h3>${escapeHtml(data.communications)}</h3>
-              <ul class="publication-list">
-                <li class="filter-item" data-category="communication">
-                  <span class="publication-type">Communication</span>
-                  <strong>${escapeHtml(data.jdd)}</strong>
-                  <p>${escapeHtml(data.jddText)}</p>
-                </li>
-              </ul>
-            </div>
-
-            <div class="publication-subsection">
-              <h3>${escapeHtml(data.posters)}</h3>
-              <ul class="publication-list">
-                <li class="filter-item placeholder-item" data-category="poster" data-countable="false">
-                  <span class="publication-type">Poster</span>
-                  <strong>${escapeHtml(data.pending)}</strong>
-                  <p>${escapeHtml(data.posterPending)}</p>
-                </li>
-              </ul>
-            </div>
-          </section>
-
-          
 
           <section id="${sectionId("recruitment")}" class="reveal" data-section="recruitment">
-            ${sectionHeader("08", data.recruitmentTitle)}
+            ${sectionHeader("07", data.recruitmentTitle)}
             <p class="lead recruitment-intro">${escapeHtml(data.recruitmentIntro)}</p>
             <p class="recruitment-note">${escapeHtml(data.recruitmentLead)}</p>
 
@@ -9309,7 +9688,7 @@
           
 
           <section id="${sectionId("contact")}" class="reveal" data-section="contact">
-            ${sectionHeader("09", data.contact)}
+            ${sectionHeader("08", data.contact)}
 
             <div class="contact-box contact-box-redesigned">
               <div class="contact-subsection">
@@ -9468,8 +9847,11 @@
         if (button.closest(".recruitment-mode-dock")) {
           const hint = isActive ? data.recruitmentDockActiveHint : data.recruitmentDockHint;
           button.innerHTML = `
-            <span class="recruitment-dock-title">${escapeHtml(label)}</span>
-            <span class="recruitment-dock-hint">${escapeHtml(hint)}</span>
+            <span class="recruitment-dock-icon" aria-hidden="true"></span>
+            <span class="recruitment-dock-copy">
+              <span class="recruitment-dock-title">${escapeHtml(label)}</span>
+              <span class="recruitment-dock-hint">${escapeHtml(hint)}</span>
+            </span>
           `;
         } else {
           button.textContent = label;
@@ -10261,7 +10643,7 @@
         teaching: "teaching",
         enseignement: "teaching",
         publications: "publications",
-        communications: "communications",
+        communications: "publications",
         contact: "contact"
       };
 
