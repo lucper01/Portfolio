@@ -5347,6 +5347,88 @@
       }
     }
 
+
+    /* Menu d'accueil desktop : bandeau plus haut */
+    @media (min-width: 851px) {
+      header nav.site-nav {
+        padding-top: 12px !important;
+        padding-bottom: 12px !important;
+      }
+
+      header nav.site-nav .nav-inner {
+        min-height: 42px !important;
+      }
+
+      header nav.site-nav .nav-links a {
+        min-height: 36px !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding-top: 10px !important;
+        padding-bottom: 10px !important;
+      }
+    }
+
+
+    /* Bouton flottant Recrutement : placé dans la zone vide à gauche */
+    @media (min-width: 761px) {
+      .recruitment-mode-dock {
+        left: max(18px, calc((100vw - var(--page-width)) / 2 - 104px)) !important;
+        bottom: auto !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        z-index: 940 !important;
+      }
+
+      .recruitment-mode-dock button {
+        writing-mode: vertical-rl;
+        transform: rotate(180deg);
+        min-width: 34px !important;
+        min-height: 132px !important;
+        padding: 13px 7px !important;
+        border-radius: 999px !important;
+        font-size: 0.73rem !important;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        opacity: 0.74 !important;
+      }
+
+      .recruitment-mode-dock button::before {
+        content: "";
+        width: 7px;
+        height: 7px;
+        margin: 0 0 8px 0 !important;
+        border-radius: 999px;
+        background: currentColor;
+        opacity: 0.58;
+      }
+
+      .recruitment-mode-dock button:hover,
+      .recruitment-mode-dock button:focus,
+      .recruitment-mode-dock button.active {
+        opacity: 1 !important;
+        transform: rotate(180deg) translateY(0) !important;
+      }
+
+      body.recruitment-mode .recruitment-mode-dock {
+        top: 50% !important;
+        bottom: auto !important;
+      }
+
+      body.recruitment-mode .recruitment-mode-dock button {
+        background: var(--green-main) !important;
+        color: #ffffff !important;
+        border-color: var(--green-main) !important;
+        box-shadow: 0 12px 30px rgba(31, 111, 80, 0.20) !important;
+      }
+    }
+
+    @media (min-width: 761px) and (max-width: 1160px) {
+      .recruitment-mode-dock {
+        left: 14px !important;
+      }
+    }
+
   </style>
 </head>
 
@@ -5462,7 +5544,7 @@
         lang: "fr",
         locale: "fr_FR",
         title: "Luc Perroquin | Doctorant en psychologie cognitive",
-        description: "Espace de présentation académique de Luc Perroquin : parcours, recherches, enseignements, communications et projets expérimentaux en psychologie cognitive.",
+        description: "À travers mes recherches, je m'intéresse à la façon dont les odeurs, les sons et les images participent à notre perception de l'espace, du temps et des événements. Ce site présente mon parcours académique et les projets qui l'accompagnent.",
         keywords: "Olfaction, Vision, Audition, Perception multisensorielle",
         shareLabel: "Partager",
         copiedLabel: "Lien copié",
@@ -5493,7 +5575,7 @@
         heroLabel: "Présentation académique",
         heroTitle: "Luc Perroquin",
         heroSubtitle: "Doctorant en psychologie cognitive",
-        heroText: "Bienvenue sur mon espace de présentation académique. Vous y trouverez mon parcours, mes recherches, mes enseignements, mes communications, ainsi que les projets expérimentaux auxquels il est possible de participer.",
+        heroText: "À travers mes recherches, je m'intéresse à la façon dont les odeurs, les sons et les images participent à notre perception de l'espace, du temps et des événements. Ce site présente mon parcours académique et les projets qui l'accompagnent.",
         cv: "Ouvrir CV",
         cvUrl: "https://lucper01.github.io/Portfolio/assets/CV_PerroquinLuc_fr.pdf",
         aboutTitle: "À propos",
@@ -5621,7 +5703,7 @@
         lang: "en",
         locale: "en_US",
         title: "Luc Perroquin | PhD student in cognitive psychology",
-        description: "Academic presentation space of Luc Perroquin: background, research, teaching, communications, and experimental projects in cognitive psychology.",
+        description: "Through my research, I am interested in how odors, sounds, and images contribute to our perception of space, time, and events. This website presents my academic background and the projects that accompany it.",
         keywords: "Olfaction, Vision, Audition, Multisensory perception",
         shareLabel: "Share",
         copiedLabel: "Link copied",
@@ -5652,7 +5734,7 @@
         heroLabel: "Academic presentation",
         heroTitle: "Luc Perroquin",
         heroSubtitle: "PhD student in cognitive psychology",
-        heroText: "Welcome to my academic presentation space. Here you will find my background, research, teaching activities, communications, and the experimental projects in which participation is possible.",
+        heroText: "Through my research, I am interested in how odors, sounds, and images contribute to our perception of space, time, and events. This website presents my academic background and the projects that accompany it.",
         cv: "Open CV",
         cvUrl: "https://lucper01.github.io/Portfolio/assets/CV_PerroquinLuc_en.pdf",
         aboutTitle: "About",
@@ -6665,8 +6747,8 @@
               <p
                 class="hero-intro"
                 data-mobile-text="${escapeHtml(currentLanguage === "fr"
-                  ? "Doctorant en psychologie cognitive, je présente ici mon parcours, mes recherches, mes enseignements et mes projets expérimentaux."
-                  : "PhD student in cognitive psychology, I present here my background, research, teaching activities, and experimental projects."
+                  ? "À travers mes recherches, je m'intéresse à la façon dont les odeurs, les sons et les images participent à notre perception de l'espace, du temps et des événements. Ce site présente mon parcours académique et les projets qui l'accompagnent."
+                  : "Through my research, I am interested in how odors, sounds, and images contribute to our perception of space, time, and events. This website presents my academic background and the projects that accompany it."
                 )}"
               >${escapeHtml(data.heroText)}</p>
             </div>
