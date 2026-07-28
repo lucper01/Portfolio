@@ -6162,6 +6162,240 @@
       }
     }
 
+
+    /* Ajustements finaux : accueil pleine largeur, colorimétrie, recrutement dynamique */
+    :root {
+      --surface-clean: rgba(255, 255, 255, 0.94);
+      --surface-soft-clean: rgba(247, 252, 249, 0.96);
+      --surface-green-clean: rgba(231, 246, 237, 0.76);
+      --surface-border-clean: rgba(31, 111, 80, 0.16);
+    }
+
+    body:not(.dark-mode) {
+      --cream: #f7fbf8;
+      --green-pale: #f1f8f4;
+      background:
+        radial-gradient(circle at 8% 0%, rgba(119, 184, 146, 0.20), transparent 30%),
+        radial-gradient(circle at 92% 26%, rgba(220, 238, 227, 0.62), transparent 34%),
+        linear-gradient(180deg, #f8fcfa 0%, #eef7f1 100%) !important;
+    }
+
+    @media (min-width: 851px) {
+      header {
+        width: min(var(--page-width), calc(100% - 32px)) !important;
+        max-width: calc(100% - 32px) !important;
+        margin: 16px auto 0 !important;
+        min-height: 760px !important;
+        padding: 118px clamp(58px, 6vw, 92px) 128px !important;
+      }
+
+      header .hero,
+      .hero {
+        max-width: 1180px !important;
+        grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.64fr) !important;
+        gap: clamp(42px, 5vw, 86px) !important;
+      }
+
+      header h1,
+      header .hero-title-fr {
+        max-width: 680px !important;
+        font-size: clamp(4.55rem, 7.35vw, 7.15rem) !important;
+      }
+
+      header .subtitle {
+        max-width: 620px !important;
+      }
+
+      header .hero-intro {
+        max-width: 690px !important;
+      }
+
+      header nav.site-nav {
+        width: min(1210px, calc(100% - 96px)) !important;
+        max-width: calc(100% - 96px) !important;
+      }
+    }
+
+    /* Colorimétrie claire : éviter les cartes crème */
+    body:not(.dark-mode) section,
+    body:not(.dark-mode) .team-card,
+    body:not(.dark-mode) .supervision-card,
+    body:not(.dark-mode) .axis-card,
+    body:not(.dark-mode) .project-card,
+    body:not(.dark-mode) .axis-projects-panel,
+    body:not(.dark-mode) .recruitment-axis-panel,
+    body:not(.dark-mode) .recruitment-card,
+    body:not(.dark-mode) .training-summary,
+    body:not(.dark-mode) .training-master,
+    body:not(.dark-mode) .enhanced-training-master,
+    body:not(.dark-mode) .enhanced-training-card,
+    body:not(.dark-mode) .publication-list li,
+    body:not(.dark-mode) .contact-box,
+    body:not(.dark-mode) .combined-subsection-heading {
+      background:
+        linear-gradient(135deg, var(--surface-clean), var(--surface-soft-clean)) !important;
+      border-color: var(--surface-border-clean) !important;
+    }
+
+    body:not(.dark-mode) .project-body,
+    body:not(.dark-mode) .training-content p,
+    body:not(.dark-mode) .contact-item,
+    body:not(.dark-mode) .recruitment-note,
+    body:not(.dark-mode) .study-contact-card,
+    body:not(.dark-mode) .participation-guide,
+    body:not(.dark-mode) .participation-step,
+    body:not(.dark-mode) .teaching-overview-item,
+    body:not(.dark-mode) .teaching-year-block,
+    body:not(.dark-mode) .teaching-entry,
+    body:not(.dark-mode) .enhanced-training-card .training-content p {
+      background:
+        linear-gradient(135deg, rgba(248, 252, 250, 0.96), rgba(236, 248, 241, 0.84)) !important;
+      border-color: rgba(31, 111, 80, 0.13) !important;
+    }
+
+    body:not(.dark-mode) .axis-projects-panel,
+    body:not(.dark-mode) .recruitment-axis-panel,
+    body:not(.dark-mode) .enhanced-training-summary {
+      background:
+        radial-gradient(circle at top right, rgba(119, 184, 146, 0.16), transparent 34%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(241, 250, 245, 0.92)) !important;
+    }
+
+    body:not(.dark-mode) .project-summary,
+    body:not(.dark-mode) .axis-projects-summary,
+    body:not(.dark-mode) .recruitment-axis-summary,
+    body:not(.dark-mode) .enhanced-training-master > summary,
+    body:not(.dark-mode) .enhanced-training-card > summary {
+      background: rgba(255, 255, 255, 0.38) !important;
+    }
+
+    body:not(.dark-mode) .dropdown-kicker,
+    body:not(.dark-mode) .training-kicker,
+    body:not(.dark-mode) .recruitment-card-kicker,
+    body:not(.dark-mode) .axis-kicker,
+    body:not(.dark-mode) .contact-subsection-heading span {
+      background: rgba(31, 111, 80, 0.11) !important;
+      color: var(--green-main) !important;
+    }
+
+    body:not(.dark-mode) .filter-button,
+    body:not(.dark-mode) .copy-email-button,
+    body:not(.dark-mode) .search-card,
+    body:not(.dark-mode) header nav.site-nav {
+      background: rgba(255, 255, 255, 0.88) !important;
+      border-color: rgba(31, 111, 80, 0.16) !important;
+    }
+
+    body:not(.dark-mode) .highlight {
+      background:
+        radial-gradient(circle at top right, rgba(119, 184, 146, 0.24), transparent 36%),
+        linear-gradient(135deg, var(--green-dark), #155a40) !important;
+    }
+
+    /* Recrutement : vertical dans l'accueil, horizontal après le header/menu */
+    @media (min-width: 1181px) {
+      .recruitment-mode-dock {
+        left: 18px !important;
+        right: auto !important;
+        top: 50% !important;
+        bottom: auto !important;
+        z-index: 900 !important;
+        display: flex !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
+        transform: translateY(-50%) translateX(0) !important;
+        transition:
+          opacity 0.22s ease,
+          visibility 0.22s ease,
+          transform 0.22s ease !important;
+      }
+
+      .recruitment-mode-dock button {
+        writing-mode: vertical-rl !important;
+        transform: rotate(180deg) !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 8px !important;
+        min-width: 38px !important;
+        min-height: 142px !important;
+        padding: 14px 8px !important;
+        border-radius: 999px !important;
+        font-size: 0.73rem !important;
+        line-height: 1.1 !important;
+        letter-spacing: 0.08em !important;
+        text-transform: uppercase !important;
+        opacity: 0.82 !important;
+        background: rgba(255, 255, 255, 0.90) !important;
+        box-shadow: var(--shadow-soft) !important;
+      }
+
+      .recruitment-mode-dock button::before {
+        content: "●" !important;
+        display: inline-flex !important;
+        width: auto !important;
+        height: auto !important;
+        margin: 0 0 7px 0 !important;
+        border-radius: 0 !important;
+        background: transparent !important;
+        font-size: 0.48rem !important;
+        opacity: 0.62 !important;
+      }
+
+      .recruitment-mode-dock button:hover,
+      .recruitment-mode-dock button:focus,
+      .recruitment-mode-dock button.active {
+        opacity: 1 !important;
+        transform: rotate(180deg) translateY(2px) !important;
+      }
+
+      body.show-side-progress .recruitment-mode-dock {
+        transform: translateY(-50%) translateX(0) !important;
+      }
+
+      body.show-side-progress .recruitment-mode-dock button,
+      body.recruitment-mode .recruitment-mode-dock button {
+        writing-mode: horizontal-tb !important;
+        transform: none !important;
+        min-width: 170px !important;
+        min-height: 42px !important;
+        padding: 8px 12px !important;
+        font-size: 0.78rem !important;
+        letter-spacing: 0 !important;
+        text-transform: none !important;
+      }
+
+      body.show-side-progress .recruitment-mode-dock button::before,
+      body.recruitment-mode .recruitment-mode-dock button::before {
+        margin: 0 !important;
+      }
+
+      body.show-side-progress .recruitment-mode-dock button:hover,
+      body.show-side-progress .recruitment-mode-dock button:focus,
+      body.show-side-progress .recruitment-mode-dock button.active {
+        transform: translateX(2px) !important;
+      }
+
+      body.recruitment-mode .recruitment-mode-dock button {
+        background: var(--green-main) !important;
+        color: #ffffff !important;
+        border-color: var(--green-main) !important;
+        box-shadow: 0 14px 32px rgba(31, 111, 80, 0.22) !important;
+      }
+
+      body.dark-mode .recruitment-mode-dock button {
+        background: rgba(7, 19, 15, 0.88) !important;
+        border-color: rgba(220, 238, 227, 0.14) !important;
+        color: #dceee3 !important;
+      }
+
+      body.dark-mode.recruitment-mode .recruitment-mode-dock button {
+        background: var(--green-main) !important;
+        color: #ffffff !important;
+      }
+    }
+
   </style>
 </head>
 
@@ -7613,9 +7847,6 @@
           <section id="${sectionId("about")}" class="reveal" data-section="about">
             ${sectionHeader("01", data.aboutTitle)}
             <p class="lead">${escapeHtml(data.aboutText)}</p>
-            <ul class="tags" aria-label="Keywords">
-              ${data.tags.map((tag) => `<li>${escapeHtml(tag)}</li>`).join("")}
-            </ul>
           </section>
 
           <section id="${sectionId("team")}" class="reveal" data-section="team">
