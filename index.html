@@ -5818,6 +5818,350 @@
       }
     }
 
+
+    /* Section fusionnée Enseignement et formations */
+    .teaching-training-section .section-title {
+      margin-bottom: 14px;
+    }
+
+    .teaching-training-intro {
+      max-width: 880px;
+      margin-bottom: 30px;
+    }
+
+    .teaching-training-layout {
+      display: grid;
+      gap: 34px;
+    }
+
+    .combined-subsection {
+      display: grid;
+      gap: 18px;
+    }
+
+    .combined-subsection-heading {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 14px;
+      align-items: start;
+      padding: 18px 20px;
+      border-radius: 24px;
+      background:
+        linear-gradient(135deg, rgba(251, 247, 237, 0.94), rgba(255, 255, 255, 0.72));
+      border: 1px solid rgba(11, 47, 35, 0.10);
+      box-shadow: 0 12px 28px rgba(11, 47, 35, 0.07);
+    }
+
+    body.dark-mode .combined-subsection-heading {
+      background:
+        linear-gradient(135deg, rgba(16, 37, 28, 0.90), rgba(7, 19, 15, 0.72));
+      border-color: rgba(220, 238, 227, 0.12);
+    }
+
+    .combined-subsection-heading > span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 999px;
+      background: var(--green-main);
+      color: #ffffff;
+      font-size: 0.82rem;
+      font-weight: 950;
+    }
+
+    .combined-subsection-heading h3 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--green-dark);
+      font-size: clamp(1.4rem, 2vw, 1.85rem);
+      line-height: 1.12;
+    }
+
+    .combined-subsection-heading p {
+      margin: 5px 0 0;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .enhanced-training-summary {
+      position: relative;
+      overflow: hidden;
+      border-radius: 28px !important;
+      padding: 24px !important;
+      border: 1px solid rgba(11, 47, 35, 0.10);
+      background:
+        radial-gradient(circle at top right, rgba(119, 184, 146, 0.20), transparent 34%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(251, 247, 237, 0.90));
+    }
+
+    body.dark-mode .enhanced-training-summary {
+      background:
+        radial-gradient(circle at top right, rgba(119, 184, 146, 0.16), transparent 34%),
+        linear-gradient(135deg, rgba(16, 37, 28, 0.92), rgba(7, 19, 15, 0.86));
+      border-color: rgba(220, 238, 227, 0.12);
+    }
+
+    .enhanced-training-master {
+      border: 1px solid rgba(11, 47, 35, 0.10);
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.70);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+
+    body.dark-mode .enhanced-training-master {
+      background: rgba(16, 37, 28, 0.74);
+      border-color: rgba(220, 238, 227, 0.12);
+    }
+
+    .enhanced-training-master > summary {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 18px 22px;
+      color: var(--green-dark);
+      font-weight: 950;
+      cursor: pointer;
+    }
+
+    .enhanced-training-master > summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .enhanced-training-master > summary::after {
+      content: "+";
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      background: var(--green-main);
+      color: #ffffff;
+      line-height: 1;
+      transition: transform 0.18s ease;
+    }
+
+    .enhanced-training-master[open] > summary::after {
+      content: "-";
+      transform: rotate(180deg);
+    }
+
+    .enhanced-training-master .training-accordion {
+      padding: 0 18px 18px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .enhanced-training-card {
+      border: 1px solid rgba(11, 47, 35, 0.10);
+      border-radius: 22px;
+      background: rgba(251, 247, 237, 0.72);
+      overflow: hidden;
+      transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+    }
+
+    .enhanced-training-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(31, 111, 80, 0.28);
+      box-shadow: 0 14px 34px rgba(11, 47, 35, 0.10);
+    }
+
+    body.dark-mode .enhanced-training-card {
+      background: rgba(7, 19, 15, 0.46);
+      border-color: rgba(220, 238, 227, 0.12);
+    }
+
+    .enhanced-training-card > summary {
+      list-style: none;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto auto;
+      gap: 14px;
+      align-items: center;
+      padding: 16px 18px;
+      cursor: pointer;
+    }
+
+    .enhanced-training-card > summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .training-index {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      background: var(--green-main);
+      color: #ffffff;
+      font-size: 0.78rem;
+      font-weight: 950;
+      flex: 0 0 auto;
+    }
+
+    .training-card-main {
+      display: grid;
+      gap: 4px;
+      min-width: 0;
+    }
+
+    .training-card-main strong {
+      color: var(--green-dark);
+      line-height: 1.2;
+    }
+
+    .training-card-main small {
+      color: var(--muted);
+      font-weight: 780;
+      line-height: 1.2;
+    }
+
+    .enhanced-training-card .training-hours {
+      margin-left: 0;
+      white-space: nowrap;
+      background: var(--green-soft);
+      color: var(--green-dark);
+    }
+
+    .training-card-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      background: rgba(31, 111, 80, 0.12);
+      color: var(--green-dark);
+      font-weight: 950;
+      transition: transform 0.18s ease, background 0.18s ease, color 0.18s ease;
+    }
+
+    .enhanced-training-card[open] .training-card-toggle {
+      transform: rotate(45deg);
+      background: var(--green-main);
+      color: #ffffff;
+    }
+
+    .enhanced-training-card .training-content {
+      padding: 0 18px 18px 66px;
+    }
+
+    .enhanced-training-card .training-content p {
+      margin: 0;
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(11, 47, 35, 0.08);
+    }
+
+    body.dark-mode .enhanced-training-card .training-content p {
+      background: rgba(220, 238, 227, 0.06);
+      border-color: rgba(220, 238, 227, 0.10);
+    }
+
+    /* Contact : adresses puis présence académique */
+    .contact-box-redesigned {
+      display: grid;
+      gap: 24px;
+    }
+
+    .contact-subsection {
+      display: grid;
+      gap: 14px;
+    }
+
+    .contact-subsection-heading {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .contact-subsection-heading span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(31, 111, 80, 0.10);
+      color: var(--green-main);
+      font-size: 0.72rem;
+      font-weight: 950;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+    }
+
+    .contact-subsection-heading h3 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--green-dark);
+      font-size: clamp(1.2rem, 1.7vw, 1.55rem);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .contact-box-redesigned .contact-item {
+      display: grid;
+      grid-template-columns: auto minmax(150px, 0.42fr) minmax(0, 1fr) auto;
+      gap: 12px;
+      align-items: center;
+      padding: 16px 18px;
+      border-radius: 20px;
+    }
+
+    .contact-box-redesigned .contact-item strong {
+      margin: 0;
+    }
+
+    .contact-box-redesigned .copy-email-button {
+      margin-left: 0;
+      justify-self: end;
+    }
+
+    @media (max-width: 760px) {
+      .combined-subsection-heading {
+        grid-template-columns: 1fr;
+      }
+
+      .enhanced-training-card > summary {
+        grid-template-columns: auto minmax(0, 1fr) auto;
+      }
+
+      .enhanced-training-card .training-hours {
+        grid-column: 2 / -1;
+        justify-self: start;
+      }
+
+      .training-card-toggle {
+        grid-column: 3;
+        grid-row: 1;
+      }
+
+      .enhanced-training-card .training-content {
+        padding: 0 14px 16px;
+      }
+
+      .contact-box-redesigned .contact-item {
+        grid-template-columns: auto minmax(0, 1fr);
+      }
+
+      .contact-box-redesigned .contact-item strong,
+      .contact-box-redesigned .contact-item a:not(.contact-icon),
+      .contact-box-redesigned .copy-email-button {
+        grid-column: 2;
+        justify-self: start;
+      }
+    }
+
   </style>
 </head>
 
@@ -5960,7 +6304,7 @@
         reduceMotionHelp: "Limite les transitions, animations et effets de mouvement.",
         hideDocumentPreviews: "Désactiver les aperçus de documents",
         hideDocumentPreviewsHelp: "Masque les prévisualisations des affiches et fiches dans la section Participer.",
-        nav: ["À propos", "Équipe", "Thèse", "Projets en collaboration", "Formations", "Enseignement", "Publications", "Communications", "Participer", "Contact"],
+        nav: ["À propos", "Équipe", "Thèse", "Projets en collaboration", "Enseignement et formations", "Publications", "Communications", "Participer", "Contact"],
         heroLabel: "Présentation académique",
         heroTitle: "Luc Perroquin",
         heroSubtitle: "Doctorant en psychologie cognitive",
@@ -6045,15 +6389,17 @@
         recruitmentActionLabels: ["Questionnaire", "Affiche", "Fiche info", "Planning"],
         recruitmentActionsOpen: "Plus d\'infos",
         recruitmentActionsClose: "Rétracter",
-        trainingTitle: "Formations",
+        trainingTitle: "Enseignement et formations",
+        teachingTrainingIntro: "Cette section regroupe mes activités d'enseignement universitaire et les formations suivies dans le cadre du parcours doctoral.",
+        trainingSubsectionTitle: "Formations doctorales",
         trainingKicker: "Parcours doctoral",
-        trainingSummaryTitle: "Total participation",
-        trainingSummary: "Formations suivies dans le cadre du parcours doctoral, réparties entre poursuite de carrière, valorisation, intégrité scientifique, documentation et enseignement.",
+        trainingSummaryTitle: "Formations suivies",
+        trainingSummary: "Modules suivis dans le cadre du parcours doctoral, autour de l'enseignement, de la valorisation scientifique, de l'intégrité, de la documentation et de la poursuite de carrière.",
         hours: "60 heures",
         modules: "6 modules",
-        trainingDetails: "Voir le détail des formations",
+        trainingDetails: "Dérouler le détail des formations",
         pedagogy: "Objectif pédagogique :",
-        teachingTitle: "Enseignement",
+        teachingTitle: "Enseignement universitaire",
         teachingIntro: "Activités d'enseignement réalisées et prévues dans le cadre du parcours doctoral.",
         teachingTotalLabel: "Total enseignement",
         teachingYearsLabel: "Années universitaires",
@@ -6119,7 +6465,7 @@
         reduceMotionHelp: "Limits transitions, animations, and motion effects.",
         hideDocumentPreviews: "Disable document previews",
         hideDocumentPreviewsHelp: "Hides poster and information sheet previews in the Participate section.",
-        nav: ["About", "Team", "Thesis", "Featured projects", "Training", "Teaching", "Publications", "Communications", "Participate", "Contact"],
+        nav: ["About", "Team", "Thesis", "Featured projects", "Teaching and training", "Publications", "Communications", "Participate", "Contact"],
         heroLabel: "Academic presentation",
         heroTitle: "Luc Perroquin",
         heroSubtitle: "PhD student in cognitive psychology",
@@ -6204,15 +6550,17 @@
         recruitmentActionLabels: ["Questionnaire", "Poster", "Info sheet", "Schedule"],
         recruitmentActionsOpen: "More info",
         recruitmentActionsClose: "Collapse",
-        trainingTitle: "Training",
+        trainingTitle: "Teaching and training",
+        teachingTrainingIntro: "This section brings together my university teaching activities and the training completed as part of the doctoral pathway.",
+        trainingSubsectionTitle: "Doctoral training",
         trainingKicker: "Doctoral pathway",
-        trainingSummaryTitle: "Total participation",
-        trainingSummary: "Training completed as part of the doctoral pathway, covering career development, scientific culture and valorization, research integrity, documentary training, and teaching.",
+        trainingSummaryTitle: "Completed training",
+        trainingSummary: "Modules completed as part of the doctoral pathway, covering teaching, scientific valorization, research integrity, documentary training, and career development.",
         hours: "60 hours",
         modules: "6 modules",
-        trainingDetails: "View training details",
+        trainingDetails: "Expand training details",
         pedagogy: "Pedagogical objective:",
-        teachingTitle: "Teaching",
+        teachingTitle: "University teaching",
         teachingIntro: "Teaching activities completed and planned as part of the doctoral pathway.",
         teachingTotalLabel: "Teaching total",
         teachingYearsLabel: "Academic years",
@@ -6652,11 +7000,10 @@
       { key: "thesis", number: "03" },
       { key: "side", number: "04" },
       { key: "training", number: "05" },
-      { key: "teaching", number: "06" },
-      { key: "publications", number: "07" },
-      { key: "communications", number: "08" },
-      { key: "recruitment", number: "09" },
-      { key: "contact", number: "10" }
+      { key: "publications", number: "06" },
+      { key: "communications", number: "07" },
+      { key: "recruitment", number: "08" },
+      { key: "contact", number: "09" }
     ];
 
     const accessibilityClasses = {
@@ -7170,17 +7517,19 @@
       `;
     }
 
-    function trainingCard(training, data) {
+    function trainingCard(training, data, index = 0) {
       const text = training[currentLanguage];
 
       return `
-        <details class="training-card">
+        <details class="training-card enhanced-training-card">
           <summary>
-            <span class="training-hours">${escapeHtml(training.hours)}</span>
-            <span>
+            <span class="training-index">${String(index + 1).padStart(2, "0")}</span>
+            <span class="training-card-main">
               <strong>${escapeHtml(text.title)}</strong>
               <small>${escapeHtml(text.subtitle)}</small>
             </span>
+            <span class="training-hours">${escapeHtml(training.hours)}</span>
+            <span class="training-card-toggle" aria-hidden="true">+</span>
           </summary>
           <div class="training-content">
             <p><strong>${escapeHtml(data.pedagogy)}</strong> ${escapeHtml(text.objective)}</p>
@@ -7349,39 +7698,58 @@
             </details>
           </section>
 
-          <section id="${sectionId("training")}" class="reveal" data-section="training">
+          <section id="${sectionId("training")}" class="reveal teaching-training-section" data-section="training">
             ${sectionHeader("05", data.trainingTitle)}
+            <p class="lead teaching-training-intro">${escapeHtml(data.teachingTrainingIntro)}</p>
 
-            <article class="training-summary">
-              <span class="training-kicker">${escapeHtml(data.trainingKicker)}</span>
-              <h3>${escapeHtml(data.trainingSummaryTitle)}</h3>
-              <p>${escapeHtml(data.trainingSummary)}</p>
-              <div class="training-total">
-                <span>${escapeHtml(data.hours)}</span>
-                <span>${escapeHtml(data.modules)}</span>
+            <div class="teaching-training-layout">
+              <div class="combined-subsection combined-teaching-subsection">
+                <div class="combined-subsection-heading">
+                  <span>01</span>
+                  <div>
+                    <h3>${escapeHtml(data.teachingTitle)}</h3>
+                    <p>${escapeHtml(data.teachingIntro)}</p>
+                  </div>
+                </div>
+
+                ${teachingOverview(data)}
+
+                <div class="teaching-year-grid">
+                  ${TEACHING.map((block) => teachingYearBlock(block, data)).join("")}
+                </div>
               </div>
-            </article>
 
-            <details class="training-master">
-              <summary>${escapeHtml(data.trainingDetails)}</summary>
-              <div class="training-accordion">
-                ${TRAININGS.map((training) => trainingCard(training, data)).join("")}
+              <div class="combined-subsection combined-training-subsection">
+                <div class="combined-subsection-heading">
+                  <span>02</span>
+                  <div>
+                    <h3>${escapeHtml(data.trainingSubsectionTitle)}</h3>
+                    <p>${escapeHtml(data.trainingSummary)}</p>
+                  </div>
+                </div>
+
+                <article class="training-summary enhanced-training-summary">
+                  <span class="training-kicker">${escapeHtml(data.trainingKicker)}</span>
+                  <h3>${escapeHtml(data.trainingSummaryTitle)}</h3>
+                  <p>${escapeHtml(data.trainingSummary)}</p>
+                  <div class="training-total">
+                    <span>${escapeHtml(data.hours)}</span>
+                    <span>${escapeHtml(data.modules)}</span>
+                  </div>
+                </article>
+
+                <details class="training-master enhanced-training-master">
+                  <summary>${escapeHtml(data.trainingDetails)}</summary>
+                  <div class="training-accordion">
+                    ${TRAININGS.map((training, index) => trainingCard(training, data, index)).join("")}
+                  </div>
+                </details>
               </div>
-            </details>
-          </section>
-
-          <section id="${sectionId("teaching")}" class="reveal" data-section="teaching">
-            ${sectionHeader("06", data.teachingTitle)}
-            <p class="lead teaching-intro">${escapeHtml(data.teachingIntro)}</p>
-            ${teachingOverview(data)}
-
-            <div class="teaching-year-grid">
-              ${TEACHING.map((block) => teachingYearBlock(block, data)).join("")}
             </div>
           </section>
 
           <section id="${sectionId("publications")}" class="reveal" data-section="publications">
-            ${sectionHeader("07", data.publications)}
+            ${sectionHeader("06", data.publications)}
 
             <div class="filter-controls" aria-label="${currentLanguage === "fr" ? "Filtres des publications" : "Publication filters"}">
               <button class="filter-button active" type="button" data-filter="all" data-label="${escapeHtml(data.all)}">${escapeHtml(data.all)}</button>
@@ -7413,7 +7781,7 @@
           </section>
 
           <section id="${sectionId("communications")}" class="reveal" data-section="communications">
-            ${sectionHeader("08", data.communications)}
+            ${sectionHeader("07", data.communications)}
 
             <div class="filter-controls" aria-label="${currentLanguage === "fr" ? "Filtres des communications" : "Communication filters"}">
               <button class="filter-button active" type="button" data-filter="all" data-label="${escapeHtml(data.all)}">${escapeHtml(data.all)}</button>
@@ -7447,7 +7815,7 @@
           
 
           <section id="${sectionId("recruitment")}" class="reveal" data-section="recruitment">
-            ${sectionHeader("09", data.recruitmentTitle)}
+            ${sectionHeader("08", data.recruitmentTitle)}
             <p class="lead recruitment-intro">${escapeHtml(data.recruitmentIntro)}</p>
             <p class="recruitment-note">${escapeHtml(data.recruitmentLead)}</p>
 
@@ -7485,44 +7853,68 @@
           
 
           <section id="${sectionId("contact")}" class="reveal" data-section="contact">
-            ${sectionHeader("10", data.contact)}
+            ${sectionHeader("09", data.contact)}
 
-            <div class="contact-box">
-              <p class="contact-item">
-                <a class="contact-icon" href="mailto:luc.perroquin@gmail.com" aria-label="Email">✉</a>
-                <strong>Email${currentLanguage === "fr" ? " :" : ":"}</strong>
-                <a href="mailto:luc.perroquin@gmail.com">luc.perroquin@gmail.com</a>
-                <button class="copy-email-button" type="button" data-copy-email="luc.perroquin@gmail.com" data-default-label="${escapeHtml(data.copy)}" data-copied-label="${escapeHtml(data.copied)}">${escapeHtml(data.copy)}</button>
-              </p>
+            <div class="contact-box contact-box-redesigned">
+              <div class="contact-subsection">
+                <div class="contact-subsection-heading">
+                  <span>${currentLanguage === "fr" ? "Adresses" : "Addresses"}</span>
+                  <h3>${currentLanguage === "fr" ? "Me contacter" : "Contact me"}</h3>
+                </div>
 
-              <p class="contact-item study-contact-item">
-                <a class="contact-icon" href="mailto:eeg.adulte.csga@gmail.com" aria-label="${escapeHtml(data.studyContactLabel)}">EEG</a>
-                <strong>${escapeHtml(data.studyContactLabel)}${currentLanguage === "fr" ? " :" : ":"}</strong>
-                <a href="mailto:eeg.adulte.csga@gmail.com">eeg.adulte.csga@gmail.com</a>
-                <button class="copy-email-button" type="button" data-copy-email="eeg.adulte.csga@gmail.com" data-default-label="${escapeHtml(data.copy)}" data-copied-label="${escapeHtml(data.copied)}">${escapeHtml(data.copy)}</button>
-              </p>
+                <div class="contact-grid">
+                  <p class="contact-item">
+                    <a class="contact-icon" href="mailto:luc.perroquin@gmail.com" aria-label="${currentLanguage === "fr" ? "Contact professionnel" : "Professional contact"}">Pro</a>
+                    <strong>${currentLanguage === "fr" ? "Contact professionnel :" : "Professional contact:"}</strong>
+                    <a href="mailto:luc.perroquin@gmail.com">luc.perroquin@gmail.com</a>
+                    <button class="copy-email-button" type="button" data-copy-email="luc.perroquin@gmail.com" data-default-label="${escapeHtml(data.copy)}" data-copied-label="${escapeHtml(data.copied)}">${escapeHtml(data.copy)}</button>
+                  </p>
 
-              <p class="contact-item">
-                <a class="contact-icon" href="https://orcid.org/0009-0007-9278-0612" target="_blank" rel="noopener noreferrer" aria-label="ORCID">iD</a>
-                <strong>ORCID${currentLanguage === "fr" ? " :" : ":"}</strong>
-                <a href="https://orcid.org/0009-0007-9278-0612" target="_blank" rel="noopener noreferrer">0009-0007-9278-0612</a>
-                <button class="copy-email-button" type="button" data-copy-email="https://orcid.org/0009-0007-9278-0612" data-default-label="${escapeHtml(data.copy)}" data-copied-label="${escapeHtml(data.copied)}">${escapeHtml(data.copy)}</button>
-              </p>
+                  <p class="contact-item">
+                    <a class="contact-icon" href="mailto:luc.perroquin@u-bourgogne.fr" aria-label="${currentLanguage === "fr" ? "Contact universitaire" : "University contact"}">UB</a>
+                    <strong>${currentLanguage === "fr" ? "Contact universitaire :" : "University contact:"}</strong>
+                    <a href="mailto:luc.perroquin@u-bourgogne.fr">luc.perroquin@u-bourgogne.fr</a>
+                    <button class="copy-email-button" type="button" data-copy-email="luc.perroquin@u-bourgogne.fr" data-default-label="${escapeHtml(data.copy)}" data-copied-label="${escapeHtml(data.copied)}">${escapeHtml(data.copy)}</button>
+                  </p>
 
-              <p class="contact-item">
-                <a class="contact-icon" href="https://www.researchgate.net/profile/Luc-Perroquin?ev=hdr_xprf" target="_blank" rel="noopener noreferrer" aria-label="ResearchGate">RG</a>
-                <strong>ResearchGate${currentLanguage === "fr" ? " :" : ":"}</strong>
-                <a href="https://www.researchgate.net/profile/Luc-Perroquin?ev=hdr_xprf" target="_blank" rel="noopener noreferrer">Luc Perroquin</a>
-                <button class="copy-email-button" type="button" data-copy-email="https://www.researchgate.net/profile/Luc-Perroquin?ev=hdr_xprf" data-default-label="${escapeHtml(data.copy)}" data-copied-label="${escapeHtml(data.copied)}">${escapeHtml(data.copy)}</button>
-              </p>
+                  <p class="contact-item study-contact-item">
+                    <a class="contact-icon" href="mailto:eeg.adulte.csga@gmail.com" aria-label="${escapeHtml(data.studyContactLabel)}">EEG</a>
+                    <strong>${escapeHtml(data.studyContactLabel)}${currentLanguage === "fr" ? " :" : ":"}</strong>
+                    <a href="mailto:eeg.adulte.csga@gmail.com">eeg.adulte.csga@gmail.com</a>
+                    <button class="copy-email-button" type="button" data-copy-email="eeg.adulte.csga@gmail.com" data-default-label="${escapeHtml(data.copy)}" data-copied-label="${escapeHtml(data.copied)}">${escapeHtml(data.copy)}</button>
+                  </p>
+                </div>
+              </div>
 
-              <p class="contact-item">
-                <a class="contact-icon" href="https://www.linkedin.com/in/luc-perroquin-288b54328" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">in</a>
-                <strong>LinkedIn${currentLanguage === "fr" ? " :" : ":"}</strong>
-                <a href="https://www.linkedin.com/in/luc-perroquin-288b54328" target="_blank" rel="noopener noreferrer">luc-perroquin-288b54328</a>
-                <button class="copy-email-button" type="button" data-copy-email="https://www.linkedin.com/in/luc-perroquin-288b54328" data-default-label="${escapeHtml(data.copy)}" data-copied-label="${escapeHtml(data.copied)}">${escapeHtml(data.copy)}</button>
-              </p>
+              <div class="contact-subsection">
+                <div class="contact-subsection-heading">
+                  <span>${currentLanguage === "fr" ? "Profils" : "Profiles"}</span>
+                  <h3>${currentLanguage === "fr" ? "Présence académique en ligne" : "Academic online presence"}</h3>
+                </div>
 
+                <div class="contact-grid professional-profile-grid">
+                  <p class="contact-item">
+                    <a class="contact-icon" href="https://www.linkedin.com/in/luc-perroquin-288b54328" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">in</a>
+                    <strong>LinkedIn${currentLanguage === "fr" ? " :" : ":"}</strong>
+                    <a href="https://www.linkedin.com/in/luc-perroquin-288b54328" target="_blank" rel="noopener noreferrer">luc-perroquin-288b54328</a>
+                    <button class="copy-email-button" type="button" data-copy-email="https://www.linkedin.com/in/luc-perroquin-288b54328" data-default-label="${escapeHtml(data.copy)}" data-copied-label="${escapeHtml(data.copied)}">${escapeHtml(data.copy)}</button>
+                  </p>
+
+                  <p class="contact-item">
+                    <a class="contact-icon" href="https://www.researchgate.net/profile/Luc-Perroquin?ev=hdr_xprf" target="_blank" rel="noopener noreferrer" aria-label="ResearchGate">RG</a>
+                    <strong>ResearchGate${currentLanguage === "fr" ? " :" : ":"}</strong>
+                    <a href="https://www.researchgate.net/profile/Luc-Perroquin?ev=hdr_xprf" target="_blank" rel="noopener noreferrer">Luc Perroquin</a>
+                    <button class="copy-email-button" type="button" data-copy-email="https://www.researchgate.net/profile/Luc-Perroquin?ev=hdr_xprf" data-default-label="${escapeHtml(data.copy)}" data-copied-label="${escapeHtml(data.copied)}">${escapeHtml(data.copy)}</button>
+                  </p>
+
+                  <p class="contact-item">
+                    <a class="contact-icon" href="https://orcid.org/0009-0007-9278-0612" target="_blank" rel="noopener noreferrer" aria-label="ORCID">iD</a>
+                    <strong>ORCID${currentLanguage === "fr" ? " :" : ":"}</strong>
+                    <a href="https://orcid.org/0009-0007-9278-0612" target="_blank" rel="noopener noreferrer">0009-0007-9278-0612</a>
+                    <button class="copy-email-button" type="button" data-copy-email="https://orcid.org/0009-0007-9278-0612" data-default-label="${escapeHtml(data.copy)}" data-copied-label="${escapeHtml(data.copied)}">${escapeHtml(data.copy)}</button>
+                  </p>
+                </div>
+              </div>
             </div>
           </section>
         </main>
