@@ -5429,6 +5429,395 @@
       }
     }
 
+
+    /* Header desktop : largeur réduite, hauteur augmentée, textes rééchelonnés */
+    @media (min-width: 851px) {
+      header {
+        width: min(1180px, calc(100% - 104px)) !important;
+        min-height: 760px !important;
+        margin: 28px auto 0 !important;
+        padding: 118px 58px 128px !important;
+      }
+
+      header::before {
+        inset: 20px !important;
+      }
+
+      header .hero,
+      .hero {
+        grid-template-columns: minmax(0, 1.08fr) minmax(300px, 0.72fr) !important;
+        gap: clamp(34px, 4vw, 68px) !important;
+        max-width: 1060px !important;
+        margin-inline: auto !important;
+      }
+
+      header .label {
+        margin-bottom: 20px !important;
+      }
+
+      header h1,
+      header .hero-title-fr {
+        max-width: 620px !important;
+        font-size: clamp(4.25rem, 7vw, 6.65rem) !important;
+        line-height: 0.9 !important;
+        letter-spacing: -0.065em !important;
+        margin-bottom: 20px !important;
+      }
+
+      header .subtitle {
+        max-width: 560px !important;
+        font-size: clamp(1.28rem, 1.8vw, 1.75rem) !important;
+        line-height: 1.18 !important;
+        margin-bottom: 20px !important;
+      }
+
+      header .hero-intro {
+        max-width: 610px !important;
+        font-size: clamp(1rem, 1.05vw, 1.12rem) !important;
+        line-height: 1.62 !important;
+      }
+
+      header .portrait-card {
+        max-width: 360px !important;
+        justify-self: end !important;
+      }
+
+      header .profile-photo {
+        max-height: 385px !important;
+      }
+
+      header nav.site-nav {
+        width: min(1080px, calc(100% - 96px)) !important;
+        max-width: calc(100% - 96px) !important;
+        bottom: 34px !important;
+        padding-top: 13px !important;
+        padding-bottom: 13px !important;
+      }
+
+      header nav.site-nav .nav-inner {
+        min-height: 46px !important;
+      }
+
+      header nav.site-nav .nav-links {
+        gap: 5px !important;
+      }
+
+      header nav.site-nav .nav-links a {
+        min-height: 38px !important;
+        padding: 10px 9px !important;
+        font-size: clamp(0.66rem, 0.68vw, 0.78rem) !important;
+      }
+    }
+
+    @media (min-width: 851px) and (max-width: 1180px) {
+      header {
+        width: calc(100% - 52px) !important;
+        min-height: 720px !important;
+        padding-inline: 42px !important;
+      }
+
+      header .hero,
+      .hero {
+        grid-template-columns: minmax(0, 1fr) minmax(280px, 0.72fr) !important;
+        gap: 34px !important;
+      }
+
+      header h1,
+      header .hero-title-fr {
+        font-size: clamp(3.75rem, 7.6vw, 5.8rem) !important;
+      }
+
+      header nav.site-nav {
+        width: min(1000px, calc(100% - 72px)) !important;
+        max-width: calc(100% - 72px) !important;
+      }
+    }
+
+
+    /* Menus déroulants des projets par axe */
+    .axis-projects-panel,
+    .recruitment-axis-panel {
+      margin-top: 22px;
+      border-radius: 26px;
+      background:
+        linear-gradient(135deg, rgba(251, 247, 237, 0.94), rgba(255, 255, 255, 0.72));
+      border: 1px solid rgba(11, 47, 35, 0.12);
+      box-shadow: 0 14px 34px rgba(11, 47, 35, 0.08);
+      overflow: hidden;
+    }
+
+    body.dark-mode .axis-projects-panel,
+    body.dark-mode .recruitment-axis-panel {
+      background:
+        linear-gradient(135deg, rgba(16, 37, 28, 0.90), rgba(7, 19, 15, 0.72));
+      border-color: rgba(220, 238, 227, 0.12);
+    }
+
+    .axis-projects-summary,
+    .recruitment-axis-summary {
+      list-style: none;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 18px;
+      align-items: center;
+      padding: 20px 22px;
+      cursor: pointer;
+      color: var(--green-dark);
+    }
+
+    .axis-projects-summary::-webkit-details-marker,
+    .recruitment-axis-summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .axis-projects-summary > span:first-child,
+    .recruitment-axis-summary > span:first-child {
+      display: grid;
+      gap: 4px;
+      min-width: 0;
+    }
+
+    .dropdown-kicker {
+      width: fit-content;
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: rgba(31, 111, 80, 0.10);
+      color: var(--green-main);
+      font-size: 0.72rem;
+      font-weight: 950;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+    }
+
+    .axis-projects-summary strong,
+    .recruitment-axis-summary strong {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.18rem, 1.9vw, 1.5rem);
+      line-height: 1.12;
+      color: var(--green-dark);
+    }
+
+    .axis-projects-summary small,
+    .recruitment-axis-summary small {
+      color: var(--muted);
+      font-size: 0.88rem;
+      font-weight: 820;
+    }
+
+    .dropdown-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 38px;
+      padding: 8px 13px;
+      border-radius: 999px;
+      background: var(--green-soft);
+      color: var(--green-dark);
+      font-size: 0.82rem;
+      font-weight: 950;
+      white-space: nowrap;
+      transition: background 0.18s ease, color 0.18s ease, transform 0.18s ease;
+    }
+
+    .dropdown-toggle::before {
+      content: "+";
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 21px;
+      height: 21px;
+      border-radius: 999px;
+      background: var(--green-main);
+      color: #ffffff;
+      line-height: 1;
+      transition: transform 0.18s ease;
+    }
+
+    .axis-projects-summary:hover .dropdown-toggle,
+    .recruitment-axis-summary:hover .dropdown-toggle,
+    .axis-projects-summary:focus .dropdown-toggle,
+    .recruitment-axis-summary:focus .dropdown-toggle {
+      transform: translateY(-1px);
+      background: var(--green-main);
+      color: #ffffff;
+    }
+
+    .axis-projects-panel[open] .dropdown-toggle,
+    .recruitment-axis-panel[open] .dropdown-toggle {
+      background: var(--green-dark);
+      color: #ffffff;
+    }
+
+    .axis-projects-panel[open] .dropdown-toggle::before,
+    .recruitment-axis-panel[open] .dropdown-toggle::before {
+      content: "-";
+      transform: rotate(180deg);
+    }
+
+    .axis-projects-panel .open-label,
+    .recruitment-axis-panel .open-label {
+      display: none;
+    }
+
+    .axis-projects-panel[open] .closed-label,
+    .recruitment-axis-panel[open] .closed-label {
+      display: none;
+    }
+
+    .axis-projects-panel[open] .open-label,
+    .recruitment-axis-panel[open] .open-label {
+      display: inline;
+    }
+
+    .axis-panel-body,
+    .recruitment-axis-body {
+      padding: 0 22px 22px;
+      animation: dropdownPanelOpen 0.2s ease both;
+    }
+
+    .axis-projects-panel[open] .axis-projects-summary,
+    .recruitment-axis-panel[open] .recruitment-axis-summary {
+      border-bottom: 1px solid rgba(11, 47, 35, 0.10);
+      margin-bottom: 18px;
+    }
+
+    body.dark-mode .axis-projects-panel[open] .axis-projects-summary,
+    body.dark-mode .recruitment-axis-panel[open] .recruitment-axis-summary {
+      border-bottom-color: rgba(220, 238, 227, 0.12);
+    }
+
+    .recruitment-axis-list {
+      display: grid;
+      gap: 18px;
+      margin-top: 22px;
+    }
+
+    .recruitment-axis-panel .recruitment-grid {
+      margin-top: 0;
+    }
+
+    @keyframes dropdownPanelOpen {
+      from {
+        opacity: 0;
+        transform: translateY(-6px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 760px) {
+      .axis-projects-summary,
+      .recruitment-axis-summary {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 18px;
+      }
+
+      .dropdown-toggle {
+        width: 100%;
+      }
+
+      .axis-panel-body,
+      .recruitment-axis-body {
+        padding: 0 16px 18px;
+      }
+    }
+
+    /* Bouton flottant Recrutement : symétrique du menu latéral droit */
+    @media (min-width: 1181px) {
+      .recruitment-mode-dock {
+        left: 18px !important;
+        right: auto !important;
+        top: 50% !important;
+        bottom: auto !important;
+        z-index: 900 !important;
+        display: flex !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+        transform: translateY(-50%) translateX(-18px) !important;
+        transition:
+          opacity 0.22s ease,
+          visibility 0.22s ease,
+          transform 0.22s ease !important;
+      }
+
+      body.show-side-progress .recruitment-mode-dock,
+      body.recruitment-mode .recruitment-mode-dock {
+        opacity: 1 !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
+        transform: translateY(-50%) translateX(0) !important;
+      }
+
+      .recruitment-mode-dock button {
+        writing-mode: horizontal-tb !important;
+        transform: none !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 8px !important;
+        min-width: 170px !important;
+        min-height: 42px !important;
+        padding: 8px 12px !important;
+        border-radius: 999px !important;
+        font-size: 0.78rem !important;
+        line-height: 1.15 !important;
+        letter-spacing: 0 !important;
+        text-transform: none !important;
+        opacity: 0.9 !important;
+        background: rgba(251, 247, 237, 0.92) !important;
+        box-shadow: var(--shadow-soft) !important;
+      }
+
+      .recruitment-mode-dock button::before {
+        content: "●" !important;
+        display: inline-flex !important;
+        width: auto !important;
+        height: auto !important;
+        margin: 0 !important;
+        border-radius: 0 !important;
+        background: transparent !important;
+        font-size: 0.48rem !important;
+        opacity: 0.62 !important;
+      }
+
+      .recruitment-mode-dock button:hover,
+      .recruitment-mode-dock button:focus,
+      .recruitment-mode-dock button.active {
+        opacity: 1 !important;
+        transform: translateX(2px) !important;
+      }
+
+      body.recruitment-mode .recruitment-mode-dock button {
+        background: var(--green-main) !important;
+        color: #ffffff !important;
+        border-color: var(--green-main) !important;
+        box-shadow: 0 14px 32px rgba(31, 111, 80, 0.22) !important;
+      }
+
+      body.dark-mode .recruitment-mode-dock button {
+        background: rgba(7, 19, 15, 0.88) !important;
+        border-color: rgba(220, 238, 227, 0.14) !important;
+        color: #dceee3 !important;
+      }
+
+      body.dark-mode.recruitment-mode .recruitment-mode-dock button {
+        background: var(--green-main) !important;
+        color: #ffffff !important;
+      }
+    }
+
+    @media (min-width: 761px) and (max-width: 1180px) {
+      .recruitment-mode-dock {
+        display: none !important;
+      }
+    }
+
   </style>
 </head>
 
@@ -5579,7 +5968,7 @@
         cv: "Ouvrir CV",
         cvUrl: "https://lucper01.github.io/Portfolio/assets/CV_PerroquinLuc_fr.pdf",
         aboutTitle: "À propos",
-        aboutText: "Cette section sera complétée prochainement avec une présentation plus personnelle de mon parcours, de ce qui m'a conduit vers la psychologie cognitive, la recherche expérimentale et l'étude des interactions entre les sens.",
+        aboutText: "J'ai toujours aimé m'atteler à comprendre l'être humain : sa manière de percevoir, de penser, d'agir, mais aussi la façon dont il se construit au contact de son environnement. C'est cette curiosité qui m'a d'abord conduit vers la psychologie, puis plus spécifiquement vers la psychologie cognitive, où j'ai trouvé un cadre pour étudier expérimentalement les mécanismes qui organisent notre expérience du monde. Mon parcours en ergonomie cognitive m'a ensuite permis d'approfondir la question des relations entre l'individu et son environnement, et de m'intéresser à la manière dont les contextes, les situations et les informations sensorielles influencent nos comportements et notre rapport au monde. Ma thèse s'inscrit aujourd'hui dans cette continuité, en interrogeant la façon dont les odeurs, les sons et les images participent à notre perception de l'espace, du temps et des événements.",
         tags: ["Parcours", "Psychologie cognitive", "Recherche expérimentale", "Enseignement"],
         teamTitle: "Équipe de recherche",
         teamKicker: "DOCC | CSGA",
@@ -5738,7 +6127,7 @@
         cv: "Open CV",
         cvUrl: "https://lucper01.github.io/Portfolio/assets/CV_PerroquinLuc_en.pdf",
         aboutTitle: "About",
-        aboutText: "This section will be completed later with a more personal presentation of my background, and of what led me toward cognitive psychology, experimental research, and the study of interactions between the senses.",
+        aboutText: "I have always been drawn to understanding human beings: how they perceive, think, and act, but also how they are shaped through their interactions with the environment. This curiosity first led me toward psychology, and then more specifically toward cognitive psychology, where I found a framework for experimentally studying the mechanisms that organize our experience of the world. My training in cognitive ergonomics then allowed me to further explore the relations between individuals and their environments, and to examine how contexts, situations, and sensory information influence behavior and our relation to the world. My thesis now follows this continuity by investigating how odors, sounds, and images contribute to our perception of space, time, and events.",
         tags: ["Background", "Cognitive psychology", "Experimental research", "Teaching"],
         teamTitle: "Research team",
         teamKicker: "DOCC | CSGA",
@@ -6597,35 +6986,105 @@
       `;
     }
 
-    function axisCard(axisNumber, data) {
-      const axisId = `${currentLanguage}-axis-${axisNumber}`;
-      const axisTitle = axisNumber === 1
+    function axisTitle(axisNumber) {
+      return axisNumber === 1
         ? (currentLanguage === "fr" ? "Relations temporelles entre olfaction, vision et audition" : "Temporal relations between olfaction, vision, and audition")
         : (currentLanguage === "fr" ? "Influence des odeurs sur la perception de l'espace et des événements" : "Influence of odors on the perception of space and events");
+    }
 
-      const axisText = axisNumber === 1
+    function axisDescription(axisNumber) {
+      return axisNumber === 1
         ? (currentLanguage === "fr"
           ? "Cet axe vise à caractériser les relations temporelles entre modalités sensorielles, puis à examiner comment l'olfaction peut modifier les fenêtres d'intégration et leur recalibration."
           : "This axis aims to characterize temporal relations between sensory modalities, and then to examine how olfaction may modify integration windows and their recalibration.")
         : (currentLanguage === "fr"
           ? "Cet axe vise à caractériser la manière dont les odeurs peuvent moduler la perception visuelle de l'espace, orienter l'attention spatiale et modifier la représentation de scènes ou d'événements."
           : "This axis aims to characterize how odors may modulate visual perception of space, orient spatial attention, and modify the representation of scenes or events.");
+    }
+
+    function pluralLabel(count, singularFr, pluralFr, singularEn, pluralEn) {
+      if (currentLanguage === "fr") {
+        return `${count} ${count > 1 ? pluralFr : singularFr}`;
+      }
+
+      return `${count} ${count > 1 ? pluralEn : singularEn}`;
+    }
+
+    function axisProjectsPanel(axisNumber, data) {
+      const axisId = `${currentLanguage}-axis-${axisNumber}`;
+      const projects = PROJECTS.filter((project) => project.axis === axisNumber);
+      const axisLabel = axisNumber === 1 ? data.axis1 : data.axis2;
+
+      return `
+        <details class="axis-projects-panel">
+          <summary class="axis-projects-summary">
+            <span>
+              <span class="dropdown-kicker">${escapeHtml(axisLabel)}</span>
+              <strong>${currentLanguage === "fr" ? "Projets associés" : "Associated projects"}</strong>
+              <small>${escapeHtml(pluralLabel(projects.length, "projet", "projets", "project", "projects"))}</small>
+            </span>
+            <span class="dropdown-toggle">
+              <span class="closed-label">${currentLanguage === "fr" ? "Dérouler" : "Expand"}</span>
+              <span class="open-label">${currentLanguage === "fr" ? "Replier" : "Collapse"}</span>
+            </span>
+          </summary>
+
+          <div class="axis-panel-body">
+            <div class="axis-actions">
+              <button class="axis-action-button" type="button" data-axis-action="open" data-axis-target="${axisId}">${escapeHtml(data.openAll)}</button>
+              <button class="axis-action-button" type="button" data-axis-action="close" data-axis-target="${axisId}">${escapeHtml(data.closeAll)}</button>
+            </div>
+
+            <div class="axis-projects">
+              ${projects.map((project) => projectCard(project, data)).join("")}
+            </div>
+          </div>
+        </details>
+      `;
+    }
+
+    function axisCard(axisNumber, data) {
+      const axisId = `${currentLanguage}-axis-${axisNumber}`;
+      const axisLabel = axisNumber === 1 ? data.axis1 : data.axis2;
 
       return `
         <article id="${axisId}" class="axis-card" data-filter-group>
-          <span class="axis-kicker">${axisNumber === 1 ? data.axis1 : data.axis2}</span>
-          <h3>${escapeHtml(axisTitle)}</h3>
-          <p>${escapeHtml(axisText)}</p>
-
-          <div class="axis-actions">
-            <button class="axis-action-button" type="button" data-axis-action="open" data-axis-target="${axisId}">${escapeHtml(data.openAll)}</button>
-            <button class="axis-action-button" type="button" data-axis-action="close" data-axis-target="${axisId}">${escapeHtml(data.closeAll)}</button>
-          </div>
-
-          <div class="axis-projects">
-            ${PROJECTS.filter((project) => project.axis === axisNumber).map((project) => projectCard(project, data)).join("")}
-          </div>
+          <span class="axis-kicker">${escapeHtml(axisLabel)}</span>
+          <h3>${escapeHtml(axisTitle(axisNumber))}</h3>
+          <p>${escapeHtml(axisDescription(axisNumber))}</p>
+          ${axisProjectsPanel(axisNumber, data)}
         </article>
+      `;
+    }
+
+    function recruitmentAxisPanel(axisNumber, data) {
+      const projects = PROJECTS.filter((project) => !project.done && project.axis === axisNumber);
+      if (!projects.length) {
+        return "";
+      }
+
+      const axisLabel = axisNumber === 1 ? data.axis1 : data.axis2;
+
+      return `
+        <details class="recruitment-axis-panel">
+          <summary class="recruitment-axis-summary">
+            <span>
+              <span class="dropdown-kicker">${escapeHtml(axisLabel)}</span>
+              <strong>${escapeHtml(axisTitle(axisNumber))}</strong>
+              <small>${escapeHtml(pluralLabel(projects.length, "étude", "études", "study", "studies"))}</small>
+            </span>
+            <span class="dropdown-toggle">
+              <span class="closed-label">${currentLanguage === "fr" ? "Dérouler les études" : "Expand studies"}</span>
+              <span class="open-label">${currentLanguage === "fr" ? "Replier les études" : "Collapse studies"}</span>
+            </span>
+          </summary>
+
+          <div class="recruitment-axis-body">
+            <div class="recruitment-grid">
+              ${projects.map((project) => recruitmentCard(project, data)).join("")}
+            </div>
+          </div>
+        </details>
       `;
     }
 
@@ -7017,8 +7476,9 @@
               </div>
             </div>
 
-            <div class="recruitment-grid">
-              ${PROJECTS.filter((project) => !project.done).map((project) => recruitmentCard(project, data)).join("")}
+            <div class="recruitment-axis-list">
+              ${recruitmentAxisPanel(1, data)}
+              ${recruitmentAxisPanel(2, data)}
             </div>
           </section>
 
@@ -7787,8 +8247,15 @@
       const targetAxis = document.getElementById(button.dataset.axisTarget);
       if (!targetAxis) return;
 
+      const shouldOpen = button.dataset.axisAction === "open";
+      const projectsPanel = targetAxis.querySelector(".axis-projects-panel");
+
+      if (projectsPanel && shouldOpen) {
+        projectsPanel.open = true;
+      }
+
       targetAxis.querySelectorAll(".project-card").forEach((project) => {
-        project.open = button.dataset.axisAction === "open";
+        project.open = shouldOpen;
       });
     }
 
