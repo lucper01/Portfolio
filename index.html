@@ -7834,7 +7834,7 @@
       opacity: 0.96 !important;
     }
 
-    /* Publications et communications : même logique visuelle que Enseignement/Formations */
+    /* Publications et Communications : même logique visuelle que Enseignement/Formations */
     .publications-communications-section .teaching-training-global-overview {
       margin-top: 26px !important;
       margin-bottom: 34px !important;
@@ -7950,6 +7950,16 @@
       .training-year-block .teaching-entry-grid {
         grid-template-columns: 1fr !important;
       }
+    }
+
+
+    /* V53 : Publications et Communications sans grand récapitulatif */
+    .publications-communications-section .publications-communications-layout {
+      margin-top: 26px !important;
+    }
+
+    .publications-communications-section .lead {
+      margin-bottom: 0 !important;
     }
 
   </style>
@@ -8089,7 +8099,7 @@
         filterMenuLabel: "Trier",
         recruitmentDockHint: "Participant ? Cliquez ici pour accéder aux études.",
         recruitmentDockActiveHint: "Revenir à la présentation complète.",
-        nav: ["À propos", "Équipe", "Thèse", "Projets en Collaboration", "Enseignement et Formations", "Publications et communications", "Participer", "Contact"],
+        nav: ["À propos", "Équipe", "Thèse", "Projets en Collaboration", "Enseignement et Formations", "Publications et Communications", "Participer", "Contact"],
         heroLabel: "Présentation académique",
         heroTitle: "Luc Perroquin",
         heroSubtitle: "Doctorant en psychologie cognitive",
@@ -8202,9 +8212,9 @@
         teachingCollapseLabel: "Masquer le détail",
         teachingPending: "Contenu à compléter",
         teachingPendingText: "Les enseignements, interventions ou supports pédagogiques seront ajoutés ici lorsqu'ils seront formalisés.",
-        publications: "Publications et communications",
+        publications: "Publications et Communications",
         publicationsBlockTitle: "Publications",
-        publicationsCommunicationsIntro: "Cette section regroupe les publications, prépublications, communications et posters liés au parcours doctoral.",
+        publicationsCommunicationsIntro: "Cette section distingue les productions écrites, comme les articles et prépublications, des communications scientifiques, comme les présentations orales et les posters.",
         communicationsBlockTitle: "Communications",
         scientificOutputsLabel: "Productions renseignées",
         outputTypesLabel: "Types de contenus",
@@ -8275,7 +8285,7 @@
         filterMenuLabel: "Filter",
         recruitmentDockHint: "Participant? Click here to access the studies.",
         recruitmentDockActiveHint: "Return to the full presentation.",
-        nav: ["About", "Team", "Thesis", "Featured Projects", "Teaching and Training", "Publications and communications", "Participate", "Contact"],
+        nav: ["About", "Team", "Thesis", "Featured Projects", "Teaching and Training", "Publications and Communications", "Participate", "Contact"],
         heroLabel: "Academic presentation",
         heroTitle: "Luc Perroquin",
         heroSubtitle: "PhD student in cognitive psychology",
@@ -8388,9 +8398,9 @@
         teachingCollapseLabel: "Hide details",
         teachingPending: "Content to be completed",
         teachingPendingText: "Teaching activities, sessions, or pedagogical materials will be added here once formalized.",
-        publications: "Publications and communications",
+        publications: "Publications and Communications",
         publicationsBlockTitle: "Publications",
-        publicationsCommunicationsIntro: "This section brings together publications, preprints, communications, and posters related to the doctoral pathway.",
+        publicationsCommunicationsIntro: "This section distinguishes written outputs, such as articles and preprints, from scientific communications, such as oral presentations and posters.",
         communicationsBlockTitle: "Communications",
         scientificOutputsLabel: "Listed outputs",
         outputTypesLabel: "Content types",
@@ -9526,22 +9536,7 @@
     }
 
     function scientificOutputsOverview(data) {
-      return `
-        <article class="teaching-training-global-overview scientific-outputs-overview">
-          <div class="teaching-overview-item global-overview-main">
-            <strong>1</strong>
-            <span>${escapeHtml(data.scientificOutputsLabel)}</span>
-          </div>
-          <div class="teaching-overview-item">
-            <strong>4</strong>
-            <span>${escapeHtml(data.outputTypesLabel)}</span>
-          </div>
-          <div class="teaching-overview-item">
-            <strong>${escapeHtml(data.outputStatusValue)}</strong>
-            <span>${escapeHtml(data.outputStatusLabel)}</span>
-          </div>
-        </article>
-      `;
+      return "";
     }
 
     function render(data) {
@@ -9750,8 +9745,6 @@
           <section id="${sectionId("publications")}" class="reveal publications-communications-section" data-section="publications">
             ${sectionHeader("06", data.publications)}
             <p class="lead publications-communications-intro">${escapeHtml(data.publicationsCommunicationsIntro)}</p>
-
-            ${scientificOutputsOverview(data)}
 
             <div class="teaching-training-layout publications-communications-layout">
               <div class="combined-subsection combined-publications-subsection">
