@@ -6396,6 +6396,539 @@
       }
     }
 
+
+    /* Finition V43 : dimensions accueil type v30, accents, tri compact */
+    @media (min-width: 851px) {
+      header {
+        margin: 14px 14px 0 !important;
+        width: calc(100% - 28px) !important;
+        max-width: calc(100% - 28px) !important;
+        min-height: calc(100svh - 14px) !important;
+        border-radius: 48px !important;
+        padding: 64px 8% 122px !important;
+      }
+
+      header::before {
+        inset: 18px !important;
+        border-radius: 34px !important;
+      }
+
+      header .hero,
+      .hero {
+        max-width: min(var(--page-width), 1160px) !important;
+        grid-template-columns: minmax(0, 1.24fr) minmax(240px, 0.64fr) !important;
+        gap: clamp(30px, 4vw, 52px) !important;
+        padding: 12px 0 20px !important;
+        align-items: center !important;
+      }
+
+      header h1,
+      header .hero-title-fr {
+        max-width: 720px !important;
+        font-size: clamp(4.2rem, 6.2vw, 6.45rem) !important;
+        line-height: 0.9 !important;
+      }
+
+      header .subtitle {
+        max-width: 650px !important;
+        font-size: clamp(1.26rem, 1.65vw, 1.62rem) !important;
+      }
+
+      header .hero-intro {
+        max-width: 690px !important;
+        font-size: clamp(1.02rem, 1.05vw, 1.13rem) !important;
+      }
+
+      header .portrait-card {
+        max-width: 410px !important;
+        justify-self: center !important;
+      }
+
+      header .profile-photo {
+        max-height: 365px !important;
+      }
+
+      header nav.site-nav {
+        width: min(1120px, calc(100% - 72px)) !important;
+        max-width: calc(100% - 72px) !important;
+        bottom: 24px !important;
+        padding: 12px 16px !important;
+      }
+
+      header nav.site-nav .nav-inner {
+        min-height: 44px !important;
+      }
+
+      header nav.site-nav .nav-links {
+        gap: 7px !important;
+      }
+
+      header nav.site-nav a,
+      header nav.site-nav .nav-links a {
+        min-height: 40px !important;
+        padding: 9px 12px !important;
+        font-size: clamp(0.88rem, 0.82vw, 1rem) !important;
+        line-height: 1.1 !important;
+        font-weight: 900 !important;
+      }
+    }
+
+    body:not(.dark-mode) {
+      --green-deep: #061f17;
+      --green-dark: #0a2f23;
+      --green-main: #1f6f50;
+      --green-light: #77b892;
+      --green-soft: #dceee3;
+      --green-pale: #eff8f2;
+      --cream: #f8fbf7;
+      --accent-teal: #2f8f6a;
+      --accent-sage: #8fcaa3;
+      --accent-mint: #e8f6ed;
+      background:
+        radial-gradient(circle at 7% 0%, rgba(47, 143, 106, 0.18), transparent 28%),
+        radial-gradient(circle at 94% 28%, rgba(143, 202, 163, 0.24), transparent 33%),
+        linear-gradient(180deg, #f8fbf7 0%, #edf7f1 48%, #f8fbf7 100%) !important;
+    }
+
+    body:not(.dark-mode) main > section,
+    body:not(.dark-mode) .team-card,
+    body:not(.dark-mode) .supervision-card,
+    body:not(.dark-mode) .axis-card,
+    body:not(.dark-mode) .project-card,
+    body:not(.dark-mode) .axis-projects-panel,
+    body:not(.dark-mode) .recruitment-axis-panel,
+    body:not(.dark-mode) .recruitment-card,
+    body:not(.dark-mode) .training-summary,
+    body:not(.dark-mode) .training-master,
+    body:not(.dark-mode) .enhanced-training-master,
+    body:not(.dark-mode) .enhanced-training-card,
+    body:not(.dark-mode) .publication-list li,
+    body:not(.dark-mode) .contact-box,
+    body:not(.dark-mode) .combined-subsection-heading {
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.97), rgba(239, 248, 242, 0.92)) !important;
+      border-color: rgba(31, 111, 80, 0.17) !important;
+    }
+
+    body:not(.dark-mode) .axis-card,
+    body:not(.dark-mode) .project-card,
+    body:not(.dark-mode) .recruitment-card,
+    body:not(.dark-mode) .enhanced-training-card,
+    body:not(.dark-mode) .teaching-entry,
+    body:not(.dark-mode) .contact-item {
+      position: relative;
+      overflow: hidden;
+    }
+
+    body:not(.dark-mode) .axis-card::before,
+    body:not(.dark-mode) .project-card::before,
+    body:not(.dark-mode) .recruitment-card::before,
+    body:not(.dark-mode) .enhanced-training-card::before,
+    body:not(.dark-mode) .teaching-entry::before,
+    body:not(.dark-mode) .contact-item::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 5px;
+      background: linear-gradient(180deg, var(--green-main), var(--accent-sage));
+      opacity: 0.92;
+    }
+
+    body:not(.dark-mode) .project-body,
+    body:not(.dark-mode) .training-content p,
+    body:not(.dark-mode) .contact-item,
+    body:not(.dark-mode) .study-contact-card,
+    body:not(.dark-mode) .participation-guide,
+    body:not(.dark-mode) .participation-step,
+    body:not(.dark-mode) .teaching-overview-item,
+    body:not(.dark-mode) .teaching-year-block,
+    body:not(.dark-mode) .teaching-entry {
+      background:
+        linear-gradient(135deg, rgba(250, 253, 251, 0.98), rgba(232, 246, 237, 0.86)) !important;
+      border-color: rgba(31, 111, 80, 0.15) !important;
+    }
+
+    body:not(.dark-mode) .section-title span,
+    body:not(.dark-mode) .training-index,
+    body:not(.dark-mode) .combined-subsection-heading > span,
+    body:not(.dark-mode) .side-progress a.active span {
+      background: var(--green-main) !important;
+      color: #ffffff !important;
+    }
+
+    body:not(.dark-mode) .dropdown-kicker,
+    body:not(.dark-mode) .training-kicker,
+    body:not(.dark-mode) .recruitment-card-kicker,
+    body:not(.dark-mode) .axis-kicker,
+    body:not(.dark-mode) .contact-subsection-heading span,
+    body:not(.dark-mode) .teaching-entry-type,
+    body:not(.dark-mode) .teaching-year-status {
+      background: rgba(31, 111, 80, 0.12) !important;
+      color: var(--green-dark) !important;
+      border: 1px solid rgba(31, 111, 80, 0.10);
+    }
+
+    body:not(.dark-mode) .highlight {
+      background:
+        radial-gradient(circle at top right, rgba(119, 184, 146, 0.28), transparent 36%),
+        linear-gradient(135deg, #061f17, #0b2f23 48%, #1f6f50) !important;
+    }
+
+    .about-lead strong {
+      color: var(--green-dark);
+      font-weight: 950;
+      background: linear-gradient(180deg, transparent 58%, rgba(119, 184, 146, 0.34) 0);
+      border-radius: 4px;
+      padding: 0 2px;
+    }
+
+    header .hero-intro strong {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .filter-menu {
+      position: relative;
+      width: fit-content;
+      margin: 18px 0 24px;
+      z-index: 16;
+    }
+
+    .filter-menu summary {
+      list-style: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      min-height: 42px;
+      padding: 9px 15px;
+      border-radius: 999px;
+      background: var(--green-main);
+      color: #ffffff;
+      border: 1px solid var(--green-main);
+      font-weight: 950;
+      cursor: pointer;
+      box-shadow: 0 12px 28px rgba(31, 111, 80, 0.18);
+    }
+
+    .filter-menu summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .filter-menu summary::before {
+      content: "↧";
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.20);
+      color: #ffffff;
+      line-height: 1;
+    }
+
+    .filter-menu[open] summary {
+      background: var(--green-dark);
+      border-color: var(--green-dark);
+      color: #ffffff;
+    }
+
+    .filter-menu .filter-controls {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      display: grid !important;
+      grid-template-columns: 1fr;
+      gap: 7px;
+      min-width: 230px;
+      margin: 0 !important;
+      padding: 10px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.98);
+      border: 1px solid rgba(31, 111, 80, 0.16);
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(12px);
+    }
+
+    body.dark-mode .filter-menu .filter-controls {
+      background: rgba(7, 19, 15, 0.98);
+      border-color: rgba(220, 238, 227, 0.16);
+    }
+
+    .filter-menu .filter-button {
+      width: 100%;
+      justify-content: flex-start;
+      text-align: left;
+      opacity: 1;
+      background: rgba(31, 111, 80, 0.08);
+      color: var(--green-dark);
+    }
+
+    .filter-menu .filter-button.active,
+    .filter-menu .filter-button:hover,
+    .filter-menu .filter-button:focus {
+      background: var(--green-main) !important;
+      color: #ffffff !important;
+      border-color: var(--green-main) !important;
+    }
+
+    .dropdown-toggle,
+    .axis-action-button,
+    .project-toggle-label,
+    .recruitment-link,
+    .project-link,
+    .portrait-button,
+    .copy-email-button,
+    .filter-button,
+    .panel-button-row button,
+    .accessibility-reset-row button,
+    .recruitment-mode-dock button {
+      color: var(--green-dark);
+    }
+
+    .filter-menu summary,
+    .filter-button.active,
+    .axis-action-button:hover,
+    .axis-action-button:focus,
+    .recruitment-link:not(.is-closed),
+    .project-link:not(.disabled),
+    .accessibility-reset-row button:hover,
+    .accessibility-reset-row button:focus {
+      color: #ffffff !important;
+    }
+
+    .project-toggle-label,
+    .dropdown-toggle,
+    .axis-action-button,
+    .copy-email-button {
+      background: var(--green-soft) !important;
+      color: var(--green-dark) !important;
+      border-color: rgba(31, 111, 80, 0.18) !important;
+    }
+
+    .project-summary:hover .project-toggle-label,
+    .axis-projects-summary:hover .dropdown-toggle,
+    .recruitment-axis-summary:hover .dropdown-toggle,
+    .dropdown-toggle:hover {
+      background: var(--green-main) !important;
+      color: #ffffff !important;
+    }
+
+    .axis-projects-panel[open] .dropdown-toggle,
+    .recruitment-axis-panel[open] .dropdown-toggle {
+      background: var(--green-dark) !important;
+      color: #ffffff !important;
+    }
+
+    .customization-panel {
+      width: min(282px, calc(100vw - 96px)) !important;
+      max-height: none !important;
+      overflow: visible !important;
+      padding: 10px !important;
+      border-radius: 18px !important;
+    }
+
+    .customization-header {
+      margin-bottom: 2px !important;
+    }
+
+    .customization-header h2 {
+      font-size: 0.92rem !important;
+      gap: 6px !important;
+    }
+
+    .customization-block {
+      padding-top: 7px !important;
+      margin-top: 7px !important;
+    }
+
+    .customization-block h3 {
+      margin-bottom: 5px !important;
+      font-size: 0.78rem !important;
+    }
+
+    .accessibility-options {
+      gap: 5px !important;
+    }
+
+    .accessibility-option {
+      grid-template-columns: auto minmax(0, 1fr) !important;
+      align-items: center !important;
+      padding: 6px 7px !important;
+      border-radius: 11px !important;
+      gap: 7px !important;
+    }
+
+    .accessibility-option input {
+      width: 17px !important;
+      height: 17px !important;
+      margin: 0 !important;
+    }
+
+    .accessibility-option strong {
+      font-size: 0.78rem !important;
+      line-height: 1.12 !important;
+    }
+
+    .accessibility-reset-row {
+      margin-top: 7px;
+    }
+
+    .accessibility-reset-row button {
+      width: 100%;
+      min-height: 30px;
+      border: 1px solid rgba(31, 111, 80, 0.18);
+      border-radius: 999px;
+      background: rgba(31, 111, 80, 0.10);
+      color: var(--green-dark);
+      font-size: 0.78rem;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .accessibility-reset-row button:hover,
+    .accessibility-reset-row button:focus {
+      background: var(--green-main);
+      border-color: var(--green-main);
+      color: #ffffff;
+    }
+
+    .enhanced-training-card.training-card-open {
+      display: grid;
+      gap: 0;
+    }
+
+    .training-card-open .training-card-head {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      gap: 14px;
+      align-items: center;
+      padding: 16px 18px;
+    }
+
+    .training-card-open .training-content {
+      padding: 0 18px 18px 66px !important;
+    }
+
+    .training-card-open .training-content p {
+      margin: 0 !important;
+    }
+
+    .training-card-toggle {
+      display: none !important;
+    }
+
+    @media (min-width: 1181px) {
+      .recruitment-mode-dock button {
+        writing-mode: vertical-rl !important;
+        transform: rotate(180deg) !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        min-width: 38px !important;
+        min-height: 142px !important;
+        padding: 14px 8px !important;
+        border-radius: 999px !important;
+        text-align: center !important;
+      }
+
+      .recruitment-dock-title {
+        font-size: 0.73rem;
+        font-weight: 950;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .recruitment-dock-hint {
+        display: none;
+      }
+
+      body.show-side-progress .recruitment-mode-dock button,
+      body.recruitment-mode .recruitment-mode-dock button {
+        writing-mode: horizontal-tb !important;
+        transform: none !important;
+        display: grid !important;
+        justify-items: start !important;
+        align-content: center !important;
+        gap: 2px !important;
+        width: 214px !important;
+        min-width: 214px !important;
+        min-height: 72px !important;
+        padding: 13px 15px !important;
+        border-radius: 22px !important;
+        text-align: left !important;
+        background:
+          radial-gradient(circle at top right, rgba(119, 184, 146, 0.20), transparent 40%),
+          rgba(255, 255, 255, 0.94) !important;
+        color: var(--green-dark) !important;
+        border-color: rgba(31, 111, 80, 0.18) !important;
+      }
+
+      body.show-side-progress .recruitment-dock-title,
+      body.recruitment-mode .recruitment-dock-title {
+        font-size: 0.82rem;
+        line-height: 1.12;
+        letter-spacing: 0.02em;
+        text-transform: none;
+        color: var(--green-dark);
+      }
+
+      body.show-side-progress .recruitment-dock-hint,
+      body.recruitment-mode .recruitment-dock-hint {
+        display: block;
+        font-size: 0.72rem;
+        line-height: 1.18;
+        font-weight: 760;
+        color: var(--muted);
+      }
+
+      body.recruitment-mode .recruitment-mode-dock button {
+        background: var(--green-main) !important;
+        color: #ffffff !important;
+      }
+
+      body.recruitment-mode .recruitment-dock-title,
+      body.recruitment-mode .recruitment-dock-hint {
+        color: #ffffff !important;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .filter-menu {
+        width: 100%;
+      }
+
+      .filter-menu summary {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .filter-menu .filter-controls {
+        position: static;
+        margin-top: 8px !important;
+        min-width: 0;
+        width: 100%;
+      }
+
+      .training-card-open .training-card-head {
+        grid-template-columns: auto minmax(0, 1fr);
+      }
+
+      .training-card-open .training-hours {
+        grid-column: 2;
+        justify-self: start;
+      }
+
+      .training-card-open .training-content {
+        padding: 0 14px 16px !important;
+      }
+
+      .customization-panel {
+        overflow-y: auto !important;
+        max-height: min(420px, calc(100vh - 96px)) !important;
+      }
+    }
+
   </style>
 </head>
 
@@ -6454,43 +6987,32 @@
       <div class="accessibility-options">
         <label class="accessibility-option">
           <input type="checkbox" data-accessibility-option="largeText" />
-          <span>
-            <strong data-i18n="largeText">Texte agrandi</strong>
-            <small data-i18n="largeTextHelp">Augmente la taille du texte et l'interligne.</small>
-          </span>
+          <span><strong data-i18n="largeText">Texte agrandi</strong></span>
         </label>
 
         <label class="accessibility-option">
           <input type="checkbox" data-accessibility-option="highContrast" />
-          <span>
-            <strong data-i18n="highContrast">Contraste fort</strong>
-            <small data-i18n="highContrastHelp">Renforce les contrastes entre texte, fonds et boutons.</small>
-          </span>
+          <span><strong data-i18n="highContrast">Contraste fort</strong></span>
         </label>
 
         <label class="accessibility-option">
           <input type="checkbox" data-accessibility-option="dyslexia" />
-          <span>
-            <strong data-i18n="dyslexia">Lecture dyslexie</strong>
-            <small data-i18n="dyslexiaHelp">Utilise une police plus simple et augmente les espacements.</small>
-          </span>
+          <span><strong data-i18n="dyslexia">Lecture dyslexie</strong></span>
         </label>
 
         <label class="accessibility-option">
           <input type="checkbox" data-accessibility-option="reduceMotion" />
-          <span>
-            <strong data-i18n="reduceMotion">Réduire les animations</strong>
-            <small data-i18n="reduceMotionHelp">Limite les transitions, animations et effets de mouvement.</small>
-          </span>
+          <span><strong data-i18n="reduceMotion">Réduire les animations</strong></span>
         </label>
 
         <label class="accessibility-option">
           <input type="checkbox" data-accessibility-option="hideDocumentPreviews" />
-          <span>
-            <strong data-i18n="hideDocumentPreviews">Désactiver les aperçus de documents</strong>
-            <small data-i18n="hideDocumentPreviewsHelp">Masque les prévisualisations des affiches et fiches dans la section Participer.</small>
-          </span>
+          <span><strong data-i18n="hideDocumentPreviews">Désactiver les aperçus de documents</strong></span>
         </label>
+      </div>
+
+      <div class="accessibility-reset-row">
+        <button type="button" data-accessibility-reset data-i18n="accessibilityReset">Tout décocher</button>
       </div>
     </div>
   </section>
@@ -6538,7 +7060,11 @@
         reduceMotionHelp: "Limite les transitions, animations et effets de mouvement.",
         hideDocumentPreviews: "Désactiver les aperçus de documents",
         hideDocumentPreviewsHelp: "Masque les prévisualisations des affiches et fiches dans la section Participer.",
-        nav: ["À propos", "Équipe", "Thèse", "Projets en collaboration", "Enseignement et formations", "Publications", "Communications", "Participer", "Contact"],
+        accessibilityReset: "Tout décocher",
+        filterMenuLabel: "Trier",
+        recruitmentDockHint: "Participant ? Cliquez ici pour accéder aux études.",
+        recruitmentDockActiveHint: "Revenir à la présentation complète.",
+        nav: ["À propos", "Équipe", "Thèse", "Projets en Collaboration", "Enseignement et Formations", "Publications", "Communications", "Participer", "Contact"],
         heroLabel: "Présentation académique",
         heroTitle: "Luc Perroquin",
         heroSubtitle: "Doctorant en psychologie cognitive",
@@ -6584,7 +7110,7 @@
         statusTodo: "À développer",
         collaborative: "Projet collaboratif",
         ongoing: "En cours",
-        projectsInCollab: "Projets en collaboration",
+        projectsInCollab: "Projets en Collaboration",
         recruitmentTitle: "Participer aux études",
         recruitmentIntro: "Retrouvez ici les études qui pourront accueillir des participants, avec les documents utiles et, plus tard, les liens d’inscription et de prise de rendez-vous.",
         recruitmentLead: "Les études listées ici ne sont pas toutes ouvertes au recrutement. Leur statut indique si les inscriptions sont disponibles, à venir, complètes ou terminées.",
@@ -6623,7 +7149,7 @@
         recruitmentActionLabels: ["Questionnaire", "Affiche", "Fiche info", "Planning"],
         recruitmentActionsOpen: "Plus d\'infos",
         recruitmentActionsClose: "Rétracter",
-        trainingTitle: "Enseignement et formations",
+        trainingTitle: "Enseignement et Formations",
         teachingTrainingIntro: "Cette section regroupe mes activités d'enseignement universitaire et les formations suivies dans le cadre du parcours doctoral.",
         trainingSubsectionTitle: "Formations doctorales",
         trainingKicker: "Parcours doctoral",
@@ -6699,7 +7225,7 @@
         reduceMotionHelp: "Limits transitions, animations, and motion effects.",
         hideDocumentPreviews: "Disable document previews",
         hideDocumentPreviewsHelp: "Hides poster and information sheet previews in the Participate section.",
-        nav: ["About", "Team", "Thesis", "Featured projects", "Teaching and training", "Publications", "Communications", "Participate", "Contact"],
+        nav: ["About", "Team", "Thesis", "Featured Projects", "Teaching and Training", "Publications", "Communications", "Participate", "Contact"],
         heroLabel: "Academic presentation",
         heroTitle: "Luc Perroquin",
         heroSubtitle: "PhD student in cognitive psychology",
@@ -6745,7 +7271,7 @@
         statusTodo: "To develop",
         collaborative: "Collaborative project",
         ongoing: "Ongoing",
-        projectsInCollab: "Featured projects",
+        projectsInCollab: "Featured Projects",
         recruitmentTitle: "Participate in studies",
         recruitmentIntro: "This area is dedicated to participant recruitment. Studies will appear here before or during registration periods.",
         recruitmentLead: "The studies below are not accessible yet: registration is not currently open.",
@@ -6784,7 +7310,7 @@
         recruitmentActionLabels: ["Questionnaire", "Poster", "Info sheet", "Schedule"],
         recruitmentActionsOpen: "More info",
         recruitmentActionsClose: "Collapse",
-        trainingTitle: "Teaching and training",
+        trainingTitle: "Teaching and Training",
         teachingTrainingIntro: "This section brings together my university teaching activities and the training completed as part of the doctoral pathway.",
         trainingSubsectionTitle: "Doctoral training",
         trainingKicker: "Doctoral pathway",
@@ -7348,6 +7874,37 @@
       return `Version : juillet 2026 - ${label} : ${formatPortfolioDate(date, currentLanguage)}`;
     }
 
+    function formatAboutText(value) {
+      let output = escapeHtml(value);
+
+      const terms = currentLanguage === "fr"
+        ? [
+          "comprendre l'être humain",
+          "psychologie cognitive",
+          "ergonomie cognitive",
+          "relations entre l'individu et son environnement",
+          "informations sensorielles",
+          "odeurs, les sons et les images",
+          "espace, du temps et des événements"
+        ]
+        : [
+          "understanding human beings",
+          "cognitive psychology",
+          "cognitive ergonomics",
+          "relations between individuals and their environments",
+          "sensory information",
+          "odors, sounds, and images",
+          "space, time, and events"
+        ];
+
+      terms.forEach((term) => {
+        const escapedTerm = escapeHtml(term);
+        output = output.split(escapedTerm).join(`<strong>${escapedTerm}</strong>`);
+      });
+
+      return output;
+    }
+
     function sectionHeader(number, title) {
       return `
         <div class="section-title">
@@ -7755,20 +8312,19 @@
       const text = training[currentLanguage];
 
       return `
-        <details class="training-card enhanced-training-card">
-          <summary>
+        <article class="training-card enhanced-training-card training-card-open">
+          <div class="training-card-head">
             <span class="training-index">${String(index + 1).padStart(2, "0")}</span>
             <span class="training-card-main">
               <strong>${escapeHtml(text.title)}</strong>
               <small>${escapeHtml(text.subtitle)}</small>
             </span>
             <span class="training-hours">${escapeHtml(training.hours)}</span>
-            <span class="training-card-toggle" aria-hidden="true">+</span>
-          </summary>
+          </div>
           <div class="training-content">
             <p><strong>${escapeHtml(data.pedagogy)}</strong> ${escapeHtml(text.objective)}</p>
           </div>
-        </details>
+        </article>
       `;
     }
 
@@ -7846,7 +8402,7 @@
         <main id="main">
           <section id="${sectionId("about")}" class="reveal" data-section="about">
             ${sectionHeader("01", data.aboutTitle)}
-            <p class="lead">${escapeHtml(data.aboutText)}</p>
+            <p class="lead about-lead">${formatAboutText(data.aboutText)}</p>
           </section>
 
           <section id="${sectionId("team")}" class="reveal" data-section="team">
@@ -7893,13 +8449,18 @@
             <h3 id="${currentLanguage}-thesis-axes" class="subsection-heading">${escapeHtml(data.axesTitle)}</h3>
             <p class="lead">${escapeHtml(data.axesIntro)}</p>
 
-            <div class="filter-controls" aria-label="${currentLanguage === "fr" ? "Filtres des axes et projets" : "Thesis axis and project filters"}">
+            <details class="filter-menu">
+              <summary>
+                <span>${escapeHtml(data.filterMenuLabel)}</span>
+              </summary>
+              <div class="filter-controls" aria-label="${currentLanguage === "fr" ? "Filtres des axes et projets" : "Thesis axis and project filters"}">
               <button class="filter-button active" type="button" data-filter="all" data-label="${escapeHtml(data.all)}">${escapeHtml(data.all)}</button>
               <button class="filter-button" type="button" data-filter="axe-1" data-label="${escapeHtml(data.axis1)}">${escapeHtml(data.axis1)}</button>
               <button class="filter-button" type="button" data-filter="axe-2" data-label="${escapeHtml(data.axis2)}">${escapeHtml(data.axis2)}</button>
               <button class="filter-button" type="button" data-filter="termine" data-label="${escapeHtml(data.completed)}">${escapeHtml(data.completed)}</button>
               <button class="filter-button" type="button" data-filter="a-developper" data-label="${escapeHtml(data.todo)}">${escapeHtml(data.todo)}</button>
-            </div>
+              </div>
+            </details>
 
             <div class="axis-grid">
               ${axisCard(1, data)}
@@ -7982,11 +8543,16 @@
           <section id="${sectionId("publications")}" class="reveal" data-section="publications">
             ${sectionHeader("06", data.publications)}
 
-            <div class="filter-controls" aria-label="${currentLanguage === "fr" ? "Filtres des publications" : "Publication filters"}">
+            <details class="filter-menu">
+              <summary>
+                <span>${escapeHtml(data.filterMenuLabel)}</span>
+              </summary>
+              <div class="filter-controls" aria-label="${currentLanguage === "fr" ? "Filtres des publications" : "Publication filters"}">
               <button class="filter-button active" type="button" data-filter="all" data-label="${escapeHtml(data.all)}">${escapeHtml(data.all)}</button>
               <button class="filter-button" type="button" data-filter="article" data-label="${escapeHtml(data.articles)}">${escapeHtml(data.articles)}</button>
               <button class="filter-button" type="button" data-filter="preprint" data-label="${escapeHtml(data.preprints)}">${escapeHtml(data.preprints)}</button>
-            </div>
+              </div>
+            </details>
 
             <div class="publication-subsection">
               <h3>${escapeHtml(data.articles)}</h3>
@@ -8014,11 +8580,16 @@
           <section id="${sectionId("communications")}" class="reveal" data-section="communications">
             ${sectionHeader("07", data.communications)}
 
-            <div class="filter-controls" aria-label="${currentLanguage === "fr" ? "Filtres des communications" : "Communication filters"}">
+            <details class="filter-menu">
+              <summary>
+                <span>${escapeHtml(data.filterMenuLabel)}</span>
+              </summary>
+              <div class="filter-controls" aria-label="${currentLanguage === "fr" ? "Filtres des communications" : "Communication filters"}">
               <button class="filter-button active" type="button" data-filter="all" data-label="${escapeHtml(data.all)}">${escapeHtml(data.all)}</button>
               <button class="filter-button" type="button" data-filter="communication" data-label="${escapeHtml(data.communications)}">${escapeHtml(data.communications)}</button>
               <button class="filter-button" type="button" data-filter="poster" data-label="${escapeHtml(data.posters)}">${escapeHtml(data.posters)}</button>
-            </div>
+              </div>
+            </details>
 
             <div class="publication-subsection">
               <h3>${escapeHtml(data.communications)}</h3>
@@ -8231,7 +8802,18 @@
       const isActive = document.body.classList.contains("recruitment-mode");
 
       document.querySelectorAll("[data-recruitment-mode-toggle]").forEach((button) => {
-        button.textContent = isActive ? data.fullPortfolioMode : data.recruitmentMode;
+        const label = isActive ? data.fullPortfolioMode : data.recruitmentMode;
+
+        if (button.closest(".recruitment-mode-dock")) {
+          const hint = isActive ? data.recruitmentDockActiveHint : data.recruitmentDockHint;
+          button.innerHTML = `
+            <span class="recruitment-dock-title">${escapeHtml(label)}</span>
+            <span class="recruitment-dock-hint">${escapeHtml(hint)}</span>
+          `;
+        } else {
+          button.textContent = label;
+        }
+
         button.classList.toggle("active", isActive);
         button.setAttribute("aria-pressed", String(isActive));
       });
@@ -9074,6 +9656,7 @@
       document.querySelectorAll(".filter-button").forEach((button) => {
         button.addEventListener("click", () => {
           applyFilter(button.closest("section"), button.dataset.filter);
+          button.closest(".filter-menu")?.removeAttribute("open");
           button.animate(
             [
               { transform: "translateY(-2px) scale(1)" },
@@ -9191,6 +9774,10 @@
         settings[control.dataset.accessibilityOption] = control.checked;
         applyAccessibilitySettings(settings);
       });
+    });
+
+    document.querySelector("[data-accessibility-reset]")?.addEventListener("click", () => {
+      applyAccessibilitySettings({});
     });
 
     document.addEventListener("keydown", (event) => {
