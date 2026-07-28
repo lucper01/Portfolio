@@ -6929,6 +6929,586 @@
       }
     }
 
+
+    /* Thèse : menu de projets sans répétition de l'axe */
+    .axis-projects-panel .axis-projects-summary > span:first-child {
+      gap: 6px !important;
+    }
+
+    .axis-projects-panel .axis-projects-summary strong {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .axis-projects-panel .axis-projects-summary strong::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: var(--green-main);
+      box-shadow: 0 0 0 6px rgba(31, 111, 80, 0.10);
+      flex: 0 0 auto;
+    }
+
+
+    /* Finition V45 : menu header sans défilement et section Enseignement/Formations mieux séparée */
+    @media (min-width: 851px) {
+      header nav.site-nav {
+        width: min(1280px, calc(100% - 44px)) !important;
+        max-width: calc(100% - 44px) !important;
+        padding: 13px 18px !important;
+      }
+
+      header nav.site-nav .nav-inner {
+        min-height: 48px !important;
+      }
+
+      header nav.site-nav .nav-links {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        justify-content: center !important;
+        gap: 6px !important;
+        overflow-x: visible !important;
+        scrollbar-width: none !important;
+      }
+
+      header nav.site-nav .nav-links::-webkit-scrollbar {
+        display: none !important;
+      }
+
+      header nav.site-nav a,
+      header nav.site-nav .nav-links a {
+        flex: 0 1 auto !important;
+        min-width: 0 !important;
+        white-space: nowrap !important;
+        padding: 9px 11px !important;
+        font-size: clamp(0.84rem, 0.76vw, 0.98rem) !important;
+        line-height: 1.08 !important;
+      }
+    }
+
+    @media (min-width: 851px) and (max-width: 1130px) {
+      header nav.site-nav {
+        width: min(1000px, calc(100% - 34px)) !important;
+        border-radius: 30px !important;
+        padding: 12px 14px !important;
+      }
+
+      header nav.site-nav .nav-inner {
+        min-height: 72px !important;
+      }
+
+      header nav.site-nav .nav-links {
+        flex-wrap: wrap !important;
+        row-gap: 7px !important;
+        column-gap: 5px !important;
+      }
+
+      header nav.site-nav a,
+      header nav.site-nav .nav-links a {
+        font-size: clamp(0.78rem, 0.95vw, 0.9rem) !important;
+        padding: 8px 10px !important;
+      }
+    }
+
+    /* Organisation en deux blocs bien distincts */
+    .teaching-training-layout {
+      gap: 42px !important;
+    }
+
+    .combined-subsection {
+      position: relative;
+      padding: 26px !important;
+      border-radius: 34px !important;
+      border: 1px solid rgba(31, 111, 80, 0.18) !important;
+      box-shadow:
+        0 22px 56px rgba(11, 47, 35, 0.10),
+        inset 0 1px 0 rgba(255, 255, 255, 0.70) !important;
+      overflow: hidden;
+    }
+
+    .combined-subsection::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 8px;
+      background: linear-gradient(90deg, var(--green-main), var(--green-light));
+      opacity: 0.95;
+    }
+
+    .combined-teaching-subsection {
+      background:
+        radial-gradient(circle at top right, rgba(31, 111, 80, 0.14), transparent 32%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(232, 246, 237, 0.92)) !important;
+    }
+
+    .combined-training-subsection {
+      background:
+        radial-gradient(circle at top right, rgba(119, 184, 146, 0.18), transparent 34%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(241, 250, 245, 0.92)) !important;
+    }
+
+    .combined-training-subsection::before {
+      background: linear-gradient(90deg, var(--green-light), #b8dfc4);
+    }
+
+    body.dark-mode .combined-subsection {
+      box-shadow:
+        0 22px 56px rgba(0, 0, 0, 0.24),
+        inset 0 1px 0 rgba(220, 238, 227, 0.08) !important;
+      border-color: rgba(220, 238, 227, 0.14) !important;
+    }
+
+    body.dark-mode .combined-teaching-subsection,
+    body.dark-mode .combined-training-subsection {
+      background:
+        radial-gradient(circle at top right, rgba(119, 184, 146, 0.12), transparent 34%),
+        linear-gradient(135deg, rgba(16, 37, 28, 0.92), rgba(7, 19, 15, 0.86)) !important;
+    }
+
+    .combined-subsection-heading {
+      margin-bottom: 8px !important;
+      padding: 0 0 18px !important;
+      border: 0 !important;
+      border-bottom: 1px solid rgba(31, 111, 80, 0.16) !important;
+      border-radius: 0 !important;
+      background: transparent !important;
+      box-shadow: none !important;
+    }
+
+    body.dark-mode .combined-subsection-heading {
+      border-bottom-color: rgba(220, 238, 227, 0.14) !important;
+    }
+
+    .combined-subsection-heading > span {
+      width: 44px !important;
+      height: 44px !important;
+      background: var(--green-main) !important;
+      color: #ffffff !important;
+      box-shadow: 0 10px 24px rgba(31, 111, 80, 0.22);
+    }
+
+    .combined-subsection-heading h3 {
+      font-size: clamp(1.62rem, 2.25vw, 2.15rem) !important;
+    }
+
+    .combined-subsection-heading p {
+      max-width: 900px;
+      font-size: 0.98rem;
+    }
+
+    .combined-subsection .teaching-overview,
+    .combined-subsection .teaching-year-grid,
+    .combined-subsection .enhanced-training-summary,
+    .combined-subsection .enhanced-training-master {
+      margin-top: 4px;
+    }
+
+    .combined-subsection .teaching-overview {
+      padding-top: 6px;
+    }
+
+    .enhanced-training-master {
+      margin-top: 2px !important;
+    }
+
+    .training-card-open .training-content p {
+      background: rgba(255, 255, 255, 0.78) !important;
+    }
+
+    /* Contrastes de boutons renforcés */
+    body:not(.dark-mode) .dropdown-toggle,
+    body:not(.dark-mode) .project-toggle-label,
+    body:not(.dark-mode) .axis-action-button,
+    body:not(.dark-mode) .copy-email-button,
+    body:not(.dark-mode) .panel-button-row button,
+    body:not(.dark-mode) .accessibility-reset-row button {
+      color: #0b2f23 !important;
+    }
+
+    body:not(.dark-mode) .filter-menu summary,
+    body:not(.dark-mode) .filter-menu .filter-button.active,
+    body:not(.dark-mode) .project-link:not(.disabled),
+    body:not(.dark-mode) .recruitment-link:not(.is-closed),
+    body:not(.dark-mode) header nav.site-nav a.active {
+      color: #ffffff !important;
+    }
+
+    @media (max-width: 760px) {
+      .combined-subsection {
+        padding: 20px !important;
+        border-radius: 28px !important;
+      }
+
+      .combined-subsection-heading {
+        grid-template-columns: auto minmax(0, 1fr) !important;
+      }
+
+      .combined-subsection-heading > span {
+        width: 38px !important;
+        height: 38px !important;
+      }
+    }
+
+
+    /* V46 : partage déplacé en footer, personnalisation alignée sur l'ancienne ancre droite */
+    .top-controls {
+      right: 64px !important;
+      left: auto !important;
+      max-width: max-content !important;
+      justify-content: flex-end !important;
+    }
+
+    .top-controls .customization-trigger-group {
+      margin-left: auto !important;
+    }
+
+    .customization-panel {
+      right: 64px !important;
+      left: auto !important;
+      top: 96px !important;
+    }
+
+    .footer-actions .footer-button[data-share-button] {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @media (max-width: 850px) {
+      .top-controls {
+        right: 32px !important;
+        left: auto !important;
+        max-width: max-content !important;
+      }
+
+      .customization-panel {
+        right: 32px !important;
+        left: auto !important;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .top-controls {
+        right: 18px !important;
+        left: auto !important;
+      }
+
+      .customization-panel {
+        right: 18px !important;
+        left: 18px !important;
+      }
+    }
+
+
+    /* V47 : accessibilité plus compacte et carte recrutement corrigée en mode sombre */
+    .accessibility-reset-row {
+      display: grid !important;
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      gap: 6px !important;
+      margin-top: 6px !important;
+    }
+
+    .accessibility-reset-row button {
+      width: auto !important;
+      min-height: 26px !important;
+      padding: 5px 7px !important;
+      font-size: 0.70rem !important;
+      line-height: 1.05 !important;
+      border-radius: 999px !important;
+    }
+
+    @media (min-width: 1181px) {
+      body.dark-mode.show-side-progress .recruitment-mode-dock button,
+      body.dark-mode.recruitment-mode .recruitment-mode-dock button {
+        background:
+          radial-gradient(circle at top right, rgba(119, 184, 146, 0.20), transparent 42%),
+          linear-gradient(135deg, rgba(16, 37, 28, 0.98), rgba(7, 19, 15, 0.96)) !important;
+        color: #dceee3 !important;
+        border-color: rgba(220, 238, 227, 0.20) !important;
+        box-shadow:
+          0 18px 42px rgba(0, 0, 0, 0.34),
+          inset 0 1px 0 rgba(220, 238, 227, 0.08) !important;
+      }
+
+      body.dark-mode.show-side-progress .recruitment-dock-title,
+      body.dark-mode.show-side-progress .recruitment-dock-hint,
+      body.dark-mode.recruitment-mode .recruitment-dock-title,
+      body.dark-mode.recruitment-mode .recruitment-dock-hint {
+        color: #dceee3 !important;
+      }
+
+      body.dark-mode.show-side-progress .recruitment-dock-hint,
+      body.dark-mode.recruitment-mode .recruitment-dock-hint {
+        opacity: 0.86 !important;
+      }
+
+      body.dark-mode.recruitment-mode .recruitment-mode-dock button {
+        background:
+          radial-gradient(circle at top right, rgba(220, 238, 227, 0.18), transparent 42%),
+          linear-gradient(135deg, #1f6f50, #14553d) !important;
+        color: #ffffff !important;
+        border-color: rgba(220, 238, 227, 0.28) !important;
+      }
+
+      body.dark-mode.recruitment-mode .recruitment-dock-title,
+      body.dark-mode.recruitment-mode .recruitment-dock-hint {
+        color: #ffffff !important;
+      }
+    }
+
+
+    /* V49 : traductions statiques, contraste fort sombre, menu latéral et personnalisation hors crème */
+
+    /* Bouton Personnalisation : ancrage haut droit, style vert/verre plutôt que crème */
+    .top-controls .control-group,
+    .top-controls .customization-trigger-group {
+      background:
+        linear-gradient(135deg, rgba(11, 47, 35, 0.88), rgba(31, 111, 80, 0.80)) !important;
+      border-color: rgba(220, 238, 227, 0.28) !important;
+      box-shadow:
+        0 16px 38px rgba(6, 31, 23, 0.26),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
+    }
+
+    .customization-trigger,
+    .top-controls button {
+      color: #ffffff !important;
+      background: transparent !important;
+      border-color: transparent !important;
+    }
+
+    .customization-trigger:hover,
+    .customization-trigger:focus,
+    .top-controls button:hover,
+    .top-controls button:focus {
+      background: rgba(255, 255, 255, 0.14) !important;
+      color: #ffffff !important;
+    }
+
+    body.dark-mode .top-controls .control-group,
+    body.dark-mode .top-controls .customization-trigger-group {
+      background:
+        linear-gradient(135deg, rgba(7, 19, 15, 0.94), rgba(16, 37, 28, 0.88)) !important;
+      border-color: rgba(220, 238, 227, 0.24) !important;
+    }
+
+    /* Menu latéral droit : cohérent avec la DA verte, plus de fond crème */
+    .side-progress {
+      background:
+        linear-gradient(135deg, rgba(11, 47, 35, 0.94), rgba(31, 111, 80, 0.88)) !important;
+      border-color: rgba(220, 238, 227, 0.22) !important;
+      box-shadow:
+        0 18px 42px rgba(6, 31, 23, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.10) !important;
+    }
+
+    .side-progress a {
+      color: rgba(255, 255, 255, 0.82) !important;
+    }
+
+    .side-progress a span {
+      background: rgba(220, 238, 227, 0.16) !important;
+      color: #ffffff !important;
+    }
+
+    .side-progress a:hover,
+    .side-progress a:focus {
+      background: rgba(255, 255, 255, 0.14) !important;
+      color: #ffffff !important;
+    }
+
+    .side-progress a.active {
+      background:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.20), rgba(255, 255, 255, 0.10)) !important;
+      color: #ffffff !important;
+      box-shadow: inset 0 0 0 1px rgba(220, 238, 227, 0.20) !important;
+    }
+
+    .side-progress a.active span {
+      background: #dceee3 !important;
+      color: #0b2f23 !important;
+    }
+
+    body.dark-mode .side-progress {
+      background:
+        linear-gradient(135deg, rgba(7, 19, 15, 0.96), rgba(16, 37, 28, 0.92)) !important;
+      border-color: rgba(220, 238, 227, 0.20) !important;
+    }
+
+    /* Contraste fort + thème sombre : mode volontairement lisible, pas esthétique */
+    body.dark-mode.a11y-high-contrast {
+      --green-deep: #000000 !important;
+      --green-dark: #ffffff !important;
+      --green-main: #ffd84d !important;
+      --green-light: #ffffff !important;
+      --green-soft: #111111 !important;
+      --green-pale: #000000 !important;
+      --cream: #000000 !important;
+      --text: #ffffff !important;
+      --muted: #f2f2f2 !important;
+      --white: #000000 !important;
+      background: #000000 !important;
+      color: #ffffff !important;
+    }
+
+    body.dark-mode.a11y-high-contrast *,
+    body.dark-mode.a11y-high-contrast p,
+    body.dark-mode.a11y-high-contrast small,
+    body.dark-mode.a11y-high-contrast span,
+    body.dark-mode.a11y-high-contrast strong,
+    body.dark-mode.a11y-high-contrast h1,
+    body.dark-mode.a11y-high-contrast h2,
+    body.dark-mode.a11y-high-contrast h3,
+    body.dark-mode.a11y-high-contrast h4,
+    body.dark-mode.a11y-high-contrast li,
+    body.dark-mode.a11y-high-contrast .lead,
+    body.dark-mode.a11y-high-contrast .subtitle,
+    body.dark-mode.a11y-high-contrast .label,
+    body.dark-mode.a11y-high-contrast .hero-intro,
+    body.dark-mode.a11y-high-contrast .project-summary strong,
+    body.dark-mode.a11y-high-contrast .project-summary small,
+    body.dark-mode.a11y-high-contrast .training-card-main strong,
+    body.dark-mode.a11y-high-contrast .training-card-main small,
+    body.dark-mode.a11y-high-contrast .contact-item strong,
+    body.dark-mode.a11y-high-contrast .recruitment-dock-title,
+    body.dark-mode.a11y-high-contrast .recruitment-dock-hint {
+      color: #ffffff !important;
+      text-shadow: none !important;
+    }
+
+    body.dark-mode.a11y-high-contrast header,
+    body.dark-mode.a11y-high-contrast footer,
+    body.dark-mode.a11y-high-contrast main > section,
+    body.dark-mode.a11y-high-contrast nav.site-nav,
+    body.dark-mode.a11y-high-contrast .accessibility-panel,
+    body.dark-mode.a11y-high-contrast .side-progress,
+    body.dark-mode.a11y-high-contrast .search-card,
+    body.dark-mode.a11y-high-contrast .team-card,
+    body.dark-mode.a11y-high-contrast .supervision-card,
+    body.dark-mode.a11y-high-contrast .axis-card,
+    body.dark-mode.a11y-high-contrast .project-card,
+    body.dark-mode.a11y-high-contrast .axis-projects-panel,
+    body.dark-mode.a11y-high-contrast .recruitment-axis-panel,
+    body.dark-mode.a11y-high-contrast .recruitment-card,
+    body.dark-mode.a11y-high-contrast .training-card,
+    body.dark-mode.a11y-high-contrast .training-summary,
+    body.dark-mode.a11y-high-contrast .training-master,
+    body.dark-mode.a11y-high-contrast .enhanced-training-master,
+    body.dark-mode.a11y-high-contrast .enhanced-training-card,
+    body.dark-mode.a11y-high-contrast .publication-list li,
+    body.dark-mode.a11y-high-contrast .contact-box,
+    body.dark-mode.a11y-high-contrast .combined-subsection,
+    body.dark-mode.a11y-high-contrast .combined-subsection-heading,
+    body.dark-mode.a11y-high-contrast .contact-item,
+    body.dark-mode.a11y-high-contrast .teaching-entry,
+    body.dark-mode.a11y-high-contrast .teaching-overview-item,
+    body.dark-mode.a11y-high-contrast .teaching-year-block,
+    body.dark-mode.a11y-high-contrast .project-body,
+    body.dark-mode.a11y-high-contrast .training-content p,
+    body.dark-mode.a11y-high-contrast .participation-guide,
+    body.dark-mode.a11y-high-contrast .participation-step,
+    body.dark-mode.a11y-high-contrast .study-contact-card,
+    body.dark-mode.a11y-high-contrast .filter-menu .filter-controls {
+      background: #000000 !important;
+      color: #ffffff !important;
+      border-color: #ffffff !important;
+      box-shadow: none !important;
+    }
+
+    body.dark-mode.a11y-high-contrast a {
+      color: #ffd84d !important;
+      text-decoration: underline !important;
+    }
+
+    body.dark-mode.a11y-high-contrast button,
+    body.dark-mode.a11y-high-contrast .footer-button,
+    body.dark-mode.a11y-high-contrast .portrait-button,
+    body.dark-mode.a11y-high-contrast .project-link:not(.disabled),
+    body.dark-mode.a11y-high-contrast .recruitment-link:not(.is-closed),
+    body.dark-mode.a11y-high-contrast .team-link,
+    body.dark-mode.a11y-high-contrast .filter-menu summary,
+    body.dark-mode.a11y-high-contrast .filter-button.active,
+    body.dark-mode.a11y-high-contrast .dropdown-toggle,
+    body.dark-mode.a11y-high-contrast .project-toggle-label,
+    body.dark-mode.a11y-high-contrast .axis-action-button,
+    body.dark-mode.a11y-high-contrast .copy-email-button,
+    body.dark-mode.a11y-high-contrast .panel-button-row button,
+    body.dark-mode.a11y-high-contrast .accessibility-reset-row button,
+    body.dark-mode.a11y-high-contrast .back-to-top,
+    body.dark-mode.a11y-high-contrast .recruitment-mode-dock button {
+      background: #ffd84d !important;
+      color: #000000 !important;
+      border-color: #ffd84d !important;
+      box-shadow: none !important;
+      text-decoration: none !important;
+    }
+
+    body.dark-mode.a11y-high-contrast button *,
+    body.dark-mode.a11y-high-contrast .footer-button *,
+    body.dark-mode.a11y-high-contrast .portrait-button *,
+    body.dark-mode.a11y-high-contrast .project-link:not(.disabled) *,
+    body.dark-mode.a11y-high-contrast .recruitment-link:not(.is-closed) *,
+    body.dark-mode.a11y-high-contrast .team-link *,
+    body.dark-mode.a11y-high-contrast .filter-menu summary *,
+    body.dark-mode.a11y-high-contrast .filter-button.active *,
+    body.dark-mode.a11y-high-contrast .dropdown-toggle *,
+    body.dark-mode.a11y-high-contrast .project-toggle-label *,
+    body.dark-mode.a11y-high-contrast .axis-action-button *,
+    body.dark-mode.a11y-high-contrast .copy-email-button *,
+    body.dark-mode.a11y-high-contrast .panel-button-row button *,
+    body.dark-mode.a11y-high-contrast .accessibility-reset-row button *,
+    body.dark-mode.a11y-high-contrast .recruitment-mode-dock button * {
+      color: #000000 !important;
+    }
+
+    body.dark-mode.a11y-high-contrast .project-link.disabled,
+    body.dark-mode.a11y-high-contrast .recruitment-link.is-closed {
+      background: #111111 !important;
+      color: #ffffff !important;
+      border-color: #ffffff !important;
+      opacity: 1 !important;
+    }
+
+    body.dark-mode.a11y-high-contrast .contact-icon,
+    body.dark-mode.a11y-high-contrast .section-title span,
+    body.dark-mode.a11y-high-contrast .training-index,
+    body.dark-mode.a11y-high-contrast .combined-subsection-heading > span,
+    body.dark-mode.a11y-high-contrast .dropdown-kicker,
+    body.dark-mode.a11y-high-contrast .axis-kicker,
+    body.dark-mode.a11y-high-contrast .training-kicker,
+    body.dark-mode.a11y-high-contrast .recruitment-card-kicker,
+    body.dark-mode.a11y-high-contrast .teaching-entry-type,
+    body.dark-mode.a11y-high-contrast .teaching-year-status,
+    body.dark-mode.a11y-high-contrast .publication-type {
+      background: #ffffff !important;
+      color: #000000 !important;
+      border-color: #ffffff !important;
+    }
+
+    body.dark-mode.a11y-high-contrast .highlight,
+    body.dark-mode.a11y-high-contrast .highlight h3,
+    body.dark-mode.a11y-high-contrast .highlight p {
+      background: #ffffff !important;
+      color: #000000 !important;
+      border-color: #ffffff !important;
+    }
+
+    body.dark-mode.a11y-high-contrast input,
+    body.dark-mode.a11y-high-contrast textarea {
+      background: #000000 !important;
+      color: #ffffff !important;
+      border-color: #ffffff !important;
+    }
+
+    body.dark-mode.a11y-high-contrast :focus-visible {
+      outline: 4px solid #ffd84d !important;
+      outline-offset: 4px !important;
+    }
+
   </style>
 </head>
 
@@ -6936,7 +7516,7 @@
   <a class="skip-link" href="#main" data-i18n="skip">Aller au contenu</a>
 
   <div class="top-controls">
-    <div class="control-group customization-trigger-group" aria-label="Personnalisation">
+    <div class="control-group customization-trigger-group" data-customization-trigger-group aria-label="Personnalisation">
       <button
         type="button"
         class="customization-trigger"
@@ -6947,10 +7527,6 @@
         <span aria-hidden="true">⚙</span>
         <span data-i18n="customize">Personnalisation</span>
       </button>
-    </div>
-
-    <div class="control-group" aria-label="Share">
-      <button type="button" data-share-button>Partager</button>
     </div>
   </div>
 
@@ -7012,18 +7588,19 @@
       </div>
 
       <div class="accessibility-reset-row">
+        <button type="button" data-accessibility-enable-all data-i18n="accessibilityEnableAll">Tout cocher</button>
         <button type="button" data-accessibility-reset data-i18n="accessibilityReset">Tout décocher</button>
       </div>
     </div>
   </section>
 
-  <div class="recruitment-mode-dock" aria-label="Accès rapide aux études">
+  <div class="recruitment-mode-dock" data-recruitment-dock aria-label="Accès rapide aux études">
     <button type="button" data-recruitment-mode-toggle aria-pressed="false" data-i18n="recruitmentMode">Recrutement</button>
   </div>
 
 
 
-  <button class="back-to-top" type="button" aria-label="Retour en haut">↑</button>
+  <button class="back-to-top" type="button" data-back-to-top aria-label="Retour en haut">↑</button>
 
   <div id="app"></div>
 
@@ -7061,6 +7638,11 @@
         hideDocumentPreviews: "Désactiver les aperçus de documents",
         hideDocumentPreviewsHelp: "Masque les prévisualisations des affiches et fiches dans la section Participer.",
         accessibilityReset: "Tout décocher",
+        accessibilityEnableAll: "Tout cocher",
+        backToTopLabel: "Retour en haut",
+        customizationAriaLabel: "Options de personnalisation",
+        customizationCloseLabel: "Fermer le panneau de personnalisation",
+        recruitmentDockAriaLabel: "Accès rapide aux études",
         filterMenuLabel: "Trier",
         recruitmentDockHint: "Participant ? Cliquez ici pour accéder aux études.",
         recruitmentDockActiveHint: "Revenir à la présentation complète.",
@@ -7225,6 +7807,15 @@
         reduceMotionHelp: "Limits transitions, animations, and motion effects.",
         hideDocumentPreviews: "Disable document previews",
         hideDocumentPreviewsHelp: "Hides poster and information sheet previews in the Participate section.",
+        accessibilityReset: "Clear all",
+        accessibilityEnableAll: "Select all",
+        backToTopLabel: "Back to top",
+        customizationAriaLabel: "Customization options",
+        customizationCloseLabel: "Close customization panel",
+        recruitmentDockAriaLabel: "Quick access to studies",
+        filterMenuLabel: "Filter",
+        recruitmentDockHint: "Participant? Click here to access the studies.",
+        recruitmentDockActiveHint: "Return to the full presentation.",
         nav: ["About", "Team", "Thesis", "Featured Projects", "Teaching and Training", "Publications", "Communications", "Participate", "Contact"],
         heroLabel: "Academic presentation",
         heroTitle: "Luc Perroquin",
@@ -7308,8 +7899,8 @@
         recruitmentFileRule: "To activate the Poster and Information sheet buttons automatically, upload files to assets/participer using the format STUDYNAME_DocumentType.extension, for example TWIXOLF_FicheInformation.pdf or COBEX_Affiche.pdf.",
         recruitmentButtons: ["Recruitment questionnaire", "Study poster", "Information sheet", "Session scheduling"],
         recruitmentActionLabels: ["Questionnaire", "Poster", "Info sheet", "Schedule"],
-        recruitmentActionsOpen: "More info",
-        recruitmentActionsClose: "Collapse",
+        recruitmentActionsOpen: "More information",
+        recruitmentActionsClose: "Hide info",
         trainingTitle: "Teaching and Training",
         teachingTrainingIntro: "This section brings together my university teaching activities and the training completed as part of the doctoral pathway.",
         trainingSubsectionTitle: "Doctoral training",
@@ -7318,14 +7909,14 @@
         trainingSummary: "Modules completed as part of the doctoral pathway, covering teaching, scientific valorization, research integrity, documentary training, and career development.",
         hours: "60 hours",
         modules: "6 modules",
-        trainingDetails: "Expand training details",
+        trainingDetails: "Show training details",
         pedagogy: "Pedagogical objective:",
         teachingTitle: "University teaching",
         teachingIntro: "Teaching activities completed and planned as part of the doctoral pathway.",
         teachingTotalLabel: "Teaching total",
         teachingYearsLabel: "Academic years",
         teachingInterventionsLabel: "Teaching activities",
-        teachingExpandLabel: "Expand details",
+        teachingExpandLabel: "Show details",
         teachingCollapseLabel: "Hide details",
         teachingPending: "Content to be completed",
         teachingPendingText: "Teaching activities, sessions, or pedagogical materials will be added here once formalized.",
@@ -8157,8 +8748,7 @@
         <details class="axis-projects-panel">
           <summary class="axis-projects-summary">
             <span>
-              <span class="dropdown-kicker">${escapeHtml(axisLabel)}</span>
-              <strong>${currentLanguage === "fr" ? "Projets associés" : "Associated projects"}</strong>
+              <strong>${currentLanguage === "fr" ? "Projets expérimentaux" : "Experimental projects"}</strong>
               <small>${escapeHtml(pluralLabel(projects.length, "projet", "projets", "project", "projects"))}</small>
             </span>
             <span class="dropdown-toggle">
@@ -8376,7 +8966,7 @@
 
           <nav class="site-nav" aria-label="${currentLanguage === "fr" ? "Navigation principale" : "Main navigation"}">
           <div class="nav-inner">
-            <button class="nav-toggle" type="button" data-nav-toggle>Menu</button>
+            <button class="nav-toggle" type="button" data-nav-toggle aria-label="${currentLanguage === "fr" ? "Ouvrir le menu" : "Open menu"}">Menu</button>
             <div class="nav-links">
               ${SECTIONS.map((section, index) => `<a href="#${sectionId(section.key)}" data-section-key="${section.key}">${escapeHtml(data.nav[index])}</a>`).join("")}
             </div>
@@ -8691,7 +9281,7 @@
               <div class="contact-subsection">
                 <div class="contact-subsection-heading">
                   <span>${currentLanguage === "fr" ? "Profils" : "Profiles"}</span>
-                  <h3>${currentLanguage === "fr" ? "Présence académique en ligne" : "Academic online presence"}</h3>
+                  <h3>${currentLanguage === "fr" ? "Présence en ligne" : "Online presence"}</h3>
                 </div>
 
                 <div class="contact-grid professional-profile-grid">
@@ -8727,6 +9317,14 @@
             <button
               class="footer-button"
               type="button"
+              data-share-button
+            >
+              ${escapeHtml(data.shareLabel)}
+            </button>
+
+            <button
+              class="footer-button"
+              type="button"
               data-cite-button
               data-citation="${escapeHtml(data.citation)}"
               data-default-label="${escapeHtml(data.cite)}"
@@ -8749,17 +9347,14 @@
           element.textContent = data[key];
         }
       });
+
       skipLink.href = "#main";
 
-      accessibilityPanel.setAttribute(
-        "aria-label",
-        currentLanguage === "fr" ? "Options de personnalisation" : "Customization options"
-      );
-
-      accessibilityClose.setAttribute(
-        "aria-label",
-        currentLanguage === "fr" ? "Fermer le panneau de personnalisation" : "Close customization panel"
-      );
+      accessibilityPanel.setAttribute("aria-label", data.customizationAriaLabel);
+      accessibilityClose.setAttribute("aria-label", data.customizationCloseLabel);
+      document.querySelector("[data-customization-trigger-group]")?.setAttribute("aria-label", data.customize);
+      document.querySelector("[data-recruitment-dock]")?.setAttribute("aria-label", data.recruitmentDockAriaLabel);
+      document.querySelector("[data-back-to-top]")?.setAttribute("aria-label", data.backToTopLabel);
     }
 
     function updateMetadata(data) {
@@ -8782,13 +9377,15 @@
     function updateShareButtonLabel(labelType = "default") {
       const data = DATA[currentLanguage];
 
-      if (labelType === "copied") {
-        shareButton.textContent = data.copiedLabel;
-        shareButton.classList.add("active");
-      } else {
-        shareButton.textContent = data.shareLabel;
-        shareButton.classList.remove("active");
-      }
+      document.querySelectorAll("[data-share-button]").forEach((button) => {
+        if (labelType === "copied") {
+          button.textContent = data.copiedLabel;
+          button.classList.add("active");
+        } else {
+          button.textContent = data.shareLabel;
+          button.classList.remove("active");
+        }
+      });
     }
 
 
@@ -9714,6 +10311,10 @@
         });
       });
 
+      document.querySelectorAll("[data-share-button]").forEach((button) => {
+        button.addEventListener("click", sharePortfolio);
+      });
+
       document.querySelectorAll("[data-axis-action]").forEach((button) => {
         button.addEventListener("click", () => openOrCloseAxisProjects(button));
       });
@@ -9776,6 +10377,16 @@
       });
     });
 
+    document.querySelector("[data-accessibility-enable-all]")?.addEventListener("click", () => {
+      applyAccessibilitySettings({
+        largeText: true,
+        highContrast: true,
+        dyslexia: true,
+        reduceMotion: true,
+        hideDocumentPreviews: true
+      });
+    });
+
     document.querySelector("[data-accessibility-reset]")?.addEventListener("click", () => {
       applyAccessibilitySettings({});
     });
@@ -9800,8 +10411,6 @@
 
       setRecruitmentMode(!document.body.classList.contains("recruitment-mode"), true, true);
     });
-
-    shareButton.addEventListener("click", sharePortfolio);
 
     backToTopButton.addEventListener("click", () => {
       currentSectionKey = "top";
