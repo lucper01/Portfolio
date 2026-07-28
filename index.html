@@ -7962,6 +7962,65 @@
       margin-bottom: 0 !important;
     }
 
+
+    /* V54 : récapitulatif compact Publications et Communications + espacements réduits */
+    .compact-output-overview {
+      grid-template-columns: repeat(3, minmax(180px, 1fr)) !important;
+      gap: 12px !important;
+      margin: 18px 0 24px !important;
+    }
+
+    .compact-output-overview .teaching-overview-item {
+      min-height: 86px !important;
+      padding: 16px 20px !important;
+      align-content: center !important;
+    }
+
+    .compact-output-overview .teaching-overview-item strong {
+      font-size: clamp(1.5rem, 2.4vw, 2.05rem) !important;
+      margin-bottom: 2px !important;
+    }
+
+    .compact-output-overview .teaching-overview-item span {
+      font-size: 0.86rem !important;
+    }
+
+    .publications-communications-section .publications-communications-layout {
+      margin-top: 22px !important;
+    }
+
+    .publications-communications-section .filter-menu {
+      margin-top: 10px !important;
+      margin-bottom: 10px !important;
+    }
+
+    .publications-communications-section .publication-subsection {
+      margin-top: 14px !important;
+    }
+
+    .publications-communications-section .publication-subsection + .publication-subsection {
+      margin-top: 22px !important;
+    }
+
+    .publications-communications-section .publication-subsection h3 {
+      margin-bottom: 10px !important;
+    }
+
+    .publications-communications-section .publication-list {
+      gap: 10px !important;
+    }
+
+    .publications-communications-section .combined-subsection-heading {
+      margin-bottom: 4px !important;
+      padding-bottom: 14px !important;
+    }
+
+    @media (max-width: 980px) {
+      .compact-output-overview {
+        grid-template-columns: 1fr !important;
+      }
+    }
+
   </style>
 </head>
 
@@ -9536,7 +9595,28 @@
     }
 
     function scientificOutputsOverview(data) {
-      return "";
+      const items = currentLanguage === "fr"
+        ? [
+          { value: "0", label: "Articles et prépublications" },
+          { value: "1", label: "Communication" },
+          { value: "0", label: "Posters" }
+        ]
+        : [
+          { value: "0", label: "Articles and preprints" },
+          { value: "1", label: "Communication" },
+          { value: "0", label: "Posters" }
+        ];
+
+      return `
+        <article class="teaching-training-global-overview scientific-outputs-overview compact-output-overview">
+          ${items.map((item) => `
+            <div class="teaching-overview-item">
+              <strong>${escapeHtml(item.value)}</strong>
+              <span>${escapeHtml(item.label)}</span>
+            </div>
+          `).join("")}
+        </article>
+      `;
     }
 
     function render(data) {
@@ -9745,6 +9825,8 @@
           <section id="${sectionId("publications")}" class="reveal publications-communications-section" data-section="publications">
             ${sectionHeader("06", data.publications)}
             <p class="lead publications-communications-intro">${escapeHtml(data.publicationsCommunicationsIntro)}</p>
+
+            ${scientificOutputsOverview(data)}
 
             <div class="teaching-training-layout publications-communications-layout">
               <div class="combined-subsection combined-publications-subsection">
