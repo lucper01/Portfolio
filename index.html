@@ -8142,6 +8142,121 @@
       }
     }
 
+
+    /* V57 : comptabilisation sous description, cartes alignées, publications compactes, recrutement ajusté */
+    .teaching-entry,
+    .training-entry {
+      display: grid !important;
+      grid-template-rows: auto auto auto minmax(0, 1fr) auto !important;
+      align-items: start !important;
+    }
+
+    .teaching-description {
+      align-self: start !important;
+      margin-bottom: 12px !important;
+    }
+
+    .teaching-valued-status,
+    .teaching-not-valued {
+      align-self: end !important;
+      width: fit-content;
+      margin: 0 !important;
+      padding: 6px 9px;
+      border-radius: 999px;
+      font-size: 0.76rem;
+      font-weight: 950;
+      line-height: 1.12;
+      border: 1px solid rgba(31, 111, 80, 0.14);
+    }
+
+    .teaching-valued-status.is-valued {
+      background: rgba(31, 111, 80, 0.12);
+      color: var(--green-dark) !important;
+    }
+
+    .teaching-valued-status.is-not-valued,
+    .teaching-not-valued {
+      background: rgba(11, 47, 35, 0.06);
+      color: var(--muted) !important;
+      border-style: dashed;
+    }
+
+    body.dark-mode .teaching-valued-status.is-valued {
+      background: rgba(220, 238, 227, 0.12);
+      color: #dceee3 !important;
+      border-color: rgba(220, 238, 227, 0.16);
+    }
+
+    body.dark-mode .teaching-valued-status.is-not-valued,
+    body.dark-mode .teaching-not-valued {
+      background: rgba(220, 238, 227, 0.07);
+      color: rgba(220, 238, 227, 0.78) !important;
+      border-color: rgba(220, 238, 227, 0.14);
+    }
+
+    .not-valued-teaching-entry {
+      opacity: 0.94 !important;
+      border-style: dashed !important;
+    }
+
+    .training-entry-grid {
+      align-items: stretch !important;
+    }
+
+    .training-entry {
+      min-height: 275px !important;
+    }
+
+    .training-entry .teaching-description {
+      min-height: 96px;
+    }
+
+    .publications-communications-section .filter-menu {
+      display: none !important;
+    }
+
+    .publications-communications-section .publication-subsection {
+      margin-top: 8px !important;
+    }
+
+    .publications-communications-section .publication-subsection + .publication-subsection {
+      margin-top: 12px !important;
+    }
+
+    .publications-communications-section .publication-list li {
+      padding: 13px 16px !important;
+      border-radius: 16px !important;
+    }
+
+    .publications-communications-section .publication-list p {
+      margin-top: 5px !important;
+    }
+
+    .publications-communications-section .publications-communications-layout {
+      gap: 18px !important;
+      margin-top: 16px !important;
+    }
+
+    .compact-output-overview {
+      margin-bottom: 14px !important;
+    }
+
+    .recruitment-note {
+      display: none !important;
+    }
+
+    @media (min-width: 1181px) {
+      body:not(.show-side-progress):not(.recruitment-mode) .recruitment-mode-dock .recruitment-dock-icon {
+        transform: rotate(90deg) !important;
+        transform-origin: center;
+      }
+
+      body.show-side-progress .recruitment-mode-dock .recruitment-dock-icon,
+      body.recruitment-mode .recruitment-mode-dock .recruitment-dock-icon {
+        transform: none !important;
+      }
+    }
+
   </style>
 </head>
 
@@ -8280,7 +8395,7 @@
         recruitmentDockHint: "Participant ? Cliquez ici pour accéder aux études.",
         recruitmentDockActiveHint: "Revenir à la présentation complète.",
         nav: ["À propos", "Équipe", "Thèse", "Projets en Collaboration", "Enseignement et Formations", "Publications et Communications", "Participer", "Contact"],
-        heroLabel: "Présentation académique",
+        heroLabel: "Portfolio académique",
         heroTitle: "Luc Perroquin",
         heroSubtitle: "Doctorant en psychologie cognitive",
         heroText: "À travers mes recherches, je m'intéresse à la façon dont les odeurs, les sons et les images participent à notre perception de l'espace, du temps et des événements. Ce site présente mon parcours académique et les projets qui l'accompagnent.",
@@ -8327,7 +8442,7 @@
         ongoing: "En cours",
         projectsInCollab: "Projets en Collaboration",
         recruitmentTitle: "Participer aux études",
-        recruitmentIntro: "Retrouvez ici les études qui pourront accueillir des participants, avec les documents utiles et, plus tard, les liens d’inscription et de prise de rendez-vous.",
+        recruitmentIntro: "Cette section est dédiée aux participants des études afin qu\'ils puissent consulter les projets disponibles et s\'inscrire s\'ils le souhaitent.",
         recruitmentLead: "Les études listées ici ne sont pas toutes ouvertes au recrutement. Leur statut indique si les inscriptions sont disponibles, à venir, complètes ou terminées.",
         recruitmentHowTitle: "Comment participer ?",
         recruitmentHowSteps: [
@@ -8378,6 +8493,7 @@
         trainingModulesLabel: "Modules",
         trainingEntryType: "Formation",
         trainingYearStatus: "Suivi",
+        trainingValuedLabel: "Comptabilisé dans le volume global",
         trainingSummary: "Modules suivis dans le cadre du parcours doctoral, autour de l'enseignement, de la valorisation scientifique, de l'intégrité, de la documentation et de la poursuite de carrière.",
         hours: "60 heures",
         modules: "6 modules",
@@ -8392,6 +8508,7 @@
         teachingCollapseLabel: "Masquer le détail",
         teachingPending: "Contenu à compléter",
         teachingPendingText: "Les enseignements, interventions ou supports pédagogiques seront ajoutés ici lorsqu'ils seront formalisés.",
+        teachingValuedLabel: "Comptabilisé dans les heures valorisées",
         teachingNotValuedLabel: "Non comptabilisé dans les heures valorisées",
         publications: "Publications et Communications",
         publicationsBlockTitle: "Publications",
@@ -8467,7 +8584,7 @@
         recruitmentDockHint: "Participant? Click here to access the studies.",
         recruitmentDockActiveHint: "Return to the full presentation.",
         nav: ["About", "Team", "Thesis", "Featured Projects", "Teaching and Training", "Publications and Communications", "Participate", "Contact"],
-        heroLabel: "Academic presentation",
+        heroLabel: "Academic portfolio",
         heroTitle: "Luc Perroquin",
         heroSubtitle: "PhD student in cognitive psychology",
         heroText: "Through my research, I am interested in how odors, sounds, and images contribute to our perception of space, time, and events. This website presents my academic background and the projects that accompany it.",
@@ -8514,7 +8631,7 @@
         ongoing: "Ongoing",
         projectsInCollab: "Featured Projects",
         recruitmentTitle: "Participate in studies",
-        recruitmentIntro: "This area is dedicated to participant recruitment. Studies will appear here before or during registration periods.",
+        recruitmentIntro: "This section is dedicated to study participants so they can view available projects and register if they wish.",
         recruitmentLead: "The studies below are not accessible yet: registration is not currently open.",
         recruitmentHowTitle: "How to participate?",
         recruitmentHowSteps: [
@@ -8565,6 +8682,7 @@
         trainingModulesLabel: "Modules",
         trainingEntryType: "Training",
         trainingYearStatus: "Completed",
+        trainingValuedLabel: "Counted in the overall volume",
         trainingSummary: "Modules completed as part of the doctoral pathway, covering teaching, scientific valorization, research integrity, documentary training, and career development.",
         hours: "60 hours",
         modules: "6 modules",
@@ -8901,24 +9019,23 @@
           summary: "Teaching activities completed during the 2025-2026 academic year, with undergraduate and master's students."
         },
         entries: [
-          {
-            type: "TP",
-            hours: "6 h eq. TD",
-            valued: false,
+{
+            type: "TD",
+            hours: "40 h eq. TD",
             audience: {
-              fr: "Masters",
-              en: "Master's students"
+              fr: "L1 - semestre 1",
+              en: "First-year undergraduate students - semester 1"
             },
             fr: {
-              title: "Graduate Programmes Neurosciences - Cardiac and Electrodermal Signatures of Emotions",
-              details: "Travaux pratiques consacrés aux signatures cardiaques et électrodermales des émotions."
+              title: "Méthodologie Expérimentale en Psychologie Cognitive",
+              details: "Travaux dirigés consacrés aux bases de la méthodologie expérimentale appliquée à la psychologie cognitive."
             },
             en: {
-              title: "Graduate Programmes Neurosciences - Cardiac and Electrodermal Signatures of Emotions",
-              details: "Practical class on cardiac and electrodermal signatures of emotions."
+              title: "Experimental Methodology in Cognitive Psychology",
+              details: "Tutorials on the foundations of experimental methodology applied to cognitive psychology."
             }
           },
-          {
+{
             type: "TER",
             hours: "14 h eq. TD",
             audience: {
@@ -8934,20 +9051,21 @@
               details: "Supervision of research-oriented work on building a hypothesis, translating it into an experiment, and interpreting it."
             }
           },
-          {
-            type: "TD",
-            hours: "40 h eq. TD",
+{
+            type: "TP",
+            hours: "6 h eq. TD",
+            valued: false,
             audience: {
-              fr: "L1 - semestre 1",
-              en: "First-year undergraduate students - semester 1"
+              fr: "Masters",
+              en: "Master's students"
             },
             fr: {
-              title: "Méthodologie Expérimentale en Psychologie Cognitive",
-              details: "Travaux dirigés consacrés aux bases de la méthodologie expérimentale appliquée à la psychologie cognitive."
+              title: "Graduate Programmes Neurosciences - Cardiac and Electrodermal Signatures of Emotions",
+              details: "Travaux pratiques consacrés aux signatures cardiaques et électrodermales des émotions."
             },
             en: {
-              title: "Experimental Methodology in Cognitive Psychology",
-              details: "Tutorials on the foundations of experimental methodology applied to cognitive psychology."
+              title: "Graduate Programmes Neurosciences - Cardiac and Electrodermal Signatures of Emotions",
+              details: "Practical class on cardiac and electrodermal signatures of emotions."
             }
           }
         ]
@@ -9640,17 +9758,18 @@
       const text = entry[currentLanguage];
       const audience = entry.audience[currentLanguage];
       const isValued = entry.valued !== false;
+      const valuedLabel = isValued ? data.teachingValuedLabel : data.teachingNotValuedLabel;
 
       return `
-        <article class="teaching-entry ${isValued ? "" : "not-valued-teaching-entry"}">
+        <article class="teaching-entry ${isValued ? "valued-teaching-entry" : "not-valued-teaching-entry"}">
           <div class="teaching-entry-topline">
             <span class="teaching-type">${escapeHtml(entry.type)}</span>
             <span class="teaching-hours">${escapeHtml(entry.hours)}</span>
           </div>
           <h4>${escapeHtml(text.title)}</h4>
           <p class="teaching-audience">${escapeHtml(audience)}</p>
-          ${isValued ? "" : `<p class="teaching-not-valued">${escapeHtml(data.teachingNotValuedLabel)}</p>`}
-          <p>${escapeHtml(text.details)}</p>
+          <p class="teaching-description">${escapeHtml(text.details)}</p>
+          <p class="teaching-valued-status ${isValued ? "is-valued" : "is-not-valued"}">${escapeHtml(valuedLabel)}</p>
         </article>
       `;
     }
@@ -9687,14 +9806,15 @@
       const text = training[currentLanguage];
 
       return `
-        <article class="teaching-entry training-entry">
+        <article class="teaching-entry training-entry valued-teaching-entry">
           <div class="teaching-entry-topline">
             <span class="teaching-type">${escapeHtml(data.trainingEntryType)}</span>
             <span class="teaching-hours">${escapeHtml(formatHourValue(parseTeachingHours(training.hours)))}</span>
           </div>
           <h4>${escapeHtml(text.title)}</h4>
           <p class="teaching-audience">${escapeHtml(text.subtitle)}</p>
-          <p><strong>${escapeHtml(data.pedagogy)}</strong> ${escapeHtml(text.objective)}</p>
+          <p class="teaching-description"><strong>${escapeHtml(data.pedagogy)}</strong> ${escapeHtml(text.objective)}</p>
+          <p class="teaching-valued-status is-valued">${escapeHtml(data.trainingValuedLabel)}</p>
         </article>
       `;
     }
@@ -9970,17 +10090,6 @@
                   </div>
                 </div>
 
-                <details class="filter-menu">
-                  <summary>
-                    <span>${escapeHtml(data.filterMenuLabel)}</span>
-                  </summary>
-                  <div class="filter-controls" aria-label="${currentLanguage === "fr" ? "Filtres des publications" : "Publication filters"}">
-                    <button class="filter-button active" type="button" data-filter="all" data-label="${escapeHtml(data.all)}">${escapeHtml(data.all)}</button>
-                    <button class="filter-button" type="button" data-filter="article" data-label="${escapeHtml(data.articles)}">${escapeHtml(data.articles)}</button>
-                    <button class="filter-button" type="button" data-filter="preprint" data-label="${escapeHtml(data.preprints)}">${escapeHtml(data.preprints)}</button>
-                  </div>
-                </details>
-
                 <div class="publication-subsection">
                   <h3>${escapeHtml(data.articles)}</h3>
                   <ul class="publication-list">
@@ -10013,17 +10122,6 @@
                   </div>
                 </div>
 
-                <details class="filter-menu">
-                  <summary>
-                    <span>${escapeHtml(data.filterMenuLabel)}</span>
-                  </summary>
-                  <div class="filter-controls" aria-label="${currentLanguage === "fr" ? "Filtres des communications" : "Communication filters"}">
-                    <button class="filter-button active" type="button" data-filter="all" data-label="${escapeHtml(data.all)}">${escapeHtml(data.all)}</button>
-                    <button class="filter-button" type="button" data-filter="communication" data-label="${escapeHtml(data.communications)}">${escapeHtml(data.communications)}</button>
-                    <button class="filter-button" type="button" data-filter="poster" data-label="${escapeHtml(data.posters)}">${escapeHtml(data.posters)}</button>
-                  </div>
-                </details>
-
                 <div class="publication-subsection">
                   <h3>${escapeHtml(data.communicationsBlockTitle)}</h3>
                   <ul class="publication-list">
@@ -10052,7 +10150,6 @@
           <section id="${sectionId("recruitment")}" class="reveal" data-section="recruitment">
             ${sectionHeader("07", data.recruitmentTitle)}
             <p class="lead recruitment-intro">${escapeHtml(data.recruitmentIntro)}</p>
-            <p class="recruitment-note">${escapeHtml(data.recruitmentLead)}</p>
 
             <div class="study-contact-card">
               <span class="study-contact-kicker">${escapeHtml(data.studyContactLabel)}</span>
