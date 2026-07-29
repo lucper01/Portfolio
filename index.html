@@ -8021,6 +8021,127 @@
       }
     }
 
+
+    /* V55 : GPN affiché mais exclu des heures valorisées */
+    .not-valued-teaching-entry {
+      border-style: dashed !important;
+      opacity: 0.92;
+    }
+
+    .teaching-not-valued {
+      width: fit-content;
+      margin: 0 0 10px !important;
+      padding: 6px 9px;
+      border-radius: 999px;
+      background: rgba(31, 111, 80, 0.10);
+      color: var(--green-dark) !important;
+      border: 1px solid rgba(31, 111, 80, 0.14);
+      font-size: 0.78rem;
+      font-weight: 900;
+      line-height: 1.15;
+    }
+
+    body.dark-mode .teaching-not-valued {
+      background: rgba(220, 238, 227, 0.10);
+      color: #dceee3 !important;
+      border-color: rgba(220, 238, 227, 0.16);
+    }
+
+
+    /* V56 : sous-sections sans numéros internes et publications/communications resserrées */
+    .combined-subsection-heading > span {
+      width: auto !important;
+      min-width: 58px !important;
+      height: 34px !important;
+      padding: 0 12px !important;
+      border-radius: 999px !important;
+      font-size: 0.76rem !important;
+      letter-spacing: 0.04em !important;
+      text-transform: uppercase !important;
+      line-height: 1 !important;
+    }
+
+    .publications-communications-section .combined-subsection {
+      padding: 20px 22px 22px !important;
+      border-radius: 28px !important;
+    }
+
+    .publications-communications-section .combined-subsection-heading {
+      grid-template-columns: auto minmax(0, 1fr) !important;
+      gap: 12px !important;
+      padding-bottom: 10px !important;
+      margin-bottom: 2px !important;
+    }
+
+    .publications-communications-section .combined-subsection-heading h3 {
+      font-size: clamp(1.45rem, 2vw, 1.9rem) !important;
+    }
+
+    .publications-communications-section .combined-subsection-heading p {
+      font-size: 0.94rem !important;
+      line-height: 1.45 !important;
+      margin-top: 3px !important;
+    }
+
+    .publications-communications-section .publications-communications-layout {
+      gap: 24px !important;
+      margin-top: 18px !important;
+    }
+
+    .publications-communications-section .filter-menu {
+      margin-top: 8px !important;
+      margin-bottom: 8px !important;
+    }
+
+    .publications-communications-section .publication-subsection {
+      margin-top: 10px !important;
+    }
+
+    .publications-communications-section .publication-subsection + .publication-subsection {
+      margin-top: 16px !important;
+    }
+
+    .publications-communications-section .publication-subsection h3 {
+      margin-bottom: 8px !important;
+      font-size: 1.18rem !important;
+    }
+
+    .publications-communications-section .publication-list li {
+      padding: 16px 18px !important;
+      border-radius: 18px !important;
+    }
+
+    .publications-communications-section .publication-list p {
+      margin-top: 6px !important;
+      line-height: 1.45 !important;
+    }
+
+    .publications-communications-section .publication-type {
+      padding: 6px 10px !important;
+      font-size: 0.74rem !important;
+    }
+
+    .compact-output-overview {
+      margin: 14px 0 18px !important;
+      gap: 10px !important;
+    }
+
+    .compact-output-overview .teaching-overview-item {
+      min-height: 76px !important;
+      padding: 14px 18px !important;
+    }
+
+    @media (max-width: 760px) {
+      .combined-subsection-heading > span {
+        width: fit-content !important;
+        min-width: 0 !important;
+      }
+
+      .publications-communications-section .combined-subsection {
+        padding: 18px !important;
+      }
+    }
+
   </style>
 </head>
 
@@ -8271,6 +8392,7 @@
         teachingCollapseLabel: "Masquer le détail",
         teachingPending: "Contenu à compléter",
         teachingPendingText: "Les enseignements, interventions ou supports pédagogiques seront ajoutés ici lorsqu'ils seront formalisés.",
+        teachingNotValuedLabel: "Non comptabilisé dans les heures valorisées",
         publications: "Publications et Communications",
         publicationsBlockTitle: "Publications",
         publicationsCommunicationsIntro: "Cette section distingue les productions écrites, comme les articles et prépublications, des communications scientifiques, comme les présentations orales et les posters.",
@@ -8782,6 +8904,7 @@
           {
             type: "TP",
             hours: "6 h eq. TD",
+            valued: false,
             audience: {
               fr: "Masters",
               en: "Master's students"
@@ -9382,8 +9505,14 @@
       return `${formatted} ${suffix}`;
     }
 
+    function getTeachingYearValuedHours(block) {
+      return block.entries.reduce((total, entry) => {
+        return total + (entry.valued === false ? 0 : parseTeachingHours(entry.hours));
+      }, 0);
+    }
+
     function getTeachingTotals() {
-      const hours = TEACHING.reduce((total, block) => total + parseTeachingHours(block.total), 0);
+      const hours = TEACHING.reduce((total, block) => total + getTeachingYearValuedHours(block), 0);
       const interventions = TEACHING.reduce((total, block) => total + block.entries.length, 0);
 
       return {
@@ -9507,18 +9636,20 @@
       `;
     }
 
-    function teachingEntryCard(entry) {
+    function teachingEntryCard(entry, data) {
       const text = entry[currentLanguage];
       const audience = entry.audience[currentLanguage];
+      const isValued = entry.valued !== false;
 
       return `
-        <article class="teaching-entry">
+        <article class="teaching-entry ${isValued ? "" : "not-valued-teaching-entry"}">
           <div class="teaching-entry-topline">
             <span class="teaching-type">${escapeHtml(entry.type)}</span>
             <span class="teaching-hours">${escapeHtml(entry.hours)}</span>
           </div>
           <h4>${escapeHtml(text.title)}</h4>
           <p class="teaching-audience">${escapeHtml(audience)}</p>
+          ${isValued ? "" : `<p class="teaching-not-valued">${escapeHtml(data.teachingNotValuedLabel)}</p>`}
           <p>${escapeHtml(text.details)}</p>
         </article>
       `;
@@ -9527,6 +9658,7 @@
     function teachingYearBlock(block, data) {
       const text = block[currentLanguage];
       const status = block.status[currentLanguage];
+      const valuedHours = getTeachingYearValuedHours(block);
 
       return `
         <details class="teaching-year-block">
@@ -9535,7 +9667,7 @@
               <span class="training-kicker">${escapeHtml(status)}</span>
               <strong>${escapeHtml(block.year)}</strong>
             </span>
-            <span class="teaching-total">${escapeHtml(block.total)}</span>
+            <span class="teaching-total">${escapeHtml(formatHourValue(valuedHours, "h eq. TD"))}</span>
             <span class="teaching-year-toggle">
               <span class="closed-label">${escapeHtml(data.teachingExpandLabel)}</span>
               <span class="open-label">${escapeHtml(data.teachingCollapseLabel)}</span>
@@ -9544,7 +9676,7 @@
           <div class="teaching-year-content">
             <p>${escapeHtml(text.summary)}</p>
             <div class="teaching-entry-grid">
-              ${block.entries.map((entry) => teachingEntryCard(entry)).join("")}
+              ${block.entries.map((entry) => teachingEntryCard(entry, data)).join("")}
             </div>
           </div>
         </details>
@@ -9790,7 +9922,7 @@
             <div class="teaching-training-layout">
               <div class="combined-subsection combined-teaching-subsection">
                 <div class="combined-subsection-heading">
-                  <span>01</span>
+                  <span>${currentLanguage === "fr" ? "Ens." : "Teach."}</span>
                   <div>
                     <h3>${escapeHtml(data.teachingTitle)}</h3>
                     <p>${escapeHtml(data.teachingIntro)}</p>
@@ -9806,7 +9938,7 @@
 
               <div class="combined-subsection combined-training-subsection">
                 <div class="combined-subsection-heading">
-                  <span>02</span>
+                  <span>${currentLanguage === "fr" ? "Form." : "Train."}</span>
                   <div>
                     <h3>${escapeHtml(data.trainingSubsectionTitle)}</h3>
                     <p>${escapeHtml(data.trainingSummary)}</p>
@@ -9831,7 +9963,7 @@
             <div class="teaching-training-layout publications-communications-layout">
               <div class="combined-subsection combined-publications-subsection">
                 <div class="combined-subsection-heading">
-                  <span>01</span>
+                  <span>Pub.</span>
                   <div>
                     <h3>${escapeHtml(data.publicationsBlockTitle)}</h3>
                     <p>${currentLanguage === "fr" ? "Articles et prépublications seront centralisés ici lorsqu'ils seront soumis, acceptés ou diffusables." : "Articles and preprints will be centralized here once they are submitted, accepted, or shareable."}</p>
@@ -9874,7 +10006,7 @@
 
               <div class="combined-subsection combined-communications-subsection">
                 <div class="combined-subsection-heading">
-                  <span>02</span>
+                  <span>Com.</span>
                   <div>
                     <h3>${escapeHtml(data.communicationsBlockTitle)}</h3>
                     <p>${currentLanguage === "fr" ? "Communications orales et posters présentés dans des journées scientifiques, colloques ou événements doctoraux." : "Oral communications and posters presented during scientific days, conferences, or doctoral events."}</p>
