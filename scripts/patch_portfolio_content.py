@@ -47,6 +47,7 @@ def remove_project_by_name(text, name):
 html = remove_project_by_name(html, "SORBET")
 html = remove_project_by_name(html, "COBEX")
 html = html.replace('name: "OASIS"', 'name: "VIBOLF"', 1)
+html = html.replace('COBEX_Affiche.pdf', 'VIBOLF_Affiche.pdf')
 html = re.sub(r'axis:\s*2,\n\s*name:\s*"SOLAR"', 'axis: 1,\n        name: "SOLAR"', html, count=1)
 html = re.sub(r'\n      SORBET: \{\n        status: "closed",\n        questionnaire: "",\n        planning: ""\n      \},', '', html)
 html = re.sub(r'\n      COBEX: \{\n        status: "closed",\n        questionnaire: "",\n        planning: ""\n      \},', '', html)
