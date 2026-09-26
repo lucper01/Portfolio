@@ -8528,8 +8528,6 @@
         posterPending: "Les posters seront ajoutés ici après présentation ou diffusion.",
         jdd: "Journée des Doctorants 2026",
         jddText: "Présentation des travaux de thèse et obtention du prix de l'originalité pour une approche scientifique audacieuse et créative qui a surpris et inspiré le jury.",
-        nuitChercheurs: "Nuit des Chercheurs 2026",
-        nuitChercheursText: "Communication réalisée dans le cadre de la Nuit des Chercheurs 2026, dont le thème général portait sur les émotions. Présentation autour de la visualisation de l'impact émotionnel des odeurs à partir de mesures physiologiques.",
         contact: "Contact",
         copy: "Copier",
         copied: "Copié",
@@ -8717,8 +8715,6 @@
         posterPending: "Posters will be added here after presentation or dissemination.",
         jdd: "Doctoral Students' Day 2026",
         jddText: "Presentation of thesis work and recipient of the Originality Award for a bold and creative scientific approach that surprised and inspired the jury.",
-        nuitChercheurs: "Researchers' Night 2026",
-        nuitChercheursText: "Scientific communication presented during Researchers' Night 2026, whose general theme focused on emotions. The presentation addressed the visualization of the emotional impact of odors through physiological measures.",
         contact: "Contact",
         copy: "Copy",
         copied: "Copied",
@@ -8777,6 +8773,19 @@
         }
       },
       {
+        axis: 1,
+        name: "SORBET",
+        done: false,
+        fr: {
+          desc: "Étude de la recalibration subjective du timing entre odeurs et événements visuels ou auditifs.",
+          role: "conception du protocole d'adaptation temporelle, intégration olfactive et analyses psychométriques à venir."
+        },
+        en: {
+          desc: "Study of subjective timing recalibration between odors and visual or auditory events.",
+          role: "temporal adaptation protocol design, olfactory integration, and upcoming psychometric analyses."
+        }
+      },
+      {
         axis: 2,
         name: "VIBEX",
         done: true,
@@ -8791,7 +8800,7 @@
       },
       {
         axis: 2,
-        name: "VIBOLF",
+        name: "OASIS",
         done: false,
         fr: {
           desc: "Étude de l\'influence de la valence olfactive sur les tendances d\'approche-évitement et la représentation de l\'espace.",
@@ -8803,7 +8812,7 @@
         }
       },
       {
-        axis: 1,
+        axis: 2,
         name: "SOLAR",
         done: false,
         fr: {
@@ -8813,6 +8822,19 @@
         en: {
           desc: "Study of whether an olfactory cue can orient spatial attention toward a specific location.",
           role: "paradigm design, integration of olfactory stimulation, experimental programming, and upcoming analyses."
+        }
+      },
+      {
+        axis: 2,
+        name: "COBEX",
+        done: false,
+        fr: {
+          desc: "Étude de l\'effet de la congruence entre odeur et scène visuelle sur l\'extension des limites d\'une scène.",
+          role: "conception du paradigme, validation des associations odeur-scène et analyses à venir."
+        },
+        en: {
+          desc: "Study of how odor-scene congruence influences the extension of perceived scene boundaries.",
+          role: "paradigm design, validation of odor-scene associations, and upcoming analyses."
         }
       },
       {
@@ -8862,12 +8884,22 @@
         questionnaire: "",
         planning: ""
       },
-      VIBOLF: {
+      SORBET: {
+        status: "closed",
+        questionnaire: "",
+        planning: ""
+      },
+      OASIS: {
         status: "closed",
         questionnaire: "",
         planning: ""
       },
       SOLAR: {
+        status: "closed",
+        questionnaire: "",
+        planning: ""
+      },
+      COBEX: {
         status: "closed",
         questionnaire: "",
         planning: ""
@@ -9098,24 +9130,6 @@
             en: {
               title: "Understanding Interactions Between the Senses - From Theoretical Hypothesis to Practical Experiment",
               details: "Supervision of research-oriented work on building a hypothesis, translating it into an experiment, and interpreting it."
-            }
-          }
-,
-          {
-            type: "TP",
-            hours: "6 h eq. TD",
-            valued: false,
-            audience: {
-              fr: "Masters",
-              en: "Master's students"
-            },
-            fr: {
-              title: "Graduate Programmes Neurosciences - Cardiac and Electrodermal Signatures of Emotions",
-              details: "Travaux pratiques consacrés aux signatures cardiaques et électrodermales des émotions."
-            },
-            en: {
-              title: "Graduate Programmes Neurosciences - Cardiac and Electrodermal Signatures of Emotions",
-              details: "Practical class on cardiac and electrodermal signatures of emotions."
             }
           }
         ]
@@ -9493,12 +9507,8 @@
 
     function axisTitle(axisNumber) {
       return axisNumber === 1
-        ? (currentLanguage === "fr"
-          ? "Limites Spatio-temporelles de l'olfaction comparativement et en interaction avec l'audition et la vision"
-          : "Spatiotemporal limits of olfaction comparatively and in interaction with audition and vision")
-        : (currentLanguage === "fr"
-          ? "Influence de l'olfaction sur la perception spatio-temporelle en audition et en vision"
-          : "Influence of olfaction on spatiotemporal perception in audition and vision");
+        ? (currentLanguage === "fr" ? "Relations temporelles entre olfaction, vision et audition" : "Temporal relations between olfaction, vision, and audition")
+        : (currentLanguage === "fr" ? "Influence des odeurs sur la perception de l'espace et des événements" : "Influence of odors on the perception of space and events");
     }
 
     function axisDescription(axisNumber) {
@@ -9840,12 +9850,12 @@
       const items = currentLanguage === "fr"
         ? [
           { value: "0", label: "Articles et prépublications" },
-          { value: "2", label: "Communications" },
+          { value: "1", label: "Communication" },
           { value: "0", label: "Posters" }
         ]
         : [
           { value: "0", label: "Articles and preprints" },
-          { value: "2", label: "Communications" },
+          { value: "1", label: "Communication" },
           { value: "0", label: "Posters" }
         ];
 
@@ -10119,11 +10129,6 @@
                       <span class="publication-type">Communication</span>
                       <strong>${escapeHtml(data.jdd)}</strong>
                       <p>${escapeHtml(data.jddText)}</p>
-                    </li>
-                    <li class="filter-item" data-category="communication">
-                      <span class="publication-type">Communication</span>
-                      <strong>${escapeHtml(data.nuitChercheurs)}</strong>
-                      <p>${escapeHtml(data.nuitChercheursText)}</p>
                     </li>
                   </ul>
                 </div>
