@@ -8317,159 +8317,6 @@
     }
 
   
-    /* Thesis time progress */
-    .thesis-progress-card {
-      margin: 28px 0 34px;
-      padding: 26px 28px;
-      border-radius: 28px;
-      background:
-        radial-gradient(circle at 100% 0%, rgba(119, 184, 146, 0.20), transparent 38%),
-        var(--white);
-      border: 1px solid rgba(11, 47, 35, 0.12);
-      box-shadow: var(--shadow-soft);
-    }
-
-    .thesis-progress-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 18px;
-      margin-bottom: 18px;
-    }
-
-    .thesis-progress-kicker {
-      display: block;
-      margin-bottom: 4px;
-      color: var(--green-main);
-      font-size: 0.78rem;
-      font-weight: 900;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .thesis-progress-title {
-      margin: 0;
-      color: var(--green-dark);
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(1.35rem, 2.4vw, 2rem);
-      line-height: 1.1;
-    }
-
-    .thesis-progress-number {
-      flex: 0 0 auto;
-      text-align: right;
-      color: var(--green-dark);
-    }
-
-    .thesis-progress-number strong {
-      display: block;
-      font-size: clamp(1.7rem, 3vw, 2.55rem);
-      line-height: 1;
-      letter-spacing: -0.04em;
-    }
-
-    .thesis-progress-number span {
-      display: block;
-      margin-top: 5px;
-      color: var(--muted);
-      font-size: 0.82rem;
-      font-weight: 800;
-    }
-
-    .thesis-progress-track {
-      position: relative;
-      height: 16px;
-      overflow: hidden;
-      border-radius: 999px;
-      background: var(--green-soft);
-      border: 1px solid rgba(11, 47, 35, 0.08);
-    }
-
-    .thesis-progress-fill {
-      width: 0%;
-      height: 100%;
-      border-radius: inherit;
-      background: linear-gradient(90deg, var(--green-dark), var(--green-main), var(--green-light));
-      transition: width 0.7s ease;
-    }
-
-    .thesis-progress-meta {
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      gap: 14px;
-      align-items: center;
-      margin-top: 12px;
-      color: var(--muted);
-      font-size: 0.83rem;
-      font-weight: 750;
-    }
-
-    .thesis-progress-meta span:nth-child(2) {
-      color: var(--green-main);
-      font-weight: 900;
-      text-align: center;
-    }
-
-    .thesis-progress-meta span:last-child {
-      text-align: right;
-    }
-
-    .thesis-progress-details {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px 18px;
-      margin-top: 16px;
-      color: var(--muted);
-      font-size: 0.82rem;
-    }
-
-    .thesis-progress-details strong {
-      color: var(--green-dark);
-    }
-
-    body.dark-mode .thesis-progress-card {
-      background:
-        radial-gradient(circle at 100% 0%, rgba(119, 184, 146, 0.14), transparent 38%),
-        var(--white);
-      border-color: rgba(220, 238, 227, 0.14);
-    }
-
-    body.high-contrast .thesis-progress-track {
-      border-width: 2px;
-    }
-
-    body.reduce-motion .thesis-progress-fill {
-      transition: none;
-    }
-
-    @media (max-width: 680px) {
-      .thesis-progress-card {
-        padding: 22px 20px;
-        border-radius: 24px;
-      }
-
-      .thesis-progress-head {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      .thesis-progress-number {
-        text-align: left;
-      }
-
-      .thesis-progress-meta {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .thesis-progress-meta span:nth-child(2) {
-        grid-column: 1 / -1;
-        grid-row: 1;
-      }
-
-      .thesis-progress-meta span:last-child {
-        text-align: right;
-      }
-    }
 
   </style>
 </head>
@@ -10076,54 +9923,6 @@
     }
 
 
-    const THESIS_START_MS = Date.UTC(2025, 9, 1, 0, 0, 0);
-    const THESIS_END_MS = Date.UTC(2028, 9, 1, 0, 0, 0);
-    const THESIS_TOTAL_HOURS = (THESIS_END_MS - THESIS_START_MS) / 3600000;
-    let thesisProgressInterval = null;
-
-    function updateThesisProgress() {
-      const card = document.querySelector("[data-thesis-progress]");
-      if (!card) return;
-
-      const now = Date.now();
-      const clampedNow = Math.min(Math.max(now, THESIS_START_MS), THESIS_END_MS);
-      const elapsedHours = (clampedNow - THESIS_START_MS) / 3600000;
-      const remainingHours = (THESIS_END_MS - clampedNow) / 3600000;
-      const progress = THESIS_TOTAL_HOURS > 0
-        ? (elapsedHours / THESIS_TOTAL_HOURS) * 100
-        : 0;
-
-      const locale = currentLanguage === "fr" ? "fr-FR" : "en-GB";
-      const integerFormatter = new Intl.NumberFormat(locale, { maximumFractionDigits: 0 });
-      const percentFormatter = new Intl.NumberFormat(locale, {
-        minimumFractionDigits: 1,
-        maximumFractionDigits: 1
-      });
-
-      const remaining = card.querySelector("[data-thesis-hours-remaining]");
-      const elapsed = card.querySelector("[data-thesis-hours-elapsed]");
-      const total = card.querySelector("[data-thesis-hours-total]");
-      const percent = card.querySelector("[data-thesis-progress-percent]");
-      const fill = card.querySelector("[data-thesis-progress-fill]");
-      const track = card.querySelector("[data-thesis-progress-track]");
-
-      if (remaining) remaining.textContent = `${integerFormatter.format(Math.max(0, Math.floor(remainingHours)))} h`;
-      if (elapsed) elapsed.textContent = `${integerFormatter.format(Math.max(0, Math.floor(elapsedHours)))} h`;
-      if (total) total.textContent = `${integerFormatter.format(THESIS_TOTAL_HOURS)} h`;
-      if (percent) percent.textContent = `${percentFormatter.format(progress)} %`;
-      if (fill) fill.style.width = `${progress.toFixed(4)}%`;
-
-      if (track) {
-        track.setAttribute("aria-valuenow", progress.toFixed(1));
-        track.setAttribute(
-          "aria-label",
-          currentLanguage === "fr"
-            ? `Progression temporelle de la thèse : ${percentFormatter.format(progress)} %, ${integerFormatter.format(Math.max(0, Math.floor(remainingHours)))} heures restantes`
-            : `Thesis time progress: ${percentFormatter.format(progress)}%, ${integerFormatter.format(Math.max(0, Math.floor(remainingHours)))} hours remaining`
-        );
-      }
-    }
-
     function render(data) {
       document.documentElement.lang = data.lang;
 
@@ -10221,40 +10020,6 @@
               <p>${escapeHtml(data.thesisText)}</p>
             </div>
 
-            <article class="thesis-progress-card" data-thesis-progress>
-              <div class="thesis-progress-head">
-                <div>
-                  <span class="thesis-progress-kicker">${currentLanguage === "fr" ? "Chronologie doctorale" : "Doctoral timeline"}</span>
-                  <h3 class="thesis-progress-title">${currentLanguage === "fr" ? "Progression temporelle de la thèse" : "Thesis time progress"}</h3>
-                </div>
-                <div class="thesis-progress-number">
-                  <strong data-thesis-hours-remaining>0 h</strong>
-                  <span>${currentLanguage === "fr" ? "restantes" : "remaining"}</span>
-                </div>
-              </div>
-
-              <div
-                class="thesis-progress-track"
-                role="progressbar"
-                aria-valuemin="0"
-                aria-valuemax="100"
-                aria-valuenow="0"
-                data-thesis-progress-track
-              >
-                <div class="thesis-progress-fill" data-thesis-progress-fill></div>
-              </div>
-
-              <div class="thesis-progress-meta">
-                <span>${currentLanguage === "fr" ? "1 octobre 2025" : "1 October 2025"}</span>
-                <span data-thesis-progress-percent>0 %</span>
-                <span>${currentLanguage === "fr" ? "1 octobre 2028" : "1 October 2028"}</span>
-              </div>
-
-              <div class="thesis-progress-details">
-                <span><strong data-thesis-hours-elapsed>0 h</strong> ${currentLanguage === "fr" ? "écoulées" : "elapsed"}</span>
-                <span><strong data-thesis-hours-total>26 304 h</strong> ${currentLanguage === "fr" ? "au total" : "total"}</span>
-              </div>
-            </article>
 
 <h3 id="${currentLanguage}-supervision" class="subsection-heading">${escapeHtml(data.supervision)}</h3>
 
@@ -10572,11 +10337,6 @@
       `;
 
       updateDynamicBindings();
-      updateThesisProgress();
-
-      if (!thesisProgressInterval) {
-        thesisProgressInterval = window.setInterval(updateThesisProgress, 60000);
-      }
     }
 
     function updateStaticI18n(data) {
