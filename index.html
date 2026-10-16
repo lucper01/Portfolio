@@ -8558,7 +8558,7 @@
         trainingEntryType: "Formation",
         trainingYearStatus: "Suivi",
         trainingValuedLabel: "Comptabilisé dans le volume global",
-        trainingPlannedLabel: "Prévu — inclus dans le volume prévisionnel",
+        trainingPlannedLabel: "Prévu - inclus dans le volume prévisionnel",
         trainingPlannedStatus: "Prévu",
         trainingSummary: "Formations suivies et prévues dans le cadre du parcours doctoral : enseignement, valorisation scientifique, éthique, programmation, qualité, publication et gestion des données.",
         hours: "60 heures",
@@ -8751,7 +8751,7 @@
         trainingEntryType: "Training",
         trainingYearStatus: "Completed",
         trainingValuedLabel: "Counted in the overall volume",
-        trainingPlannedLabel: "Planned — included in the projected volume",
+        trainingPlannedLabel: "Planned - included in the projected volume",
         trainingPlannedStatus: "Planned",
         trainingSummary: "Completed and planned doctoral training: teaching, scientific valorization, ethics, programming, quality, publication, and research data management.",
         hours: "60 hours",
@@ -9035,6 +9035,23 @@
           title: "Teaching knowledge and tools",
           subtitle: "AI and Education",
           objective: "strengthen doctoral students' scientific culture in their disciplinary or interdisciplinary field by examining the uses, contributions, and limits of artificial intelligence in educational contexts."
+        }
+      },
+      {
+        year: "2026-2027",
+        planned: true,
+        fromTeaching: true,
+        teachingYear: "2026-2027",
+        hours: "29 h",
+        fr: {
+          title: "Poursuite de carrière",
+          subtitle: "Enseignement",
+          objective: "développer et valoriser les compétences d'enseignement universitaire, de préparation pédagogique, d'encadrement des étudiants et de transmission des connaissances. Le volume retenu correspond à la moitié des heures d'enseignement comptabilisables prévues pour l'année."
+        },
+        en: {
+          title: "Career development",
+          subtitle: "Teaching",
+          objective: "develop and recognize skills in university teaching, lesson preparation, student supervision, and knowledge sharing. The credited volume corresponds to half of the eligible teaching hours planned for the academic year."
         }
       },
       {
@@ -9787,6 +9804,16 @@ const TEACHING = [
       };
     }
 
+    function getTrainingHours(training) {
+      if (training.fromTeaching === true) {
+        const teachingBlock = TEACHING.find((block) => block.year === training.teachingYear);
+        if (teachingBlock) {
+          return getTeachingYearValuedHours(teachingBlock) / 2;
+        }
+      }
+      return parseTeachingHours(training.hours);
+    }
+
     function getTrainingYearGroups() {
       const groups = TRAININGS.reduce((accumulator, training) => {
         const year = training.year || "2025-2026";
@@ -9804,7 +9831,7 @@ const TEACHING = [
         .map(([year, entries]) => ({
           year,
           entries,
-          totalHours: entries.reduce((total, training) => total + parseTeachingHours(training.hours), 0)
+          totalHours: entries.reduce((total, training) => total + getTrainingHours(training), 0)
         }));
     }
 
@@ -9837,9 +9864,9 @@ const TEACHING = [
     }
 
     function teachingTrainingGlobalOverview(data) {
-      const teachingTotals = getTeachingTotals();
       const trainingTotals = getTrainingTotals();
-      const globalHours = trainingTotals.hours + (teachingTotals.hours / 2);
+      // The teaching share is already included as career-development training.
+      const globalHours = trainingTotals.hours;
 
       return `
         <article class="teaching-training-global-overview">
@@ -9956,7 +9983,7 @@ const TEACHING = [
         <article class="teaching-entry training-entry valued-teaching-entry">
           <div class="teaching-entry-topline">
             <span class="teaching-type">${escapeHtml(data.trainingEntryType)}</span>
-            <span class="teaching-hours">${escapeHtml(formatHourValue(parseTeachingHours(training.hours)))}</span>
+            <span class="teaching-hours">${escapeHtml(formatHourValue(getTrainingHours(training)))}</span>
           </div>
           <h4>${escapeHtml(text.title)}</h4>
           <p class="teaching-audience">${escapeHtml(text.subtitle)}</p>
