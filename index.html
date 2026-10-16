@@ -8321,6 +8321,12 @@
 
   
 
+  
+    /* La rubrique Participer appartient exclusivement au mode Recrutement. */
+    body:not(.recruitment-mode) main > section[data-section="recruitment"] {
+      display: none !important;
+    }
+
   </style>
 </head>
 
@@ -8458,7 +8464,7 @@
         filterMenuLabel: "Trier",
         recruitmentDockHint: "Participant ? Cliquez ici pour accéder aux études.",
         recruitmentDockActiveHint: "Revenir à la présentation complète.",
-        nav: ["À propos", "Équipe", "Thèse", "Projets en Collaboration", "Enseignement et Formations", "Publications et Communications", "Participer", "Contact"],
+        nav: ["À propos", "Équipe", "Thèse", "Projets en Collaboration", "Enseignement et Formations", "Publications et Communications", "Contact"],
         heroLabel: "Portfolio académique",
         heroTitle: "Luc Perroquin",
         heroSubtitle: "Doctorant en psychologie cognitive",
@@ -8651,7 +8657,7 @@
         filterMenuLabel: "Filter",
         recruitmentDockHint: "Participant? Click here to access the studies.",
         recruitmentDockActiveHint: "Return to the full presentation.",
-        nav: ["About", "Team", "Thesis", "Featured Projects", "Teaching and Training", "Publications and Communications", "Participate", "Contact"],
+        nav: ["About", "Team", "Thesis", "Featured Projects", "Teaching and Training", "Publications and Communications", "Contact"],
         heroLabel: "Academic portfolio",
         heroTitle: "Luc Perroquin",
         heroSubtitle: "PhD student in cognitive psychology",
@@ -9319,8 +9325,7 @@ const TEACHING = [
       { key: "side", number: "04" },
       { key: "training", number: "05" },
       { key: "publications", number: "06" },
-      { key: "recruitment", number: "07" },
-      { key: "contact", number: "08" }
+      { key: "contact", number: "07" }
     ];
 
     const accessibilityClasses = {
@@ -10103,7 +10108,7 @@ const TEACHING = [
               <div class="portrait-actions">
                 <a class="portrait-button" href="${data.cvUrl}" target="_blank" rel="noopener noreferrer">${escapeHtml(data.cv)}</a>
                 <a class="portrait-button secondary" href="#${currentLanguage}-contact">Contact</a>
-                <a class="portrait-button secondary mobile-participate-button" href="#${sectionId("recruitment")}">${currentLanguage === "fr" ? "Participer" : "Participate"}</a>
+                <a class="portrait-button secondary mobile-participate-button" data-open-recruitment href="#${sectionId("recruitment")}">${currentLanguage === "fr" ? "Participer" : "Participate"}</a>
               </div>
             </aside>
           </div>
@@ -10345,7 +10350,7 @@ const TEACHING = [
           </section>
 
           <section id="${sectionId("recruitment")}" class="reveal" data-section="recruitment">
-            ${sectionHeader("07", data.recruitmentTitle)}
+            ${sectionHeader("01", data.recruitmentTitle)}
             <p class="lead recruitment-intro">${escapeHtml(data.recruitmentIntro)}</p>
 
             <div class="study-contact-card">
@@ -10382,7 +10387,7 @@ const TEACHING = [
           
 
           <section id="${sectionId("contact")}" class="reveal" data-section="contact">
-            ${sectionHeader("08", data.contact)}
+            ${sectionHeader("07", data.contact)}
 
             <div class="contact-box contact-box-redesigned">
               <div class="contact-subsection">
@@ -11171,14 +11176,17 @@ const TEACHING = [
         item.classList.remove("recruitment-focus");
       });
 
+      setRecruitmentMode(true, true, false);
       target.classList.add("recruitment-focus");
-      target.scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-        inline: "nearest"
+      window.requestAnimationFrame(() => {
+        target.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+          inline: "nearest"
+        });
       });
 
-      window.history.replaceState(null, "", `#${currentLanguage}-participate-${slug(projectName)}`);
+      window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}#${currentLanguage}-participate-${slug(projectName)}`);
 
       window.setTimeout(() => {
         target.classList.remove("recruitment-focus");
@@ -11378,6 +11386,13 @@ const TEACHING = [
     }
 
     function updateDynamicBindings() {
+      document.querySelectorAll("[data-open-recruitment]").forEach((link) => {
+        link.addEventListener("click", (event) => {
+          event.preventDefault();
+          setRecruitmentMode(true, true, true);
+        });
+      });
+
       document.querySelector("[data-nav-toggle]")?.addEventListener("click", () => {
         document.querySelector("nav.site-nav")?.classList.toggle("open");
       });
@@ -11583,7 +11598,9 @@ const TEACHING = [
     });
 
     const initialHashState = shouldResetScrollOnRefresh ? null : getInitialStateFromHash();
-    const initialRecruitmentMode = isRecruitmentModeFromUrl();
+    const initialRecruitmentMode = isRecruitmentModeFromUrl()
+      || initialHashState?.sectionKey === "recruitment"
+      || /^#(?:fr|en)-participate-/i.test(window.location.hash);
     const savedTheme = localStorage.getItem("portfolio-theme");
     const savedLanguage = localStorage.getItem("portfolio-language");
     const initialLanguage = initialHashState?.language || (savedLanguage === "en" ? "en" : "fr");
@@ -11615,6 +11632,11 @@ const TEACHING = [
       window.setTimeout(() => {
         document.getElementById(sectionId(initialHashState.sectionKey))?.scrollIntoView({ behavior: "smooth", block: "start" });
       }, 100);
+    } else if (initialRecruitmentMode && /^#(?:fr|en)-participate-/i.test(window.location.hash)) {
+      const recruitmentAnchor = window.location.hash.slice(1);
+      window.setTimeout(() => {
+        document.getElementById(recruitmentAnchor)?.scrollIntoView({ behavior: "smooth", block: "center" });
+      }, 120);
     }
   </script>
 
